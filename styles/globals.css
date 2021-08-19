@@ -1,0 +1,205 @@
+/* Google font */
+/* @import url("https:/fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&display=swap"); */
+
+@tailwind base;
+
+/* Write your own custom base styles here */
+
+/* Start purging... */
+@tailwind components;
+/* Stop purging. */
+
+/* Write you own custom component styles here */
+
+/* Start purging... */
+@tailwind utilities;
+/* Stop purging. */
+
+/* Your own custom utilities */
+
+@layer base {
+  @font-face {
+    font-family: "Verlag";
+    src: url("fonts/Verlag/Verlag-Book.woff2") format("woff2"),
+      url("fonts/Verlag/Verlag-Book.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Verlag";
+    src: url("fonts/Verlag/Verlag-Bold.woff2") format("woff2"),
+      url("fonts/Verlag/Verlag-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Verlag";
+    src: url("fonts/Verlag/Verlag-Black.woff2") format("woff2"),
+      url("fonts/Verlag/Verlag-Black.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Verlag";
+    src: url("fonts/Verlag/Verlag-BlackItalic.woff2") format("woff2"),
+      url("fonts/Verlag/Verlag-BlackItalic.woff") format("woff");
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Verlag";
+    src: url("fonts/Verlag/Verlag-Light.woff2") format("woff2"),
+      url("fonts/Verlag/Verlag-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Verlag";
+    src: url("fonts/Verlag/Verlag-LightItalic.woff2") format("woff2"),
+      url("fonts/Verlag/Verlag-LightItalic.woff") format("woff");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ITC Berkeley Oldstyle Std";
+    src: url("fonts/ITC-Berkeley/BerkeleyStd-Black.woff2") format("woff2"),
+      url("fonts/ITC-Berkeley/BerkeleyStd-Black.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "FITC Berkeley Oldstyle Std";
+    src: url("fonts/ITC-Berkeley/BerkeleyStd-BlackItalic.woff2") format("woff2"),
+      url("fonts/ITC-Berkeley/BerkeleyStd-BlackItalic.woff") format("woff");
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ITC Berkeley Oldstyle Std";
+    src: url("fonts/ITC-Berkeley/BerkeleyStd-Bold.woff2") format("woff2"),
+      url("fonts/ITC-Berkeley/BerkeleyStd-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ITC Berkeley Oldstyle Std";
+    src: url("fonts/ITC-Berkeley/BerkeleyStd-BoldItalic.woff2") format("woff2"),
+      url("fonts/ITC-Berkeley/BerkeleyStd-BoldItalic.woff") format("woff");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ITC Berkeley Oldstyle Std";
+    src: url("fonts/ITC-Berkeley/BerkeleyStd-Book.woff2") format("woff2"),
+      url("fonts/ITC-Berkeley/BerkeleyStd-Book.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ITC Berkeley Oldstyle Std";
+    src: url("fonts/ITC-Berkeley/BerkeleyStd-BookItalic.woff2") format("woff2"),
+      url("fonts/ITC-Berkeley/BerkeleyStd-BookItalic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ITC Berkeley Oldstyle Std";
+    src: url("fonts/ITC-Berkeley/BerkeleyStd-Medium.woff2") format("woff2"),
+      url("fonts/ITC-Berkeley/BerkeleyStd-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "ITC Berkeley Oldstyle Std";
+    src: url("fonts/ITC-Berkeley/BerkeleyStd-Italic.woff2") format("woff2"),
+      url("fonts/ITC-Berkeley/BerkeleyStd-Italic.woff") format("woff");
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "GoudyOldStyleW01";
+    src: url("fonts/GoudyOldstylew01/GoudyOldStyleW01-Regular.woff2")
+        format("woff2"),
+      url("fonts/GoudyOldstylew01/GoudyOldStyleW01-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "GoudyOldstyleW01";
+    src: url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Bold.woff2")
+        format("woff2"),
+      url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "GoudyOldstyleW01";
+    src: url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Italic.woff2")
+        format("woff2"),
+      url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Italic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "GoudyOldStyleW01";
+    src: url("fonts/GoudyOldstylew01/GoudyOldStyleW01-Regular.woff2")
+        format("woff2"),
+      url("fonts/GoudyOldstylew01/GoudyOldStyleW01-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "GoudyOldstyleW01";
+    src: url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Bold.woff2")
+        format("woff2"),
+      url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "GoudyOldstyleW01";
+    src: url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Italic.woff2")
+        format("woff2"),
+      url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Italic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+}
