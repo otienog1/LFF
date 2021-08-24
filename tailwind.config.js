@@ -6,7 +6,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 itc: ["ITC Berkeley Oldstyle Std"],
-                sorts: ["GoudyOldstyleW01"],
+                sorts: ["Old Standard TT"],
                 verl: ["Verlag"],
             },
             backgroundColor: (theme) => ({
@@ -15,6 +15,7 @@ module.exports = {
                 lffbg: "#FFECBC",
                 lffdark: "#292D32",
                 lfffooter: "#234A34",
+                lfflighter: "#FFF7E1",
             }),
             borderColor: () => ({
                 lffgreen: "#145A32",
@@ -23,6 +24,7 @@ module.exports = {
                 lffdark: "#292D32",
             }),
             textColor: () => ({
+                primary: "#3F3F3F",
                 faded: "#292D32",
                 lffbg: "#FFECBC",
                 lffgreen: "#145A32",

@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import Container from "./Container";
-import gsap, { Power2 } from "gsap";
+import Link from "next/link"
+import { useEffect, useRef, useState } from "react"
+import Container from "./Container"
+import gsap, { Power2 } from "gsap"
 
 const NavBar = () => {
     const [state, setState] = useState({
@@ -13,12 +13,12 @@ const NavBar = () => {
                 setState({
                     initial: false,
                     clicked: true,
-                });
+                })
 
             setState({
                 clicked: !state.clicked,
                 initial: null,
-            });
+            })
         },
         menu = [
             {
@@ -37,7 +37,7 @@ const NavBar = () => {
                 text: "Contact",
                 url: "/contact",
             },
-        ];
+        ]
 
     return (
         <>
@@ -58,8 +58,8 @@ const NavBar = () => {
                 </Container>
             </nav>
         </>
-    );
-};
+    )
+}
 
 export const DesktopNav = ({ menu }) => (
     <div className="hidden md:block">
@@ -78,7 +78,7 @@ export const DesktopNav = ({ menu }) => (
             </div>
         </div>
     </div>
-);
+)
 
 export const MobileNav = ({ button, menu }) => {
     const mask = useRef(null),
@@ -205,13 +205,13 @@ export const MobileNav = ({ button, menu }) => {
             <FullscreeMenu menu={menu} clicked={button.clicked} />
         </>
     )
-};
+}
 
 export const BurgerBtn = ({ button }) => {
     const burgerBtn = useRef(null),
         burgerOpen = useRef(null),
         burgerClose = useRef(null),
-        burgerShape = useRef(null);
+        burgerShape = useRef(null)
 
     useEffect(() => {
         button.clicked ?
@@ -221,8 +221,8 @@ export const BurgerBtn = ({ button }) => {
             :
             (
                 burgerBtn.current.style.pointerEvents = "none", burgerIn()
-            );
-    }, [button]);
+            )
+    }, [button])
 
     const burgerIn = () => {
         let tl = gsap.timeline({
@@ -231,7 +231,7 @@ export const BurgerBtn = ({ button }) => {
                 ease: Power2.easeInOut,
             },
             onComplete: () => (burgerBtn.current.style.pointerEvents = ""),
-        });
+        })
         tl.to(
             burgerOpen.current.children,
             {
@@ -241,29 +241,29 @@ export const BurgerBtn = ({ button }) => {
                 },
             },
             0.75
-        );
+        )
         tl.to(
             burgerClose.current.children[0],
             {
                 xPercent: -105,
             },
             0
-        );
+        )
         tl.to(
             burgerClose.current.children[1],
             {
                 yPercent: -105,
             },
             0
-        );
+        )
         tl.set(
             burgerShape.current,
             {
                 yPercent: -105,
             },
             0
-        );
-    };
+        )
+    }
 
     const burgerOut = () => {
         let tl = gsap.timeline({
@@ -272,7 +272,7 @@ export const BurgerBtn = ({ button }) => {
                 ease: Power2.easeInOut,
             },
             onComplete: () => (burgerBtn.current.style.pointerEvents = ""),
-        });
+        })
         tl.to(
             burgerOpen.current.children,
             {
@@ -282,22 +282,22 @@ export const BurgerBtn = ({ button }) => {
                 },
             },
             0.075
-        );
+        )
         tl.to(
             burgerClose.current.children[0],
             {
                 xPercent: 0,
             },
             0.75
-        );
+        )
         tl.to(
             burgerClose.current.children[1],
             {
                 yPercent: 0,
             },
             0.75
-        );
-    };
+        )
+    }
 
     return (
         <div
@@ -329,8 +329,8 @@ export const BurgerBtn = ({ button }) => {
                     ))}
             </div>
         </div>
-    );
-};
+    )
+}
 
 export const FullscreeMenu = ({ menu, clicked }) => {
     const mask = useRef(null),
@@ -452,14 +452,14 @@ export const FullscreeMenu = ({ menu, clicked }) => {
         }
 
     useEffect(() => {
-        fsmenu.current.style.visibility = "inherit";
+        fsmenu.current.style.visibility = "inherit"
         if (!clicked) {
             menuOut()
             return
         }
         menuIn()
         resetMenu()
-    }, [clicked]);
+    }, [clicked])
 
     return (
         <div
@@ -653,7 +653,7 @@ export const FullscreeMenu = ({ menu, clicked }) => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default NavBar;
+export default NavBar
