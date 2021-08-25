@@ -1,10 +1,10 @@
 const Categories = ({ categories }) => (
     <span className="ml-1">
         under
-        {categories.edges.length > 0 ? (
-            categories.edges.map((category, index) => (
+        {categories.length > 0 ? (
+            categories.map((category, index) => (
                 <span key={index} className="ml-1">
-                    {` ${category.node.name}`}
+                    {` ${category.name}`}
                 </span>
             ))
         ) : ""//(
