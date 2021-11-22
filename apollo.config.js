@@ -2,7 +2,7 @@ module.exports = {
     client: {
         service: {
             name: 'wpgraphql',
-            url: 'http://lff-api.test/graphql',
+            url: 'http://http://167.71.141.164/graphql',
         }
     }
 };
