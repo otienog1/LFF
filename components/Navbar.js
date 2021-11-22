@@ -41,12 +41,12 @@ const NavBar = () => {
 
     return (
         <>
-            <nav className="flex md:justify-end">
+            <nav className="flex md:justify-end w-full md:fixed z-40">
                 <Container>
-                    <div className="md:flex items-center md:justify-between md:h-16 font-verl">
-                        <div className="flex-shrink-0 text-center py-6 md:py-0 md:text-left">
+                    <div className="md:flex items-center md:justify-between md:h-20 font-verl">
+                        <div className="flex-shrink-0 text-center py-7 md:py-0 md:text-left">
                             <Link href="/">
-                                <a className="font-bold text-3xl">The Luigi Footprints Foundation</a>
+                                <a className="font-bold text-xl">THE LFF</a>
                             </Link>
                         </div>
                         <DesktopNav menu={menu} />
@@ -61,24 +61,35 @@ const NavBar = () => {
     )
 }
 
-export const DesktopNav = ({ menu }) => (
-    <div className="hidden md:block">
-        <div className="flex items-baseline space-x-6">
-            {menu.map((link, i) => (
-                <span key={i} className="first:hidden">
-                    <Link href={link.url}>
-                        <a className="hover:underline py-2">{link.text}</a>
+export const DesktopNav = ({ menu }) => {
+    const donateBtn = useRef()
+
+    useEffect(() => {
+        let containerWidth = document.querySelector('.container').offsetWidth,
+            documentWidth = document.documentElement.clientWidth
+
+        donateBtn.current.style.minWidth = `${(documentWidth - containerWidth) / 2}px`
+    }, [])
+
+    return (
+        <div className="hidden md:block h-full">
+            <div className="flex items-baseline space-x-6 h-full">
+                {menu.map((link, i) => (
+                    <span key={i} className="first:hidden">
+                        <Link href={link.url}>
+                            <a className="hover:underline py-7">{link.text}</a>
+                        </Link>
+                    </span>
+                ))}
+                <div ref={donateBtn} className="bg-lff_700 py-7 text-center w-24 donate-btn">
+                    <Link href="/donate">
+                        <a className="hover:underline py-2 text-white text-sm">DONATE</a>
                     </Link>
-                </span>
-            ))}
-            <div className="bg-lffgreen h- py-5 px-8">
-                <Link href="/Donate">
-                    <a className="hover:underline py-2 text-white">Donate</a>
-                </Link>
+                </div>
             </div>
         </div>
-    </div>
-)
+    )
+}
 
 export const MobileNav = ({ button, menu }) => {
     const mask = useRef(null),

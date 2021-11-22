@@ -1,44 +1,48 @@
-import Date from "./Date";
-import CoverImage from "./CoverImage";
-import Link from "next/link";
+import { useEffect, useRef } from "react"
+import CoverImage from "./CoverImage"
+import Link from "next/link"
+import Container from "./Container"
 
-const HeroProject = (
-    {
-        title,
-        coverImage,
-        date,
-        excerpt,
-        slug,
-    }
-) => (
-    <section>
-        <div className="mb-8 md:mb-16 px-4">
-            {coverImage && (
-                <CoverImage title={title} coverImage={coverImage} slug={slug} />
-            )}
-        </div>
-        <div className="px-4 md:grid md:grid-cols-2 md:col-gap-16 lg:col-gap-8 mb-20 md:mb-28">
-            <div>
-                <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
-                    <Link as={`/projects/${slug}`} href="/projects/[slug]">
-                        <a
-                            className="hover:underline"
-                            dangerouslySetInnerHTML={{ __html: title }}
-                        />
-                    </Link>
-                </h3>
-                <div className="mb-4 md:mb-0 text-lg">
-                    <Date dateString={date} />
+const HeroProject = ({ title, coverImage, excerpt, slug, }) => {
+    const elem = useRef()
+
+    useEffect(() => {
+        elem.current.style.paddingLeft = `${(document.documentElement.clientWidth - document.querySelector('.container').offsetWidth) / 2}px`
+    }, [])
+
+    return (
+        <div className="flex w-full justify-center px-6 md:px-0">
+            <Container>
+                <div ref={elem} className="md:flex h-full content-center py-8 md:py-0">
+                    <div className="flex w-full md:w-1/2 items-center">
+                        {
+                            coverImage && (
+                                <CoverImage title={title} coverImage={coverImage} slug={slug} />
+                            )
+                        }
+                    </div>
+                    <div className="flex md:pl-16 md:w-1/2 items-center">
+                        <div>
+                            <h3 className="my-5 md:mt-0 text-2xl leading-tight font-bold">
+                                <Link as={`/projects/${slug}`} href="/projects/[slug]">
+                                    <a
+                                        className="hover:underline capitalize tracking-wider"
+                                        dangerouslySetInnerHTML={{ __html: title }}
+                                    />
+                                </Link>
+                            </h3>
+                            <div
+                                className="flex text-lg leading-relaxed"
+                                dangerouslySetInnerHTML={{ __html: excerpt }}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div
-                    className="text-lg leading-relaxed mb-4"
-                    dangerouslySetInnerHTML={{ __html: excerpt }}
-                />
-            </div>
+            </Container>
         </div>
-    </section>
-)
+    )
+}
 
 export default HeroProject

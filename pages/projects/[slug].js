@@ -7,9 +7,10 @@ import ProjectHeader from '../../components/ProjectHeader'
 import Layout from '../../components/Layout'
 // import ProjectTitle from '../../components/ProjectTitle'
 import Head from 'next/head'
-import Tags from '../../components/Tags'
+// import Tags from '../../components/Tags'
 import SectionSeparator from '../../components/SectionSeparator'
 // import { getAllProjectsWithSlug, getProjectAndMoreProjects } from '../../lib/api'
+import Image from 'next/image'
 import { getProjectBySlug, getAllProjects, getRelatedProjects, projectPathBySlug } from '../../lib/projects'
 import { categoryPathBySlug } from '../../lib/catogories'
 
@@ -28,54 +29,54 @@ export default function Project({ project, relatedProjects }) {
 
     return (
         <Layout>
-            <Container>
-                <>
-                    <article>
-                        <Head>
-                            <title>{title} | Luigi Footprints Foundation</title>
-                            <meta
-                                property="og:image"
-                                content={featuredImage?.sourceUrl}
-                            />
-                        </Head>
-                        <ProjectHeader
-                            title={title}
-                            coverImage={featuredImage}
-                            date={date}
-                            categories={typesOfProjects}
+            <>
+                <article>
+                    <Head>
+                        <title>{title} | Luigi Footprints Foundation</title>
+                        <meta
+                            property="og:image"
+                            content={featuredImage?.sourceUrl}
                         />
-                        <ProjectBody content={content} />
-                        <footer>
-                            {tags.length > 0 && <Tags tags={tags} />}
-                        </footer>
-                    </article>
-                    <SectionSeparator />
-                    {!!relatedProjectsList.length && (
-                        <div>
-                            {relatedProjectsTitle.name ? (
-                                <span>
-                                    More from{' '}
-                                    <Link href={relatedProjectsTitle.link}>
-                                        <a>{relatedProjectsTitle.name}</a>
+                    </Head>
+                    <ProjectHeader
+                        title={title}
+                        coverImage={featuredImage}
+                        date={date}
+                        categories={typesOfProjects}
+                    />
+
+                    <ProjectBody content={content} />
+                    <FirstHomes />
+                    {/* <footer>
+                        {tags.length > 0 && <Tags tags={tags} />}
+                    </footer> */}
+                </article>
+                <SectionSeparator />
+                {!!relatedProjectsList.length && (
+                    <div>
+                        {relatedProjectsTitle.name ? (
+                            <span>
+                                More from{' '}
+                                <Link href={relatedProjectsTitle.link}>
+                                    <a>{relatedProjectsTitle.name}</a>
+                                </Link>
+                            </span>
+                        ) : (
+                            <span>More Projects</span>
+                        )}
+                        <ul>
+                            {relatedPostsList.map((project) => (
+                                <li key={project.title}>
+                                    <Link href={projectPathBySlug(project.slug)}>
+                                        <a>{project.title}</a>
                                     </Link>
-                                </span>
-                            ) : (
-                                <span>More Projects</span>
-                            )}
-                            <ul>
-                                {relatedPostsList.map((project) => (
-                                    <li key={project.title}>
-                                        <Link href={projectPathBySlug(project.slug)}>
-                                            <a>{project.title}</a>
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-                    {/* {moreProjects.length > 0 && <MoreProjects projects={moreProjects} />} */}
-                </>
-            </Container>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+                {/* {moreProjects.length > 0 && <MoreProjects projects={moreProjects} />} */}
+            </>
         </Layout>
     )
 }
@@ -118,4 +119,33 @@ export async function getStaticPaths() {
         paths,
         fallback: false,
     }
+}
+
+export function FirstHomes() {
+    const images = Array(36).fill('https://maniagosafaris.com/images/lff/dignity_housing/')
+    return (
+        <>
+            <div className="flex justify-center px-4 md:px-0">
+
+                <div className="w-full md:w-1/2 mx-auto">
+                    <h3 className="text-3xl text-lff text-lff_800 my-20 font-bold text-center">
+                        The making of the first Homes
+                    </h3>
+                    <div className="flex flex-wrap w-full">
+                        {images.map((_, i) => (
+                            <div key={i} className="flex w-1/2 md:w-1/3 p-1.5">
+                                <Image
+                                    src={`${_}${i + 1}.jpg`}
+                                    width={388}
+                                    height={295}
+                                    loading="eager"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+            </div>
+        </>
+    )
 }

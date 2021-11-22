@@ -1,21 +1,18 @@
 import { gql } from '@apollo/client'
 
 export const CREATE_MESSAGE = gql`
-    mutation MessageMutation($title: String!, $email: [[String]], $content: String!) {
+    mutation MessageMutation($name: String!, $email: String!, $message: String!) {
         createMessage(
             input: {
                 clientMutationId: "createMessage"
-                title: $title, 
+                name: $name, 
                 email: $email,
-                content: $content,
-                status: PRIVATE
+                message: $message,
+                # status: PRIVATE
             }
         ) {
-            message {
-                email
-                title
-                content
-            }
+            data,
+            success
         }
     }`
 

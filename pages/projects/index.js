@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Container from '../../components/Container'
 import MoreProjects from '../../components/MoreProjects'
 import HeroProject from '../../components/HeroProject'
 import Intro from '../../components/Intro'
@@ -14,10 +13,11 @@ const Index = ({ allProjects: { edges }, preview }) => {
         <>
             <Layout preview={preview}>
                 <Head>
-                    <title>Projects | Luigi Footprints Foundation</title>
+                    <title>Our Projects | Luigi Footprints Foundation</title>
                 </Head>
-                <Container>
-                    <Intro />
+
+                <Intro />
+                <section className="flex items-center py-20 md:h-screen bg-lff_100">
                     {heroProject && (
                         <HeroProject
                             title={heroProject.title}
@@ -28,8 +28,8 @@ const Index = ({ allProjects: { edges }, preview }) => {
                             excerpt={heroProject.excerpt}
                         />
                     )}
-                    {moreProjects.length > 0 && <MoreProjects projects={moreProjects} />}
-                </Container>
+                </section>
+                {moreProjects.length > 0 && <MoreProjects projects={moreProjects} />}
             </Layout>
         </>
     )
