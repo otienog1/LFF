@@ -1,13 +1,11 @@
 import { useEffect, useRef } from "react";
-import Date from "./Date";
 import CoverImage from "./CoverImage";
 import ProjectTitle from './ProjectTitle'
-import Categories from './Categories'
 
 const ProjectHeader = ({ title, coverImage, date, categories, }) => {
     const elem = useRef(null)
     useEffect(() => {
-        elem.current.style.height = `${document.documentElement.clientHeight * .7}px`
+        elem.current.style.height = `${document.documentElement.clientHeight * .85}px`
     }, [])
     return (
         <>
@@ -17,7 +15,7 @@ const ProjectHeader = ({ title, coverImage, date, categories, }) => {
                 </div>
             </div>
 
-            <div className="">
+            <div className="relative overflow-hidden">
                 <CoverImage title={title} coverImage={coverImage} />
             </div>
         </>
