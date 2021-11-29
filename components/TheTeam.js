@@ -13,7 +13,7 @@ const TheTeam = ({ title, trustees }) => {
     })
 
     return (
-        <section className="flex justify-end bg-lff_100 py-40 text-lff_800 relative">
+        <section className="flex justify-end bg-lff_100 py-40 text-lff_800 relative px-4 md:px-0">
             <Container>
                 <>
                     <h4 className="text-sm uppercase font-bold" dangerouslySetInnerHTML={{ __html: title[0] }}></h4>
@@ -76,7 +76,7 @@ const Trustee = ({ trustee }) => {
 
     return (
         <>
-            <div className="member w-1/3 pr-6 pb-8 z-50 cursor-pointer" onClick={() => handleClick()}>
+            <div className="member w-1/2 md:w-1/3 pr-6 pb-8 z-50 cursor-pointer" onClick={() => handleClick()}>
                 <div className="w-full">
                     <picture className="picture">
                         <source srcSet={webp} type="image/webp" />
