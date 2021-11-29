@@ -13,10 +13,10 @@ const CtaSection = ({ image, title, content }) => {
     return (
         <section className="flex justify-center bg-lffgreen_500">
             <Container>
-                <div ref={elem} className="py-0 w-full mx-auto relative">
-                    <div ref={ctaImage} className="w-3/5 mx-auto overflow-hidden relative -top-60">
-                        <div className="overflow-hidden mb-28">
-                            <img data-scroll-speed="100" src={image} className="object-cover w-full h-full" />
+                <div ref={elem} className="py-28 md:py-0 w-full mx-auto relative px-4 md:px-0">
+                    <div ref={ctaImage} className="w-full md:w-3/5 mx-auto overflow-hidden relative md:-top-60">
+                        <div className="overflow-hidden mb-10 md:mb-28">
+                            <img data-scroll-speed="100" src={image} className="object-cover w-full" />
                         </div>
                         <div className="md:w-4/5 mx-auto">
                             <p className="font-extrabold text-5xl text-center text-lffvegas_500" dangerouslySetInnerHTML={{

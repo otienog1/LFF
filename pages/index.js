@@ -41,15 +41,14 @@ export default function Home({ page, allProjects: { edges } }) {
                 />
 
                 {heroProject && (
-                    <section className="flex justify-end flex-wrap bg-lff_200 md:min-h-screen text-lff_800 py-28" >
-                        {/* <div className="md:w-1/2 flex justify-end mb-48 leading-loose text-xl"> */}
+                    <section className="flex justify-end flex-wrap bg-lff_200 md:min-h-screen text-lff_800 py-28">
                         <Container>
-                            <div ref={elem} className="md:w-1/2  mb-48 leading-loose text-xl">
+                            <div ref={elem} className="md:w-1/2 px-4 md:px-0 md:mb-48 leading-loose text-xl">
                                 <h2 className="text-7xl font-bold mb-20">{page.projectsTitle}</h2>
                                 <p dangerouslySetInnerHTML={{ __html: page.projectText }}></p>
                             </div>
                         </Container>
-                        {/* </div> */}
+
                         <HeroProject
                             title={heroProject.title}
                             coverImage={heroProject.featuredImage?.node}

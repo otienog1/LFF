@@ -13,12 +13,12 @@ const HeroSection = ({ intro, slides, thumbs }) => {
     return (
         <section ref={elem} className="flex justify-end relative">
             <Container>
-                <div className="flex">
-                    <div className=" flex w-4/12 items-center">
-                        <div className="w-full">
+                <div className="block md:flex">
+                    <div className="flex w-full md:w-4/12 items-center">
+                        <div className="px-4 md:px-0 w-full py-8 md:py-0">
                             <h1 className="font-sorts text-4xl 2xl:text-5xl text-lff_800 mb-8" dangerouslySetInnerHTML={{ __html: intro }}></h1>
                             <Link href="/donate">
-                                <a className="font-verl text-lffvegas_600 text-lg text-bold underline">Help us save the earth</a>
+                                <a className="font-verl text-center text-lffvegas_600 text-lg text-bold underline">Help us save the earth</a>
                             </Link>
                         </div>
                     </div>
@@ -187,7 +187,7 @@ const HeroSlider = props => {
 
     return (
         <>
-            <div ref={sliders} className="w-8/12 relative overflow-hidden">
+            <div ref={sliders} className="w-full md:w-8/12 relative overflow-hidden">
                 {newSlides.map((slide, i) => <Slide source={slide[1].sourceUrl} key={i} />)}
             </div>
             <div className="absolute bottom-6 z-50">

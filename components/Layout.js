@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import Footer from './Footer'
 import Header from './Header'
 import Meta from './Meta'
+import { MobileNav } from './Navbar'
 import TeamMember from './TeamMember'
 
 const Layout = ({ children }) => {
@@ -13,33 +14,6 @@ const Layout = ({ children }) => {
     useEffect(() => {
 
         const scrollsp = document.querySelectorAll('[data-scroll-speed]')
-
-        // const moveIt = () => {
-        //     let instances = []
-
-        //     scrollsp.forEach(sp => {
-        //         instances.push(new moveItItem(sp))
-        //     })
-
-        //     window.addEventListener('scroll', () => {
-        //         let scrollTop = window.pageYOffset || document.documentElement.scrollTop
-        //         instances.forEach(function (inst) {
-        //             inst.update(scrollTop);
-        //         })
-        //     })
-        // }
-
-        // let speed
-        // function moveItItem(sp) {
-        //     this.sp = sp
-        //     speed = parseInt(sp.dataset.scrollSpeed)
-        // };
-
-        // moveItItem.prototype.update = function (scrollTop) {
-        //     this.sp.style.transform = 'translateY(' + -(scrollTop / speed) + 'px)'
-        // };
-
-        // moveIt()
 
         const MathUtils = {
             map: (x, a, b, c, d) => (x - a) * (d - c) / (b - a) + c,
@@ -234,6 +208,7 @@ const Layout = ({ children }) => {
             <Meta />
             <div ref={Body} className="bg-lff_200 loading">
                 <main ref={Main}>
+                    <MobileNav />
                     <div ref={scroller} className="relative" >
                         <Header />
                         {children}

@@ -6,7 +6,7 @@ import Alert from '../../components/Alert'
 const Index = () => {
     const elem = useRef(null)
     useEffect(() => {
-        elem.current.style.paddingRight = `${(document.documentElement.clientWidth - document.querySelector('.container').offsetWidth) / 2}px`
+        // elem.current.style.paddingRight = `${(document.documentElement.clientWidth - document.querySelector('.container').offsetWidth) / 2}px`
     }, [])
     return (
         <>
@@ -15,10 +15,7 @@ const Index = () => {
                     <title>Donate 💚 | The Luigi Footprints Foundation</title>
                 </Head>
                 <div className="flex md:justify-end w-full px-4 md:px-0">
-                    <div className="hidden md:block md:w-1/2">
-
-                    </div>
-                    <div ref={elem} className="w-full md:w-1/2">
+                    <div ref={elem} className="w-full md:w-1/2 mx-auto">
                         <DonationsForm />
                     </div>
                 </div>
@@ -657,7 +654,7 @@ const DonationsForm = () => {
     }
 
     return (
-        <div ref={form} className="flex h-screen items-center">
+        <div ref={form} className="flex min-h-screen items-center py-8">
             <div className="w-full xl:pl-40 lg:pl-10">
                 <div className="flex justify-between font-sen text-lff_700">
                     <span className={`${page == 1 ? 'text-lff_800 font-bold' : ''}`}>1. Donations</span>
