@@ -221,7 +221,7 @@ const Thumb = ({ source }) => (
 const Bullet = () => (
     <li className="list__item w-6 h-6 block cursor-pointer relative rounded-full mr-4 opacity-50 before:absolute before:bg-lff_600">
         <svg className="top-0 left-0 w-full h-full absolute rotate-90" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.08 28.08" xmlSpace="preserve">
-            <circle style={{ fill: 'none' }} className="stroke-1 stroke-current text-lffgreen" cx="14.04" cy="14.04" r="13.54"></circle>
+            <circle style={{ fill: 'none' }} className="stroke-1 stroke-current text-lff_800" cx="14.04" cy="14.04" r="13.54"></circle>
         </svg>
     </li>
 )

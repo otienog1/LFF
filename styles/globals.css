@@ -231,9 +231,7 @@
     border-radius: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
   }
-  .list__item.is__active:before {
-    background: #fff;
-  }
+
   .list__item.is__active svg circle {
     animation: timer 8s linear forwards;
   }
@@ -245,7 +243,7 @@
   }
 
   .list__item.is__active:before {
-    background: #145a32;
+    background: #665f4b;
   }
 
   .list__item:last-of-type {
@@ -276,12 +274,13 @@
   }
 
   .main::before {
-    animation: grain 8s steps(10) infinite;
+    /* animation: grain 8s steps(10) infinite; */
+    animation: noise 1s steps(2) infinite;
     background-image: url(/noise.png);
     content: "";
     height: 280%;
     left: -50%;
-    opacity: 0.4;
+    /* opacity: 0.4; */
     position: fixed;
     top: -100%;
     width: 300%;
@@ -319,6 +318,42 @@
     }
     90% {
       transform: translate(-10%, 10%);
+    }
+  }
+
+  @keyframes noise {
+    0% {
+      transform: translate3d(0, 9rem, 0);
+    }
+    10% {
+      transform: translate3d(-1rem, -4rem, 0);
+    }
+    20% {
+      transform: translate3d(-8rem, 2rem, 0);
+    }
+    30% {
+      transform: translate3d(9rem, -9rem, 0);
+    }
+    40% {
+      transform: translate3d(-2rem, 7rem, 0);
+    }
+    50% {
+      transform: translate3d(-9rem, -4rem, 0);
+    }
+    60% {
+      transform: translate3d(2rem, 6rem, 0);
+    }
+    70% {
+      transform: translate3d(7rem, -8rem, 0);
+    }
+    80% {
+      transform: translate3d(-9rem, 1rem, 0);
+    }
+    90% {
+      transform: translate3d(6rem, -5rem, 0);
+    }
+    to {
+      transform: translate3d(-7rem, 0, 0);
     }
   }
   a,
