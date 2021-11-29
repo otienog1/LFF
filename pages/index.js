@@ -17,7 +17,7 @@ export default function Home({ page, allProjects: { edges } }) {
     const elem = useRef()
 
     useEffect(() => {
-        elem.current.style.paddingLeft = `${(document.documentElement.clientWidth - document.querySelector('.container').offsetWidth) / 2}px`
+        // elem.current.style.paddingLeft = `${(document.documentElement.clientWidth - document.querySelector('.container').offsetWidth) / 2}px`
     }, [])
 
     return (
@@ -41,15 +41,15 @@ export default function Home({ page, allProjects: { edges } }) {
                 />
 
                 {heroProject && (
-                    <section className="bg-lff_200 md:min-h-screen text-lff_800 py-28" >
-                        <h2 className="text-7xl text-center font-bold mb-20">{page.projectsTitle}</h2>
-                        <div className="md:w-full flex justify-center mb-48 leading-loose text-xl text-center">
-                            <Container>
-                                <div ref={elem}>
-                                    <p dangerouslySetInnerHTML={{ __html: page.projectText }}></p>
-                                </div>
-                            </Container>
-                        </div>
+                    <section className="flex justify-end flex-wrap bg-lff_200 md:min-h-screen text-lff_800 py-28" >
+                        {/* <div className="md:w-1/2 flex justify-end mb-48 leading-loose text-xl"> */}
+                        <Container>
+                            <div ref={elem} className="md:w-1/2  mb-48 leading-loose text-xl">
+                                <h2 className="text-7xl font-bold mb-20">{page.projectsTitle}</h2>
+                                <p dangerouslySetInnerHTML={{ __html: page.projectText }}></p>
+                            </div>
+                        </Container>
+                        {/* </div> */}
                         <HeroProject
                             title={heroProject.title}
                             coverImage={heroProject.featuredImage?.node}
