@@ -213,7 +213,7 @@ const Layout = ({ children }) => {
                         <Header />
                         {children}
                         <Footer />
-                        <div ref={noise} className="main absolute w-full top-0 left-0"></div>
+                        <div ref={noise} className="main absolute hidden md:block w-full top-0 left-0"></div>
                     </div>
                 </main>
             </div>
