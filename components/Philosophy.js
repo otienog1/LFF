@@ -20,7 +20,7 @@ const Philosophy = ({ image, title, content }) => {
                         <h2 className="text-3xl font-bold mb-5">{title}</h2>
                         <div dangerouslySetInnerHTML={{ __html: content }} className="text-xl"></div>
                     </div>
-                    <div className="block md:hidden w-full overflow-hidden mt-8">
+                    <div className="block md:hidden w-full overflow-hidden mt-8 pr-4">
                         <img data-scroll-speed="100" src={image} className="w-full" />
                     </div>
                 </div>
