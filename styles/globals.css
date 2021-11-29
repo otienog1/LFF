@@ -228,6 +228,7 @@
     content: "";
     width: 0.486vw;
     height: 0.486vw;
+    border-radius: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
   }
   .list__item.is__active:before {
@@ -280,7 +281,7 @@
     content: "";
     height: 280%;
     left: -50%;
-    opacity: 0.6;
+    opacity: 0.4;
     position: fixed;
     top: -100%;
     width: 300%;

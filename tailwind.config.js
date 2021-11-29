@@ -113,24 +113,27 @@ module.exports = {
     },
     plugins: [
         require('@tailwindcss/custom-forms'),
-        // function ({ addComponents }) {
-        //     addComponents({
-        //         '.container': {
-        //             maxWidth: '100%',
-        //             '@screen sm': {
-        //                 maxWidth: '640px',
-        //             },
-        //             '@screen md': {
-        //                 maxWidth: '768px',
-        //             },
-        //             '@screen lg': {
-        //                 maxWidth: '1024px',
-        //             },
-        //             '@screen xl': {
-        //                 maxWidth: '1280px',
-        //             },
-        //         }
-        //     })
-        // }
+        function ({ addComponents }) {
+            addComponents({
+                '.container': {
+                    maxWidth: '100%',
+                    '@screen sm': {
+                        maxWidth: '640px',
+                    },
+                    '@screen md': {
+                        maxWidth: '768px',
+                    },
+                    '@screen lg': {
+                        maxWidth: '1024px',
+                    },
+                    '@screen xl': {
+                        maxWidth: '1194px',
+                    },
+                    '@screen 2xl': {
+                        maxWidth: '1536px',
+                    },
+                }
+            })
+        }
     ]
 };

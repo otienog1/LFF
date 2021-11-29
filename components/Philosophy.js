@@ -12,9 +12,9 @@ const Philosophy = ({ image, title, content }) => {
     return (
         <section className="flex w-full bg-lff_400 text-lff_800 justify-end">
             <Container>
-                <div ref={elem} className="flex justify-between w-full h-full items-center py-28">
-                    <div className="w-5/12">
-                        <img src={image} className="w-full" />
+                <div ref={elem} className="flex justify-between w-full h-full items-center py-48">
+                    <div className="w-5/12 overflow-hidden">
+                        <img data-scroll-speed="100" src={image} className="w-full" />
                     </div>
                     <div className="w-6/12">
                         <h2 className="text-3xl font-bold mb-5">{title}</h2>

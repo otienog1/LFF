@@ -8,7 +8,7 @@ import '../styles/globals.css'
 
 
 const httpLink = createHttpLink({
-    uri: 'http://lff-api.test/graphql'
+    uri: 'https://api.theluigifootprints.org/graphql'
 })
 
 const authLink = setContext((_, { headers }) => {

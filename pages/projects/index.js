@@ -17,7 +17,7 @@ const Index = ({ allProjects: { edges }, preview }) => {
                 </Head>
 
                 <Intro />
-                <section className="flex items-center py-20 md:h-screen bg-lff_100">
+                <section className="flex items-center py-28 min-h-screen bg-lff_100">
                     {heroProject && (
                         <HeroProject
                             title={heroProject.title}

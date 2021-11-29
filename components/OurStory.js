@@ -11,9 +11,9 @@ const OurStory = ({ title, intro, content, image }) => {
     }, [])
 
     return (
-        <section className="flex h-screen w-full bg-lffvegas_300 text-lff_800 justify-end">
+        <section className="flex min-h-screen w-full bg-lffvegas_300 text-lff_800 justify-end">
             <Container>
-                <div className="flex w-full h-full items-center py-20">
+                <div className="flex w-full h-full items-center py-28">
                     <div className="w-5/12 pr-24">
                         <h3 className="text-sm uppercase font-bold font-sen">{title}</h3>
                         <div dangerouslySetInnerHTML={{ __html: intro }} className="text-3xl font-extrabold my-16"></div>
@@ -26,8 +26,8 @@ const OurStory = ({ title, intro, content, image }) => {
                             </Link>
                         </div>
                     </div>
-                    <div className="w-7/12">
-                        <div>
+                    <div className="w-7/12 overflow-hidden">
+                        <div data-scroll-speed="100">
                             <img src={image} className="w-full" />
                         </div>
                     </div>

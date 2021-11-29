@@ -10,7 +10,6 @@ import Head from 'next/head'
 // import Tags from '../../components/Tags'
 import SectionSeparator from '../../components/SectionSeparator'
 // import { getAllProjectsWithSlug, getProjectAndMoreProjects } from '../../lib/api'
-import Image from 'next/image'
 import { getProjectBySlug, getAllProjects, getRelatedProjects, projectPathBySlug } from '../../lib/projects'
 import { categoryPathBySlug } from '../../lib/catogories'
 
@@ -134,11 +133,12 @@ export function FirstHomes() {
                     <div className="flex flex-wrap w-full">
                         {images.map((_, i) => (
                             <div key={i} className="flex w-1/2 md:w-1/3 p-1.5">
-                                <Image
+                                <img
                                     src={`${_}${i + 1}.jpg`}
-                                    width={388}
-                                    height={295}
-                                    loading="eager"
+                                // width={388}
+                                // height={295}
+                                // loading="eager"
+                                // loader={'imgix'}
                                 />
                             </div>
                         ))}

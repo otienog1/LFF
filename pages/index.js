@@ -41,7 +41,7 @@ export default function Home({ page, allProjects: { edges } }) {
                 />
 
                 {heroProject && (
-                    <section className="bg-lff_200 md:min-h-screen text-lff_800 py-32" >
+                    <section className="bg-lff_200 md:min-h-screen text-lff_800 py-28" >
                         <h2 className="text-7xl text-center font-bold mb-20">{page.projectsTitle}</h2>
                         <div className="md:w-full flex justify-center mb-48 leading-loose text-xl text-center">
                             <Container>

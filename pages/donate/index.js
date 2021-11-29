@@ -659,7 +659,7 @@ const DonationsForm = () => {
     return (
         <div ref={form} className="flex h-screen items-center">
             <div className="w-full xl:pl-40 lg:pl-10">
-                <div className="flex justify-between font-verl text-lff_700">
+                <div className="flex justify-between font-sen text-lff_700">
                     <span className={`${page == 1 ? 'text-lff_800 font-bold' : ''}`}>1. Donations</span>
                     <span className={`${page == 2 ? 'text-lff_800 font-bold' : ''}`}>2. Details</span>
                     <span className={`${page == 3 ? 'text-lff_800 font-bold' : ''}`}>3. Address</span>
@@ -866,7 +866,7 @@ const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentIn
     return (
         <div className={`flex ${page > 1 ? `justify-between` : `justify-end`} mt-10`}>
             <button
-                className={`${page > 1 ? `flex` : `hidden`} text-lff_800 flex font-verl items-center text-base bg-transparentpy-3 space-x-3 w-48`}
+                className={`${page > 1 ? `flex` : `hidden`} text-lff_800 flex font-sen items-center text-base bg-transparentpy-3 space-x-3 w-48`}
                 onClick={() => previous()}
             >
                 <span className="">
@@ -877,7 +877,7 @@ const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentIn
                 <span className="font-bold h-5">PREVIOUS</span>
             </button>
             <button
-                className="text-lff_800 flex font-verl items-center text-base  py-2.5 space-x-3 border-solid border-2 border-lff_800 w-48 justify-center bg-lff_500 disabled:opacity-50"
+                className="text-lff_800 flex font-sen items-center text-base  py-2.5 space-x-3 border-solid border-2 border-lff_800 w-48 justify-center bg-lff_200 hover:bg-lff_400 disabled:opacity-50"
                 onClick={() => page == 4 ? donate() : next()}
             // disabled={disabled ? true : false}
             >
@@ -895,7 +895,7 @@ const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentIn
                         <span className="font-bold h-5">NEXT</span>
                         <span className="">
                             <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="8" height="16" fill="#FFECBC" />
+                                <rect width="8" height="16" fill="none" />
                                 <path d="M1.18457 13.6482L6.81656 8.00017L1.18457 2.35217" stroke="#665F4B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </span>
@@ -935,7 +935,7 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
                         className={
                             `${Number(amount) === Number(_amount) ? `bg-lff_500 text-lff_800 border-lff_800 ` : `bg-transparent text-lff_700 border-lff_600`} 
                             hover:bg-lff_500 hover:text-lff_800 hover:border-lff_800 transition-all duration-500 ease-in-out 
-                            flex font-verl text-bold text-base  py-4 border-2 border-solid  justify-center cursor-pointer font-bold flex-grow`
+                            flex font-sen text-bold text-base  py-4 border-2 border-solid  justify-center cursor-pointer font-bold flex-grow z-50`
                         }
                         key={i}
                     >{amountF.format(_amount)}</div>
@@ -950,7 +950,7 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
                         className={
                             `${Number(amount) === Number(_amount) ? `bg-lff_500 text-lff_800 border-lff_800 ` : `bg-transparent text-lff_700 border-lff_600`} 
                             hover:bg-lff_500 hover:text-lff_800 hover:border-lff_800 transition-all duration-500 ease-in-out 
-                            flex font-verl text-bold text-base  py-4 border-2 border-solid justify-center cursor-pointer font-bold flex-grow`
+                            flex font-sen text-bold text-base  py-4 border-2 border-solid justify-center cursor-pointer font-bold flex-grow z-50`
                         }
                         key={i}
                     >{amountF.format(_amount)}</div>
@@ -958,13 +958,13 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
                 ))}
             </div>
 
-            <div className="w-full">
+            <div className="w-full z-50 relative">
                 <span className="block text-lff_800 font-sorts mt-8 font-bold text-lg">Other Amount</span>
-                <div className="flex font-verl py-0.5 text-xl">
+                <div className="flex font-sen py-0.5 text-xl">
                     <span className="mr-1 py-1.5">$</span>
                     <input
                         ref={amountInput}
-                        className="appearance-none font-verl bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                        className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
                         type="number"
                         placeholder="0.00"
                         min="0.00"
@@ -986,12 +986,12 @@ const UserInfo = ({ handleUserInfo, details, alert, hasError }) => {
                 <Alert alert={alert} />
             </div>
 
-            <div className="flex justify-between flex-col">
+            <div className="flex justify-between flex-col relative z-50">
                 <div className="w-full">
                     <label htmlFor="fname" className="font-sorts font-bold mb-2 text-lff_800">First Name</label>
                     <input
                         id="fname"
-                        className="border-lff_700 placeholder-lff_700 appearance-none font-verl bg-transparent border-b-2 border-solid py-2 leading-tight focus:outline-none mb-10 text-lff_800 w-full"
+                        className="border-lff_700 placeholder-lff_700 appearance-none font-sen bg-transparent border-b-2 border-solid py-2 leading-tight focus:outline-none mb-10 text-lff_800 w-full"
                         type="text"
                         placeholder="Enter your First Name"
                         onChange={e => handleUserInfo('firstName', e.target.value)}
@@ -1002,7 +1002,7 @@ const UserInfo = ({ handleUserInfo, details, alert, hasError }) => {
                     <label htmlFor="lname" className="font-sorts font-bold mb-2 text-lff_800">Last Name</label>
                     <input
                         id="lname"
-                        className="appearance-none font-verl bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                        className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
                         type="text"
                         placeholder="Enter your Last Name"
                         onChange={e => handleUserInfo('lastName', e.target.value)}
@@ -1013,7 +1013,7 @@ const UserInfo = ({ handleUserInfo, details, alert, hasError }) => {
                     <label htmlFor="email" className="font-sorts font-bold mb-2 text-lff_800">Email</label>
                     <input
                         id="email"
-                        className="appearance-none font-verl bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                        className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
                         type="email"
                         placeholder="Enter your Email"
                         onChange={e => handleUserInfo('email', e.target.value)}
@@ -1024,7 +1024,7 @@ const UserInfo = ({ handleUserInfo, details, alert, hasError }) => {
                     <label htmlFor="phone" className="font-sorts font-bold mb-2 text-lff_800">Phone</label>
                     <input
                         id="phone"
-                        className="appearance-none font-verl bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                        className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
                         type="tel"
                         placeholder="Enter your phone number"
                         onChange={e => handleUserInfo('phone', e.target.value)}
@@ -1045,13 +1045,13 @@ const Address = ({ handleAddress, address, alert }) => {
                 <Alert alert={alert} />
             </div>
 
-            <div className="flex justify-between flex-col">
+            <div className="flex justify-between flex-col relative z-50">
                 <div className="w-full">
                     <label htmlFor="country" className="block text-lff_800 font-sorts font-bold text-lg">Country</label>
-                    <div className="flex font-verl py-0.5">
+                    <div className="flex font-sen py-0.5">
                         <input
                             id="country"
-                            className="appearance-none font-verl bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                            className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
                             type="text"
                             placeholder="Enter your country"
                             value={address.country}
@@ -1062,10 +1062,10 @@ const Address = ({ handleAddress, address, alert }) => {
                 </div>
                 <div className="w-full">
                     <label htmlFor="address" className="block text-lff_800 font-sorts font-bold text-lg">Address</label>
-                    <div className="flex font-verl py-0.5">
+                    <div className="flex font-sen py-0.5">
                         <input
                             id="address"
-                            className="appearance-none font-verl bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                            className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
                             type="text"
                             placeholder="Enter your address"
                             value={address.address}
@@ -1076,10 +1076,10 @@ const Address = ({ handleAddress, address, alert }) => {
                 </div>
                 <div className="w-full">
                     <label htmlFor="city" className="block text-lff_800 font-sorts font-bold text-lg">City</label>
-                    <div className="flex font-verl py-0.5">
+                    <div className="flex font-sen py-0.5">
                         <input
                             id="city"
-                            className="appearance-none font-verl bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                            className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
                             type="text"
                             placeholder="Enter your city"
                             value={address.city}
@@ -1090,10 +1090,10 @@ const Address = ({ handleAddress, address, alert }) => {
                 </div>
                 <div className="w-full">
                     <label htmlFor="state" className="block text-lff_800 font-sorts font-bold text-lg">State</label>
-                    <div className="flex font-verl py-0.5">
+                    <div className="flex font-sen py-0.5">
                         <input
                             id="state"
-                            className="appearance-none font-verl bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                            className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
                             type="text"
                             placeholder="Enter your state"
                             value={address.state}
@@ -1103,10 +1103,10 @@ const Address = ({ handleAddress, address, alert }) => {
                 </div>
                 <div className="w-full">
                     <label htmlFor="postalCode" className="block text-lff_800 font-sorts font-bold text-lg">Postal Code</label>
-                    <div className="flex font-verl py-0.5">
+                    <div className="flex font-sen py-0.5">
                         <input
                             id="postalCode"
-                            className="appearance-none font-verl bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                            className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
                             type="number"
                             placeholder="Enter your postal code"
                             value={address.postalCode}
@@ -1278,9 +1278,9 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                 </label>
             </div> */}
 
-            <div className="w-full">
+            <div className="w-full relative z-50">
                 <label htmlFor="cardholder" className="block text-lff_800 font-sorts font-bold text-lg">Cardholder Name</label>
-                <div className="flex font-verl py-0.5 text-xl">
+                <div className="flex font-sen py-0.5 text-xl">
                     <input
                         id="cardholder"
                         className="appearance-none bg-transparent leading-tight focus:outline-none w-full"
@@ -1291,9 +1291,9 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                 </div>
                 <div className="bg-lff_700 w-full h-0.5 mb-8"></div>
             </div>
-            <div className="w-full">
+            <div className="w-full relative z-50">
                 <label htmlFor="cardnumber" className="block text-lff_800 font-sorts font-bold text-lg">Card Number</label>
-                <div className="flex font-verl py-0.5 text-xl items-center">
+                <div className="flex font-sen py-0.5 text-xl items-center">
                     <input
                         id="cardnumber"
                         className="appearance-none bg-transparent leading-tight focus:outline-none w-full placeholder-lffbg"
@@ -1397,10 +1397,10 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                 </div>
                 <div className="bg-lff_700 w-full h-0.5 mb-8"></div>
             </div>
-            <div className="w-full flex space-x-16">
+            <div className="w-full flex space-x-16 relative z-50">
                 <div className="w-1/2">
                     <label htmlFor="expiry" className="block text-lff_800 font-sorts font-bold text-lg">Expiry</label>
-                    <div className="flex font-verl py-0.5 text-xl">
+                    <div className="flex font-sen py-0.5 text-xl">
                         <input
                             id="expiry"
                             className="appearance-none bg-transparent leading-tight focus:outline-none w-full placeholder-lffbg"
@@ -1414,9 +1414,9 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                     </div>
                     <div className="bg-lff_700 w-full h-0.5 mb-8"></div>
                 </div>
-                <div className="w-1/2">
+                <div className="w-1/2 relative z-50">
                     <label htmlFor="cvn" className="block text-lff_800 font-sorts font-bold text-lg">CVC</label>
-                    <div className="flex font-verl py-0.5 text-xl">
+                    <div className="flex font-sen py-0.5 text-xl">
                         <input
                             ref={cvcInput}
                             id="cvn"

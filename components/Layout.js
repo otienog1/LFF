@@ -11,6 +11,36 @@ const Layout = ({ children }) => {
         noise = useRef(null)
 
     useEffect(() => {
+
+        const scrollsp = document.querySelectorAll('[data-scroll-speed]')
+
+        // const moveIt = () => {
+        //     let instances = []
+
+        //     scrollsp.forEach(sp => {
+        //         instances.push(new moveItItem(sp))
+        //     })
+
+        //     window.addEventListener('scroll', () => {
+        //         let scrollTop = window.pageYOffset || document.documentElement.scrollTop
+        //         instances.forEach(function (inst) {
+        //             inst.update(scrollTop);
+        //         })
+        //     })
+        // }
+
+        // let speed
+        // function moveItItem(sp) {
+        //     this.sp = sp
+        //     speed = parseInt(sp.dataset.scrollSpeed)
+        // };
+
+        // moveItItem.prototype.update = function (scrollTop) {
+        //     this.sp.style.transform = 'translateY(' + -(scrollTop / speed) + 'px)'
+        // };
+
+        // moveIt()
+
         const MathUtils = {
             map: (x, a, b, c, d) => (x - a) * (d - c) / (b - a) + c,
             lerp: (a, b, n) => (1 - n) * a + n * b
@@ -31,9 +61,95 @@ const Layout = ({ children }) => {
         const getPageYScroll = () => docScroll = window.pageYOffset || document.documentElement.scrollTop
         window.addEventListener('scroll', getPageYScroll)
 
+
+        class Item {
+            constructor(el) {
+                this.el = el
+                this.renderedStyles = {
+                    translationY: {
+                        previous: 0,
+                        current: 0,
+                        ease: .075,
+                        maxValue: parseInt(this.el.dataset.scrollSpeed, 10),
+                        setValue: () => {
+                            const maxValue = this.renderedStyles.translationY.maxValue,
+                                minValue = -1 * maxValue
+                            return Math.max(
+                                Math.min(
+                                    MathUtils.map(
+                                        this.props.top - docScroll,
+                                        winsize.height,
+                                        -1 * this.props.height,
+                                        minValue,
+                                        maxValue
+                                    ), maxValue
+                                ), minValue
+                            )
+                        }
+                    }
+                }
+                this.update()
+
+                this.observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => this.isVisible = entry.intersectionRatio > 0)
+                })
+
+                this.observer.observe(this.el)
+
+                this.initEvents()
+            }
+
+            update() {
+                this.getSize()
+
+                for (const key in this.renderedStyles) {
+                    this.renderedStyles[key].current = this.renderedStyles[key].previous = this.renderedStyles[key].setValue()
+                }
+
+                this.layout()
+            }
+
+            getSize() {
+                const rect = this.el.getBoundingClientRect()
+                this.props = {
+                    height: rect.height,
+                    top: docScroll + rect.top
+                }
+            }
+
+            initEvents() {
+                window.addEventListener('resize', () => this.resize())
+            }
+
+            resize() {
+                this.update()
+            }
+
+            render() {
+                for (const key in this.renderedStyles) {
+                    this.renderedStyles[key].current = this.renderedStyles[key].setValue()
+                    this.renderedStyles[key].previous = MathUtils.lerp(
+                        this.renderedStyles[key].previous,
+                        this.renderedStyles[key].current,
+                        this.renderedStyles[key].ease
+                    )
+
+                    this.layout()
+                }
+
+            }
+            layout() {
+                this.el.style.transform = `translate3d(0,${this.renderedStyles.translationY.previous}px,0)`
+            }
+        }
+
         const SmoothScroll = () => {
             const main = Main.current,
                 scrollable = scroller.current
+
+            let items = []
+
+            scrollsp.forEach(item => items.push(new Item(item)))
 
             let renderedStyles = {
                 translationY: {
@@ -88,6 +204,12 @@ const Layout = ({ children }) => {
                 }
                 layout()
 
+                for (const item of items) {
+                    if (item.isVisible) {
+                        item.render()
+                    }
+                }
+
                 requestAnimationFrame(() => render())
             }
         }
@@ -111,9 +233,9 @@ const Layout = ({ children }) => {
         <div className="font-sorts antialiased">
             <Meta />
             <div ref={Body} className="bg-lff_200 loading">
-                <Header />
                 <main ref={Main}>
                     <div ref={scroller} className="relative" >
+                        <Header />
                         {children}
                         <Footer />
                         <div ref={noise} className="main absolute w-full top-0 left-0"></div>

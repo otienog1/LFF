@@ -14,7 +14,7 @@ const HeroProject = ({ title, coverImage, excerpt, slug, }) => {
         <div className="flex w-full justify-center px-6 md:px-0">
             <Container>
                 <div ref={elem} className="md:flex h-full content-center py-8 md:py-0">
-                    <div className="flex w-full md:w-1/2 items-center">
+                    <div className="flex w-full md:w-1/2 items-center overflow-hidden">
                         {
                             coverImage && (
                                 <CoverImage title={title} coverImage={coverImage} slug={slug} />

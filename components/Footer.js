@@ -4,7 +4,7 @@ import Container from './Container'
 const Footer = () => (
     <footer className="flex bg-lffgreen_500 justify-center border-t border-lffgreen_400 py-20">
         <Container>
-            <div className="flex justify-between">
+            <div className="flex justify-between w-3/4 md:mx-auto">
                 <div>
                     <div>
                         <svg width="188" height="93" viewBox="0 0 188 93" fill="none" xmlns="http://www.w3.org/2000/svg">

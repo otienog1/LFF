@@ -4,13 +4,19 @@ import { useRef, useEffect } from "react"
 import gsap from "gsap"
 
 const HeroSection = ({ intro, slides, thumbs }) => {
+    const elem = useRef(null)
+
+    useEffect(() => {
+        elem.current.style.height = `${document.documentElement.clientHeight - document.querySelector('.slider-thumb').offsetHeight}px`
+    })
+
     return (
-        <section className="flex justify-end relative">
+        <section ref={elem} className="flex justify-end relative">
             <Container>
                 <div className="flex">
-                    <div className=" flex w-4/12 h-screen items-center">
+                    <div className=" flex w-4/12 items-center">
                         <div className="w-full">
-                            <h1 className="font-sorts xl:text-5xl text-lff_800 mb-8" dangerouslySetInnerHTML={{ __html: intro }}></h1>
+                            <h1 className="font-sorts text-4xl 2xl:text-5xl text-lff_800 mb-8" dangerouslySetInnerHTML={{ __html: intro }}></h1>
                             <Link href="/donate">
                                 <a className="font-verl text-lffvegas_600 text-lg text-bold underline">Help us save the earth</a>
                             </Link>
@@ -181,7 +187,7 @@ const HeroSlider = props => {
 
     return (
         <>
-            <div ref={sliders} className="w-8/12 relative top-20">
+            <div ref={sliders} className="w-8/12 relative overflow-hidden">
                 {newSlides.map((slide, i) => <Slide source={slide[1].sourceUrl} key={i} />)}
             </div>
             <div className="absolute bottom-6 z-50">
@@ -189,7 +195,7 @@ const HeroSlider = props => {
                     {newSlides.map((_, i) => <Bullet key={i} />)}
                 </ul>
             </div>
-            <div ref={thumbnails} className="absolute bottom-0 right-0 h-20 w-80 z-50 cursor-pointer">
+            <div ref={thumbnails} className="slider-thumb absolute bottom-0 right-0 h-20 w-80 z-50 cursor-pointer">
                 {newThumbs.map((thumb, i) => <Thumb key={i} source={thumb[1].sourceUrl} />)}
             </div>
         </>
@@ -197,7 +203,7 @@ const HeroSlider = props => {
 }
 
 const Slide = ({ source }) => (
-    <div className="slide absolute w-full h-full top-0 opacity-0">
+    <div data-scroll-speed="100" className="slide absolute w-full h-full top-0 opacity-0">
         <div className="w-full h-full">
             <img src={source} className="w-full h-full object-cover" />
         </div>
