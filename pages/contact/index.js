@@ -131,7 +131,7 @@ export const ContactForm = () => {
                 <label htmlFor="name" className="font-sorts font-bold mb-2 text-lff_800">Name</label>
                 <input
                     id="name"
-                    className="appearance-none font-verl bg-transparent border-b-2 border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800"
+                    className="appearance-none bg-transparent border-b-2 border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800"
                     type="text"
                     placeholder="Enter your name"
                     value={name}
@@ -140,7 +140,7 @@ export const ContactForm = () => {
                 <label htmlFor="email" className="font-sorts font-bold mb-2 text-lff_800">Email</label>
                 <input
                     id="email"
-                    className="appearance-none font-verl bg-transparent border-b-2 border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800"
+                    className="appearance-none bg-transparent border-b-2 border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800"
                     type="email"
                     placeholder="Enter your email"
                     value={email}
@@ -149,7 +149,7 @@ export const ContactForm = () => {
                 <label htmlFor="message" className="font-sorts font-bold mb-2 text-lff_800">Message</label>
                 <textarea
                     id="message"
-                    className="appearance-none font-verl bg-transparent border-2 px-3 py-3 border-lff_700 leading-tight focus:outline-none mb-10 resize-none placeholder-lff_700 text-lff_800"
+                    className="appearance-none bg-transparent border-2 px-3 py-3 border-lff_700 leading-tight focus:outline-none mb-10 resize-none placeholder-lff_700 text-lff_800"
                     placeholder="Enter your message"
                     rows="5"
                     value={message}
@@ -157,7 +157,7 @@ export const ContactForm = () => {
                 >
                 </textarea>
                 <div className="flex items-center">
-                    <button className="flex font-verl text-base  py-3 space-x-3 border-2 border-lff_800 w-full md:w-48 justify-center bg-lff_200 hover:bg-lff_500 transition-all ">
+                    <button className="flex text-base  py-3 space-x-3 border-2 border-lff_800 w-full md:w-48 justify-center bg-lff_200 hover:bg-lff_500 transition-all ">
                         <span className="font-bold text-lff_800">Send Message</span>
                         <span>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
