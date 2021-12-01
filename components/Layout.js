@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
     const animateOut = () => {
         let tl = gsap.timeline({
             onComplete: () => {
-                // loadingScreen.current.remove()
+                loadingScreen.current.remove()
                 // tl.remove()
             },
             defaults: {
