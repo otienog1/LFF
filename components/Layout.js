@@ -4,6 +4,7 @@ import Header from './Header'
 import Meta from './Meta'
 import { MobileNav } from './Navbar'
 import TeamMember from './TeamMember'
+import gsap from 'gsap'
 
 const Layout = ({ children }) => {
     const Main = useRef(null),
@@ -195,7 +196,13 @@ const Layout = ({ children }) => {
         }
 
         preloadImages().then(() => {
-            body.classList.remove('loading')
+            // body.classList.remove('loading')
+
+            gsap.to(body, {
+                duration: .2,
+                opacity: 1,
+                ease: 'power3.inOut'
+            })
 
             getPageYScroll()
             new SmoothScroll()

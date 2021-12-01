@@ -263,6 +263,10 @@
   p {
     margin: 1rem 0;
   }
+  .loading {
+    opacity: 0;
+    transition: all 0.2s ease-in-out 0;
+  }
 
   .overlay {
     grid-area: 1 / 1 / 2 / 2;
