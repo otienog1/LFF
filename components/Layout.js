@@ -269,7 +269,7 @@ const Layout = ({ children }) => {
                         <Footer />
                         <div ref={noise} className="main absolute hidden md:block w-full top-0 left-0"></div>
                     </div>
-                    <div ref={loadingScreen} className="fixed bg-lff_400 top-0 w-screen h-full overflow-hidden z-50">
+                    <div ref={loadingScreen} className="fixed bg-lff_200 top-0 w-screen h-full overflow-hidden z-50">
                         <div ref={loadingScreenContainer} className="absolute top-0 w-full h-full overflow-hidden">
                             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                                 <svg ref={loadingScreenLogo} width="205" height="184" viewBox="0 0 205 184" fill="none" xmlns="http://www.w3.org/2000/svg">
