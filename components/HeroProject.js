@@ -21,7 +21,7 @@ const HeroProject = ({ title, coverImage, excerpt, slug, }) => {
                             )
                         }
                     </div>
-                    <div className="flex md:pl-16 md:w-1/2 items-center">
+                    <div className="flex md:pl-16 md:w-1/2 items-center text-lff_800">
                         <div>
                             <h3 className="my-5 md:mt-0 text-2xl leading-tight font-bold">
                                 <Link as={`/projects/${slug}`} href="/projects/[slug]">
