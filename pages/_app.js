@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps, router }) {
 
         gsap.timeline({
             defaults: {
-                duration: 1
+                duration: 2
             },
             onComplete: () => resetOverlay()
         })
@@ -79,7 +79,7 @@ function MyApp({ Component, pageProps, router }) {
         gsap.timeline({
             // onComplete: () => resetOverlay()
             defaults: {
-                duration: 1
+                duration: 2
             }
         })
             .to(overlayPath.current, {
@@ -97,7 +97,7 @@ function MyApp({ Component, pageProps, router }) {
             <SwitchTransition>
                 <Transition
                     key={router.pathname}
-                    timeout={1200}
+                    timeout={2200}
                     in={true}
                     onEnter={enter}
                     onExit={exit}
@@ -106,8 +106,8 @@ function MyApp({ Component, pageProps, router }) {
                 >
                     <>
                         <Component {...pageProps} />
-                        <div ref={overlayPath} className="z-40 bg-lff_500 fixed w-full bottom-0 h-0"></div>
-                        <div ref={overlay} className="z-50 bg-lff_400 fixed w-full bottom-0 h-0"></div>
+                        <div ref={overlayPath} className="z-40 bg-lff_100 fixed w-full bottom-0 h-0"></div>
+                        <div ref={overlay} className="z-50 bg-lff_200 fixed w-full bottom-0 h-0"></div>
                     </>
                 </Transition>
             </SwitchTransition>
