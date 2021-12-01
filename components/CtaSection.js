@@ -18,7 +18,7 @@ const CtaSection = ({ image, title, content }) => {
                         <div className="overflow-hidden mb-10 md:mb-28">
                             <img data-scroll-speed="100" src={image} className="object-cover w-full" />
                         </div>
-                        <div className="md:w-4/5 mx-auto">
+                        <div className="md:w-full mx-auto">
                             <p className="font-extrabold text-5xl text-center text-lffvegas_500" dangerouslySetInnerHTML={{
                                 __html: title
                             }}></p>

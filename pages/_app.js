@@ -108,9 +108,6 @@ function MyApp({ Component, pageProps, router }) {
                         <Component {...pageProps} />
                         <div ref={overlayPath} className="z-40 bg-lff_500 fixed w-full bottom-0 h-0"></div>
                         <div ref={overlay} className="z-50 bg-lff_400 fixed w-full bottom-0 h-0"></div>
-                        {/* <svg class="overlay" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-                            <path ref={overlayPath} class="overlay__path" vectorEffect="non-scaling-stroke" d="M 0 100 V 100 Q 50 100 100 100 V 100 z" />
-                        </svg> */}
                     </>
                 </Transition>
             </SwitchTransition>
