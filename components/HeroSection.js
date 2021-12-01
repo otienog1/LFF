@@ -178,9 +178,11 @@ const HeroSlider = props => {
 
 
     useEffect(() => {
-        sliders.current.style.height = `${(document.documentElement.clientHeight - 160)}px`
-        thumbnails.current.style.width = `${(document.querySelector('.donate-btn').offsetWidth)}px`
-        bullets.current.parentElement.style.right = `${(document.querySelector('.donate-btn').offsetWidth + 20)}px`
+        setTimeout(() => {
+            sliders.current.style.height = `${(document.documentElement.clientHeight - 160)}px`
+            thumbnails.current.style.width = `${(document.querySelector('.donate-btn').offsetWidth)}px`
+            bullets.current.parentElement.style.right = `${(document.querySelector('.donate-btn').offsetWidth + 20)}px`
+        }, 800)
         initSlide()
         return
     }, [])
