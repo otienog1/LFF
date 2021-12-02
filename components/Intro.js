@@ -7,7 +7,7 @@ const Intro = () => {
         elem.current.style.height = `${document.documentElement.clientHeight * .8}px`
     }, [])
     return (
-        <section ref={elem} className="px-6 lg:px-0 flex w-full screen h-screen justify-center">
+        <section ref={elem} className="px-6 lg:px-0 flex w-full min-h-screen justify-center">
             <Container>
                 <div className="flex flex-col h-full">
                     <div className="md:w-2/3 m-auto">
