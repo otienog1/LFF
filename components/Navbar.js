@@ -459,7 +459,7 @@ export const FullscreeMenu = ({ menu, clicked }) => {
     return (
         <div
             ref={fsmenu}
-            className="md:hidden top-0 left-0 right-0 bottom-0 w-screen fixed overflow-hidden bg-lff_800 text-center invisible z-10"
+            className="md:hidden top-0 left-0 h-screen w-screen fixed overflow-hidden bg-lff_800 text-center invisible z-10"
         >
             <div
                 ref={mask}

@@ -37,7 +37,8 @@ const Layout = ({ children }) => {
             },
             defaults: {
                 duration: 2,
-                ease: 'power3.inOut'
+                ease: 'power3.inOut',
+                delay: 1
             }
         })
 

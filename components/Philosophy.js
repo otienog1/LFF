@@ -10,7 +10,7 @@ const Philosophy = ({ image, title, content }) => {
     }, [])
 
     return (
-        <section className="flex w-full bg-lff_400 text-lff_800 justify-end pt-16 md:pt-0">
+        <section className="flex w-full bg-lff_400 text-lff_800 justify-end pt-28 md:pt-0">
             <Container>
                 <div ref={elem} className="block md:flex justify-between w-full h-full items-center py-28 px-4 md:px-0">
                     <div className="hidden md:block w-5/12 overflow-hidden">

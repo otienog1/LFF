@@ -19,6 +19,12 @@ const TeamMember = () => {
         })
     }
 
+    const preloadImages = () => {
+        return new Promise((resolve, reject) => {
+            imagesLoaded(document.querySelector('.html-5-picture'), { background: true }, resolve)
+        })
+    }
+
     useEffect(() => {
         let member = document.querySelectorAll('.member')
         member.forEach((m, i) => {
@@ -38,6 +44,14 @@ const TeamMember = () => {
                     name: name,
                     title: title,
                     content: content,
+                })
+            })
+
+            preloadImages().then(() => {
+                gsap.to(imageFallback.current, {
+                    duration: 1,
+                    opacity: 1,
+                    ease: 'Power3.inOut'
                 })
             })
         })
@@ -70,10 +84,10 @@ const TeamMember = () => {
         <>
             <div ref={modal} className="theTeam flex w-screen h-0 bg-lff_100 fixed bottom-0 left-0 z-50 overflow-hidden">
                 <div className="w-1/2 overflow-hidden">
-                    <picture className="transform scale-110">
+                    <picture className="html-5-picture">
                         <source srcSet={trustee.webp} />
                         <source srcSet={trustee.jpeg} />
-                        <img ref={imageFallback} src={trustee.jpeg} className="imageFallback transform scale-110" />
+                        <img ref={imageFallback} src={trustee.jpeg} className="imageFallback opacity-0" />
                     </picture>
                 </div>
                 <div ref={elem} className="w-1/2 py-40 text-lff_800 md:pl-20">

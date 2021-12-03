@@ -8,8 +8,16 @@ const TheTeam = ({ title, trustees }) => {
     let newTrustees = Object.entries(trustees[0])
     newTrustees.shift()
 
+    const preloadImages = () => {
+        return new Promise((resolve, reject) => {
+            imagesLoaded(document.querySelectorAll('.picture'), { background: true }, resolve)
+        })
+    }
+
     useEffect(() => {
         elem.current.style.paddingRight = `${(document.documentElement.clientWidth - document.querySelector('.container').offsetWidth) / 2}px`
+
+        preloadImages()
     })
 
     return (
