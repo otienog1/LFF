@@ -22,371 +22,449 @@
 /* Your own custom utilities */
 
 @layer base {
-  @font-face {
-    font-family: "Verlag";
-    src: url("fonts/Verlag/Verlag-Book.woff2") format("woff2"),
-      url("fonts/Verlag/Verlag-Book.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "Verlag";
+        src: url("fonts/Verlag/Verlag-Book.woff2") format("woff2"),
+            url("fonts/Verlag/Verlag-Book.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "Verlag";
-    src: url("fonts/Verlag/Verlag-Bold.woff2") format("woff2"),
-      url("fonts/Verlag/Verlag-Bold.woff") format("woff");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "Verlag";
+        src: url("fonts/Verlag/Verlag-Bold.woff2") format("woff2"),
+            url("fonts/Verlag/Verlag-Bold.woff") format("woff");
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "Verlag";
-    src: url("fonts/Verlag/Verlag-Black.woff2") format("woff2"),
-      url("fonts/Verlag/Verlag-Black.woff") format("woff");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "Verlag";
+        src: url("fonts/Verlag/Verlag-Black.woff2") format("woff2"),
+            url("fonts/Verlag/Verlag-Black.woff") format("woff");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "Verlag";
-    src: url("fonts/Verlag/Verlag-BlackItalic.woff2") format("woff2"),
-      url("fonts/Verlag/Verlag-BlackItalic.woff") format("woff");
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "Verlag";
+        src: url("fonts/Verlag/Verlag-BlackItalic.woff2") format("woff2"),
+            url("fonts/Verlag/Verlag-BlackItalic.woff") format("woff");
+        font-weight: 500;
+        font-style: italic;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "Verlag";
-    src: url("fonts/Verlag/Verlag-Light.woff2") format("woff2"),
-      url("fonts/Verlag/Verlag-Light.woff") format("woff");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "Verlag";
+        src: url("fonts/Verlag/Verlag-Light.woff2") format("woff2"),
+            url("fonts/Verlag/Verlag-Light.woff") format("woff");
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "Verlag";
-    src: url("fonts/Verlag/Verlag-LightItalic.woff2") format("woff2"),
-      url("fonts/Verlag/Verlag-LightItalic.woff") format("woff");
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "Verlag";
+        src: url("fonts/Verlag/Verlag-LightItalic.woff2") format("woff2"),
+            url("fonts/Verlag/Verlag-LightItalic.woff") format("woff");
+        font-weight: 300;
+        font-style: italic;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "ITC Berkeley Oldstyle Std";
-    src: url("fonts/ITC-Berkeley/BerkeleyStd-Black.woff2") format("woff2"),
-      url("fonts/ITC-Berkeley/BerkeleyStd-Black.woff") format("woff");
-    font-weight: 900;
-    font-style: normal;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "ITC Berkeley Oldstyle Std";
+        src: url("fonts/ITC-Berkeley/BerkeleyStd-Black.woff2") format("woff2"),
+            url("fonts/ITC-Berkeley/BerkeleyStd-Black.woff") format("woff");
+        font-weight: 900;
+        font-style: normal;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "FITC Berkeley Oldstyle Std";
-    src: url("fonts/ITC-Berkeley/BerkeleyStd-BlackItalic.woff2") format("woff2"),
-      url("fonts/ITC-Berkeley/BerkeleyStd-BlackItalic.woff") format("woff");
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "FITC Berkeley Oldstyle Std";
+        src: url("fonts/ITC-Berkeley/BerkeleyStd-BlackItalic.woff2") format("woff2"),
+            url("fonts/ITC-Berkeley/BerkeleyStd-BlackItalic.woff") format("woff");
+        font-weight: 900;
+        font-style: italic;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "ITC Berkeley Oldstyle Std";
-    src: url("fonts/ITC-Berkeley/BerkeleyStd-Bold.woff2") format("woff2"),
-      url("fonts/ITC-Berkeley/BerkeleyStd-Bold.woff") format("woff");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "ITC Berkeley Oldstyle Std";
+        src: url("fonts/ITC-Berkeley/BerkeleyStd-Bold.woff2") format("woff2"),
+            url("fonts/ITC-Berkeley/BerkeleyStd-Bold.woff") format("woff");
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "ITC Berkeley Oldstyle Std";
-    src: url("fonts/ITC-Berkeley/BerkeleyStd-BoldItalic.woff2") format("woff2"),
-      url("fonts/ITC-Berkeley/BerkeleyStd-BoldItalic.woff") format("woff");
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "ITC Berkeley Oldstyle Std";
+        src: url("fonts/ITC-Berkeley/BerkeleyStd-BoldItalic.woff2") format("woff2"),
+            url("fonts/ITC-Berkeley/BerkeleyStd-BoldItalic.woff") format("woff");
+        font-weight: bold;
+        font-style: italic;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "ITC Berkeley Oldstyle Std";
-    src: url("fonts/ITC-Berkeley/BerkeleyStd-Book.woff2") format("woff2"),
-      url("fonts/ITC-Berkeley/BerkeleyStd-Book.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "ITC Berkeley Oldstyle Std";
+        src: url("fonts/ITC-Berkeley/BerkeleyStd-Book.woff2") format("woff2"),
+            url("fonts/ITC-Berkeley/BerkeleyStd-Book.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "ITC Berkeley Oldstyle Std";
-    src: url("fonts/ITC-Berkeley/BerkeleyStd-BookItalic.woff2") format("woff2"),
-      url("fonts/ITC-Berkeley/BerkeleyStd-BookItalic.woff") format("woff");
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "ITC Berkeley Oldstyle Std";
+        src: url("fonts/ITC-Berkeley/BerkeleyStd-BookItalic.woff2") format("woff2"),
+            url("fonts/ITC-Berkeley/BerkeleyStd-BookItalic.woff") format("woff");
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "ITC Berkeley Oldstyle Std";
-    src: url("fonts/ITC-Berkeley/BerkeleyStd-Medium.woff2") format("woff2"),
-      url("fonts/ITC-Berkeley/BerkeleyStd-Medium.woff") format("woff");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "ITC Berkeley Oldstyle Std";
+        src: url("fonts/ITC-Berkeley/BerkeleyStd-Medium.woff2") format("woff2"),
+            url("fonts/ITC-Berkeley/BerkeleyStd-Medium.woff") format("woff");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "ITC Berkeley Oldstyle Std";
-    src: url("fonts/ITC-Berkeley/BerkeleyStd-Italic.woff2") format("woff2"),
-      url("fonts/ITC-Berkeley/BerkeleyStd-Italic.woff") format("woff");
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "GoudyOldStyleW01";
-    src: url("fonts/GoudyOldstylew01/GoudyOldStyleW01-Regular.woff2")
-        format("woff2"),
-      url("fonts/GoudyOldstylew01/GoudyOldStyleW01-Regular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "ITC Berkeley Oldstyle Std";
+        src: url("fonts/ITC-Berkeley/BerkeleyStd-Italic.woff2") format("woff2"),
+            url("fonts/ITC-Berkeley/BerkeleyStd-Italic.woff") format("woff");
+        font-weight: 500;
+        font-style: italic;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "GoudyOldstyleW01";
-    src: url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Bold.woff2")
-        format("woff2"),
-      url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Bold.woff") format("woff");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "GoudyOldStyleW01";
+        src: url("fonts/GoudyOldstylew01/GoudyOldStyleW01-Regular.woff2") format("woff2"),
+            url("fonts/GoudyOldstylew01/GoudyOldStyleW01-Regular.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "GoudyOldstyleW01";
-    src: url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Italic.woff2")
-        format("woff2"),
-      url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Italic.woff") format("woff");
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "GoudyOldstyleW01";
+        src: url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Bold.woff2") format("woff2"),
+            url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Bold.woff") format("woff");
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "GoudyOldStyleW01";
-    src: url("fonts/GoudyOldstylew01/GoudyOldStyleW01-Regular.woff2")
-        format("woff2"),
-      url("fonts/GoudyOldstylew01/GoudyOldStyleW01-Regular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "GoudyOldstyleW01";
+        src: url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Italic.woff2") format("woff2"),
+            url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Italic.woff") format("woff");
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "GoudyOldstyleW01";
-    src: url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Bold.woff2")
-        format("woff2"),
-      url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Bold.woff") format("woff");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "GoudyOldStyleW01";
+        src: url("fonts/GoudyOldstylew01/GoudyOldStyleW01-Regular.woff2") format("woff2"),
+            url("fonts/GoudyOldstylew01/GoudyOldStyleW01-Regular.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
 
-  @font-face {
-    font-family: "GoudyOldstyleW01";
-    src: url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Italic.woff2")
-        format("woff2"),
-      url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Italic.woff") format("woff");
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-  }
+    @font-face {
+        font-family: "GoudyOldstyleW01";
+        src: url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Bold.woff2") format("woff2"),
+            url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Bold.woff") format("woff");
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "GoudyOldstyleW01";
+        src: url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Italic.woff2") format("woff2"),
+            url("fonts/GoudyOldstylew01/GoudyOldstyleW01-Italic.woff") format("woff");
+        font-weight: normal;
+        font-style: italic;
+        font-display: swap;
+    }
 }
 
 @layer components {
-  html {
-    overflow-x: hidden;
-  }
-  body {
-    overflow: hidden;
-    width: 100%;
-  }
-  .content-area {
-    width: calc(100% - 8rem);
-  }
-  .list__item.is__active {
-    opacity: 1;
-  }
-  .list__item:before {
-    top: 50%;
-    left: 50%;
-    content: "";
-    width: 0.486vw;
-    height: 0.486vw;
-    border-radius: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-  }
+    html {
+        overflow-x: hidden;
+    }
 
-  .list__item.is__active svg circle {
-    animation: timer 8s linear forwards;
-  }
+    body {
+        overflow: hidden;
+        width: 100%;
+    }
 
-  .list__item svg circle {
-    stroke-miterlimit: 10;
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-  }
+    .content-area {
+        width: calc(100% - 8rem);
+    }
 
-  .list__item.is__active:before {
-    background: #665f4b;
-  }
+    .list__item.is__active {
+        opacity: 1;
+    }
 
-  .list__item:last-of-type {
-    margin-right: 0;
-  }
+    .list__item:before {
+        top: 50%;
+        left: 50%;
+        content: "";
+        width: 0.486vw;
+        height: 0.486vw;
+        border-radius: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
 
-  .list__item.is__active svg circle {
-    animation: timer 8s linear forwards;
-  }
+    .list__item.is__active svg circle {
+        animation: timer 8s linear forwards;
+    }
 
-  @keyframes timer {
-    to {
-      stroke-dashoffset: 0;
+    .list__item svg circle {
+        stroke-miterlimit: 10;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
     }
-  }
 
-  p {
-    margin: 1rem 0;
-  }
-  .loading {
-    opacity: 0;
-    transition: all 0.2s ease-in-out 0;
-  }
+    .list__item.is__active:before {
+        background: #FFFBF2;
+    }
 
-  .overlay {
-    grid-area: 1 / 1 / 2 / 2;
-    position: relative;
-    z-index: 30;
-    pointer-events: none;
-    width: 100%;
-    height: 100%;
-  }
+    .list__item:last-of-type {
+        margin-right: 0;
+    }
 
-  .main::before {
-    /* animation: grain 8s steps(10) infinite; */
-    animation: noise 1s steps(2) infinite;
-    background-image: url(/noise.png);
-    content: "";
-    height: 280%;
-    left: -50%;
-    /* opacity: 0.4; */
-    position: fixed;
-    top: -100%;
-    width: 300%;
-    z-index: 30;
-  }
+    .list__item.is__active svg circle {
+        animation: timer 8s linear forwards;
+    }
 
-  @keyframes grain {
-    0%,
-    100% {
-      transform: translate(0, 0);
+    @keyframes timer {
+        to {
+            stroke-dashoffset: 0;
+        }
     }
-    10% {
-      transform: translate(-5%, -10%);
-    }
-    20% {
-      transform: translate(-15%, 5%);
-    }
-    30% {
-      transform: translate(7%, -25%);
-    }
-    40% {
-      transform: translate(-5%, 25%);
-    }
-    50% {
-      transform: translate(-15%, 10%);
-    }
-    60% {
-      transform: translate(15%, 0%);
-    }
-    70% {
-      transform: translate(0%, 15%);
-    }
-    80% {
-      transform: translate(3%, 35%);
-    }
-    90% {
-      transform: translate(-10%, 10%);
-    }
-  }
 
-  @keyframes noise {
-    0% {
-      transform: translate3d(0, 9rem, 0);
+    p {
+        margin: 1rem 0;
     }
-    10% {
-      transform: translate3d(-1rem, -4rem, 0);
-    }
-    20% {
-      transform: translate3d(-8rem, 2rem, 0);
-    }
-    30% {
-      transform: translate3d(9rem, -9rem, 0);
-    }
-    40% {
-      transform: translate3d(-2rem, 7rem, 0);
-    }
-    50% {
-      transform: translate3d(-9rem, -4rem, 0);
-    }
-    60% {
-      transform: translate3d(2rem, 6rem, 0);
-    }
-    70% {
-      transform: translate3d(7rem, -8rem, 0);
-    }
-    80% {
-      transform: translate3d(-9rem, 1rem, 0);
-    }
-    90% {
-      transform: translate3d(6rem, -5rem, 0);
-    }
-    to {
-      transform: translate3d(-7rem, 0, 0);
-    }
-  }
-  a,
-  button,
-  form {
-    position: relative;
-    z-index: 50;
-  }
 
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 16px;
-  }
+    .loading {
+        opacity: 0;
+        transition: all 0.2s ease-in-out 0;
+    }
 
-  /* Track */
-  ::-webkit-scrollbar-track {
-    /* border-radius: 100vh; */
-    background: #ffecbc;
-  }
+    .overlay {
+        grid-area: 1 / 1 / 2 / 2;
+        position: relative;
+        z-index: 30;
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+    }
 
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #998e71;
-    /* border-radius: 100vh; */
-    border: 2px solid #ffecbc;
-  }
+    .main::before {
+        /* animation: grain 8s steps(10) infinite; */
+        animation: noise 1s steps(2) infinite;
+        background-image: url(/noise.png);
+        content: "";
+        height: 280%;
+        left: -50%;
+        /* opacity: 0.4; */
+        position: fixed;
+        top: -100%;
+        width: 300%;
+        z-index: 30;
+    }
 
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #665f4b;
-  }
+    @keyframes grain {
+
+        0%,
+        100% {
+            transform: translate(0, 0);
+        }
+
+        10% {
+            transform: translate(-5%, -10%);
+        }
+
+        20% {
+            transform: translate(-15%, 5%);
+        }
+
+        30% {
+            transform: translate(7%, -25%);
+        }
+
+        40% {
+            transform: translate(-5%, 25%);
+        }
+
+        50% {
+            transform: translate(-15%, 10%);
+        }
+
+        60% {
+            transform: translate(15%, 0%);
+        }
+
+        70% {
+            transform: translate(0%, 15%);
+        }
+
+        80% {
+            transform: translate(3%, 35%);
+        }
+
+        90% {
+            transform: translate(-10%, 10%);
+        }
+    }
+
+    @keyframes noise {
+        0% {
+            transform: translate3d(0, 9rem, 0);
+        }
+
+        10% {
+            transform: translate3d(-1rem, -4rem, 0);
+        }
+
+        20% {
+            transform: translate3d(-8rem, 2rem, 0);
+        }
+
+        30% {
+            transform: translate3d(9rem, -9rem, 0);
+        }
+
+        40% {
+            transform: translate3d(-2rem, 7rem, 0);
+        }
+
+        50% {
+            transform: translate3d(-9rem, -4rem, 0);
+        }
+
+        60% {
+            transform: translate3d(2rem, 6rem, 0);
+        }
+
+        70% {
+            transform: translate3d(7rem, -8rem, 0);
+        }
+
+        80% {
+            transform: translate3d(-9rem, 1rem, 0);
+        }
+
+        90% {
+            transform: translate3d(6rem, -5rem, 0);
+        }
+
+        to {
+            transform: translate3d(-7rem, 0, 0);
+        }
+    }
+
+    a,
+    button,
+    form {
+        position: relative;
+        z-index: 50;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 16px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        /* border-radius: 100vh; */
+        background: #ffecbc;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #998e71;
+        /* border-radius: 100vh; */
+        border: 2px solid #ffecbc;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #665f4b;
+    }
+
+    .icon-scroll-line {
+        width: 1px;
+        position: absolute;
+        bottom: 0;
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    .icon-scroll-line::before {
+        width: 1px;
+        content: "";
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        background: #FFFBF2;
+        bottom: 0;
+        opacity: .5;
+        z-index: 15;
+        transition: all .2s ease-out;
+    }
+
+    .icon-scroll-line::after {
+        width: 1px;
+        content: "";
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        background: #FFFBF2;
+        height: 100px;
+        z-index: 16;
+        animation: iconscroll 2s ease-in-out infinite;
+        opacity: 0;
+    }
+
+    @keyframes iconscroll {
+        0% {
+            opacity: 0
+        }
+
+        20% {
+            opacity: 1
+        }
+
+        45% {
+            opacity: 1
+        }
+
+        100% {
+            opacity: 0;
+            top: calc(100% - 100px)
+        }
+    }
 }

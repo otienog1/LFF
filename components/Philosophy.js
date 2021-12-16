@@ -10,18 +10,20 @@ const Philosophy = ({ image, title, content }) => {
     }, [])
 
     return (
-        <section className="flex w-full bg-lff_400 text-lff_800 justify-end pt-28 md:pt-0">
+        <section className="flex w-full bg-lff_400 text-lff_800 justify-end">
             <Container>
-                <div ref={elem} className="block md:flex justify-between w-full h-full items-center py-28 px-4 md:px-0">
-                    <div className="hidden md:block w-5/12 overflow-hidden">
-                        <img data-scroll-speed="100" src={image} className="w-full" />
-                    </div>
-                    <div className="w-full md:w-6/12">
-                        <h2 className="text-3xl font-bold mb-5">{title}</h2>
-                        <div dangerouslySetInnerHTML={{ __html: content }} className="text-xl"></div>
-                    </div>
-                    <div className="block md:hidden w-full overflow-hidden mt-8 pr-4">
-                        <img data-scroll-speed="100" src={image} className="w-full" />
+                <div ref={elem} className="block  py-48 px-4 md:px-0">
+                    <h2 className="text-3xl mb-28 text-center">— {title} —</h2>
+                    <div className='block md:flex justify-between w-full h-full items-center'>
+                        <div className="hidden md:block w-4/12 overflow-hidden">
+                            <img src={image} className="w-full" />
+                        </div>
+                        <div className="w-full md:w-7/12">
+                            <div dangerouslySetInnerHTML={{ __html: content }} className="text-normal"></div>
+                        </div>
+                        <div className="block md:hidden w-full overflow-hidden mt-8 pr-4">
+                            <img data-scroll-speed="100" src={image} className="w-full" />
+                        </div>
                     </div>
                 </div>
             </Container>

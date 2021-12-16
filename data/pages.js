@@ -1,4 +1,6 @@
-import { gql } from '@apollo/client'
+import {
+    gql
+} from '@apollo/client'
 
 export const QUERY_HOMEPAGE = gql`
     query HomePage {
@@ -16,15 +18,18 @@ export const QUERY_HOMEPAGE = gql`
                             sourceUrl
                         }
                     }
-                    heroSliderThumbnails {
-                        image1 {
-                            sourceUrl
+                    sliderText {
+                        text {
+                            heading
+                            explainer
                         }
-                        image2 {
-                            sourceUrl
+                        text1 {
+                            heading
+                            explainer
                         }
-                        image3 {
-                            sourceUrl
+                        text2 {
+                            heading
+                            explainer
                         }
                     }
                     philosophyImage {
@@ -40,6 +45,32 @@ export const QUERY_HOMEPAGE = gql`
                     }
                     projectsTitle
                     projectText
+                    projects {
+                        projectOne {
+                            image {
+                                sourceUrl
+                            }
+                            text
+                        }
+                        projectTwo {
+                            image {
+                                sourceUrl
+                            }
+                            text
+                        }
+                        projectThree {
+                            image {
+                                sourceUrl
+                            }
+                            text
+                        }
+                        projectFour {
+                            image {
+                                sourceUrl
+                            }
+                            text
+                        }
+                    }
                     luigiTitle
                     luigiText
                     luigiText1
@@ -57,7 +88,7 @@ export const QUERY_HOMEPAGE = gql`
                     }
                     ctaTitle
                     ctaText
-                    }
+                }
         }
     }`
 

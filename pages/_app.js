@@ -71,7 +71,7 @@ function MyApp({ Component, pageProps, router }) {
             .to(overlayPath.current, {
                 yPercent: -100,
                 ease: 'power3.inOut'
-            }, 1.2)
+            }, 1.5)
 
     }
 
@@ -89,7 +89,7 @@ function MyApp({ Component, pageProps, router }) {
             .to(overlay.current, {
                 height: '100%',
                 ease: 'power3.inOut',
-            }, .2)
+            }, .5)
     }
 
     return (

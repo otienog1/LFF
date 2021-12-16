@@ -33,7 +33,7 @@ const Meta = () => (
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         <meta
             name="description"
-            content={`A statically generated blog example using Next.js and.`}
+            content={`We are a Non-Governmental Organization involved in wildlife conservation and community development`}
         />
         <meta property="og:image" content="" />
         <script src="/js/imagesloaded.min.js" />

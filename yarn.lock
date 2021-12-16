@@ -1431,6 +1431,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"enhanced-resolve@npm:^5.7.0":
+  version: 5.8.3
+  resolution: "enhanced-resolve@npm:5.8.3"
+  dependencies:
+    graceful-fs: ^4.2.4
+    tapable: ^2.2.0
+  checksum: d79fbe531106448b768bb0673fb623ec0202d7ee70373ab7d4f4745d5dfe0806f38c9db7e7da8c941288fe475ab3d538db3791fce522056eeea40ca398c9e287
+  languageName: node
+  linkType: hard
+
 "env-paths@npm:^2.2.0":
   version: 2.2.1
   resolution: "env-paths@npm:2.2.1"
@@ -1757,7 +1767,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.6":
+"graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6":
   version: 4.2.8
   resolution: "graceful-fs@npm:4.2.8"
   checksum: 5d224c8969ad0581d551dfabdb06882706b31af2561bd5e2034b4097e67cc27d05232849b8643866585fd0a41c7af152950f8776f4dd5579e9853733f31461c6
@@ -1782,10 +1792,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gsap@npm:^3.7.1":
-  version: 3.7.1
-  resolution: "gsap@npm:3.7.1"
-  checksum: 814777067069a85b22acf3299751407c686d538ee38f993d7d537f7b01f351f442f980923c8a126cb2fb88d991d8a998932baa23fb612da98f07811f746a7809
+"gsap@npm:^3.8.0":
+  version: 3.8.0
+  resolution: "gsap@npm:3.8.0"
+  checksum: db7ca05441138e082cafb78b3fae981e2c5bd02dfa7caebd78e0a195f924822718e69475642ada42bebab6a17327acfb64b11dbeca5e955851dc2ff4896d1a8b
   languageName: node
   linkType: hard
 
@@ -2718,6 +2728,16 @@ __metadata:
   dependencies:
     querystring: ^0.2.0
   checksum: 2c82baa9d0e71bd67bd893d139d33b29acb34d4ac4d39251625c1ee6e31663ae4ce62349c7b926d2d4a7056c6730ef96827d437e65bc71599edfef2006367bcc
+  languageName: node
+  linkType: hard
+
+"next-transpile-modules@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "next-transpile-modules@npm:9.0.0"
+  dependencies:
+    enhanced-resolve: ^5.7.0
+    escalade: ^3.1.1
+  checksum: 9a5d86d80cedc2404b2b1d5bd4994f2f7bf60e5e20f24e8cc5cfec34da1418b4a439916f37a95ca336bcf6d81094c3647354ac6a0c6737b3df59e62b6380507d
   languageName: node
   linkType: hard
 
@@ -3690,9 +3710,10 @@ resolve@^1.20.0:
     cors: ^2.8.5
     date-fns: ^2.23.0
     graphql: ^15.5.1
-    gsap: ^3.7.1
+    gsap: ^3.8.0
     locomotive-scroll: ^4.1.2
     next: latest
+    next-transpile-modules: ^9.0.0
     postcss: ^8.3.5
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -4227,6 +4248,13 @@ resolve@^1.20.0:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
   checksum: 540b90180e3bae4e6c8ffeed9f635a3b70e129561b6ba3f41742c3b2553e730f777e79b30a0ffc2c7aba8a1baffaac82a328552e613d991322354e2478d54921
+  languageName: node
+  linkType: hard
+
+"tapable@npm:^2.2.0":
+  version: 2.2.1
+  resolution: "tapable@npm:2.2.1"
+  checksum: 3b7a1b4d86fa940aad46d9e73d1e8739335efd4c48322cb37d073eb6f80f5281889bf0320c6d8ffcfa1a0dd5bfdbd0f9d037e252ef972aca595330538aac4d51
   languageName: node
   linkType: hard
 

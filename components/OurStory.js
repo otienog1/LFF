@@ -15,9 +15,9 @@ const OurStory = ({ title, intro, content, image }) => {
             <Container>
                 <div className="block md:flex w-full h-full items-center px-4 md:px-0 py-28">
                     <div className="w-full md:w-5/12 md:pr-24">
-                        <h3 className="text-sm uppercase font-bold font-sen">{title}</h3>
+                        <h3 className="text-xs uppercase font-bold font-sen">{title}</h3>
                         <div dangerouslySetInnerHTML={{ __html: intro }} className="text-3xl font-extrabold my-16"></div>
-                        <div dangerouslySetInnerHTML={{ __html: content }} className="text-xl"></div>
+                        <div dangerouslySetInnerHTML={{ __html: content }} className="text-normal"></div>
                         <div className="hidden md:block">
                             <Link href="/our-story">
                                 <a
@@ -27,7 +27,7 @@ const OurStory = ({ title, intro, content, image }) => {
                         </div>
                     </div>
                     <div className="w-full md:w-7/12 overflow-hidden mt-8 md:mt-0">
-                        <div data-scroll-speed="100">
+                        <div>
                             <img src={image} className="w-full" />
                         </div>
                     </div>

@@ -17,7 +17,13 @@ const TheTeam = ({ title, trustees }) => {
     useEffect(() => {
         elem.current.style.paddingRight = `${(document.documentElement.clientWidth - document.querySelector('.container').offsetWidth) / 2}px`
 
-        preloadImages()
+        preloadImages().then(() => {
+            gsap.to(document.querySelectorAll('.picture'), {
+                duration: .5,
+                opacity: 1,
+                ease: 'power3.inOut'
+            })
+        })
     })
 
     return (
@@ -86,7 +92,7 @@ const Trustee = ({ trustee }) => {
         <>
             <div className="member w-1/2 md:w-1/3 pr-6 pb-8 z-50 cursor-pointer" onClick={() => handleClick()}>
                 <div className="w-full">
-                    <picture className="picture">
+                    <picture className="picture opacity-0">
                         <source srcSet={webp} type="image/webp" />
                         <source srcSet={jpeg} type="image/jpeg" />
                         <img src={jpeg} />
