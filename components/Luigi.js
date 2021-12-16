@@ -22,7 +22,7 @@ const Luigi = ({ title, images, text, text1, text2 }) => {
                     <div className="block md:flex w-full md:w-1/2 items-center justify-end py-10">
                         <div className='w-4/5'>
                             <div className="w-full mb-10 md:mb-0">
-                                <h3 dangerouslySetInnerHTML={{ __html: title }} className="text-sm mb-10"></h3>
+                                <h3 dangerouslySetInnerHTML={{ __html: title }} className="text-xs mb-10 uppercase font-bold"></h3>
                                 <h1 dangerouslySetInnerHTML={{ __html: 'Luigi Francescon' }} className="text-5xl font-extrabold mb-20"></h1>
                                 <p dangerouslySetInnerHTML={{ __html: text }}></p>
                             </div>
