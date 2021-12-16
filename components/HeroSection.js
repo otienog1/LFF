@@ -237,7 +237,7 @@ const Slide = ({ source }) => (
 const Text = ({ heading, explainer }) => (
     <div className="slideText absolute lg:relative w-full opacity-0">
         <div className="h-full w-full text-lff_100">
-            <h2 className="text-4xl 2xl:text-5xl font-extrabold capitalize leading-tight lg:leading-loose" dangerouslySetInnerHTML={{ __html: heading }}></h2>
+            <h2 className="text-4xl 2xl:text-5xl font-extrabold capitalize leading-tight" dangerouslySetInnerHTML={{ __html: heading }}></h2>
             <p className="text-xl tracking-wide mt-10" dangerouslySetInnerHTML={{ __html: explainer }}></p>
         </div>
     </div>
