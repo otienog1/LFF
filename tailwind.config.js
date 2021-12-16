@@ -120,7 +120,7 @@ module.exports = {
         extend: {},
     },
     corePlugins: {
-        container: false
+        // container: false
     },
     plugins: [
         require('@tailwindcss/custom-forms'),

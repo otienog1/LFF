@@ -11,9 +11,9 @@ const Projects = ({ projects, text, title }) => {
     }, [])
 
     return (
-        <section className="flex justify-center flex-wrap bg-lff_200 md:min-h-screen text-lff_800 py-28">
+        <section className="flex justify-center flex-wrap bg-lff_200 text-lff_800 py-28">
             <Container>
-                <div className="md:w-full px-4 md:px-0 md:mb-48 leading-loose text-xl">
+                <div className="md:w-full px-4 md:px-0 leading-loose text-xl">
                     <h2 className="text-3xl mb-20 text-center" >— {title} —</h2>
                     <div className='md:w-1/2 mx-auto text-center text-lg mb-28'>
                         <p dangerouslySetInnerHTML={{ __html: text }}></p>

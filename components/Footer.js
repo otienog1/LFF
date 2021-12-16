@@ -2,9 +2,9 @@ import Link from 'next/link'
 import Container from './Container'
 
 const Footer = () => (
-    <footer className="flex bg-lff_800 justify-center border-t border-lffgreen_400 py-28">
+    <footer className="flex bg-lff_900 justify-center border-t border-lff_800 py-28">
         <Container>
-            <div className="flex justify-between md:w-3/4 px-4 md:px-0 md:mx-auto">
+            <div className="flex justify-between px-4 md:px-0 md:w-3/4 mx-auto ">
                 <div className="hidden md:block">
                     <div>
                         <svg width="188" height="93" viewBox="0 0 188 93" fill="none" xmlns="http://www.w3.org/2000/svg">
