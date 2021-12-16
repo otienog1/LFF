@@ -183,7 +183,7 @@ const HeroSlider = props => {
         initSlide()
 
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 5) {
+            if (window.scrollY >= 10) {
                 gsap.to(logo.current, {
                     duration: .5,
                     opacity: 0,
@@ -215,7 +215,7 @@ const HeroSlider = props => {
                 {textArr.map((txt, i) => <Text key={i} heading={txt[0].heading} explainer={txt[0].explainer} />)}
             </div>
             <span ref={indicator} className="hidden lg:block icon-scroll-line h-1/3"></span>
-            <span ref={logo} className='absolute top-10 z-50 hidden lf:block'>
+            <span ref={logo} className='absolute top-10 z-50 hidden lg:block'>
                 <Link href={'/'}>
                     <a>
                         <LFFLogo width="225" height="130" fill="#FFFBF2" />

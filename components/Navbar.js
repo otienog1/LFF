@@ -50,11 +50,11 @@ const NavBar = () => {
         })
 
         const animP = () => {
-            iconA.play()
+            // iconA.play()
             titleA.play()
         }
         const animR = () => {
-            iconA.reverse()
+            // iconA.reverse()
             titleA.reverse()
         }
 

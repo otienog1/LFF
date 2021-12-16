@@ -3,6 +3,13 @@ module.exports = {
     purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
     darkMode: false, // or 'media' or 'class'
     theme: {
+        screens: {
+            'sm': '576px',
+            'md': '960px',
+            'lg': '1440px',
+            'xl': '1600px',
+            '2xl': '1920px',
+        },
         extend: {
             fontFamily: {
                 itc: ["ITC Berkeley Oldstyle Std"],
@@ -113,7 +120,7 @@ module.exports = {
         extend: {},
     },
     corePlugins: {
-        // container: false
+        container: false
     },
     plugins: [
         require('@tailwindcss/custom-forms'),
@@ -135,6 +142,7 @@ module.exports = {
                     },
                     '@screen 2xl': {
                         maxWidth: '1536px',
+                        // maxWidth: '1536px',
                     },
                 }
             })
