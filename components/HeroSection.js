@@ -227,7 +227,7 @@ const HeroSlider = props => {
 }
 
 const Slide = ({ source }) => (
-    <div data-scroll-speed="100" className="slide absolute w-full h-full top-0 opacity-0">
+    <div className="slide absolute w-full h-full top-0 opacity-0">
         <div className="w-full h-full">
             <img src={source} className="w-full h-full object-cover" />
         </div>
