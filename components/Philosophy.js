@@ -22,7 +22,7 @@ const Philosophy = ({ image, title, content }) => {
                             <div dangerouslySetInnerHTML={{ __html: content }} className="text-normal"></div>
                         </div>
                         <div className="block md:hidden w-full overflow-hidden mt-8 pr-4">
-                            <img data-scroll-speed="100" src={image} className="w-full" />
+                            <img src={image} className="w-full" />
                         </div>
                     </div>
                 </div>

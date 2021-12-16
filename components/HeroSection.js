@@ -2,6 +2,7 @@ import LFFLogo from './LFFLogo'
 import Link from 'next/link'
 import { useRef, useEffect } from "react"
 import gsap from "gsap"
+import { isMobile } from './Layout'
 
 const HeroSection = ({ intro, slides, text }) => {
     const elem = useRef(null)
@@ -169,11 +170,16 @@ const HeroSlider = props => {
 
 
     useEffect(() => {
+
         sliders.current.style.height = `${(document.documentElement.clientHeight - 35)}px`
-        bullets.current.parentElement.style.right = `${(document.querySelector('.donate-btn').offsetWidth + 20)}px`
-        textWrapper.current.style.left = `${(document.documentElement.clientWidth - (document.documentElement.clientWidth * .91666667)) / 2}px`
-        indicator.current.style.left = `${(document.documentElement.clientWidth - (document.documentElement.clientWidth * .91666667)) / 2}px`
-        logo.current.style.left = `${(document.documentElement.clientWidth - (document.documentElement.clientWidth * .91666667)) / 2}px`
+
+        if (!isMobile()) {
+            bullets.current.parentElement.style.right = `${(document.querySelector('.donate-btn').offsetWidth + 20)}px`
+            textWrapper.current.style.left = `${(document.documentElement.clientWidth - (document.documentElement.clientWidth * .91666667)) / 2}px`
+            indicator.current.style.left = `${(document.documentElement.clientWidth - (document.documentElement.clientWidth * .91666667)) / 2}px`
+            logo.current.style.left = `${(document.documentElement.clientWidth - (document.documentElement.clientWidth * .91666667)) / 2}px`
+        }
+
         initSlide()
 
         window.addEventListener('scroll', () => {
@@ -200,16 +206,16 @@ const HeroSlider = props => {
             <div ref={sliders} className="w-full md:w-full relative overflow-hidden">
                 {newSlides.map((slide, i) => <Slide source={slide[1].sourceUrl} key={i} />)}
             </div>
-            <div className="absolute bottom-6 z-50">
+            <div className="absolute bottom-10 z-50 left-1/2 lg:left-auto -translate-x-1/2 lg:translate-x-0">
                 <ul className="flex" ref={bullets}>
                     {newSlides.map((_, i) => <Bullet key={i} />)}
                 </ul>
             </div>
-            <div ref={textWrapper} className="absolute top-1/2 md:top-2/3 w-full lg:w-1/4 z-10 lg:ml-24">
+            <div ref={textWrapper} className="flex items-end absolute top-0 w-full lg:w-1/4 h-full z-10 lg:ml-24 pb-20 px-4">
                 {textArr.map((txt, i) => <Text key={i} heading={txt[0].heading} explainer={txt[0].explainer} />)}
             </div>
-            <span ref={indicator} className="icon-scroll-line h-1/3"></span>
-            <span ref={logo} className='absolute top-10 z-50'>
+            <span ref={indicator} className="hidden lg:block icon-scroll-line h-1/3"></span>
+            <span ref={logo} className='absolute top-10 z-50 hidden lf:block'>
                 <Link href={'/'}>
                     <a>
                         <LFFLogo width="225" height="130" fill="#FFFBF2" />
@@ -229,9 +235,9 @@ const Slide = ({ source }) => (
 )
 
 const Text = ({ heading, explainer }) => (
-    <div className="slideText h-full w-full absolute opacity-0">
+    <div className="slideText absolute lg:relative w-full opacity-0">
         <div className="h-full w-full text-lff_100">
-            <h2 className="text-5xl 2xl:text-7xl font-extrabold capitalize leading-loose" dangerouslySetInnerHTML={{ __html: heading }}></h2>
+            <h2 className="text-4xl 2xl:text-5xl font-extrabold capitalize leading-tight lg:leading-loose" dangerouslySetInnerHTML={{ __html: heading }}></h2>
             <p className="text-xl tracking-wide mt-10" dangerouslySetInnerHTML={{ __html: explainer }}></p>
         </div>
     </div>

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import SocialIcons from "./SocialIcons"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { isMobile } from './Layout'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -68,12 +69,12 @@ const NavBar = () => {
     return (
         <>
             <nav className="flex md:justify-center fixed w-full bg-lff_200 border-b border-lff_600 z-20">
-                <div className="elem flex items-center justify-between w-11/12 h-10 relative">
+                <div className="elem flex items-center justify-center md:justify-between w-full md:w-11/12 h-10 relative">
                     <div className="flex flex-wrap max-w-xs">
                         <div ref={icons} className="hidden md:flex space-x-4">
                             <SocialIcons width="19" height="19" ytHeight="20" ytWidth="21" fill="#332F26" />
                         </div>
-                        <div ref={title} className="font-bold absolute opacity-0 text-lff_900 text-lg leading-tight">
+                        <div ref={title} className="font-bold w-full lg:absolute lg:opacity-0 text-lff_900 text-lg leading-tight text-center">
                             <Link href={'/'}>
                                 <a>The Luigi Footprints Foundation</a>
                             </Link>
