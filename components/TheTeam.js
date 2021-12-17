@@ -91,12 +91,8 @@ const Trustee = ({ trustee }) => {
     return (
         <>
             <div className="member w-1/2 md:w-1/3 pr-6 pb-8 z-50 cursor-pointer" onClick={() => handleClick()}>
-                <div className="w-full">
-                    <picture className="picture opacity-0">
-                        <source srcSet={webp} type="image/webp" />
-                        <source srcSet={jpeg} type="image/jpeg" />
-                        <img src={jpeg} />
-                    </picture>
+                <div className="picture w-full">
+                    <img className="w-full" src={webp} />
                 </div>
                 <span className="name text-lg font-bold mt-4 mb-0 flex" dangerouslySetInnerHTML={{ __html: trustee[0].name }}></span>
                 <span className="title text-sm flex" dangerouslySetInnerHTML={{ __html: trustee[0].title }}></span>

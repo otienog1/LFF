@@ -28,7 +28,7 @@ const TeamMember = () => {
     useEffect(() => {
         let member = document.querySelectorAll('.member')
         member.forEach((m, i) => {
-            let picture = m.querySelector('.picture').children[0].srcset
+            let picture = m.querySelector('.picture').children[0].src
             let name = m.querySelector('.name').innerHTML
             let title = m.querySelector('.title').innerHTML
             let content = m.querySelector('.content').innerHTML
@@ -83,12 +83,8 @@ const TeamMember = () => {
     return (
         <>
             <div ref={modal} className="theTeam flex w-screen h-0 bg-lff_100 fixed bottom-0 left-0 z-50 overflow-hidden">
-                <div className="w-1/2 overflow-hidden">
-                    <picture className="html-5-picture">
-                        <source srcSet={trustee.webp} />
-                        <source srcSet={trustee.jpeg} />
-                        <img ref={imageFallback} src={trustee.jpeg} className="imageFallback opacity-0" />
-                    </picture>
+                <div className="w-1/2 overflow-hidden html-5-picture">
+                    <img ref={imageFallback} src={trustee.webp} className="imageFallback opacity-0" />
                 </div>
                 <div ref={elem} className="w-1/2 py-40 text-lff_800 md:pl-20">
                     <h2 className="font-bold text-4xl" dangerouslySetInnerHTML={{ __html: trustee.name }}></h2>
