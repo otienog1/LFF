@@ -309,8 +309,8 @@ const Layout = ({ children }) => {
                     <div ref={scrollBtn} className="hidden md:flex w-12 h-12 fixed right-5 bottom-5 z-50 bg-lff_600 justify-center items-center opacity-0 cursor-pointer">
                         <span>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M18.0701 9.57L12.0001 3.5L5.93005 9.57" stroke="#FFF8E4" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M12 20.4999V3.66992" stroke="#FFF8E4" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M18.0701 9.57L12.0001 3.5L5.93005 9.57" stroke="#332F26" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M12 20.4999V3.66992" stroke="#332F26" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
 
                         </span>
