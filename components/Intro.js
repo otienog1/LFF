@@ -12,7 +12,7 @@ const Intro = () => {
                 <div className="flex flex-col h-full">
                     <div className="md:w-2/3 m-auto">
                         <div className="text-center">
-                            <h1 className="text-5xl md:text-6xl leading-tight font-bold text-lff_800 tracking-wider">
+                            <h1 className="text-5xl md:text-9xl leading-tight font-bold text-lff_800 tracking-tight">
                                 OUR PROJECTS
                             </h1>
                             <h4 className="leading-relaxed text-2xl mt-24 font-sorts text-lff_800">

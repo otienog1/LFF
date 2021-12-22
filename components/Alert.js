@@ -1,6 +1,6 @@
 const Alert = ({ alert }) => {
     return (
-        <div className={`${alert.type == `error` ? `border-lff_danger text-lff_danger bg-red-100` : `border-lff_success text-lff_success bg-green-100`} flex space-x-4 border-2 border-solid px-4 py-3 mb-8 relative font-sen w-full`} role="alert">
+        <div className={`${alert.type == `error` ? `border-lff_danger text-lff_danger bg-red-100` : `border-lff_success text-lff_success bg-green-100`} flex space-x-4 border border-solid px-4 py-3 mb-8 relative font-sen w-full`} role="alert">
             <div>
                 <span className={`${alert.type == 'error' ? '' : 'hidden'}`}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -21,21 +21,21 @@ const Luigi = ({ title, images, text, text1, text2 }) => {
                     </div>
                     <div className="block md:flex w-full md:w-1/2 items-center justify-end py-10">
                         <div className='w-full md:w-4/5'>
-                            <div className="w-full mb-10 md:mb-0">
-                                <h3 dangerouslySetInnerHTML={{ __html: title }} className="text-xs mb-10 uppercase font-bold"></h3>
+                            <div className="w-full mb-10 md:mb-0 text-base">
+                                <h3 className="text-sm mb-10 capitalize">{title} —</h3>
                                 <h1 dangerouslySetInnerHTML={{ __html: 'Luigi Francescon' }} className="text-5xl font-extrabold mb-20"></h1>
                                 <p dangerouslySetInnerHTML={{ __html: text }}></p>
                             </div>
                             <div className="w-full block md:hidden overflow-hidden mb-16">
                                 <img src={images[0].image1.sourceUrl} className="w-full" />
                             </div>
-                            <div className="block md:hidden w-full mb-16">
+                            <div className="block md:hidden w-full mb-16 text-base">
                                 <p dangerouslySetInnerHTML={{ __html: text1 }}></p>
                             </div>
-                            <div className="w-full overflow-hidden mb-16">
+                            <div className="block md:hidden w-full overflow-hidden mb-16">
                                 <img src={images[0].image2.sourceUrl} className="w-full" />
                             </div>
-                            <div className="hidden md:block w-full my-16">
+                            <div className="hidden md:block w-full my-16 text-base">
                                 <p dangerouslySetInnerHTML={{ __html: text1 }}></p>
                             </div>
                             <div className="">

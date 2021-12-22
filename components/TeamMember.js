@@ -39,7 +39,7 @@ const TeamMember = () => {
 
             m.addEventListener('click', () => {
                 setTrustee({
-                    webp: `${pic}.webp`,
+                    webp: `${pic}`,
                     jpeg: `${pic}.jpg`,
                     name: name,
                     title: title,

@@ -27,21 +27,24 @@ const TheTeam = ({ title, trustees }) => {
     })
 
     return (
-        <section className="flex justify-end bg-lff_100 py-40 text-lff_800 relative px-4 md:px-0">
+        <section className="flex justify-end bg-lff_900 py-40 text-lff_100 relative px-4 md:px-0">
             <Container>
                 <>
                     <h4 className="text-sm uppercase font-bold" dangerouslySetInnerHTML={{ __html: title[0] }}></h4>
-                    <h2 className="text-5xl md:text-7xl font-bold my-20" dangerouslySetInnerHTML={{ __html: title[1] }}></h2>
+                    <h2 className="text-5xl md:text-7xl font-bold my-20 tracking-tighter" dangerouslySetInnerHTML={{ __html: title[1] }}></h2>
                     <div className="flex flex-wrap" ref={elem}>
                         {newTrustees.map((trustee, i) => <Trustee trustee={trustee[1]} key={i} />)}
                     </div>
                 </>
             </Container>
+            {/* <div className="w-screen h-screen bg-lffvegas top-0 z-50 absolute"></div> */}
         </section>
     )
 }
 
 const Trustee = ({ trustee }) => {
+    const elem = useRef(null),
+        image = useRef(null)
 
     let webp = trustee[0].thumb.sourceUrl
 
@@ -88,14 +91,20 @@ const Trustee = ({ trustee }) => {
             }, .5)
     }
 
+    useEffect(() => {
+        // elem.current.style.height = `${image.current.offsetHeight}px`
+    }, [])
+
     return (
         <>
-            <div className="member w-1/2 md:w-1/3 pr-6 pb-8 z-50 cursor-pointer" onClick={() => handleClick()}>
-                <div className="picture w-full">
+            <div ref={elem} className="member relative w-1/2 md:w-1/3 px-3 mb-6 z-50 cursor-pointer" onClick={() => handleClick()}>
+                <div ref={image} className="picture w-full">
                     <img className="w-full" src={webp} />
                 </div>
-                <span className="name text-lg font-bold mt-4 mb-0 flex" dangerouslySetInnerHTML={{ __html: trustee[0].name }}></span>
-                <span className="title text-sm flex" dangerouslySetInnerHTML={{ __html: trustee[0].title }}></span>
+                <div className="">
+                    <span className="name block text-xl font-bold mb-0 mt-4 leading-tight" dangerouslySetInnerHTML={{ __html: trustee[0].name }}></span>
+                    <span className="title text-sm text-center flex" dangerouslySetInnerHTML={{ __html: trustee[0].title }}></span>
+                </div>
                 <div className="content text-sm hidden" dangerouslySetInnerHTML={{ __html: trustee[0].text1 }}></div>
             </div>
         </>

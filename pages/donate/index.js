@@ -14,11 +14,11 @@ const Index = () => {
                 <Head>
                     <title>Donate 💚 | The Luigi Footprints Foundation</title>
                 </Head>
-                <div className="flex md:justify-end w-full px-4 md:px-0">
-                    <div ref={elem} className="w-full md:w-1/2 mx-auto">
-                        <DonationsForm />
-                    </div>
+
+                <div ref={elem} className="w-full md:w-1/2 mx-auto">
+                    <DonationsForm />
                 </div>
+
             </Layout>
         </>
     )
@@ -655,12 +655,12 @@ const DonationsForm = () => {
 
     return (
         <div ref={form} className="flex min-h-screen items-center py-8">
-            <div className="w-full xl:pl-40 lg:pl-10">
-                <div className="flex justify-between font-sen text-lff_700">
-                    <span className={`${page == 1 ? 'text-lff_800 font-bold' : ''}`}>1. Donations</span>
-                    <span className={`${page == 2 ? 'text-lff_800 font-bold' : ''}`}>2. Details</span>
-                    <span className={`${page == 3 ? 'text-lff_800 font-bold' : ''}`}>3. Address</span>
-                    <span className={`${page == 4 ? 'text-lff_800 font-bold' : ''}`}>4. Confirm</span>
+            <div className="w-full">
+                <div className="flex justify-between font-sen text-lff_700 text-xl">
+                    <span className={`${page == 1 ? 'text-lff_800' : ''}`}>1. Donations</span>
+                    <span className={`${page == 2 ? 'text-lff_800' : ''}`}>2. Details</span>
+                    <span className={`${page == 3 ? 'text-lff_800' : ''}`}>3. Address</span>
+                    <span className={`${page == 4 ? 'text-lff_800' : ''}`}>4. Confirm Donation</span>
                 </div>
 
                 <div className={`${page === 1 ? `block` : `hidden`}`}>
@@ -874,7 +874,7 @@ const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentIn
                 <span className="font-bold h-5">PREVIOUS</span>
             </button>
             <button
-                className="text-lff_800 flex font-sen items-center text-base  py-2.5 space-x-3 border-solid border-2 border-lff_800 w-48 justify-center bg-lff_200 hover:bg-lff_400 disabled:opacity-50"
+                className="text-lff_800 flex font-sen items-center text-sm  py-4 space-x-3 border-solid border border-lff_800 w-48 justify-center bg-lff_200 hover:bg-lff_400 disabled:opacity-50"
                 onClick={() => page == 4 ? donate() : next()}
             // disabled={disabled ? true : false}
             >
@@ -889,7 +889,7 @@ const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentIn
                     </>
                 ) : (
                     <>
-                        <span className="font-bold h-5">NEXT</span>
+                        <span className="h-5">NEXT</span>
                         <span className="">
                             <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="8" height="16" fill="none" />
@@ -913,12 +913,12 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
         currency: 'USD',
     })
 
-    const _amounts1 = ['100.00', '500.00', '1000.00']
-    const _amounts2 = ['5000.00', '10000.00', '50000.00']
+    const _amounts1 = ['10.00', '50.00', '100.00']
+    const _amounts2 = ['1000.00', '5000.00', '10000.00']
 
     return (
         <>
-            <div className="font-sorts text-xl font-bold my-8 text-lff_800">DONATION AMOUNT - {amountF.format(amount)}</div>
+            <div className="font-sorts text-2xl my-16 text-lff_800">Donation Amount: {amountF.format(amount)}</div>
 
             <div className={`${Object.keys(alert).length == 0 ? `hidden` : `flex`}`}>
                 <Alert alert={alert} />
@@ -932,7 +932,7 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
                         className={
                             `${Number(amount) === Number(_amount) ? `bg-lff_500 text-lff_800 border-lff_800 ` : `bg-transparent text-lff_700 border-lff_600`} 
                             hover:bg-lff_500 hover:text-lff_800 hover:border-lff_800 transition-all duration-500 ease-in-out 
-                            flex font-sen text-bold text-base  py-4 border-2 border-solid  justify-center cursor-pointer font-bold flex-grow z-50`
+                            flex font-sen text-base  py-4 border border-solid  justify-center cursor-pointer tracking-widest flex-grow z-50`
                         }
                         key={i}
                     >{amountF.format(_amount)}</div>
@@ -947,7 +947,7 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
                         className={
                             `${Number(amount) === Number(_amount) ? `bg-lff_500 text-lff_800 border-lff_800 ` : `bg-transparent text-lff_700 border-lff_600`} 
                             hover:bg-lff_500 hover:text-lff_800 hover:border-lff_800 transition-all duration-500 ease-in-out 
-                            flex font-sen text-bold text-base  py-4 border-2 border-solid justify-center cursor-pointer font-bold flex-grow z-50`
+                            flex font-sen text-base  py-4 border border-solid  justify-center cursor-pointer tracking-widest flex-grow z-50`
                         }
                         key={i}
                     >{amountF.format(_amount)}</div>
@@ -956,14 +956,14 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
             </div>
 
             <div className="w-full z-50 relative">
-                <span className="block text-lff_800 font-sorts mt-8 font-bold text-lg">Other Amount</span>
-                <div className="flex font-sen py-0.5 text-xl">
-                    <span className="mr-1 py-1.5">$</span>
+                {/* <span className="block text-lff_800 font-sorts mt-16 text-xl">Other Amount</span> */}
+                <div className="flex font-sen text-base mt-16">
+                    <span className="-mr-1 py-1.5">$</span>
                     <input
                         ref={amountInput}
-                        className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                        className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 px-4 leading-tight focus:outline-none placeholder-lff_700 text-lff_800 w-full"
                         type="number"
-                        placeholder="0.00"
+                        placeholder="Other Amount"
                         min="0.00"
                         step="0.01"
                         onChange={e => handleAmount(`${e.target.value}`)}

@@ -7,7 +7,7 @@ const CoverImage = ({ title, coverImage, slug }) => {
     const image = (
         // eslint-disable-next-line jsx-a11y/alt-text
         <img
-            data-scroll-speed="100"
+            // data-scroll-speed="100"
             src={slug ? cover : coverImage?.sourceUrl}
             className="w-full"
             alt={title}

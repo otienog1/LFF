@@ -28,7 +28,6 @@ const client = new ApolloClient({
 })
 
 function MyApp({ Component, pageProps, router }) {
-    const overlayPath = useRef()
     const overlay = useRef()
 
     let isAnimating = false
@@ -38,40 +37,28 @@ function MyApp({ Component, pageProps, router }) {
             yPercent: 'unset',
             height: '0%'
         })
-        gsap.set(overlayPath.current, {
-            yPercent: 'unset',
-            height: '0%'
-        })
     }
 
-    function enter(node) {
+    function enter() {
         window.scrollTo(0, 0)
 
         if (isAnimating) return
 
         gsap.timeline({
             defaults: {
-                duration: 2
+                duration: 1
             },
             onComplete: () => resetOverlay()
         })
             .set(overlay.current, {
                 height: '100%'
             })
-            .set(overlayPath.current, {
-                height: '100%'
-            })
-
 
 
             .to(overlay.current, {
                 yPercent: -100,
                 ease: 'power3.inOut'
             }, 1)
-            .to(overlayPath.current, {
-                yPercent: -100,
-                ease: 'power3.inOut'
-            }, 1.5)
 
     }
 
@@ -79,17 +66,13 @@ function MyApp({ Component, pageProps, router }) {
         gsap.timeline({
             // onComplete: () => resetOverlay()
             defaults: {
-                duration: 2
+                duration: 1
             }
         })
-            .to(overlayPath.current, {
-                height: '100%',
-                ease: 'power3.inOut',
-            })
             .to(overlay.current, {
                 height: '100%',
                 ease: 'power3.inOut',
-            }, .5)
+            }, 1)
     }
 
     return (
@@ -106,7 +89,6 @@ function MyApp({ Component, pageProps, router }) {
                 >
                     <>
                         <Component {...pageProps} />
-                        <div ref={overlayPath} className="z-40 bg-lff_100 fixed w-full bottom-0 h-0"></div>
                         <div ref={overlay} className="z-50 bg-lff_200 fixed w-full bottom-0 h-0"></div>
                     </>
                 </Transition>

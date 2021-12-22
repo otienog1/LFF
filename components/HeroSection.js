@@ -30,7 +30,7 @@ const HeroSection = ({ intro, slides, text }) => {
                         autoplay={!0}
                         direction="next"
                         speed={2}
-                        duration={7}
+                        duration={10}
                         current={0}
                         RAF={0}
                     />
