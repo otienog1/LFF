@@ -15,7 +15,7 @@ const Index = () => {
                     <title>Donate 💚 | The Luigi Footprints Foundation</title>
                 </Head>
 
-                <div ref={elem} className="w-full md:w-1/2 mx-auto">
+                <div ref={elem} className="w-full px-4 md:w-1/2 mx-auto">
                     <DonationsForm />
                 </div>
 
@@ -656,11 +656,11 @@ const DonationsForm = () => {
     return (
         <div ref={form} className="flex min-h-screen items-center py-8">
             <div className="w-full">
-                <div className="flex justify-between font-sen text-lff_700 text-xl">
-                    <span className={`${page == 1 ? 'text-lff_800' : ''}`}>1. Donations</span>
-                    <span className={`${page == 2 ? 'text-lff_800' : ''}`}>2. Details</span>
-                    <span className={`${page == 3 ? 'text-lff_800' : ''}`}>3. Address</span>
-                    <span className={`${page == 4 ? 'text-lff_800' : ''}`}>4. Confirm Donation</span>
+                <div className="flex justify-between font-sen text-lff_700 tracking-widest">
+                    <span className={`${page == 1 ? 'text-lff_900' : ''}`}>1. Donations</span>
+                    <span className={`${page == 2 ? 'text-lff_900' : ''}`}>2. Details</span>
+                    <span className={`${page == 3 ? 'text-lff_900' : ''}`}>3. Address</span>
+                    <span className={`${page == 4 ? 'text-lff_900' : ''}`}>4. Confirm</span>
                 </div>
 
                 <div className={`${page === 1 ? `block` : `hidden`}`}>
@@ -861,7 +861,7 @@ const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentIn
     })
 
     return (
-        <div className={`flex ${page > 1 ? `justify-between` : `justify-end`} mt-10`}>
+        <div className={`flex ${page > 1 ? `justify-between` : `justify-end`} mt-20`}>
             <button
                 className={`${page > 1 ? `flex` : `hidden`} text-lff_800 flex font-sen items-center text-base bg-transparentpy-3 space-x-3 w-48`}
                 onClick={() => previous()}
@@ -871,7 +871,7 @@ const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentIn
                         <path d="M8.83984 1.35327L0.839844 9.35327L8.83984 17.3533" stroke="#3F3F3F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                 </span>
-                <span className="font-bold h-5">PREVIOUS</span>
+                <span className="h-5">PREVIOUS</span>
             </button>
             <button
                 className="text-lff_800 flex font-sen items-center text-sm  py-4 space-x-3 border-solid border border-lff_800 w-48 justify-center bg-lff_200 hover:bg-lff_400 disabled:opacity-50"
@@ -885,7 +885,7 @@ const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentIn
                                 <path d="M8.4135 13.8736C8.18683 13.9536 7.8135 13.9536 7.58683 13.8736C5.6535 13.2136 1.3335 10.4602 1.3335 5.79356C1.3335 3.73356 2.9935 2.06689 5.04016 2.06689C6.2535 2.06689 7.32683 2.65356 8.00016 3.56023C8.6735 2.65356 9.7535 2.06689 10.9602 2.06689C13.0068 2.06689 14.6668 3.73356 14.6668 5.79356C14.6668 10.4602 10.3468 13.2136 8.4135 13.8736Z" fill="#F6FFEB" stroke="#3F3F3F" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </span>
-                        <span className="font-bold font-sorts">PAY <span className="text-lg font-bold">{amountF.format(amount)}</span></span>
+                        <span className="h-5">DONATE <span className="">{amountF.format(amount)}</span></span>
                     </>
                 ) : (
                     <>
@@ -918,7 +918,7 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
 
     return (
         <>
-            <div className="font-sorts text-2xl my-16 text-lff_800">Donation Amount: {amountF.format(amount)}</div>
+            <div className="font-sorts text-3xl my-16 text-lff_900">Donation Amount: {amountF.format(amount)}</div>
 
             <div className={`${Object.keys(alert).length == 0 ? `hidden` : `flex`}`}>
                 <Alert alert={alert} />
@@ -977,40 +977,40 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
 const UserInfo = ({ handleUserInfo, details, alert, hasError }) => {
     return (
         <>
-            <div className="font-sorts text-2xl font-bold my-8 text-lff_800">Contact details</div>
+            <div className="font-sorts text-3xl my-10 text-lff_900">User details</div>
 
             <div className={`${Object.keys(alert).length == 0 ? `hidden` : `flex`}`}>
                 <Alert alert={alert} />
             </div>
 
             <div className="flex justify-between flex-col relative z-50">
-                <div className="w-full">
-                    <label htmlFor="fname" className="font-sorts font-bold mb-2 text-lff_800">First Name</label>
+                <div className="w-full mb-5">
+                    <label htmlFor="fname" className="font-sorts mb-4 text-lg text-lff_900">First Name</label>
                     <input
                         id="fname"
-                        className="border-lff_700 placeholder-lff_700 appearance-none font-sen bg-transparent border-b-2 border-solid py-2 leading-tight focus:outline-none mb-10 text-lff_800 w-full"
+                        className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
                         type="text"
                         placeholder="Enter your First Name"
                         onChange={e => handleUserInfo('firstName', e.target.value)}
                         value={details.fname}
                     />
                 </div>
-                <div className="w-full">
-                    <label htmlFor="lname" className="font-sorts font-bold mb-2 text-lff_800">Last Name</label>
+                <div className="w-full mb-5">
+                    <label htmlFor="lname" className="font-sorts mb-4 text-lg text-lff_900">Last Name</label>
                     <input
                         id="lname"
-                        className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                        className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
                         type="text"
                         placeholder="Enter your Last Name"
                         onChange={e => handleUserInfo('lastName', e.target.value)}
                         value={details.lname}
                     />
                 </div>
-                <div className="w-full" >
-                    <label htmlFor="email" className="font-sorts font-bold mb-2 text-lff_800">Email</label>
+                <div className="w-full mb-5" >
+                    <label htmlFor="email" className="font-sorts mb-4 text-lg text-lff_900">Email</label>
                     <input
                         id="email"
-                        className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                        className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
                         type="email"
                         placeholder="Enter your Email"
                         onChange={e => handleUserInfo('email', e.target.value)}
@@ -1018,10 +1018,10 @@ const UserInfo = ({ handleUserInfo, details, alert, hasError }) => {
                     />
                 </div >
                 <div className="w-full">
-                    <label htmlFor="phone" className="font-sorts font-bold mb-2 text-lff_800">Phone</label>
+                    <label htmlFor="phone" className="font-sorts mb-4 text-lg text-lff_900">Phone</label>
                     <input
                         id="phone"
-                        className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                        className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
                         type="tel"
                         placeholder="Enter your phone number"
                         onChange={e => handleUserInfo('phone', e.target.value)}
@@ -1036,19 +1036,19 @@ const UserInfo = ({ handleUserInfo, details, alert, hasError }) => {
 const Address = ({ handleAddress, address, alert }) => {
     return (
         <>
-            <div className="font-sorts text-2xl font-bold my-8 text-lff_800">Contact details</div>
+            <div className="font-sorts text-3xl my-10 text-lff_900">Contact details</div>
 
             <div className={`${Object.keys(alert).length == 0 ? `hidden` : `flex`}`}>
                 <Alert alert={alert} />
             </div>
 
             <div className="flex justify-between flex-col relative z-50">
-                <div className="w-full">
-                    <label htmlFor="country" className="block text-lff_800 font-sorts font-bold text-lg">Country</label>
+                <div className="w-full mb-5">
+                    <label htmlFor="country" className="font-sorts mb-4 text-lg text-lff_900">Country</label>
                     <div className="flex font-sen py-0.5">
                         <input
                             id="country"
-                            className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                            className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
                             type="text"
                             placeholder="Enter your country"
                             value={address.country}
@@ -1057,12 +1057,12 @@ const Address = ({ handleAddress, address, alert }) => {
                     </div>
 
                 </div>
-                <div className="w-full">
-                    <label htmlFor="address" className="block text-lff_800 font-sorts font-bold text-lg">Address</label>
+                <div className="w-full mb-5">
+                    <label htmlFor="address" className="font-sorts mb-4 text-lg text-lff_900">Address</label>
                     <div className="flex font-sen py-0.5">
                         <input
                             id="address"
-                            className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                            className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
                             type="text"
                             placeholder="Enter your address"
                             value={address.address}
@@ -1071,12 +1071,12 @@ const Address = ({ handleAddress, address, alert }) => {
                     </div>
 
                 </div>
-                <div className="w-full">
-                    <label htmlFor="city" className="block text-lff_800 font-sorts font-bold text-lg">City</label>
+                <div className="w-full mb-5">
+                    <label htmlFor="city" className="font-sorts mb-4 text-lg text-lff_900">City</label>
                     <div className="flex font-sen py-0.5">
                         <input
                             id="city"
-                            className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                            className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
                             type="text"
                             placeholder="Enter your city"
                             value={address.city}
@@ -1085,12 +1085,12 @@ const Address = ({ handleAddress, address, alert }) => {
                     </div>
 
                 </div>
-                <div className="w-full">
-                    <label htmlFor="state" className="block text-lff_800 font-sorts font-bold text-lg">State</label>
+                <div className="w-full mb-5">
+                    <label htmlFor="state" className="font-sorts mb-4 text-lg text-lff_900">State</label>
                     <div className="flex font-sen py-0.5">
                         <input
                             id="state"
-                            className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                            className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
                             type="text"
                             placeholder="Enter your state"
                             value={address.state}
@@ -1099,11 +1099,11 @@ const Address = ({ handleAddress, address, alert }) => {
                     </div>
                 </div>
                 <div className="w-full">
-                    <label htmlFor="postalCode" className="block text-lff_800 font-sorts font-bold text-lg">Postal Code</label>
+                    <label htmlFor="postalCode" className="font-sorts mb-4 text-lg text-lff_900">Postal Code</label>
                     <div className="flex font-sen py-0.5">
                         <input
                             id="postalCode"
-                            className="appearance-none font-sen bg-transparent border-b-2 border-solid border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800 w-full"
+                            className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
                             type="number"
                             placeholder="Enter your postal code"
                             value={address.postalCode}
@@ -1137,7 +1137,7 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
             {/* <Head>
                 <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8" />
             </Head> */}
-            <div className="font-sorts text-2xl font-bold my-8 text-lff_800">Payment method</div>
+            <div className="font-sorts text-3xl my-10 text-lff_900">Payment method</div>
 
             <div className={`${Object.keys(alert).length == 0 ? `hidden` : `flex`}`}>
                 <Alert alert={alert} />
@@ -1149,17 +1149,17 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                         <span>
                             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3 12.7573H33" stroke="#1D854A" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M9 24.7573H12" stroke="#1D854A" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" stroke-linejoin="round" />
-                                <path d="M15.75 24.7573H21.75" stroke="#1D854A" stroke-width="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M9.66 5.25732H26.325C31.665 5.25732 33 6.57732 33 11.8423V24.1573C33 29.4223 31.665 30.7423 26.34 30.7423H9.66C4.335 30.7573 3 29.4373 3 24.1723V11.8423C3 6.57732 4.335 5.25732 9.66 5.25732Z" stroke="#1D854A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M9 24.7573H12" stroke="#1D854A" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M15.75 24.7573H21.75" stroke="#1D854A" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M9.66 5.25732H26.325C31.665 5.25732 33 6.57732 33 11.8423V24.1573C33 29.4223 31.665 30.7423 26.34 30.7423H9.66C4.335 30.7573 3 29.4373 3 24.1723V11.8423C3 6.57732 4.335 5.25732 9.66 5.25732Z" stroke="#1D854A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </span>
-                        <span class="ml-2">
+                        <span className="ml-2">
                             <span className="flex font-sorts mb-0.5">Credit or debit card</span>
                             <span className="flex space-x-1">
                                 <span>
                                     <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0)">
+                                        <g clipPath="url(#clip0)">
                                             <path d="M20.48 16H1.92C0.8576 16 0 15.1424 0 14.08V1.92C0 0.8576 0.8576 0 1.92 0H20.48C21.5424 0 22.4 0.8576 22.4 1.92V14.08C22.4 15.1424 21.5424 16 20.48 16Z" fill="#F8F8F8" />
                                             <path d="M20.48 0.64C21.184 0.64 21.76 1.216 21.76 1.92V14.08C21.76 14.784 21.184 15.36 20.48 15.36H1.92C1.216 15.36 0.64 14.784 0.64 14.08V1.92C0.64 1.216 1.216 0.64 1.92 0.64H20.48ZM20.48 0H1.92C0.8576 0 0 0.8576 0 1.92V14.08C0 15.1424 0.8576 16 1.92 16H20.48C21.5424 16 22.4 15.1424 22.4 14.08V1.92C22.4 0.8576 21.5424 0 20.48 0Z" fill="#E7E7E7" />
                                             <path d="M9.40136 5.25434L8.22376 10.7199H9.64456L10.8222 5.25434H9.40136ZM18.5534 5.25434H17.3438C17.075 5.25434 16.8382 5.41434 16.7422 5.65114L14.6046 10.7199H16.0958L16.3902 9.90074H18.2142L18.387 10.7199H19.7054L18.5534 5.25434V5.25434ZM16.8062 8.78074L17.5486 6.73274L17.9774 8.78074H16.8062ZM7.29576 5.25434L5.81736 8.97274L5.21576 5.81114C5.13896 5.45274 4.87016 5.24794 4.55656 5.24794H2.15016L2.11816 5.40794C2.61736 5.51674 3.17416 5.68954 3.51976 5.86874C3.72456 5.99034 3.78856 6.08634 3.85256 6.35514L4.98536 10.7263H6.48296L8.79336 5.26074H7.29576V5.25434V5.25434ZM12.691 6.77754C12.691 6.58554 12.883 6.36794 13.2926 6.32314C13.4974 6.30394 14.0606 6.27834 14.6942 6.57274L14.9438 5.40794C14.5982 5.28634 14.1566 5.17114 13.619 5.17114C12.2174 5.17114 11.2254 5.91354 11.2126 6.98234C11.1998 7.76954 11.923 8.21114 12.4542 8.47354C13.0046 8.74234 13.1966 8.91514 13.1902 9.15194C13.1902 9.51674 12.7486 9.68314 12.339 9.68954C11.6286 9.70234 11.2062 9.49754 10.8798 9.34394L10.6238 10.5407C10.9566 10.6943 11.571 10.8223 12.211 10.8351C13.7086 10.8351 14.6814 10.0991 14.6942 8.96634C14.6814 7.50074 12.6782 7.41114 12.691 6.77754Z" fill="#0F2496" />
@@ -1173,7 +1173,7 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                                 </span>
                                 <span>
                                     <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0)">
+                                        <g clipPath="url(#clip0)">
                                             <path d="M21.0796 16H2.51961C1.45721 16 0.599609 15.1424 0.599609 14.08V1.92C0.599609 0.8576 1.45721 0 2.51961 0H21.0796C22.142 0 22.9996 0.8576 22.9996 1.92V14.08C22.9996 15.1424 22.142 16 21.0796 16Z" fill="#F8F8F8" />
                                             <path d="M21.0796 0.64C21.7836 0.64 22.3596 1.216 22.3596 1.92V14.08C22.3596 14.784 21.7836 15.36 21.0796 15.36H2.51961C1.81561 15.36 1.23961 14.784 1.23961 14.08V1.92C1.23961 1.216 1.81561 0.64 2.51961 0.64H21.0796ZM21.0796 0H2.51961C1.45721 0 0.599609 0.8576 0.599609 1.92V14.08C0.599609 15.1424 1.45721 16 2.51961 16H21.0796C22.142 16 22.9996 15.1424 22.9996 14.08V1.92C22.9996 0.8576 22.142 0 21.0796 0Z" fill="#E7E7E7" />
                                             <path d="M18.2514 8.00093C18.2514 10.2098 16.4626 11.9987 14.2614 11.9987C12.0602 11.9987 10.2715 10.2099 10.2715 8.00093C10.2715 5.79197 12.0604 4.00317 14.2614 4.00317C16.4623 4.00317 18.2514 5.79197 18.2514 8.00093Z" fill="#F79F1A" />
@@ -1189,7 +1189,7 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                                 </span>
                                 <span>
                                     <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0)">
+                                        <g clipPath="url(#clip0)">
                                             <path d="M20.6802 16H2.1202C1.0578 16 0.200195 15.1424 0.200195 14.08V1.92C0.200195 0.8576 1.0578 0 2.1202 0H20.6802C21.7426 0 22.6002 0.8576 22.6002 1.92V14.08C22.6002 15.1424 21.7426 16 20.6802 16Z" fill="#016FD0" />
                                             <path d="M20.6802 0.64C21.3842 0.64 21.9602 1.216 21.9602 1.92V14.08C21.9602 14.784 21.3842 15.36 20.6802 15.36H2.1202C1.4162 15.36 0.840195 14.784 0.840195 14.08V1.92C0.840195 1.216 1.4162 0.64 2.1202 0.64H20.6802ZM20.6802 0H2.1202C1.0578 0 0.200195 0.8576 0.200195 1.92V14.08C0.200195 15.1424 1.0578 16 2.1202 16H20.6802C21.7426 16 22.6002 15.1424 22.6002 14.08V1.92C22.6002 0.8576 21.7426 0 20.6802 0Z" fill="#EAEAEA" />
                                             <path d="M4.94017 11.9039V8.57972H8.45102L8.82772 9.07194L9.21685 8.57965H21.9603V11.6747C21.9603 11.6747 21.6271 11.9006 21.2416 11.9039H14.1853L13.7606 11.3798V11.9039H12.369V11.0093C12.369 11.0093 12.1789 11.1343 11.7679 11.1343H11.2942V11.9039H9.18709L8.81089 11.401L8.42901 11.9039H4.94017ZM0.840332 6.07431L1.63201 4.22388H3.00123L3.45051 5.26042V4.22388H5.15252L5.42004 4.97306L5.67918 4.22388H13.3195V4.60052C13.3195 4.60052 13.7212 4.22388 14.3813 4.22388L16.8603 4.23258L17.3018 5.25549V4.22388H18.7262L19.1182 4.81152V4.22388H20.5556V7.54804H19.1182L18.7425 6.95853V7.54804H16.6499L16.4394 7.02401H15.8768L15.6698 7.54804H14.2506C13.6826 7.54804 13.3196 7.17914 13.3196 7.17914V7.54804H11.1798L10.7552 7.02401V7.54804H2.79841L2.58811 7.02401H2.02728L1.81851 7.54804H0.840332V6.07431Z" fill="white" />
@@ -1204,40 +1204,40 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                                 </span>
                                 <span>
                                     <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0)">
+                                        <g clipPath="url(#clip0)">
                                             <path d="M1.31152 0.639893H22.6235V15.3599H1.31152V0.639893Z" fill="white" />
                                             <path d="M22.5952 14.6V9.45288C22.5952 9.45288 16.8154 13.531 6.22949 15.3573H21.4382C22.0881 15.3373 22.4675 15.1256 22.5952 14.6V14.6Z" fill="#EF7D00" />
                                             <path d="M12.6008 5.34082C11.7324 5.34082 11.0278 6.01922 11.0278 6.85647C11.0278 7.74658 11.7018 8.41199 12.6008 8.41199C13.4773 8.41199 14.1693 7.73775 14.1693 6.87394C14.1693 6.01519 13.4819 5.34082 12.6007 5.34082H12.6008Z" fill="url(#paint0_radial)" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.82568 5.39624H3.67132C4.60386 5.39624 5.25436 6.00161 5.25442 6.87233C5.25442 7.30657 5.05512 7.7266 4.71919 8.00525C4.43599 8.23975 4.11324 8.34548 3.6669 8.34548H2.82568V5.39624ZM3.55592 7.84628C3.92789 7.84628 4.162 7.77537 4.34376 7.6114C4.5428 7.43514 4.66146 7.15156 4.66146 6.86811C4.66146 6.58523 4.5428 6.31131 4.34376 6.13435C4.15304 5.96206 3.92789 5.89563 3.55592 5.89563H3.4013V7.84634H3.55592V7.84628Z" fill="#05171D" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M2.82568 5.39624H3.67132C4.60386 5.39624 5.25436 6.00161 5.25442 6.87233C5.25442 7.30657 5.05512 7.7266 4.71919 8.00525C4.43599 8.23975 4.11324 8.34548 3.6669 8.34548H2.82568V5.39624ZM3.55592 7.84628C3.92789 7.84628 4.162 7.77537 4.34376 7.6114C4.5428 7.43514 4.66146 7.15156 4.66146 6.86811C4.66146 6.58523 4.5428 6.31131 4.34376 6.13435C4.15304 5.96206 3.92789 5.89563 3.55592 5.89563H3.4013V7.84634H3.55592V7.84628Z" fill="#05171D" />
                                             <path d="M5.5196 5.39615H6.09425V8.3454H5.51953V5.39615H5.5196ZM7.50123 6.52748C7.15576 6.39948 7.05419 6.31513 7.05419 6.15653C7.05419 5.97061 7.23512 5.82924 7.48318 5.82924C7.6556 5.82924 7.79717 5.89989 7.94802 6.06745L8.2483 5.67449C8.00069 5.45733 7.70443 5.34693 7.38129 5.34693C6.85995 5.34693 6.46161 5.70969 6.46161 6.19135C6.46161 6.59858 6.64721 6.8062 7.18693 7.00133C7.41265 7.0805 7.52741 7.1333 7.58501 7.16946C7.70002 7.2446 7.75768 7.35032 7.75768 7.4741C7.75768 7.71327 7.56734 7.88997 7.31051 7.88997C7.03633 7.88997 6.81534 7.75301 6.68267 7.49657L6.3116 7.85516C6.57637 8.24383 6.89489 8.41682 7.3331 8.41682C7.93016 8.41682 8.35006 8.01823 8.35006 7.44799C8.35006 6.97906 8.15602 6.76664 7.50123 6.52748V6.52748ZM8.53131 6.87224C8.53131 7.73996 9.21253 8.41202 10.0885 8.41202C10.3362 8.41202 10.5485 8.36306 10.8096 8.23973V7.5628C10.5794 7.79288 10.3759 7.88556 10.1148 7.88556C9.5356 7.88556 9.12402 7.46527 9.12402 6.86796C9.12402 6.3022 9.54847 5.85541 10.0885 5.85541C10.3623 5.85541 10.5705 5.95269 10.8096 6.18706V5.51007C10.5575 5.38226 10.3493 5.32959 10.1016 5.32959C9.23013 5.32959 8.53131 6.01522 8.53131 6.87224V6.87224ZM15.4708 7.37733L14.6836 5.39615H14.0555L15.3076 8.42085H15.6169L16.8909 5.39615H16.2675L15.4708 7.37727V7.37733ZM17.1524 8.34546H18.7842V7.84626H17.7273V7.04959H18.7437V6.55013H17.7273V5.89561H18.7842V5.39615H17.1523V8.34546H17.1524Z" fill="#05171D" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0178 5.39624C20.6816 5.39624 21.0614 5.71413 21.0614 6.26664C21.0614 6.7181 20.823 7.01449 20.3889 7.10325L21.3183 8.34556H20.6106L19.8149 7.16028H19.7396V8.34556H19.1641V5.39624H20.0178ZM19.7396 6.75375H19.907C20.2752 6.75375 20.4697 6.59394 20.4697 6.29788C20.4697 6.0109 20.2752 5.86011 19.9162 5.86011H19.7396V6.75375V6.75375Z" fill="#05171D" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M21.3698 5.53589C21.4331 5.53589 21.4676 5.56392 21.4676 5.61563C21.4676 5.65179 21.4475 5.67867 21.4111 5.68834L21.4975 5.79573H21.4204L21.3477 5.69467V5.79573H21.2861V5.53589H21.3698V5.53589ZM21.3477 5.65096H21.3592C21.3897 5.65096 21.4059 5.63944 21.406 5.61659C21.406 5.59451 21.3905 5.58338 21.3598 5.58338H21.3477V5.65096V5.65096Z" fill="#1D1D1B" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M21.1553 5.66524C21.1552 5.63542 21.161 5.60587 21.1723 5.57829C21.1837 5.55072 21.2004 5.52566 21.2215 5.50456C21.2425 5.48347 21.2676 5.46675 21.2952 5.45536C21.3227 5.44398 21.3523 5.43816 21.3821 5.43823C21.5054 5.43823 21.6061 5.54082 21.6061 5.66524C21.6061 5.79004 21.5054 5.89225 21.3821 5.89225C21.3523 5.89228 21.3227 5.88643 21.2952 5.87503C21.2677 5.86364 21.2426 5.84691 21.2216 5.82582C21.2005 5.80473 21.1838 5.77969 21.1724 5.75214C21.161 5.72458 21.1552 5.69505 21.1553 5.66524V5.66524ZM21.2 5.66582C21.2 5.76854 21.2811 5.85154 21.3818 5.85154C21.4797 5.85154 21.5604 5.76783 21.5604 5.66582C21.5604 5.56367 21.4796 5.47958 21.3818 5.47958C21.2805 5.47958 21.2 5.56207 21.2 5.66582V5.66582Z" fill="#1D1D1B" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M20.0178 5.39624C20.6816 5.39624 21.0614 5.71413 21.0614 6.26664C21.0614 6.7181 20.823 7.01449 20.3889 7.10325L21.3183 8.34556H20.6106L19.8149 7.16028H19.7396V8.34556H19.1641V5.39624H20.0178ZM19.7396 6.75375H19.907C20.2752 6.75375 20.4697 6.59394 20.4697 6.29788C20.4697 6.0109 20.2752 5.86011 19.9162 5.86011H19.7396V6.75375V6.75375Z" fill="#05171D" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M21.3698 5.53589C21.4331 5.53589 21.4676 5.56392 21.4676 5.61563C21.4676 5.65179 21.4475 5.67867 21.4111 5.68834L21.4975 5.79573H21.4204L21.3477 5.69467V5.79573H21.2861V5.53589H21.3698V5.53589ZM21.3477 5.65096H21.3592C21.3897 5.65096 21.4059 5.63944 21.406 5.61659C21.406 5.59451 21.3905 5.58338 21.3598 5.58338H21.3477V5.65096V5.65096Z" fill="#1D1D1B" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M21.1553 5.66524C21.1552 5.63542 21.161 5.60587 21.1723 5.57829C21.1837 5.55072 21.2004 5.52566 21.2215 5.50456C21.2425 5.48347 21.2676 5.46675 21.2952 5.45536C21.3227 5.44398 21.3523 5.43816 21.3821 5.43823C21.5054 5.43823 21.6061 5.54082 21.6061 5.66524C21.6061 5.79004 21.5054 5.89225 21.3821 5.89225C21.3523 5.89228 21.3227 5.88643 21.2952 5.87503C21.2677 5.86364 21.2426 5.84691 21.2216 5.82582C21.2005 5.80473 21.1838 5.77969 21.1724 5.75214C21.161 5.72458 21.1552 5.69505 21.1553 5.66524V5.66524ZM21.2 5.66582C21.2 5.76854 21.2811 5.85154 21.3818 5.85154C21.4797 5.85154 21.5604 5.76783 21.5604 5.66582C21.5604 5.56367 21.4796 5.47958 21.3818 5.47958C21.2805 5.47958 21.2 5.56207 21.2 5.66582V5.66582Z" fill="#1D1D1B" />
                                             <path d="M7.98193 9.12061L8.75154 9.92681V9.16272H8.8615V10.1938L8.09208 9.38928V10.1496H7.98193V9.12061Z" fill="#1D1D1B" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.97119 10.1601V9.09497C7.97119 9.09497 8.70682 9.86566 8.74067 9.90144V9.15244H8.87098V10.2195L8.10169 9.41484V10.1601H7.97119ZM8.76173 9.95289C8.76173 9.95289 8.02591 9.18169 7.9918 9.14649V10.1394H8.08159V9.36358C8.08159 9.36358 8.81658 10.1331 8.85063 10.1688V9.17279H8.76173V9.95295V9.95289Z" fill="#1D1D1B" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M7.97119 10.1601V9.09497C7.97119 9.09497 8.70682 9.86566 8.74067 9.90144V9.15244H8.87098V10.2195L8.10169 9.41484V10.1601H7.97119ZM8.76173 9.95289C8.76173 9.95289 8.02591 9.18169 7.9918 9.14649V10.1394H8.08159V9.36358C8.08159 9.36358 8.81658 10.1331 8.85063 10.1688V9.17279H8.76173V9.95295V9.95289Z" fill="#1D1D1B" />
                                             <path d="M9.39404 9.16284H9.90534V9.26479H9.50367V9.5583H9.89363V9.66019H9.50367V10.0474H9.90534V10.1497H9.39404V9.16284V9.16284Z" fill="#1D1D1B" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.38379 9.15234H9.91601V9.27561H9.51448V9.54806H9.90411V9.66985H9.51448V10.037H9.91601V10.16H9.38379V9.15234V9.15234ZM9.8954 9.2543V9.17257H9.40433V10.1392H9.8954V10.0576H9.49349V9.64969H9.8835V9.56828H9.49355V9.2543H9.8954V9.2543Z" fill="#1D1D1B" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M9.38379 9.15234H9.91601V9.27561H9.51448V9.54806H9.90411V9.66985H9.51448V10.037H9.91601V10.16H9.38379V9.15234V9.15234ZM9.8954 9.2543V9.17257H9.40433V10.1392H9.8954V10.0576H9.49349V9.64969H9.8835V9.56828H9.49355V9.2543H9.8954V9.2543Z" fill="#1D1D1B" />
                                             <path d="M10.6815 10.1497H10.5714V9.26479H10.3335V9.16284H10.9223V9.26479H10.6816V10.1497H10.6815Z" fill="#1D1D1B" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.3232 9.15241H10.9332V9.27567H10.6923V10.16H10.5618V9.27561H10.3233V9.15234L10.3232 9.15241ZM10.9128 9.25436V9.17263H10.3446V9.25436H10.5825V10.1392H10.6719V9.25436H10.9128Z" fill="#1D1D1B" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M10.3232 9.15241H10.9332V9.27567H10.6923V10.16H10.5618V9.27561H10.3233V9.15234L10.3232 9.15241ZM10.9128 9.25436V9.17263H10.3446V9.25436H10.5825V10.1392H10.6719V9.25436H10.9128Z" fill="#1D1D1B" />
                                             <path d="M11.6586 9.90231L11.978 9.11133L12.2973 9.90231L12.5564 9.16278H12.676L12.2973 10.2004L11.978 9.40554L11.6586 10.2004L11.2808 9.16278H11.3997L11.6586 9.90231V9.90231Z" fill="#1D1D1B" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.659 9.87309L11.9687 9.10765L11.9779 9.08423C11.9779 9.08423 12.2772 9.8258 12.2965 9.87309C12.3132 9.82522 12.5491 9.15245 12.5491 9.15245H12.6902L12.2974 10.2299C12.2974 10.2299 11.9958 9.47892 11.9779 9.43354C11.96 9.47892 11.6585 10.2299 11.6585 10.2299L11.2656 9.15239H11.4064L11.659 9.87309V9.87309ZM11.9779 9.13946C11.96 9.1833 11.668 9.90605 11.668 9.90605L11.6579 9.9314L11.392 9.17261H11.2951C11.305 9.19885 11.6418 10.1241 11.6587 10.1718C11.6775 10.1249 11.9779 9.37837 11.9779 9.37837C11.9779 9.37837 12.2779 10.1249 12.2966 10.1718C12.4183 9.83883 12.5397 9.50577 12.6608 9.17261H12.5635C12.5586 9.18624 12.2978 9.9314 12.2978 9.9314C12.2978 9.9314 11.9958 9.1833 11.9779 9.13946V9.13946ZM13.5827 10.1667C13.8636 10.1667 14.097 9.94125 14.097 9.65728C14.097 9.37466 13.8636 9.14586 13.5827 9.14586C13.3009 9.14586 13.0684 9.37466 13.0684 9.65728C13.0684 9.94125 13.3009 10.1667 13.5827 10.1667V10.1667ZM13.5826 10.0642C13.3586 10.0642 13.1779 9.8784 13.1779 9.656C13.1779 9.4322 13.3563 9.24743 13.5826 9.24749C13.8089 9.24749 13.9867 9.4322 13.9867 9.656C13.9867 9.87834 13.8065 10.0642 13.5826 10.0642Z" fill="#1D1D1B" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M13.5823 10.1767C13.2931 10.1767 13.0576 9.9435 13.0576 9.65716C13.0576 9.36903 13.2931 9.1355 13.5823 9.1355C13.8715 9.1355 14.1069 9.3691 14.1069 9.65716C14.1069 9.9435 13.8714 10.1767 13.5823 10.1767ZM13.5823 9.15611C13.3041 9.15611 13.0778 9.38062 13.0778 9.65723C13.0778 9.93243 13.3041 10.1562 13.5823 10.1562C13.8601 10.1562 14.0868 9.93243 14.0868 9.65716C14.0868 9.38068 13.86 9.15604 13.5823 9.15604V9.15611Z" fill="#1D1D1B" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M13.5821 10.0747C13.3535 10.0747 13.167 9.8877 13.167 9.65609C13.167 9.42531 13.3535 9.23766 13.5821 9.23766C13.8106 9.23766 13.9962 9.42531 13.9962 9.65609C13.9962 9.8877 13.8106 10.0746 13.5821 10.0746V10.0747ZM13.5821 9.25807C13.3645 9.25807 13.1879 9.43683 13.1879 9.65609C13.1879 9.87548 13.3645 10.0544 13.5821 10.0544C13.7997 10.0544 13.9757 9.87554 13.9757 9.65609C13.9757 9.43689 13.7996 9.25814 13.5821 9.25814V9.25807ZM14.5731 10.1497H14.6827V9.71625H14.7106L15.0084 10.1497H15.1434L14.8294 9.70729C14.9816 9.6943 15.0765 9.58691 15.0765 9.43503C15.0765 9.21283 14.9027 9.16284 14.7156 9.16284H14.5731V10.1497V10.1497ZM14.7169 9.61948H14.6827V9.26473H14.7156C14.8477 9.26473 14.9668 9.28092 14.9668 9.44278C14.9668 9.59606 14.841 9.61942 14.7169 9.61942V9.61948Z" fill="#1D1D1B" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5635 9.15241H14.5738V9.15234H14.7164C14.9663 9.15234 15.0876 9.2445 15.0876 9.4349C15.0876 9.58678 14.9929 9.69321 14.8474 9.71318C14.8631 9.73602 15.1643 10.16 15.1643 10.16H15.144L15.0009 10.1554C15.0009 10.1554 14.7108 9.73397 14.7108 9.72649H14.6939V10.16H14.5635V9.15241V9.15241ZM15.067 9.4349C15.067 9.25609 14.9553 9.17263 14.7163 9.17263C14.7163 9.17263 14.6016 9.17263 14.5838 9.1725V10.1392H14.673V9.70588H14.6834L14.7193 9.71036C14.7193 9.71036 15.0093 10.1317 15.0093 10.1392H15.1245L14.811 9.69878L14.8292 9.69705C14.9738 9.68489 15.067 9.58166 15.067 9.4349V9.4349Z" fill="#1D1D1B" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M14.6724 9.25439H14.7156C14.8422 9.25439 14.9771 9.26879 14.9771 9.44287C14.9771 9.60819 14.8381 9.62956 14.7168 9.62956H14.6724V9.25439ZM14.9563 9.44287C14.9563 9.28787 14.8423 9.27577 14.7157 9.27577H14.6932V9.60883H14.7168C14.8354 9.60883 14.9563 9.58918 14.9563 9.44287V9.44287Z" fill="#1D1D1B" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M11.659 9.87309L11.9687 9.10765L11.9779 9.08423C11.9779 9.08423 12.2772 9.8258 12.2965 9.87309C12.3132 9.82522 12.5491 9.15245 12.5491 9.15245H12.6902L12.2974 10.2299C12.2974 10.2299 11.9958 9.47892 11.9779 9.43354C11.96 9.47892 11.6585 10.2299 11.6585 10.2299L11.2656 9.15239H11.4064L11.659 9.87309V9.87309ZM11.9779 9.13946C11.96 9.1833 11.668 9.90605 11.668 9.90605L11.6579 9.9314L11.392 9.17261H11.2951C11.305 9.19885 11.6418 10.1241 11.6587 10.1718C11.6775 10.1249 11.9779 9.37837 11.9779 9.37837C11.9779 9.37837 12.2779 10.1249 12.2966 10.1718C12.4183 9.83883 12.5397 9.50577 12.6608 9.17261H12.5635C12.5586 9.18624 12.2978 9.9314 12.2978 9.9314C12.2978 9.9314 11.9958 9.1833 11.9779 9.13946V9.13946ZM13.5827 10.1667C13.8636 10.1667 14.097 9.94125 14.097 9.65728C14.097 9.37466 13.8636 9.14586 13.5827 9.14586C13.3009 9.14586 13.0684 9.37466 13.0684 9.65728C13.0684 9.94125 13.3009 10.1667 13.5827 10.1667V10.1667ZM13.5826 10.0642C13.3586 10.0642 13.1779 9.8784 13.1779 9.656C13.1779 9.4322 13.3563 9.24743 13.5826 9.24749C13.8089 9.24749 13.9867 9.4322 13.9867 9.656C13.9867 9.87834 13.8065 10.0642 13.5826 10.0642Z" fill="#1D1D1B" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M13.5823 10.1767C13.2931 10.1767 13.0576 9.9435 13.0576 9.65716C13.0576 9.36903 13.2931 9.1355 13.5823 9.1355C13.8715 9.1355 14.1069 9.3691 14.1069 9.65716C14.1069 9.9435 13.8714 10.1767 13.5823 10.1767ZM13.5823 9.15611C13.3041 9.15611 13.0778 9.38062 13.0778 9.65723C13.0778 9.93243 13.3041 10.1562 13.5823 10.1562C13.8601 10.1562 14.0868 9.93243 14.0868 9.65716C14.0868 9.38068 13.86 9.15604 13.5823 9.15604V9.15611Z" fill="#1D1D1B" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M13.5821 10.0747C13.3535 10.0747 13.167 9.8877 13.167 9.65609C13.167 9.42531 13.3535 9.23766 13.5821 9.23766C13.8106 9.23766 13.9962 9.42531 13.9962 9.65609C13.9962 9.8877 13.8106 10.0746 13.5821 10.0746V10.0747ZM13.5821 9.25807C13.3645 9.25807 13.1879 9.43683 13.1879 9.65609C13.1879 9.87548 13.3645 10.0544 13.5821 10.0544C13.7997 10.0544 13.9757 9.87554 13.9757 9.65609C13.9757 9.43689 13.7996 9.25814 13.5821 9.25814V9.25807ZM14.5731 10.1497H14.6827V9.71625H14.7106L15.0084 10.1497H15.1434L14.8294 9.70729C14.9816 9.6943 15.0765 9.58691 15.0765 9.43503C15.0765 9.21283 14.9027 9.16284 14.7156 9.16284H14.5731V10.1497V10.1497ZM14.7169 9.61948H14.6827V9.26473H14.7156C14.8477 9.26473 14.9668 9.28092 14.9668 9.44278C14.9668 9.59606 14.841 9.61942 14.7169 9.61942V9.61948Z" fill="#1D1D1B" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M14.5635 9.15241H14.5738V9.15234H14.7164C14.9663 9.15234 15.0876 9.2445 15.0876 9.4349C15.0876 9.58678 14.9929 9.69321 14.8474 9.71318C14.8631 9.73602 15.1643 10.16 15.1643 10.16H15.144L15.0009 10.1554C15.0009 10.1554 14.7108 9.73397 14.7108 9.72649H14.6939V10.16H14.5635V9.15241V9.15241ZM15.067 9.4349C15.067 9.25609 14.9553 9.17263 14.7163 9.17263C14.7163 9.17263 14.6016 9.17263 14.5838 9.1725V10.1392H14.673V9.70588H14.6834L14.7193 9.71036C14.7193 9.71036 15.0093 10.1317 15.0093 10.1392H15.1245L14.811 9.69878L14.8292 9.69705C14.9738 9.68489 15.067 9.58166 15.067 9.4349V9.4349Z" fill="#1D1D1B" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M14.6724 9.25439H14.7156C14.8422 9.25439 14.9771 9.26879 14.9771 9.44287C14.9771 9.60819 14.8381 9.62956 14.7168 9.62956H14.6724V9.25439ZM14.9563 9.44287C14.9563 9.28787 14.8423 9.27577 14.7157 9.27577H14.6932V9.60883H14.7168C14.8354 9.60883 14.9563 9.58918 14.9563 9.44287V9.44287Z" fill="#1D1D1B" />
                                             <path d="M16.1399 9.16284H16.2878L15.8245 9.62262L16.3033 10.1497H16.1515L15.747 9.69686L15.7195 9.72374V10.1497H15.6094V9.16284H15.7194V9.58543L16.1399 9.16284H16.1399Z" fill="#1D1D1B" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.1358 9.15234H16.3121C16.3121 9.15234 15.8524 9.60866 15.838 9.62281C15.8516 9.6367 16.3269 10.16 16.3269 10.16H16.3033L16.1439 10.1565C16.1439 10.1565 15.7601 9.72642 15.7462 9.71145L15.7457 9.7119C15.7392 9.7181 15.7311 9.72585 15.73 9.72533V10.1599H15.5996V9.15234H15.73V9.56079C15.7618 9.52789 16.1358 9.15234 16.1358 9.15234H16.1358ZM15.8101 9.62198C15.8101 9.62198 16.2297 9.20578 16.2626 9.17257H16.1438C16.1381 9.17865 15.7093 9.61052 15.7093 9.61052V9.17257H15.6202V10.1392H15.7092C15.7092 10.1196 15.7121 9.71676 15.7121 9.71676L15.7474 9.68149L15.7543 9.68982C15.7543 9.68982 16.1515 10.134 16.1515 10.1392H16.2801C16.251 10.1068 15.81 9.62198 15.81 9.62198H15.8101Z" fill="#1D1D1B" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.7198 0H21.2798C22.3422 0 23.1998 0.8576 23.1998 1.92V14.08C23.1998 15.1424 22.3422 16 21.2798 16H2.7198C1.6574 16 0.799805 15.1424 0.799805 14.08V1.92C0.799805 0.8576 1.6574 0 2.7198 0ZM22.5598 1.92C22.5598 1.216 21.9838 0.64 21.2798 0.64H2.7198C2.0158 0.64 1.4398 1.216 1.4398 1.92V14.08C1.4398 14.784 2.0158 15.36 2.7198 15.36H21.2798C21.9838 15.36 22.5598 14.784 22.5598 14.08V1.92Z" fill="#E7E7E7" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M16.1358 9.15234H16.3121C16.3121 9.15234 15.8524 9.60866 15.838 9.62281C15.8516 9.6367 16.3269 10.16 16.3269 10.16H16.3033L16.1439 10.1565C16.1439 10.1565 15.7601 9.72642 15.7462 9.71145L15.7457 9.7119C15.7392 9.7181 15.7311 9.72585 15.73 9.72533V10.1599H15.5996V9.15234H15.73V9.56079C15.7618 9.52789 16.1358 9.15234 16.1358 9.15234H16.1358ZM15.8101 9.62198C15.8101 9.62198 16.2297 9.20578 16.2626 9.17257H16.1438C16.1381 9.17865 15.7093 9.61052 15.7093 9.61052V9.17257H15.6202V10.1392H15.7092C15.7092 10.1196 15.7121 9.71676 15.7121 9.71676L15.7474 9.68149L15.7543 9.68982C15.7543 9.68982 16.1515 10.134 16.1515 10.1392H16.2801C16.251 10.1068 15.81 9.62198 15.81 9.62198H15.8101Z" fill="#1D1D1B" />
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M2.7198 0H21.2798C22.3422 0 23.1998 0.8576 23.1998 1.92V14.08C23.1998 15.1424 22.3422 16 21.2798 16H2.7198C1.6574 16 0.799805 15.1424 0.799805 14.08V1.92C0.799805 0.8576 1.6574 0 2.7198 0ZM22.5598 1.92C22.5598 1.216 21.9838 0.64 21.2798 0.64H2.7198C2.0158 0.64 1.4398 1.216 1.4398 1.92V14.08C1.4398 14.784 2.0158 15.36 2.7198 15.36H21.2798C21.9838 15.36 22.5598 14.784 22.5598 14.08V1.92Z" fill="#E7E7E7" />
                                         </g>
                                         <defs>
                                             <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12.5986 6.87641) scale(1.55326 1.5185)">
-                                                <stop offset="0.006" stop-color="#FFF2E8" />
-                                                <stop offset="0.096" stop-color="#FEEDDF" />
-                                                <stop offset="0.244" stop-color="#FDE1C7" />
-                                                <stop offset="0.43" stop-color="#FACD9F" />
-                                                <stop offset="0.648" stop-color="#F6B168" />
-                                                <stop offset="0.89" stop-color="#F08E22" />
-                                                <stop offset="1" stop-color="#EE7D00" />
+                                                <stop offset="0.006" stopColor="#FFF2E8" />
+                                                <stop offset="0.096" stopColor="#FEEDDF" />
+                                                <stop offset="0.244" stopColor="#FDE1C7" />
+                                                <stop offset="0.43" stopColor="#FACD9F" />
+                                                <stop offset="0.648" stopColor="#F6B168" />
+                                                <stop offset="0.89" stopColor="#F08E22" />
+                                                <stop offset="1" stopColor="#EE7D00" />
                                             </radialGradient>
                                             <clipPath id="clip0">
                                                 <rect width="22.4" height="16" fill="white" transform="translate(0.799805)" />
@@ -1275,27 +1275,24 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                 </label>
             </div> */}
 
-            <div className="w-full relative z-50">
-                <label htmlFor="cardholder" className="block text-lff_800 font-sorts font-bold text-lg">Cardholder Name</label>
-                <div className="flex font-sen py-0.5 text-xl">
-                    <input
-                        id="cardholder"
-                        className="appearance-none bg-transparent leading-tight focus:outline-none w-full"
-                        type="text"
-                        placeholder={`${name.first} ${name.last}`}
-                        onChange={e => handleName(e.target.value)}
-                    />
-                </div>
-                <div className="bg-lff_700 w-full h-0.5 mb-8"></div>
+            <div className="w-full relative z-50 mb-5">
+                <label htmlFor="cardholder" className="font-sorts mb-4 text-lg text-lff_900">Cardholder Name</label>
+                <input
+                    id="cardholder"
+                    className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                    type="text"
+                    placeholder={`${name.first} ${name.last}`}
+                    onChange={e => handleName(e.target.value)}
+                />
             </div>
-            <div className="w-full relative z-50">
-                <label htmlFor="cardnumber" className="block text-lff_800 font-sorts font-bold text-lg">Card Number</label>
-                <div className="flex font-sen py-0.5 text-xl items-center">
+            <div className="w-full relative z-50 mb-5">
+                <label htmlFor="cardnumber" className="font-sorts mb-4 text-lg text-lff_900">Card Number</label>
+                <div className="flex items-center">
                     <input
                         id="cardnumber"
-                        className="appearance-none bg-transparent leading-tight focus:outline-none w-full placeholder-lffbg"
+                        className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
                         type="tel"
-                        placeholder=""
+                        placeholder="xxxx xxxx xxxx xxxx"
                         onKeyDown={e => handleCreditCardNumberKey(e)}
                         onKeyUp={() => refreshCardTypeIcon()}
                         onPaste={e => handleCcPaste(e)}
@@ -1304,7 +1301,7 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                     <div className="">
                         <span className={cardType === '001' ? 'flex' : 'hidden'}>
                             <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0)">
+                                <g clipPath="url(#clip0)">
                                     <path d="M20.48 16H1.92C0.8576 16 0 15.1424 0 14.08V1.92C0 0.8576 0.8576 0 1.92 0H20.48C21.5424 0 22.4 0.8576 22.4 1.92V14.08C22.4 15.1424 21.5424 16 20.48 16Z" fill="#F8F8F8" />
                                     <path d="M20.48 0.64C21.184 0.64 21.76 1.216 21.76 1.92V14.08C21.76 14.784 21.184 15.36 20.48 15.36H1.92C1.216 15.36 0.64 14.784 0.64 14.08V1.92C0.64 1.216 1.216 0.64 1.92 0.64H20.48ZM20.48 0H1.92C0.8576 0 0 0.8576 0 1.92V14.08C0 15.1424 0.8576 16 1.92 16H20.48C21.5424 16 22.4 15.1424 22.4 14.08V1.92C22.4 0.8576 21.5424 0 20.48 0Z" fill="#E7E7E7" />
                                     <path d="M9.40136 5.25434L8.22376 10.7199H9.64456L10.8222 5.25434H9.40136ZM18.5534 5.25434H17.3438C17.075 5.25434 16.8382 5.41434 16.7422 5.65114L14.6046 10.7199H16.0958L16.3902 9.90074H18.2142L18.387 10.7199H19.7054L18.5534 5.25434V5.25434ZM16.8062 8.78074L17.5486 6.73274L17.9774 8.78074H16.8062ZM7.29576 5.25434L5.81736 8.97274L5.21576 5.81114C5.13896 5.45274 4.87016 5.24794 4.55656 5.24794H2.15016L2.11816 5.40794C2.61736 5.51674 3.17416 5.68954 3.51976 5.86874C3.72456 5.99034 3.78856 6.08634 3.85256 6.35514L4.98536 10.7263H6.48296L8.79336 5.26074H7.29576V5.25434V5.25434ZM12.691 6.77754C12.691 6.58554 12.883 6.36794 13.2926 6.32314C13.4974 6.30394 14.0606 6.27834 14.6942 6.57274L14.9438 5.40794C14.5982 5.28634 14.1566 5.17114 13.619 5.17114C12.2174 5.17114 11.2254 5.91354 11.2126 6.98234C11.1998 7.76954 11.923 8.21114 12.4542 8.47354C13.0046 8.74234 13.1966 8.91514 13.1902 9.15194C13.1902 9.51674 12.7486 9.68314 12.339 9.68954C11.6286 9.70234 11.2062 9.49754 10.8798 9.34394L10.6238 10.5407C10.9566 10.6943 11.571 10.8223 12.211 10.8351C13.7086 10.8351 14.6814 10.0991 14.6942 8.96634C14.6814 7.50074 12.6782 7.41114 12.691 6.77754Z" fill="#0F2496" />
@@ -1318,7 +1315,7 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                         </span>
                         <span className={cardType === '002' ? 'flex' : 'hidden'}>
                             <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0)">
+                                <g clipPath="url(#clip0)">
                                     <path d="M21.0796 16H2.51961C1.45721 16 0.599609 15.1424 0.599609 14.08V1.92C0.599609 0.8576 1.45721 0 2.51961 0H21.0796C22.142 0 22.9996 0.8576 22.9996 1.92V14.08C22.9996 15.1424 22.142 16 21.0796 16Z" fill="#F8F8F8" />
                                     <path d="M21.0796 0.64C21.7836 0.64 22.3596 1.216 22.3596 1.92V14.08C22.3596 14.784 21.7836 15.36 21.0796 15.36H2.51961C1.81561 15.36 1.23961 14.784 1.23961 14.08V1.92C1.23961 1.216 1.81561 0.64 2.51961 0.64H21.0796ZM21.0796 0H2.51961C1.45721 0 0.599609 0.8576 0.599609 1.92V14.08C0.599609 15.1424 1.45721 16 2.51961 16H21.0796C22.142 16 22.9996 15.1424 22.9996 14.08V1.92C22.9996 0.8576 22.142 0 21.0796 0Z" fill="#E7E7E7" />
                                     <path d="M18.2514 8.00093C18.2514 10.2098 16.4626 11.9987 14.2614 11.9987C12.0602 11.9987 10.2715 10.2099 10.2715 8.00093C10.2715 5.79197 12.0604 4.00317 14.2614 4.00317C16.4623 4.00317 18.2514 5.79197 18.2514 8.00093Z" fill="#F79F1A" />
@@ -1334,7 +1331,7 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                         </span>
                         <span className={cardType === '003' ? 'flex' : 'hidden'}>
                             <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0)">
+                                <g clipPath="url(#clip0)">
                                     <path d="M20.6802 16H2.1202C1.0578 16 0.200195 15.1424 0.200195 14.08V1.92C0.200195 0.8576 1.0578 0 2.1202 0H20.6802C21.7426 0 22.6002 0.8576 22.6002 1.92V14.08C22.6002 15.1424 21.7426 16 20.6802 16Z" fill="#016FD0" />
                                     <path d="M20.6802 0.64C21.3842 0.64 21.9602 1.216 21.9602 1.92V14.08C21.9602 14.784 21.3842 15.36 20.6802 15.36H2.1202C1.4162 15.36 0.840195 14.784 0.840195 14.08V1.92C0.840195 1.216 1.4162 0.64 2.1202 0.64H20.6802ZM20.6802 0H2.1202C1.0578 0 0.200195 0.8576 0.200195 1.92V14.08C0.200195 15.1424 1.0578 16 2.1202 16H20.6802C21.7426 16 22.6002 15.1424 22.6002 14.08V1.92C22.6002 0.8576 21.7426 0 20.6802 0Z" fill="#EAEAEA" />
                                     <path d="M4.94017 11.9039V8.57972H8.45102L8.82772 9.07194L9.21685 8.57965H21.9603V11.6747C21.9603 11.6747 21.6271 11.9006 21.2416 11.9039H14.1853L13.7606 11.3798V11.9039H12.369V11.0093C12.369 11.0093 12.1789 11.1343 11.7679 11.1343H11.2942V11.9039H9.18709L8.81089 11.401L8.42901 11.9039H4.94017ZM0.840332 6.07431L1.63201 4.22388H3.00123L3.45051 5.26042V4.22388H5.15252L5.42004 4.97306L5.67918 4.22388H13.3195V4.60052C13.3195 4.60052 13.7212 4.22388 14.3813 4.22388L16.8603 4.23258L17.3018 5.25549V4.22388H18.7262L19.1182 4.81152V4.22388H20.5556V7.54804H19.1182L18.7425 6.95853V7.54804H16.6499L16.4394 7.02401H15.8768L15.6698 7.54804H14.2506C13.6826 7.54804 13.3196 7.17914 13.3196 7.17914V7.54804H11.1798L10.7552 7.02401V7.54804H2.79841L2.58811 7.02401H2.02728L1.81851 7.54804H0.840332V6.07431Z" fill="white" />
@@ -1349,40 +1346,40 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                         </span>
                         <span className={cardType === '004' ? 'flex' : 'hidden'}>
                             <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0)">
+                                <g clipPath="url(#clip0)">
                                     <path d="M1.31152 0.639893H22.6235V15.3599H1.31152V0.639893Z" fill="white" />
                                     <path d="M22.5952 14.6V9.45288C22.5952 9.45288 16.8154 13.531 6.22949 15.3573H21.4382C22.0881 15.3373 22.4675 15.1256 22.5952 14.6V14.6Z" fill="#EF7D00" />
                                     <path d="M12.6008 5.34082C11.7324 5.34082 11.0278 6.01922 11.0278 6.85647C11.0278 7.74658 11.7018 8.41199 12.6008 8.41199C13.4773 8.41199 14.1693 7.73775 14.1693 6.87394C14.1693 6.01519 13.4819 5.34082 12.6007 5.34082H12.6008Z" fill="url(#paint0_radial)" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.82568 5.39624H3.67132C4.60386 5.39624 5.25436 6.00161 5.25442 6.87233C5.25442 7.30657 5.05512 7.7266 4.71919 8.00525C4.43599 8.23975 4.11324 8.34548 3.6669 8.34548H2.82568V5.39624ZM3.55592 7.84628C3.92789 7.84628 4.162 7.77537 4.34376 7.6114C4.5428 7.43514 4.66146 7.15156 4.66146 6.86811C4.66146 6.58523 4.5428 6.31131 4.34376 6.13435C4.15304 5.96206 3.92789 5.89563 3.55592 5.89563H3.4013V7.84634H3.55592V7.84628Z" fill="#05171D" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M2.82568 5.39624H3.67132C4.60386 5.39624 5.25436 6.00161 5.25442 6.87233C5.25442 7.30657 5.05512 7.7266 4.71919 8.00525C4.43599 8.23975 4.11324 8.34548 3.6669 8.34548H2.82568V5.39624ZM3.55592 7.84628C3.92789 7.84628 4.162 7.77537 4.34376 7.6114C4.5428 7.43514 4.66146 7.15156 4.66146 6.86811C4.66146 6.58523 4.5428 6.31131 4.34376 6.13435C4.15304 5.96206 3.92789 5.89563 3.55592 5.89563H3.4013V7.84634H3.55592V7.84628Z" fill="#05171D" />
                                     <path d="M5.5196 5.39615H6.09425V8.3454H5.51953V5.39615H5.5196ZM7.50123 6.52748C7.15576 6.39948 7.05419 6.31513 7.05419 6.15653C7.05419 5.97061 7.23512 5.82924 7.48318 5.82924C7.6556 5.82924 7.79717 5.89989 7.94802 6.06745L8.2483 5.67449C8.00069 5.45733 7.70443 5.34693 7.38129 5.34693C6.85995 5.34693 6.46161 5.70969 6.46161 6.19135C6.46161 6.59858 6.64721 6.8062 7.18693 7.00133C7.41265 7.0805 7.52741 7.1333 7.58501 7.16946C7.70002 7.2446 7.75768 7.35032 7.75768 7.4741C7.75768 7.71327 7.56734 7.88997 7.31051 7.88997C7.03633 7.88997 6.81534 7.75301 6.68267 7.49657L6.3116 7.85516C6.57637 8.24383 6.89489 8.41682 7.3331 8.41682C7.93016 8.41682 8.35006 8.01823 8.35006 7.44799C8.35006 6.97906 8.15602 6.76664 7.50123 6.52748V6.52748ZM8.53131 6.87224C8.53131 7.73996 9.21253 8.41202 10.0885 8.41202C10.3362 8.41202 10.5485 8.36306 10.8096 8.23973V7.5628C10.5794 7.79288 10.3759 7.88556 10.1148 7.88556C9.5356 7.88556 9.12402 7.46527 9.12402 6.86796C9.12402 6.3022 9.54847 5.85541 10.0885 5.85541C10.3623 5.85541 10.5705 5.95269 10.8096 6.18706V5.51007C10.5575 5.38226 10.3493 5.32959 10.1016 5.32959C9.23013 5.32959 8.53131 6.01522 8.53131 6.87224V6.87224ZM15.4708 7.37733L14.6836 5.39615H14.0555L15.3076 8.42085H15.6169L16.8909 5.39615H16.2675L15.4708 7.37727V7.37733ZM17.1524 8.34546H18.7842V7.84626H17.7273V7.04959H18.7437V6.55013H17.7273V5.89561H18.7842V5.39615H17.1523V8.34546H17.1524Z" fill="#05171D" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.0178 5.39624C20.6816 5.39624 21.0614 5.71413 21.0614 6.26664C21.0614 6.7181 20.823 7.01449 20.3889 7.10325L21.3183 8.34556H20.6106L19.8149 7.16028H19.7396V8.34556H19.1641V5.39624H20.0178ZM19.7396 6.75375H19.907C20.2752 6.75375 20.4697 6.59394 20.4697 6.29788C20.4697 6.0109 20.2752 5.86011 19.9162 5.86011H19.7396V6.75375V6.75375Z" fill="#05171D" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M21.3698 5.53589C21.4331 5.53589 21.4676 5.56392 21.4676 5.61563C21.4676 5.65179 21.4475 5.67867 21.4111 5.68834L21.4975 5.79573H21.4204L21.3477 5.69467V5.79573H21.2861V5.53589H21.3698V5.53589ZM21.3477 5.65096H21.3592C21.3897 5.65096 21.4059 5.63944 21.406 5.61659C21.406 5.59451 21.3905 5.58338 21.3598 5.58338H21.3477V5.65096V5.65096Z" fill="#1D1D1B" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M21.1553 5.66524C21.1552 5.63542 21.161 5.60587 21.1723 5.57829C21.1837 5.55072 21.2004 5.52566 21.2215 5.50456C21.2425 5.48347 21.2676 5.46675 21.2952 5.45536C21.3227 5.44398 21.3523 5.43816 21.3821 5.43823C21.5054 5.43823 21.6061 5.54082 21.6061 5.66524C21.6061 5.79004 21.5054 5.89225 21.3821 5.89225C21.3523 5.89228 21.3227 5.88643 21.2952 5.87503C21.2677 5.86364 21.2426 5.84691 21.2216 5.82582C21.2005 5.80473 21.1838 5.77969 21.1724 5.75214C21.161 5.72458 21.1552 5.69505 21.1553 5.66524V5.66524ZM21.2 5.66582C21.2 5.76854 21.2811 5.85154 21.3818 5.85154C21.4797 5.85154 21.5604 5.76783 21.5604 5.66582C21.5604 5.56367 21.4796 5.47958 21.3818 5.47958C21.2805 5.47958 21.2 5.56207 21.2 5.66582V5.66582Z" fill="#1D1D1B" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M20.0178 5.39624C20.6816 5.39624 21.0614 5.71413 21.0614 6.26664C21.0614 6.7181 20.823 7.01449 20.3889 7.10325L21.3183 8.34556H20.6106L19.8149 7.16028H19.7396V8.34556H19.1641V5.39624H20.0178ZM19.7396 6.75375H19.907C20.2752 6.75375 20.4697 6.59394 20.4697 6.29788C20.4697 6.0109 20.2752 5.86011 19.9162 5.86011H19.7396V6.75375V6.75375Z" fill="#05171D" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M21.3698 5.53589C21.4331 5.53589 21.4676 5.56392 21.4676 5.61563C21.4676 5.65179 21.4475 5.67867 21.4111 5.68834L21.4975 5.79573H21.4204L21.3477 5.69467V5.79573H21.2861V5.53589H21.3698V5.53589ZM21.3477 5.65096H21.3592C21.3897 5.65096 21.4059 5.63944 21.406 5.61659C21.406 5.59451 21.3905 5.58338 21.3598 5.58338H21.3477V5.65096V5.65096Z" fill="#1D1D1B" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M21.1553 5.66524C21.1552 5.63542 21.161 5.60587 21.1723 5.57829C21.1837 5.55072 21.2004 5.52566 21.2215 5.50456C21.2425 5.48347 21.2676 5.46675 21.2952 5.45536C21.3227 5.44398 21.3523 5.43816 21.3821 5.43823C21.5054 5.43823 21.6061 5.54082 21.6061 5.66524C21.6061 5.79004 21.5054 5.89225 21.3821 5.89225C21.3523 5.89228 21.3227 5.88643 21.2952 5.87503C21.2677 5.86364 21.2426 5.84691 21.2216 5.82582C21.2005 5.80473 21.1838 5.77969 21.1724 5.75214C21.161 5.72458 21.1552 5.69505 21.1553 5.66524V5.66524ZM21.2 5.66582C21.2 5.76854 21.2811 5.85154 21.3818 5.85154C21.4797 5.85154 21.5604 5.76783 21.5604 5.66582C21.5604 5.56367 21.4796 5.47958 21.3818 5.47958C21.2805 5.47958 21.2 5.56207 21.2 5.66582V5.66582Z" fill="#1D1D1B" />
                                     <path d="M7.98193 9.12061L8.75154 9.92681V9.16272H8.8615V10.1938L8.09208 9.38928V10.1496H7.98193V9.12061Z" fill="#1D1D1B" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.97119 10.1601V9.09497C7.97119 9.09497 8.70682 9.86566 8.74067 9.90144V9.15244H8.87098V10.2195L8.10169 9.41484V10.1601H7.97119ZM8.76173 9.95289C8.76173 9.95289 8.02591 9.18169 7.9918 9.14649V10.1394H8.08159V9.36358C8.08159 9.36358 8.81658 10.1331 8.85063 10.1688V9.17279H8.76173V9.95295V9.95289Z" fill="#1D1D1B" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M7.97119 10.1601V9.09497C7.97119 9.09497 8.70682 9.86566 8.74067 9.90144V9.15244H8.87098V10.2195L8.10169 9.41484V10.1601H7.97119ZM8.76173 9.95289C8.76173 9.95289 8.02591 9.18169 7.9918 9.14649V10.1394H8.08159V9.36358C8.08159 9.36358 8.81658 10.1331 8.85063 10.1688V9.17279H8.76173V9.95295V9.95289Z" fill="#1D1D1B" />
                                     <path d="M9.39404 9.16284H9.90534V9.26479H9.50367V9.5583H9.89363V9.66019H9.50367V10.0474H9.90534V10.1497H9.39404V9.16284V9.16284Z" fill="#1D1D1B" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.38379 9.15234H9.91601V9.27561H9.51448V9.54806H9.90411V9.66985H9.51448V10.037H9.91601V10.16H9.38379V9.15234V9.15234ZM9.8954 9.2543V9.17257H9.40433V10.1392H9.8954V10.0576H9.49349V9.64969H9.8835V9.56828H9.49355V9.2543H9.8954V9.2543Z" fill="#1D1D1B" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M9.38379 9.15234H9.91601V9.27561H9.51448V9.54806H9.90411V9.66985H9.51448V10.037H9.91601V10.16H9.38379V9.15234V9.15234ZM9.8954 9.2543V9.17257H9.40433V10.1392H9.8954V10.0576H9.49349V9.64969H9.8835V9.56828H9.49355V9.2543H9.8954V9.2543Z" fill="#1D1D1B" />
                                     <path d="M10.6815 10.1497H10.5714V9.26479H10.3335V9.16284H10.9223V9.26479H10.6816V10.1497H10.6815Z" fill="#1D1D1B" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10.3232 9.15241H10.9332V9.27567H10.6923V10.16H10.5618V9.27561H10.3233V9.15234L10.3232 9.15241ZM10.9128 9.25436V9.17263H10.3446V9.25436H10.5825V10.1392H10.6719V9.25436H10.9128Z" fill="#1D1D1B" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M10.3232 9.15241H10.9332V9.27567H10.6923V10.16H10.5618V9.27561H10.3233V9.15234L10.3232 9.15241ZM10.9128 9.25436V9.17263H10.3446V9.25436H10.5825V10.1392H10.6719V9.25436H10.9128Z" fill="#1D1D1B" />
                                     <path d="M11.6586 9.90231L11.978 9.11133L12.2973 9.90231L12.5564 9.16278H12.676L12.2973 10.2004L11.978 9.40554L11.6586 10.2004L11.2808 9.16278H11.3997L11.6586 9.90231V9.90231Z" fill="#1D1D1B" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.659 9.87309L11.9687 9.10765L11.9779 9.08423C11.9779 9.08423 12.2772 9.8258 12.2965 9.87309C12.3132 9.82522 12.5491 9.15245 12.5491 9.15245H12.6902L12.2974 10.2299C12.2974 10.2299 11.9958 9.47892 11.9779 9.43354C11.96 9.47892 11.6585 10.2299 11.6585 10.2299L11.2656 9.15239H11.4064L11.659 9.87309V9.87309ZM11.9779 9.13946C11.96 9.1833 11.668 9.90605 11.668 9.90605L11.6579 9.9314L11.392 9.17261H11.2951C11.305 9.19885 11.6418 10.1241 11.6587 10.1718C11.6775 10.1249 11.9779 9.37837 11.9779 9.37837C11.9779 9.37837 12.2779 10.1249 12.2966 10.1718C12.4183 9.83883 12.5397 9.50577 12.6608 9.17261H12.5635C12.5586 9.18624 12.2978 9.9314 12.2978 9.9314C12.2978 9.9314 11.9958 9.1833 11.9779 9.13946V9.13946ZM13.5827 10.1667C13.8636 10.1667 14.097 9.94125 14.097 9.65728C14.097 9.37466 13.8636 9.14586 13.5827 9.14586C13.3009 9.14586 13.0684 9.37466 13.0684 9.65728C13.0684 9.94125 13.3009 10.1667 13.5827 10.1667V10.1667ZM13.5826 10.0642C13.3586 10.0642 13.1779 9.8784 13.1779 9.656C13.1779 9.4322 13.3563 9.24743 13.5826 9.24749C13.8089 9.24749 13.9867 9.4322 13.9867 9.656C13.9867 9.87834 13.8065 10.0642 13.5826 10.0642Z" fill="#1D1D1B" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.5823 10.1767C13.2931 10.1767 13.0576 9.9435 13.0576 9.65716C13.0576 9.36903 13.2931 9.1355 13.5823 9.1355C13.8715 9.1355 14.1069 9.3691 14.1069 9.65716C14.1069 9.9435 13.8714 10.1767 13.5823 10.1767ZM13.5823 9.15611C13.3041 9.15611 13.0778 9.38062 13.0778 9.65723C13.0778 9.93243 13.3041 10.1562 13.5823 10.1562C13.8601 10.1562 14.0868 9.93243 14.0868 9.65716C14.0868 9.38068 13.86 9.15604 13.5823 9.15604V9.15611Z" fill="#1D1D1B" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.5821 10.0747C13.3535 10.0747 13.167 9.8877 13.167 9.65609C13.167 9.42531 13.3535 9.23766 13.5821 9.23766C13.8106 9.23766 13.9962 9.42531 13.9962 9.65609C13.9962 9.8877 13.8106 10.0746 13.5821 10.0746V10.0747ZM13.5821 9.25807C13.3645 9.25807 13.1879 9.43683 13.1879 9.65609C13.1879 9.87548 13.3645 10.0544 13.5821 10.0544C13.7997 10.0544 13.9757 9.87554 13.9757 9.65609C13.9757 9.43689 13.7996 9.25814 13.5821 9.25814V9.25807ZM14.5731 10.1497H14.6827V9.71625H14.7106L15.0084 10.1497H15.1434L14.8294 9.70729C14.9816 9.6943 15.0765 9.58691 15.0765 9.43503C15.0765 9.21283 14.9027 9.16284 14.7156 9.16284H14.5731V10.1497V10.1497ZM14.7169 9.61948H14.6827V9.26473H14.7156C14.8477 9.26473 14.9668 9.28092 14.9668 9.44278C14.9668 9.59606 14.841 9.61942 14.7169 9.61942V9.61948Z" fill="#1D1D1B" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5635 9.15241H14.5738V9.15234H14.7164C14.9663 9.15234 15.0876 9.2445 15.0876 9.4349C15.0876 9.58678 14.9929 9.69321 14.8474 9.71318C14.8631 9.73602 15.1643 10.16 15.1643 10.16H15.144L15.0009 10.1554C15.0009 10.1554 14.7108 9.73397 14.7108 9.72649H14.6939V10.16H14.5635V9.15241V9.15241ZM15.067 9.4349C15.067 9.25609 14.9553 9.17263 14.7163 9.17263C14.7163 9.17263 14.6016 9.17263 14.5838 9.1725V10.1392H14.673V9.70588H14.6834L14.7193 9.71036C14.7193 9.71036 15.0093 10.1317 15.0093 10.1392H15.1245L14.811 9.69878L14.8292 9.69705C14.9738 9.68489 15.067 9.58166 15.067 9.4349V9.4349Z" fill="#1D1D1B" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.6724 9.25439H14.7156C14.8422 9.25439 14.9771 9.26879 14.9771 9.44287C14.9771 9.60819 14.8381 9.62956 14.7168 9.62956H14.6724V9.25439ZM14.9563 9.44287C14.9563 9.28787 14.8423 9.27577 14.7157 9.27577H14.6932V9.60883H14.7168C14.8354 9.60883 14.9563 9.58918 14.9563 9.44287V9.44287Z" fill="#1D1D1B" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M11.659 9.87309L11.9687 9.10765L11.9779 9.08423C11.9779 9.08423 12.2772 9.8258 12.2965 9.87309C12.3132 9.82522 12.5491 9.15245 12.5491 9.15245H12.6902L12.2974 10.2299C12.2974 10.2299 11.9958 9.47892 11.9779 9.43354C11.96 9.47892 11.6585 10.2299 11.6585 10.2299L11.2656 9.15239H11.4064L11.659 9.87309V9.87309ZM11.9779 9.13946C11.96 9.1833 11.668 9.90605 11.668 9.90605L11.6579 9.9314L11.392 9.17261H11.2951C11.305 9.19885 11.6418 10.1241 11.6587 10.1718C11.6775 10.1249 11.9779 9.37837 11.9779 9.37837C11.9779 9.37837 12.2779 10.1249 12.2966 10.1718C12.4183 9.83883 12.5397 9.50577 12.6608 9.17261H12.5635C12.5586 9.18624 12.2978 9.9314 12.2978 9.9314C12.2978 9.9314 11.9958 9.1833 11.9779 9.13946V9.13946ZM13.5827 10.1667C13.8636 10.1667 14.097 9.94125 14.097 9.65728C14.097 9.37466 13.8636 9.14586 13.5827 9.14586C13.3009 9.14586 13.0684 9.37466 13.0684 9.65728C13.0684 9.94125 13.3009 10.1667 13.5827 10.1667V10.1667ZM13.5826 10.0642C13.3586 10.0642 13.1779 9.8784 13.1779 9.656C13.1779 9.4322 13.3563 9.24743 13.5826 9.24749C13.8089 9.24749 13.9867 9.4322 13.9867 9.656C13.9867 9.87834 13.8065 10.0642 13.5826 10.0642Z" fill="#1D1D1B" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M13.5823 10.1767C13.2931 10.1767 13.0576 9.9435 13.0576 9.65716C13.0576 9.36903 13.2931 9.1355 13.5823 9.1355C13.8715 9.1355 14.1069 9.3691 14.1069 9.65716C14.1069 9.9435 13.8714 10.1767 13.5823 10.1767ZM13.5823 9.15611C13.3041 9.15611 13.0778 9.38062 13.0778 9.65723C13.0778 9.93243 13.3041 10.1562 13.5823 10.1562C13.8601 10.1562 14.0868 9.93243 14.0868 9.65716C14.0868 9.38068 13.86 9.15604 13.5823 9.15604V9.15611Z" fill="#1D1D1B" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M13.5821 10.0747C13.3535 10.0747 13.167 9.8877 13.167 9.65609C13.167 9.42531 13.3535 9.23766 13.5821 9.23766C13.8106 9.23766 13.9962 9.42531 13.9962 9.65609C13.9962 9.8877 13.8106 10.0746 13.5821 10.0746V10.0747ZM13.5821 9.25807C13.3645 9.25807 13.1879 9.43683 13.1879 9.65609C13.1879 9.87548 13.3645 10.0544 13.5821 10.0544C13.7997 10.0544 13.9757 9.87554 13.9757 9.65609C13.9757 9.43689 13.7996 9.25814 13.5821 9.25814V9.25807ZM14.5731 10.1497H14.6827V9.71625H14.7106L15.0084 10.1497H15.1434L14.8294 9.70729C14.9816 9.6943 15.0765 9.58691 15.0765 9.43503C15.0765 9.21283 14.9027 9.16284 14.7156 9.16284H14.5731V10.1497V10.1497ZM14.7169 9.61948H14.6827V9.26473H14.7156C14.8477 9.26473 14.9668 9.28092 14.9668 9.44278C14.9668 9.59606 14.841 9.61942 14.7169 9.61942V9.61948Z" fill="#1D1D1B" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M14.5635 9.15241H14.5738V9.15234H14.7164C14.9663 9.15234 15.0876 9.2445 15.0876 9.4349C15.0876 9.58678 14.9929 9.69321 14.8474 9.71318C14.8631 9.73602 15.1643 10.16 15.1643 10.16H15.144L15.0009 10.1554C15.0009 10.1554 14.7108 9.73397 14.7108 9.72649H14.6939V10.16H14.5635V9.15241V9.15241ZM15.067 9.4349C15.067 9.25609 14.9553 9.17263 14.7163 9.17263C14.7163 9.17263 14.6016 9.17263 14.5838 9.1725V10.1392H14.673V9.70588H14.6834L14.7193 9.71036C14.7193 9.71036 15.0093 10.1317 15.0093 10.1392H15.1245L14.811 9.69878L14.8292 9.69705C14.9738 9.68489 15.067 9.58166 15.067 9.4349V9.4349Z" fill="#1D1D1B" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M14.6724 9.25439H14.7156C14.8422 9.25439 14.9771 9.26879 14.9771 9.44287C14.9771 9.60819 14.8381 9.62956 14.7168 9.62956H14.6724V9.25439ZM14.9563 9.44287C14.9563 9.28787 14.8423 9.27577 14.7157 9.27577H14.6932V9.60883H14.7168C14.8354 9.60883 14.9563 9.58918 14.9563 9.44287V9.44287Z" fill="#1D1D1B" />
                                     <path d="M16.1399 9.16284H16.2878L15.8245 9.62262L16.3033 10.1497H16.1515L15.747 9.69686L15.7195 9.72374V10.1497H15.6094V9.16284H15.7194V9.58543L16.1399 9.16284H16.1399Z" fill="#1D1D1B" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.1358 9.15234H16.3121C16.3121 9.15234 15.8524 9.60866 15.838 9.62281C15.8516 9.6367 16.3269 10.16 16.3269 10.16H16.3033L16.1439 10.1565C16.1439 10.1565 15.7601 9.72642 15.7462 9.71145L15.7457 9.7119C15.7392 9.7181 15.7311 9.72585 15.73 9.72533V10.1599H15.5996V9.15234H15.73V9.56079C15.7618 9.52789 16.1358 9.15234 16.1358 9.15234H16.1358ZM15.8101 9.62198C15.8101 9.62198 16.2297 9.20578 16.2626 9.17257H16.1438C16.1381 9.17865 15.7093 9.61052 15.7093 9.61052V9.17257H15.6202V10.1392H15.7092C15.7092 10.1196 15.7121 9.71676 15.7121 9.71676L15.7474 9.68149L15.7543 9.68982C15.7543 9.68982 16.1515 10.134 16.1515 10.1392H16.2801C16.251 10.1068 15.81 9.62198 15.81 9.62198H15.8101Z" fill="#1D1D1B" />
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.7198 0H21.2798C22.3422 0 23.1998 0.8576 23.1998 1.92V14.08C23.1998 15.1424 22.3422 16 21.2798 16H2.7198C1.6574 16 0.799805 15.1424 0.799805 14.08V1.92C0.799805 0.8576 1.6574 0 2.7198 0ZM22.5598 1.92C22.5598 1.216 21.9838 0.64 21.2798 0.64H2.7198C2.0158 0.64 1.4398 1.216 1.4398 1.92V14.08C1.4398 14.784 2.0158 15.36 2.7198 15.36H21.2798C21.9838 15.36 22.5598 14.784 22.5598 14.08V1.92Z" fill="#E7E7E7" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M16.1358 9.15234H16.3121C16.3121 9.15234 15.8524 9.60866 15.838 9.62281C15.8516 9.6367 16.3269 10.16 16.3269 10.16H16.3033L16.1439 10.1565C16.1439 10.1565 15.7601 9.72642 15.7462 9.71145L15.7457 9.7119C15.7392 9.7181 15.7311 9.72585 15.73 9.72533V10.1599H15.5996V9.15234H15.73V9.56079C15.7618 9.52789 16.1358 9.15234 16.1358 9.15234H16.1358ZM15.8101 9.62198C15.8101 9.62198 16.2297 9.20578 16.2626 9.17257H16.1438C16.1381 9.17865 15.7093 9.61052 15.7093 9.61052V9.17257H15.6202V10.1392H15.7092C15.7092 10.1196 15.7121 9.71676 15.7121 9.71676L15.7474 9.68149L15.7543 9.68982C15.7543 9.68982 16.1515 10.134 16.1515 10.1392H16.2801C16.251 10.1068 15.81 9.62198 15.81 9.62198H15.8101Z" fill="#1D1D1B" />
+                                    <path fillRule="evenodd" clipRule="evenodd" d="M2.7198 0H21.2798C22.3422 0 23.1998 0.8576 23.1998 1.92V14.08C23.1998 15.1424 22.3422 16 21.2798 16H2.7198C1.6574 16 0.799805 15.1424 0.799805 14.08V1.92C0.799805 0.8576 1.6574 0 2.7198 0ZM22.5598 1.92C22.5598 1.216 21.9838 0.64 21.2798 0.64H2.7198C2.0158 0.64 1.4398 1.216 1.4398 1.92V14.08C1.4398 14.784 2.0158 15.36 2.7198 15.36H21.2798C21.9838 15.36 22.5598 14.784 22.5598 14.08V1.92Z" fill="#E7E7E7" />
                                 </g>
                                 <defs>
                                     <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12.5986 6.87641) scale(1.55326 1.5185)">
-                                        <stop offset="0.006" stop-color="#FFF2E8" />
-                                        <stop offset="0.096" stop-color="#FEEDDF" />
-                                        <stop offset="0.244" stop-color="#FDE1C7" />
-                                        <stop offset="0.43" stop-color="#FACD9F" />
-                                        <stop offset="0.648" stop-color="#F6B168" />
-                                        <stop offset="0.89" stop-color="#F08E22" />
-                                        <stop offset="1" stop-color="#EE7D00" />
+                                        <stop offset="0.006" stopColor="#FFF2E8" />
+                                        <stop offset="0.096" stopColor="#FEEDDF" />
+                                        <stop offset="0.244" stopColor="#FDE1C7" />
+                                        <stop offset="0.43" stopColor="#FACD9F" />
+                                        <stop offset="0.648" stopColor="#F6B168" />
+                                        <stop offset="0.89" stopColor="#F08E22" />
+                                        <stop offset="1" stopColor="#EE7D00" />
                                     </radialGradient>
                                     <clipPath id="clip0">
                                         <rect width="22.4" height="16" fill="white" transform="translate(0.799805)" />
@@ -1392,38 +1389,32 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                         </span>
                     </div>
                 </div>
-                <div className="bg-lff_700 w-full h-0.5 mb-8"></div>
+
             </div>
             <div className="w-full flex space-x-16 relative z-50">
                 <div className="w-1/2">
-                    <label htmlFor="expiry" className="block text-lff_800 font-sorts font-bold text-lg">Expiry</label>
-                    <div className="flex font-sen py-0.5 text-xl">
-                        <input
-                            id="expiry"
-                            className="appearance-none bg-transparent leading-tight focus:outline-none w-full placeholder-lffbg"
-                            type="tel"
-                            placeholder="MM / YY"
-                            onKeyDown={e => handleExpiry(e)}
-                            onBlur={() => refreshExpiryMonthValidation()}
-                            onPaste={e => handleExpiryPaste(e)}
-                            value={expiryMonthYear}
-                        />
-                    </div>
-                    <div className="bg-lff_700 w-full h-0.5 mb-8"></div>
+                    <label htmlFor="expiry" className="font-sorts mb-4 text-lg text-lff_900">Expiry</label>
+                    <input
+                        id="expiry"
+                        className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                        type="tel"
+                        placeholder="mm / yy"
+                        onKeyDown={e => handleExpiry(e)}
+                        onBlur={() => refreshExpiryMonthValidation()}
+                        onPaste={e => handleExpiryPaste(e)}
+                        value={expiryMonthYear}
+                    />
                 </div>
                 <div className="w-1/2 relative z-50">
-                    <label htmlFor="cvn" className="block text-lff_800 font-sorts font-bold text-lg">CVC</label>
-                    <div className="flex font-sen py-0.5 text-xl">
-                        <input
-                            ref={cvcInput}
-                            id="cvn"
-                            className="appearance-none bg-transparent leading-tight focus:outline-none w-full placeholder-lffbg"
-                            type="password"
-                            placeholder=""
-                            onChange={e => handleCvn(e.target.value)}
-                        />
-                    </div>
-                    <div className="bg-lff_700 w-full h-0.5 mb-8"></div>
+                    <label htmlFor="cvn" className="font-sorts mb-4 text-lg text-lff_900">CVC</label>
+                    <input
+                        ref={cvcInput}
+                        id="cvn"
+                        className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                        type="password"
+                        placeholder="xxx"
+                        onChange={e => handleCvn(e.target.value)}
+                    />
                 </div>
             </div>
             {/* <div id="donate-button-container">
