@@ -3,9 +3,10 @@ import Layout from '../../components/Layout'
 import Container from '../../components/Container'
 import { getOurStory } from '../../lib/pages'
 import TheTeam from '../../components/TheTeam'
+import Logo from '../../components/Logo'
+
 
 const Index = ({ page }) => {
-
 
     return (
         <>
@@ -14,6 +15,7 @@ const Index = ({ page }) => {
                     <title>Our Story | The Luigi Footprints</title>
                 </Head>
                 <section className="flex md:justify-center md:min-h-screen">
+                    <Logo />
                     <Container>
                         <div className="h-1/2 flex items-center w-full justify-center">
                             <h1 className="text-5xl md:text-6xl text-lff_800 text-center font-extrabold tracking-wider">Our Story</h1>

@@ -4,6 +4,7 @@ import HeroProject from '../../components/HeroProject'
 import Intro from '../../components/Intro'
 import Layout from '../../components/Layout'
 import { getAllProjectsForHome } from '../../lib/api'
+import Logo from '../../components/Logo'
 
 const Index = ({ allProjects: { edges }, preview }) => {
     const heroProject = edges[0]?.node
@@ -18,6 +19,7 @@ const Index = ({ allProjects: { edges }, preview }) => {
 
                 <Intro />
                 <section className="flex items-center py-28 min-h-screen bg-lff_100">
+                    <Logo />
                     {heroProject && (
                         <HeroProject
                             title={heroProject.title}

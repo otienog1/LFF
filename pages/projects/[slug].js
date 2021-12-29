@@ -12,6 +12,7 @@ import SectionSeparator from '../../components/SectionSeparator'
 // import { getAllProjectsWithSlug, getProjectAndMoreProjects } from '../../lib/api'
 import { getProjectBySlug, getAllProjects, getRelatedProjects, projectPathBySlug } from '../../lib/projects'
 import { categoryPathBySlug } from '../../lib/catogories'
+import Logo from '../../components/Logo'
 
 export default function Project({ project, relatedProjects }) {
     const {
@@ -37,6 +38,7 @@ export default function Project({ project, relatedProjects }) {
                             content={featuredImage?.sourceUrl}
                         />
                     </Head>
+                    <Logo />
                     <ProjectHeader
                         title={title}
                         coverImage={featuredImage}

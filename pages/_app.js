@@ -89,7 +89,7 @@ function MyApp({ Component, pageProps, router }) {
                 >
                     <>
                         <Component {...pageProps} />
-                        <div ref={overlay} className="z-50 bg-lff_200 fixed w-full bottom-0 h-0"></div>
+                        <div ref={overlay} className="z-50 bg-lff_600 fixed w-full bottom-0 h-0"></div>
                     </>
                 </Transition>
             </SwitchTransition>
