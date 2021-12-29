@@ -17,14 +17,14 @@ export const CREATE_MESSAGE = gql`
     }`
 
 export const SEND_EMAIL = gql`
-    mutation EmailMutation($from: String!, $subject: String!, $body: String!) {
+    mutation SEND_EMAIL($from: String!, $subject: String!, $body: String!) {
         sendEmail(
             input: {
-                clientMutationId: "sendEmail", 
                 to: "otienog1@gmail.com", 
                 from: $from, 
                 subject: $subject, 
-                body: $body
+                body: $body,
+                clientMutationId: "sendEmail"
             }
         ) {
             message
