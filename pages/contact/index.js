@@ -122,8 +122,8 @@ export const ContactForm = () => {
 
                         sendEmail({
                             variables: {
-                                from: `${name} <${email}>`,
-                                subject: `New Contact From ${name}`,
+                                from: email,
+                                subject: `New LFF Website Message from - ${name}`,
                                 body: message
                             }
                         }).then(() => {
