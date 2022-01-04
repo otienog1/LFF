@@ -16,7 +16,7 @@ const Index = ({ page }) => {
                 <section className='bg-lff_600'>
                     <Logo />
                     <div className='h-screen'>
-                        <div className="flex md:h-1/3 justify-center items-end mb-40">
+                        <div className="flex md:h-1/2 justify-center items-end mb-40">
                             <Container>
                                 <h1 className="text-5xl md:text-7xl text-lff_400 text-center tracking-widest font-bold">Our Story</h1>
                             </Container>
