@@ -18,8 +18,8 @@ const Alert = ({ alert }) => {
             </div>
 
             <div className="flex flex-col">
-                <span class="font-semibold mb-1">{alert.title}</span>
-                <span class="block sm:inline">{alert.message && Object.keys(alert.message).map((message, i) => <li key={i}>{alert.message[message]}</li>)}</span>
+                <span class="mb-1">{alert.title}</span>
+                <span class="block sm:inline text-sm">{alert.message && Object.keys(alert.message).map((message, i) => <li key={i}>{alert.message[message]}</li>)}</span>
             </div>
         </div>
     )

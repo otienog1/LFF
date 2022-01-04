@@ -30,8 +30,8 @@ const TheTeam = ({ title, trustees }) => {
         <section className="flex justify-end bg-lff_900 py-40 text-lff_100 relative px-4 md:px-0">
             <Container>
                 <>
-                    <h4 className="text-sm uppercase font-bold" dangerouslySetInnerHTML={{ __html: title[0] }}></h4>
-                    <h2 className="text-5xl md:text-7xl font-bold my-20 tracking-tighter" dangerouslySetInnerHTML={{ __html: title[1] }}></h2>
+                    <h4 className="text-sm" dangerouslySetInnerHTML={{ __html: title[0] }}></h4>
+                    <h2 className="text-5xl md:text-7xl font-bold my-20 tracking-widest text-lff_400" dangerouslySetInnerHTML={{ __html: title[1] }}></h2>
                     <div className="flex flex-wrap" ref={elem}>
                         {newTrustees.map((trustee, i) => <Trustee trustee={trustee[1]} key={i} />)}
                     </div>
@@ -45,11 +45,6 @@ const TheTeam = ({ title, trustees }) => {
 const Trustee = ({ trustee }) => {
     const elem = useRef(null),
         image = useRef(null)
-
-    let webp = trustee[0].thumb.sourceUrl
-
-    let jpeg = webp.split('.')
-    jpeg = `${jpeg[0]}.${jpeg[1]}.jpg`
 
     let imageFallback
     if (typeof window !== 'undefined')
@@ -98,12 +93,15 @@ const Trustee = ({ trustee }) => {
     return (
         <>
             <div ref={elem} className="member relative w-1/2 md:w-1/3 px-3 mb-6 z-50 cursor-pointer" onClick={() => handleClick()}>
-                <div ref={image} className="picture w-full">
-                    <img className="w-full" src={webp} />
+                <div ref={image} className="w-full">
+                    <img className="w-full" src={trustee[0].thumb.sourceUrl} />
                 </div>
                 <div className="">
                     <span className="name block text-xl font-bold mb-0 mt-4 leading-tight" dangerouslySetInnerHTML={{ __html: trustee[0].name }}></span>
                     <span className="title text-sm text-center flex" dangerouslySetInnerHTML={{ __html: trustee[0].title }}></span>
+                </div>
+                <div ref={image} className="picture hidden">
+                    <img className="w-full" src={trustee[0].image.sourceUrl} />
                 </div>
                 <div className="content text-sm hidden" dangerouslySetInnerHTML={{ __html: trustee[0].text1 }}></div>
             </div>

@@ -96,81 +96,94 @@ export const QUERY_OURSTORY = gql`
     query OurStory {
         page(id: "cG9zdDoyNDE=") {
             ourStory {
+                heroContent
+                heroImage {
+                    sourceUrl
+                }
+                whoWeAreTitle
+                whoWeAreImage {
+                    sourceUrl
+                }
+                whoWeAreText
+                whoWeAreText1
                 title1
                 title2
                 trustees {
                     trustee1 {
-                        name
-                        title
-                        thumb {
-                            sourceUrl
-                        }
-                        image {
-                            sourceUrl
-                        }
-                        text1
-                        text2          
+                    name
+                    title
+                    thumb {
+                        sourceUrl
+                    }
+                    image {
+                        sourceUrl
+                    }
+                    text1
+                    text2
                     }
                     trustee2 {
-                        name
-                        title
-                        thumb {
-                            sourceUrl
-                        }
-                        image {
-                            sourceUrl
-                        }
-                        text1
-                        text2          
+                    name
+                    title
+                    thumb {
+                        sourceUrl
                     }
-                    trustee3{
-                        name
-                        title
-                        thumb {
-                            sourceUrl
-                        }
-                        image {
-                            sourceUrl
-                        }
-                        text1
-                        text2
+                    image {
+                        sourceUrl
+                    }
+                    text1
+                    text2
+                    }
+                    trustee3 {
+                    name
+                    title
+                    thumb {
+                        sourceUrl
+                    }
+                    image {
+                        sourceUrl
+                    }
+                    text1
+                    text2
                     }
                     trustee4 {
-                        name
-                        title
-                        thumb {
-                            sourceUrl
-                        }
-                        image {
-                            sourceUrl
-                        }
-                        text1
-                        text2          
+                    name
+                    title
+                    thumb {
+                        sourceUrl
+                    }
+                    image {
+                        sourceUrl
+                    }
+                    text1
+                    text2
                     }
                     trustee5 {
-                        name
-                        title
-                        thumb {
-                            sourceUrl
-                        }
-                        image {
-                            sourceUrl
-                        }
-                        text1
-                        text2          
+                    name
+                    title
+                    thumb {
+                        sourceUrl
+                    }
+                    image {
+                        sourceUrl
+                    }
+                    text1
+                    text2
                     }
                     trustee6 {
-                        name
-                        title
-                        thumb {
-                            sourceUrl
-                        }
-                        image {
-                            sourceUrl
-                        }
-                        text1
-                        text2          
+                    name
+                    title
+                    thumb {
+                        sourceUrl
                     }
+                    image {
+                        sourceUrl
+                    }
+                    text1
+                    text2
+                    }
+                }
+                banner {
+                    sourceUrl
                 }
             }
         }
