@@ -123,7 +123,7 @@ export const ContactForm = () => {
                         sendEmail({
                             variables: {
                                 from: email,
-                                subject: `New LFF Website Message from - ${name}`,
+                                subject: `LFF Website Contact Page Message From - ${name}`,
                                 body: `<table>
                                 <tbody>
                                 <tr>
