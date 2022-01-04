@@ -124,7 +124,20 @@ export const ContactForm = () => {
                             variables: {
                                 from: email,
                                 subject: `New LFF Website Message from - ${name}`,
-                                body: message
+                                body: `<table>
+                                <tbody>
+                                <tr>
+                                <td> Message: ${message}<td>
+                                </tr>
+                                <tr>
+                                <td>
+                                <br/>
+                                <br/>
+                                Message from: <br/><br/> Name: ${name} <br>Email: ${email}
+                                </td>
+                                </tr>
+                                </tbody>
+                                </table>`
                             }
                         }).then(() => {
                             setName('')
