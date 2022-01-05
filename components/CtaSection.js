@@ -26,7 +26,7 @@ const CtaSection = ({ image, title, content }) => {
                         </div>
                         <div className="flex justify-center relative">
                             <Link href="/donate">
-                                <a className="inline-block px-16 py-5 bg-lffvegas_300 font-bold text-lff_800 cursor-pointer hover:bg-lffvegas_500 transition-all text-sm tracking-widest">SEND A DONATION</a>
+                                <a className="inline-block px-16 py-5 bg-lffvegas_300 font-bold text-lff_800 cursor-pointer hover:bg-lffvegas_500 transition-all text-sm tracking-widest lowercase">Make a Donation</a>
                             </Link>
                         </div>
                     </div>

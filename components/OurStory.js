@@ -21,7 +21,7 @@ const OurStory = ({ title, intro, content, image }) => {
                         <div className="hidden md:block">
                             <Link href="/our-story">
                                 <a
-                                    className="mt-16 inline-block px-12 py-6 text-sm tracking-wider shadow bg-lffvegas_600 text-lff_100 font-sen"
+                                    className="mt-16 inline-block px-12 py-6 text-sm tracking-wider shadow bg-lffvegas_600 text-lff_100 font-sen lowercase"
                                 >Our Story</a>
                             </Link>
                         </div>
