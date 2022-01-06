@@ -17,10 +17,10 @@ export const CREATE_MESSAGE = gql`
     }`
 
 export const SEND_EMAIL = gql`
-    mutation SEND_EMAIL($from: String!, $subject: String!, $body: String!) {
+    mutation SEND_EMAIL($to: String!, $from: String!, $subject: String!, $body: String!) {
         sendEmail(
             input: {
-                to: "info@theluigifootprints.org", 
+                to: $to, 
                 from: $from, 
                 subject: $subject, 
                 body: $body,

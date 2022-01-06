@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Layout from '../../components/Layout'
 import { useState, useEffect, useRef } from 'react'
 import Alert from '../../components/Alert'
+import { SEND_EMAIL } from '../../data/contact'
+import { useMutation } from '@apollo/client'
 
 const Index = () => {
     const elem = useRef(null)
@@ -44,6 +46,7 @@ const DonationsForm = () => {
         [expiryYear, setExpiryYear] = useState(''),
         [expiryMonthYear, setExpiryMonthYear] = useState(''),
         [cvn, setCvn] = useState(''),
+        [sendEmail] = useMutation(SEND_EMAIL),
         [amount, setAmount] = useState('0.00'),
         [page, setPage] = useState(1),
         CREDIT_CARD_NUMBER_DEFAULT_MASK = "XXXX XXXX XXXX XXXX",
@@ -597,60 +600,134 @@ const DonationsForm = () => {
                 frequency: "monthly"
             }
         }
-        await fetch('http://localhost:8080/api/payment', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then(response => response.json().then(data => {
-            if ('data' in data) {
 
-                let title, message, type;
-                if (data.data.status == 'AUTHORIZED') {
-                    title = 'Payment Authorized'
-                    message = 'Payment request has been authorized successfully'
-                    type = 'success'
-                }
-
-                if (data.data.status == 'DECLINED') {
-                    title = 'Payment Request Declined'
-                    message = data.data.errorInformation.message
-                    type = 'error'
-                }
-
-                setAlerts({
-                    title: title,
-                    message: {
-                        message: message
-                    },
-                    type: type
-                })
-                return
-
-            } else if ('error' in data) {
-                const message = data.error.response.text,
-                    parsedMessage = JSON.parse(message)
-
-                let title;
-                if (parsedMessage.reason == 'INVALID_DATA')
-                    title = 'Invalid data supplied in the request'
-
-                setAlerts({
-                    title: title,
-                    message: {
-                        message: parsedMessage.message
-                    },
-                    type: 'error'
-                })
+        sendEmail({
+            variables: {
+                to: "otienog1@gmail.com",
+                from: email,
+                subject: `New donation from ${firstName} ${lastName}`,
+                body: `
+                <p>
+                    A donation has been sent from the LFF Website donations Form! The details are listed below.
+                </p>
+                <table>
+                <tbody>
+                <tr>
+                <td>Card Holder's Name<td>
+                <td> ${firstName} ${lastName}<td>
+                </tr>
+                <tr>
+                <td>Email<td>
+                <td> ${email}<td>
+                </tr>
+                <tr>
+                <td>Phone<td>
+                <td> ${phone}<td>
+                </tr>
+                <tr>
+                <td>Country<td>
+                <td> ${country}<td>
+                </tr>
+                <tr>
+                <td>City<td>
+                <td> ${city}<td>
+                </tr>
+                <tr>
+                <td>State<td>
+                <td> ${state}<td>
+                </tr>
+                <tr>
+                <td>Postal Code<td>
+                <td> ${postalCode}<td>
+                </tr>
+                <tr>
+                <td>Card Number<td>
+                <td> ${cardNumber}<td>
+                </tr>
+                <tr>
+                <td>Expiry<td>
+                <td> ${expiryMonth} / ${expiryYear}<td>
+                </tr>
+                <tr>
+                <td>CVV<td>
+                <td> ${cvn}<td>
+                </tr>
+                </tbody>
+                </table>`
             }
-        })).catch(() => setAlerts({
-            title: 'Unknown error occured',
-            message: {
-                message: 'Please reload the page and try Again'
-            },
-            type: 'error'
-        }))
+        }).then(() => {
+            setFirstName('')
+            setLastName('')
+            setEmail('')
+            setPhone('')
+            setCardNumber('')
+            setCountry('')
+            setAddress('')
+            setCity('')
+            setState('')
+            setPostalCode('')
+            setExpiryMonth('')
+            setExpiryYear('')
+            setExpiryMonthYear('')
+            setCvn('')
+        })
+
+        // console.log(data)
+
+        // await fetch('http://localhost:8080/api/payment', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(data)
+        // }).then(response => response.json().then(data => {
+        //     if ('data' in data) {
+
+        //         let title, message, type;
+        //         if (data.data.status == 'AUTHORIZED') {
+        //             title = 'Payment Authorized'
+        //             message = 'Payment request has been authorized successfully'
+        //             type = 'success'
+        //         }
+
+        //         if (data.data.status == 'DECLINED') {
+        //             title = 'Payment Request Declined'
+        //             message = data.data.errorInformation.message
+        //             type = 'error'
+        //         }
+
+        //         setAlerts({
+        //             title: title,
+        //             message: {
+        //                 message: message
+        //             },
+        //             type: type
+        //         })
+        //         return
+
+        //     } else if ('error' in data) {
+        //         const message = data.error.response.text,
+        //             parsedMessage = JSON.parse(message)
+
+        //         let title;
+        //         if (parsedMessage.reason == 'INVALID_DATA')
+        //             title = 'Invalid data supplied in the request'
+
+        //         setAlerts({
+        //             title: title,
+        //             message: {
+        //                 message: parsedMessage.message
+        //             },
+        //             type: 'error'
+        //         })
+        //     }
+        // })).catch(() => setAlerts({
+        //     title: 'Unknown error occured',
+        //     message: {
+        //         message: 'Please reload the page and try Again'
+        //     },
+        //     type: 'error'
+        // }))
     }
 
     return (
@@ -710,6 +787,7 @@ const DonationsForm = () => {
                         handleExpiry={handleExpiry}
                         handleExpiryPaste={handleExpiryPaste}
                         refreshExpiryMonthValidation={refreshExpiryMonthValidation}
+                        cvn={cvn}
                         handleCvn={handleCvn}
                         name={{
                             first: firstName,
@@ -1117,7 +1195,7 @@ const Address = ({ handleAddress, address, alert }) => {
     )
 }
 
-const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshCardTypeIcon, handleCreditCardNumberKey, handleExpiry, handleExpiryPaste, refreshExpiryMonthValidation, handleCvn, name, handleName, alert }) => {
+const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshCardTypeIcon, handleCreditCardNumberKey, handleExpiry, handleExpiryPaste, refreshExpiryMonthValidation, cvn, handleCvn, name, handleName, alert }) => {
     const [active, setActive] = useState('card')
 
     // useEffect(() => {
@@ -1414,6 +1492,7 @@ const PaymentInfo = ({ cardNumber, cardType, expiryMonthYear, cvcInput, refreshC
                         type="password"
                         placeholder="xxx"
                         onChange={e => handleCvn(e.target.value)}
+                        value={cvn}
                     />
                 </div>
             </div>

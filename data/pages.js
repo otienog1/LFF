@@ -169,18 +169,18 @@ export const QUERY_OURSTORY = gql`
                     text1
                     text2
                     }
-                    trustee6 {
-                    name
-                    title
-                    thumb {
-                        sourceUrl
-                    }
-                    image {
-                        sourceUrl
-                    }
-                    text1
-                    text2
-                    }
+                    # trustee6 {
+                    # name
+                    # title
+                    # thumb {
+                    #     sourceUrl
+                    # }
+                    # image {
+                    #     sourceUrl
+                    # }
+                    # text1
+                    # text2
+                    # }
                 }
                 banner {
                     sourceUrl

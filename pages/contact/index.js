@@ -122,6 +122,7 @@ export const ContactForm = () => {
 
                         sendEmail({
                             variables: {
+                                to: "info@theluigifootprints.org",
                                 from: email,
                                 subject: `LFF Website Contact Page Message From - ${name}`,
                                 body: `<table>
