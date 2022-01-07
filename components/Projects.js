@@ -64,6 +64,7 @@ const Projects = ({ projects, text, title }) => {
                             <div className='relative w-1/2 overflow-hidden border-b border-l border-lff_600 third-child:border-b-0 last:border-b-0' key={i}>
                                 <Link href={''}>
                                     <a className="flex project">
+                                        <span className="decoration-wavy hidden"></span>
                                         <span className="block text-lff_800 text-3xl leading-tight tracking-widest w-1/2 absolute bottom-8 left-4 underline-offset-8 z-50" dangerouslySetInnerHTML={{ __html: work.text }}></span>
                                         <img className="w-full object-fill h-full opacity-0 scale-105 rotate-3" src={work.image.sourceUrl} />
                                     </a>
