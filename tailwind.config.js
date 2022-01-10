@@ -5,13 +5,13 @@ module.exports = {
         "./components/**/*.{js,ts,jsx,tsx}"
     ],
     theme: {
-        screens: {
-            'sm': '576px',
-            'md': '960px',
-            'lg': '1440px',
-            'xl': '1600px',
-            '2xl': '1920px',
-        },
+        // screens: {
+        //     'sm': '576px',
+        //     'md': '960px',
+        //     'lg': '1440px',
+        //     'xl': '1600px',
+        //     '2xl': '1920px',
+        // },
         extend: {
             fontFamily: {
                 itc: ["ITC Berkeley Oldstyle Std"],
@@ -149,7 +149,7 @@ module.exports = {
                         maxWidth: '768px',
                     },
                     '@screen md': {
-                        maxWidth: '1024px',
+                        maxWidth: '1152px',
                     },
                     '@screen lg': {
                         maxWidth: '1024px',
