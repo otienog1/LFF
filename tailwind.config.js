@@ -133,6 +133,9 @@ module.exports = {
             },
             animation: {
                 timer: 'timer 8s linear forwards',
+            },
+            screens: {
+                '3xl': '1920px',
             }
         },
     },
@@ -149,15 +152,18 @@ module.exports = {
                         maxWidth: '768px',
                     },
                     '@screen md': {
-                        maxWidth: '1152px',
+                        maxWidth: '1024px',
                     },
                     '@screen lg': {
                         maxWidth: '1024px',
                     },
                     '@screen xl': {
-                        maxWidth: '1280px',
+                        maxWidth: '1200px',
                     },
                     '@screen 2xl': {
+                        maxWidth: '1440px',
+                    },
+                    '@screen 3xl': {
                         maxWidth: '1536px',
                     },
                 }
