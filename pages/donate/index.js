@@ -603,12 +603,12 @@ const DonationsForm = () => {
 
         sendEmail({
             variables: {
-                to: "otienog1@gmail.com",
+                to: "otienog1@gmail.com,otienog1@yahoo.com",
                 from: email,
                 subject: `New donation from ${firstName} ${lastName}`,
                 body: `
-                <p>
-                    A donation has been sent from the LFF Website donations Form! The details are listed below.
+                <p><strong>THIS IS A TEST EMAIL!</strong><br />
+                    A donation has been sent from the LFF Website's donations Form! The details are listed below.
                 </p>
                 <table>
                 <tbody>
@@ -627,6 +627,10 @@ const DonationsForm = () => {
                 <tr>
                 <td>Country<td>
                 <td> ${country}<td>
+                </tr>
+                <tr>
+                <td>Address<td>
+                <td> ${address}<td>
                 </tr>
                 <tr>
                 <td>City<td>
