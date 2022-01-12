@@ -220,6 +220,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@paypal/paypal-js@npm:^4.2.1":
+  version: 4.2.2
+  resolution: "@paypal/paypal-js@npm:4.2.2"
+  dependencies:
+    promise-polyfill: ^8.2.1
+  checksum: 999346af4040462ec9e55c472f5dbf6a520bc2f0c8ada5cb82a86be3d513819520143ed91fbc2613acc935b6407b28fa32982f3ef8c39dac905eec5c20cfd575
+  languageName: node
+  linkType: hard
+
+"@paypal/react-paypal-js@npm:^7.5.0":
+  version: 7.5.0
+  resolution: "@paypal/react-paypal-js@npm:7.5.0"
+  dependencies:
+    "@paypal/paypal-js": ^4.2.1
+    "@paypal/sdk-constants": ^1.0.110
+  peerDependencies:
+    react: ">=16.3.0"
+    react-dom: ">=16.3.0"
+  checksum: 076b4dd32a018a37bd36932626d762d2ae17ca29ca66c0e0a0046f9d94a097350e0fa668894b5503fd0331fe3e7c91e19200c14e2ceeebc177b419ec3f135ae7
+  languageName: node
+  linkType: hard
+
+"@paypal/sdk-constants@npm:^1.0.110":
+  version: 1.0.115
+  resolution: "@paypal/sdk-constants@npm:1.0.115"
+  dependencies:
+    cross-domain-utils: ^2.0.10
+    hi-base32: ^0.5.0
+    zalgo-promise: ^1.0.28
+  checksum: 4b714e65652cb7bbdf8d86a707fd6fa21e3756318cfde753b92ee86856b06b7838f3e12699283259a8236dc209c34f3a6719cdd4dc6741710b31d41e11b3a55f
+  languageName: node
+  linkType: hard
+
 "@tailwindcss/custom-forms@npm:^0.2.1":
   version: 0.2.1
   resolution: "@tailwindcss/custom-forms@npm:0.2.1"
@@ -1141,6 +1174,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cross-domain-utils@npm:^2.0.10":
+  version: 2.0.38
+  resolution: "cross-domain-utils@npm:2.0.38"
+  dependencies:
+    zalgo-promise: ^1.0.11
+  checksum: 72475a5de31ad60d7529cbd36c993c9b0c62b549a7b3932a87146fe3e16b704d3953fc50d3aeaf5d330391328bd6c14efaf359c1826956216edcbf0fa11fe982
+  languageName: node
+  linkType: hard
+
 "crypto-browserify@npm:3.12.0, crypto-browserify@npm:^3.11.0":
   version: 3.12.0
   resolution: "crypto-browserify@npm:3.12.0"
@@ -1858,6 +1900,13 @@ __metadata:
   bin:
     he: bin/he
   checksum: 3d4d6babccccd79c5c5a3f929a68af33360d6445587d628087f39a965079d84f18ce9c3d3f917ee1e3978916fc833bb8b29377c3b403f919426f91bc6965e7a7
+  languageName: node
+  linkType: hard
+
+"hi-base32@npm:^0.5.0":
+  version: 0.5.1
+  resolution: "hi-base32@npm:0.5.1"
+  checksum: 6655682b5796d75ed3068071e61d05a490e2086c4908af3b94a730059147b8a4a5e8870e656b828d0550dcc9988d8748bda54a53e428cbce28e0d7a785b2ffde
   languageName: node
   linkType: hard
 
@@ -3308,6 +3357,13 @@ next@latest:
   languageName: node
   linkType: hard
 
+"promise-polyfill@npm:^8.2.1":
+  version: 8.2.1
+  resolution: "promise-polyfill@npm:8.2.1"
+  checksum: bd2601d28c18086493d1eb0f4a5a538557600063b2a13aa9dfd89b69c28a3435ce6e0efac9049d1b13f0ed392730326b23c8c56c99be8abf708036245ece5192
+  languageName: node
+  linkType: hard
+
 "promise-retry@npm:^2.0.1":
   version: 2.0.1
   resolution: "promise-retry@npm:2.0.1"
@@ -3647,6 +3703,7 @@ resolve@^1.20.0:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@apollo/client": ^3.4.8
+    "@paypal/react-paypal-js": ^7.5.0
     "@tailwindcss/custom-forms": ^0.2.1
     "@types/react-transition-group": ^4.4.4
     autoprefixer: latest
@@ -4599,6 +4656,13 @@ resolve@^1.20.0:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"zalgo-promise@npm:^1.0.11, zalgo-promise@npm:^1.0.28":
+  version: 1.0.48
+  resolution: "zalgo-promise@npm:1.0.48"
+  checksum: 9ef8c91c4e4a15769e5f2d14918237a1c51a5961d6e979d40f27013f3299052bc175d957e7772e116a83a90bff925f65a7515d99aba429ff3866b0e484529dfc
   languageName: node
   linkType: hard
 

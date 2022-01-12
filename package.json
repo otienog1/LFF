@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.4.8",
+    "@paypal/react-paypal-js": "^7.5.0",
     "classnames": "^2.3.1",
     "cors": "^2.8.5",
     "date-fns": "^2.23.0",
