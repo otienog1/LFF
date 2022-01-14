@@ -4,7 +4,9 @@ import { useState, useEffect, useRef } from 'react'
 import Alert from '../../components/Alert'
 import { SEND_EMAIL } from '../../data/contact'
 import { useMutation } from '@apollo/client'
-import { PayPalScriptProvider, PayPalButtons, usePayPalHostedFields } from '@paypal/react-paypal-js'
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
+import countries from '../../components/countries'
+import Select from 'react-select'
 
 const Index = () => {
     const elem = useRef(null)
@@ -808,6 +810,7 @@ const DonationsForm = () => {
                         phone={phone}
                         address={address}
                         postalCode={postalCode}
+                        page={page}
                     />
                 </div>
 
@@ -966,13 +969,13 @@ const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentIn
                 <span className="h-5">PREVIOUS</span>
             </button>
             <button
-                className="text-lff_800 flex font-sen items-center text-sm  py-4 space-x-3 border-solid border border-lff_800 w-48 justify-center bg-lff_200 hover:bg-lff_400 disabled:opacity-50"
+                className="donate-button text-lff_800 flex font-sen items-center text-sm  py-4 space-x-3 border-solid border border-lff_800 w-48 justify-center bg-lff_200 hover:bg-lff_400 disabled:opacity-50"
                 onClick={() => page == 4 ? donate() : next()}
             // disabled={disabled ? true : false}
             >
                 {page == 4 ? (
                     <>
-                        <span className=" ">
+                        <span className="">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8.4135 13.8736C8.18683 13.9536 7.8135 13.9536 7.58683 13.8736C5.6535 13.2136 1.3335 10.4602 1.3335 5.79356C1.3335 3.73356 2.9935 2.06689 5.04016 2.06689C6.2535 2.06689 7.32683 2.65356 8.00016 3.56023C8.6735 2.65356 9.7535 2.06689 10.9602 2.06689C13.0068 2.06689 14.6668 3.73356 14.6668 5.79356C14.6668 10.4602 10.3468 13.2136 8.4135 13.8736Z" fill="#F6FFEB" stroke="#3F3F3F" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
@@ -1126,6 +1129,26 @@ const UserInfo = ({ handleUserInfo, details, alert, hasError }) => {
 }
 
 const Address = ({ handleAddress, address, alert }) => {
+
+    const customStyles = {
+        option: (provided, state) => ({
+            ...provided,
+            color: '',
+            padding: 4,
+        }),
+        control: () => ({
+            // none of react-select's styles are passed to <Control />
+            width: '100%',
+        }),
+        singleValue: (provided, state) => {
+            // const opacity = state.isDisabled ? 0.5 : 1;
+            const transition = 'opacity 300ms';
+
+            return { ...provided, transition };
+        }
+    }
+
+
     return (
         <>
             <div className="font-sorts text-3xl my-10 text-lff_900">Contact details</div>
@@ -1138,6 +1161,13 @@ const Address = ({ handleAddress, address, alert }) => {
                 <div className="w-full mb-5">
                     <label htmlFor="country" className="font-sorts mb-4 text-lg text-lff_900">Country</label>
                     <div className="flex font-sen py-0.5">
+                        <Select options={countries} styles={customStyles} name="country" className='flex' />
+                    </div>
+
+                </div>
+                {/* <div className="w-full mb-5">
+                    <label htmlFor="country" className="font-sorts mb-4 text-lg text-lff_900">Country</label>
+                    <div className="flex font-sen py-0.5">
                         <input
                             id="country"
                             className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
@@ -1148,7 +1178,7 @@ const Address = ({ handleAddress, address, alert }) => {
                         />
                     </div>
 
-                </div>
+                </div> */}
                 <div className="w-full mb-5">
                     <label htmlFor="address" className="font-sorts mb-4 text-lg text-lff_900">Address</label>
                     <div className="flex font-sen py-0.5">
@@ -1232,19 +1262,24 @@ const PaymentInfo = ({
     address,
     postalCode,
     amount,
+    page,
 }) => {
     const [active, setActive] = useState('card')
     const paypal = useRef(null)
 
     useEffect(() => {
         paypal.current.children[0].style.width = '50%'
-    }, [])
+
+        if (active == 'paypal' && page == 4) {
+            document.querySelector('.donate-button').classList.add('hidden')
+        }
+        else {
+            document.querySelector('.donate-button').classList.remove('hidden')
+        }
+    }, [active, page])
 
     return (
         <>
-            {/* <Head>
-                <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8" />
-            </Head> */}
             <div className="font-sorts text-3xl my-10 text-lff_900">Payment method</div>
 
             <div className={`${Object.keys(alert).length == 0 ? `hidden` : `flex`}`}>
@@ -1552,9 +1587,11 @@ const PaymentInfo = ({
 }
 
 const PayPal = ({ opt }) => {
-
     const approveOrder = async (data, actions) => {
-        return actions
+        return actions.order.capture().then(details => {
+            const name = `${details.payer.name.given_name} ${details.payer.name.surname}`;
+            console.log(details)
+        });
     }
 
     const createOrder = (data, actions) => {
@@ -1614,6 +1651,7 @@ const PayPal = ({ opt }) => {
                 "client-id": "Aa5CY17icgSMkET-vRSn6f-BI3bEi0aRgwFRFY5fbufk6AXA4HBFB9vRJt-I0CmWiGWVThzHlTOEzNpo",
                 components: "buttons",
                 currency: "USD",
+                intent: "capture",
             }}
         >
             <PayPalButtons
