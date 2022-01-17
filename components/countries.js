@@ -1070,7 +1070,7 @@ const countries = [
         "value": "TJ"
     },
     {
-        "label": "Tanzania, United Republic of Tanzania",
+        "label": "Tanzania",
         "dial_code": "+255",
         "value": "TZ"
     },

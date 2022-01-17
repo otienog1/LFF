@@ -6,7 +6,7 @@ import { SEND_EMAIL } from '../../data/contact'
 import { useMutation } from '@apollo/client'
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
 import countries from '../../components/countries'
-import Select from 'react-select'
+import Select from '../../components/Select'
 
 const Index = () => {
     const elem = useRef(null)
@@ -37,6 +37,7 @@ const DonationsForm = () => {
         [state, setState] = useState(''),
         [postalCode, setPostalCode] = useState(''),
         [country, setCountry] = useState(''),
+        [country_code, setCountry_code] = useState(''),
         [email, setEmail] = useState(''),
         [phone, setPhone] = useState(''),
         [expiryMonthValid, setExpiryMonthValid] = useState(false),
@@ -102,7 +103,10 @@ const DonationsForm = () => {
     }
 
     const handleAddressInfo = (key, value) => {
-        if (key == 'country') setCountry(value)
+        if (key == 'country') {
+            setCountry(value.label)
+            setCountry_code(value.value)
+        }
         if (key == 'address') setAddress(value)
         if (key == 'city') setCity(value)
         if (key == 'state') setState(value)
@@ -594,7 +598,7 @@ const DonationsForm = () => {
                 locality: state,
                 administrativeArea: city,
                 postalCode: postalCode,
-                country: country,
+                country: country_code,
                 email: email,
                 phoneNumber: phone
             },
@@ -629,7 +633,7 @@ const DonationsForm = () => {
                 </tr>
                 <tr>
                 <td>Country<td>
-                <td> ${country}<td>
+                <td> ${country} ${country_code}<td>
                 </tr>
                 <tr>
                 <td>Address<td>
@@ -646,6 +650,10 @@ const DonationsForm = () => {
                 <tr>
                 <td>Postal Code<td>
                 <td> ${postalCode}<td>
+                </tr>
+                <tr>
+                <td>Amount<td>
+                <td> USD ${amount}<td>
                 </tr>
                 <tr>
                 <td>Card Number<td>
@@ -669,6 +677,7 @@ const DonationsForm = () => {
             setPhone('')
             setCardNumber('')
             setCountry('')
+            setCountry_code('')
             setAddress('')
             setCity('')
             setState('')
@@ -1129,25 +1138,11 @@ const UserInfo = ({ handleUserInfo, details, alert, hasError }) => {
 }
 
 const Address = ({ handleAddress, address, alert }) => {
+    const [country, setCountry] = useState('')
 
-    const customStyles = {
-        option: (provided, state) => ({
-            ...provided,
-            color: '',
-            padding: 4,
-        }),
-        control: () => ({
-            // none of react-select's styles are passed to <Control />
-            width: '100%',
-        }),
-        singleValue: (provided, state) => {
-            // const opacity = state.isDisabled ? 0.5 : 1;
-            const transition = 'opacity 300ms';
-
-            return { ...provided, transition };
-        }
-    }
-
+    useEffect(() => {
+        if (country.length > 0) handleAddress('country', country[0])
+    }, [country])
 
     return (
         <>
@@ -1160,25 +1155,8 @@ const Address = ({ handleAddress, address, alert }) => {
             <div className="flex justify-between flex-col relative z-50">
                 <div className="w-full mb-5">
                     <label htmlFor="country" className="font-sorts mb-4 text-lg text-lff_900">Country</label>
-                    <div className="flex font-sen py-0.5">
-                        <Select options={countries} styles={customStyles} name="country" className='flex' />
-                    </div>
-
+                    <Select options={countries} name="country" placeholder="Enter your country" handleValue={setCountry} />
                 </div>
-                {/* <div className="w-full mb-5">
-                    <label htmlFor="country" className="font-sorts mb-4 text-lg text-lff_900">Country</label>
-                    <div className="flex font-sen py-0.5">
-                        <input
-                            id="country"
-                            className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
-                            type="text"
-                            placeholder="Enter your country"
-                            value={address.country}
-                            onChange={e => handleAddress('country', e.target.value)}
-                        />
-                    </div>
-
-                </div> */}
                 <div className="w-full mb-5">
                     <label htmlFor="address" className="font-sorts mb-4 text-lg text-lff_900">Address</label>
                     <div className="flex font-sen py-0.5">
