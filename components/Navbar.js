@@ -110,7 +110,7 @@ export const DesktopNav = ({ menu }) => {
                 ))}
                 <div ref={donateBtn} className="flex items-center text-center h-4/5 donate-btn bg-lff_900 text-lff_100">
                     <Link href="/donate">
-                        <a className="hover:underline w-full">Donate</a>
+                        <a className="hover:underline w-full">Support</a>
                     </Link>
                 </div>
             </div>
