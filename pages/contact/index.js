@@ -6,23 +6,19 @@ import { useMutation } from '@apollo/client'
 import { CREATE_MESSAGE, SEND_EMAIL } from '../../data/contact'
 import Alert from '../../components/Alert'
 import Link from 'next/link'
+import Logo from '../../components/Logo'
 
 const Index = () => {
-    const elem = useRef(null)
-
-    useEffect(() => {
-        elem.current.style.paddingRight = `${(document.documentElement.clientWidth - document.querySelector('.container').offsetWidth) / 2}px`
-    }, [])
-
     return (
         <>
             <Layout preview>
                 <Head>
                     <title>Contact | Luigi Footprints Foundation</title>
                 </Head>
-                <div className="flex md:justify-end p-6 md:p-0">
+                <div className="flex md:justify-center p-6 md:p-0">
                     <Container>
-                        <div ref={elem} className="flex flex-col md:flex-row md:h-screen">
+                        <Logo />
+                        <div className="flex flex-col md:flex-row md:h-screen">
                             <div className="flex w-full md:w-1/2 md:h-full relative items-center">
                                 <div>
                                     {/* <h2 className="text-base font-verl text-lff_800 mb-10 font-bold">Get In Touch</h2> */}
@@ -164,7 +160,7 @@ export const ContactForm = () => {
                     id="email"
                     className="appearance-none bg-transparent border-b border-lff_700 py-2 leading-tight focus:outline-none mb-10 placeholder-lff_700 text-lff_800"
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder="Enter your email address"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                 />
@@ -179,10 +175,10 @@ export const ContactForm = () => {
                 >
                 </textarea>
                 <div className="flex items-center">
-                    <button className="flex text-base py-3 space-x-3 border border-lff_800 w-full md:w-48 justify-center bg-lff_200 hover:bg-lff_500 transition-all">
-                        <span className="text-lff_800">Send Message</span>
+                    <button className="donate-button text-lff_800 flex font-sen items-center text-sm  py-5 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_200 hover:bg-lff_400">
+                        <span className="text-lff_800 lowercase">Send Message</span>
                         <span>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 9V2L10 4" stroke="#665F4B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 <path d="M12 2L14 4" stroke="#665F4B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 <path d="M1.97998 13H6.38998C6.76998 13 7.10998 13.21 7.27998 13.55L8.44998 15.89C8.78998 16.57 9.47998 17 10.24 17H13.77C14.53 17 15.22 16.57 15.56 15.89L16.73 13.55C16.9 13.21 17.25 13 17.62 13H21.98" stroke="#665F4B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

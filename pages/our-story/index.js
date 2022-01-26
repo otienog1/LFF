@@ -40,9 +40,9 @@ const Index = ({ page }) => {
                                     <img src={page.whoWeAreImage.sourceUrl} className='w-full' />
                                 </div>
                                 <div className='w-6/12 pl-16'>
-                                    <h5 dangerouslySetInnerHTML={{ __html: page.whoWeAreTitle }} className='text-lff_400 text-xl uppercase font-bold tracking-widest'></h5>
+                                    <h5 dangerouslySetInnerHTML={{ __html: page.whoWeAreTitle }} className='text-lff_100 text-base uppercase font-bold tracking-widest'></h5>
                                     <h3 dangerouslySetInnerHTML={{ __html: page.whoWeAreText }} className='text-lff_100 text-3xl my-10 leading-tight font-extrabold'></h3>
-                                    <h3 dangerouslySetInnerHTML={{ __html: page.whoWeAreText1 }} className='text-lff_300 text-lg leading-relaxed'></h3>
+                                    <h3 dangerouslySetInnerHTML={{ __html: page.whoWeAreText1 }} className='text-lff_100 text-lg leading-relaxed'></h3>
                                 </div>
                             </div>
                         </Container>

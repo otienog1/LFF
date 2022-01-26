@@ -7,6 +7,7 @@ import { useMutation } from '@apollo/client'
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
 import countries from '../../components/countries'
 import Select from '../../components/Select'
+import Logo from '../../components/Logo'
 
 const Index = () => {
     const elem = useRef(null)
@@ -21,6 +22,7 @@ const Index = () => {
                 </Head>
 
                 <div ref={elem} className="w-full px-4 md:w-1/2 mx-auto">
+                    <Logo />
                     <DonationsForm />
                 </div>
 
@@ -38,6 +40,7 @@ const DonationsForm = () => {
         [postalCode, setPostalCode] = useState(''),
         [country, setCountry] = useState(''),
         [country_code, setCountry_code] = useState(''),
+        [dial_code, setDial_code] = useState(''),
         [email, setEmail] = useState(''),
         [phone, setPhone] = useState(''),
         [expiryMonthValid, setExpiryMonthValid] = useState(false),
@@ -53,6 +56,8 @@ const DonationsForm = () => {
         [sendEmail] = useMutation(SEND_EMAIL),
         [amount, setAmount] = useState('0.00'),
         [page, setPage] = useState(1),
+        [paymentMethod, setPaymentMethod] = useState('card'),
+        [exchange_rate, setExchange_rate] = useState(''),
         CREDIT_CARD_NUMBER_DEFAULT_MASK = "XXXX XXXX XXXX XXXX",
         CREDIT_CARD_NUMBER_VISA_MASK = "XXXX XXXX XXXX XXXX",
         CREDIT_CARD_NUMBER_MASTERCARD_MASK = "XXXX XXXX XXXX XXXX",
@@ -86,7 +91,6 @@ const DonationsForm = () => {
         }
 
     let form = useRef(),
-        errorOut = useRef(),
         cvcInput = useRef()
 
     const handleAmount = amount => {
@@ -98,15 +102,16 @@ const DonationsForm = () => {
         if (key == 'firstName') setFirstName(value)
         if (key == 'lastName') setLastName(value)
         if (key == 'email') setEmail(value)
+        if (key == 'country') {
+            setCountry(value.label)
+            setCountry_code(value.value)
+            setDial_code(value.dial_code)
+        }
         if (key == 'phone') setPhone(value)
         setBtnDisabled(false)
     }
 
     const handleAddressInfo = (key, value) => {
-        if (key == 'country') {
-            setCountry(value.label)
-            setCountry_code(value.value)
-        }
         if (key == 'address') setAddress(value)
         if (key == 'city') setCity(value)
         if (key == 'state') setState(value)
@@ -580,40 +585,41 @@ const DonationsForm = () => {
     }
 
     const handleDonation = async () => {
-        const data = {
-            card: {
-                number: cardNumber,
-                expirationMonth: expiryMonth,
-                expirationYear: expiryYear,
-                cvc: cvn
-            },
-            amount: {
-                totalAmount: amount,
-                currency: "USD"
-            },
-            billTo: {
-                firstName: firstName,
-                lastName: lastName,
-                address1: address,
-                locality: state,
-                administrativeArea: city,
-                postalCode: postalCode,
-                country: country_code,
-                email: email,
-                phoneNumber: phone
-            },
-            payment: {
-                recurring: false,
-                frequency: "monthly"
+        if (paymentMethod == 'card') {
+            const data = {
+                card: {
+                    number: cardNumber,
+                    expirationMonth: expiryMonth,
+                    expirationYear: expiryYear,
+                    cvc: cvn
+                },
+                amount: {
+                    totalAmount: amount,
+                    currency: "USD"
+                },
+                billTo: {
+                    firstName: firstName,
+                    lastName: lastName,
+                    address1: address,
+                    locality: state,
+                    administrativeArea: city,
+                    postalCode: postalCode,
+                    country: country_code,
+                    email: email,
+                    phoneNumber: phone
+                },
+                payment: {
+                    recurring: false,
+                    frequency: "monthly"
+                }
             }
-        }
 
-        sendEmail({
-            variables: {
-                to: "otienog1@gmail.com,otienog1@yahoo.com",
-                from: email,
-                subject: `New donation from ${firstName} ${lastName}`,
-                body: `
+            await sendEmail({
+                variables: {
+                    to: "otienog1@gmail.com,otienog1@yahoo.com",
+                    from: email,
+                    subject: `New donation from ${firstName} ${lastName}`,
+                    body: `
                 <p><strong>THIS IS A TEST EMAIL!</strong><br />
                     A donation has been sent from the LFF Website's donations Form! The details are listed below.
                 </p>
@@ -669,26 +675,42 @@ const DonationsForm = () => {
                 </tr>
                 </tbody>
                 </table>`
-            }
-        }).then(() => {
-            setFirstName('')
-            setLastName('')
-            setEmail('')
-            setPhone('')
-            setCardNumber('')
-            setCountry('')
-            setCountry_code('')
-            setAddress('')
-            setCity('')
-            setState('')
-            setPostalCode('')
-            setExpiryMonth('')
-            setExpiryYear('')
-            setExpiryMonthYear('')
-            setCvn('')
-        })
-
-        // console.log(data)
+                }
+            }).then(() => {
+                setFirstName('')
+                setLastName('')
+                setEmail('')
+                setPhone('')
+                setCardNumber('')
+                setCountry('')
+                setCountry_code('')
+                setAddress('')
+                setCity('')
+                setState('')
+                setPostalCode('')
+                setExpiryMonth('')
+                setExpiryYear('')
+                setExpiryMonthYear('')
+                setCvn('')
+                setPage(1)
+                setPaymentMethod('card')
+                setAmount('0.00')
+            })
+        }
+        else {
+            await fetch('http://localhost:5000/mpesa/checkout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    phone_number: `${dial_code}${phone}`,
+                    amount: Math.ceil(amount * exchange_rate.rate),
+                    reference_code: 'Donation',
+                    description: "A donation to The Luigi Footprints Foundation"
+                })
+            }).then(response => response.json().then(data => console.log(data)))
+        }
 
         // await fetch('http://localhost:8080/api/payment', {
         //     method: 'POST',
@@ -744,7 +766,17 @@ const DonationsForm = () => {
         //     },
         //     type: 'error'
         // }))
+
     }
+    const exchangeRate = async () => {
+        await fetch('http://localhost:5000/rates/kes', {
+            method: 'GET',
+        }).then(response => response.json().then(data => setExchange_rate(data)))
+    }
+
+    useEffect(() => {
+        exchangeRate()
+    }, [])
 
     return (
         <div ref={form} className="flex min-h-screen items-center py-8">
@@ -761,6 +793,7 @@ const DonationsForm = () => {
                         handleAmount={handleAmount}
                         amount={amount}
                         alert={alerts}
+                        paymentMethod={paymentMethod}
                     />
                 </div>
 
@@ -771,6 +804,8 @@ const DonationsForm = () => {
                             fname: firstName,
                             lname: lastName,
                             email: email,
+                            country: country,
+                            dial_code: dial_code,
                             phone: phone
                         }}
                         alert={alerts}
@@ -782,7 +817,6 @@ const DonationsForm = () => {
                         handleAddress={handleAddressInfo}
                         address={{
                             address: address,
-                            country: country,
                             city: city,
                             state: state,
                             postalCode: postalCode
@@ -816,10 +850,12 @@ const DonationsForm = () => {
                         city={city}
                         country={country}
                         email={email}
+                        dial_code={dial_code}
                         phone={phone}
                         address={address}
                         postalCode={postalCode}
                         page={page}
+                        paymentMethod={setPaymentMethod}
                     />
                 </div>
 
@@ -831,10 +867,10 @@ const DonationsForm = () => {
                         firstName: firstName,
                         lastName: lastName,
                         email: email,
+                        country: country,
                         phone: phone
                     }}
                     addressInfo={{
-                        country: country,
                         address: address,
                         city: city,
                         state: state,
@@ -848,6 +884,8 @@ const DonationsForm = () => {
                     }}
                     handleDonation={handleDonation}
                     handleInputAlerts={handleInputAlerts}
+                    paymentMethod={paymentMethod}
+                    exchangeRate={exchange_rate.rate}
 
                 />
             </div>
@@ -855,7 +893,18 @@ const DonationsForm = () => {
     )
 }
 
-const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentInfo, handleDonation, handleInputAlerts }) => {
+const Navigation = ({
+    page,
+    handlePage,
+    amount,
+    userInfo,
+    addressInfo,
+    paymentInfo,
+    handleDonation,
+    handleInputAlerts,
+    paymentMethod,
+    exchangeRate
+}) => {
 
     let alerts = {
         title: 'Your attention is required. ',
@@ -882,6 +931,8 @@ const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentIn
                         error = 'First Name is required'
                     else if (key == 'email')
                         error = 'Email address is required'
+                    else if (key == 'country')
+                        error = 'Country is required'
                     else if (key == 'phone')
                         error = 'Phone number is required'
 
@@ -894,9 +945,7 @@ const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentIn
         if (page == 3)
             for (let [key, value] of Object.entries(addressInfo)) {
                 if (isEmpty(value)) {
-                    if (key == 'country')
-                        error = 'Country is required'
-                    else if (key == 'address')
+                    if (key == 'address')
                         error = 'Address is required'
                     else if (key == 'city')
                         error = 'City address is required'
@@ -931,7 +980,7 @@ const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentIn
     const donate = async () => {
         if (page == 4)
             for (let [key, value] of Object.entries(paymentInfo)) {
-                if (isEmpty(value)) {
+                if (isEmpty(value) && paymentMethod !== 'mpesa') {
                     if (key == 'name')
                         error = 'Name is required'
                     else if (key == 'cardNumber')
@@ -961,49 +1010,56 @@ const Navigation = ({ page, handlePage, amount, userInfo, addressInfo, paymentIn
 
     let amountF = new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: 'USD',
+        currency: paymentMethod !== 'mpesa' ? 'USD' : 'KES',
     })
 
     return (
-        <div className={`flex ${page > 1 ? `justify-between` : `justify-end`} mt-20`}>
-            <button
-                className={`${page > 1 ? `flex` : `hidden`} text-lff_800 flex font-sen items-center text-base bg-transparentpy-3 space-x-3 w-48`}
-                onClick={() => previous()}
-            >
-                <span className="">
-                    <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.83984 1.35327L0.839844 9.35327L8.83984 17.3533" stroke="#3F3F3F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                </span>
-                <span className="h-5">PREVIOUS</span>
-            </button>
-            <button
-                className="donate-button text-lff_800 flex font-sen items-center text-sm  py-4 space-x-3 border-solid border border-lff_800 w-48 justify-center bg-lff_200 hover:bg-lff_400 disabled:opacity-50"
-                onClick={() => page == 4 ? donate() : next()}
-            // disabled={disabled ? true : false}
-            >
-                {page == 4 ? (
-                    <>
-                        <span className="">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.4135 13.8736C8.18683 13.9536 7.8135 13.9536 7.58683 13.8736C5.6535 13.2136 1.3335 10.4602 1.3335 5.79356C1.3335 3.73356 2.9935 2.06689 5.04016 2.06689C6.2535 2.06689 7.32683 2.65356 8.00016 3.56023C8.6735 2.65356 9.7535 2.06689 10.9602 2.06689C13.0068 2.06689 14.6668 3.73356 14.6668 5.79356C14.6668 10.4602 10.3468 13.2136 8.4135 13.8736Z" fill="#F6FFEB" stroke="#3F3F3F" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </span>
-                        <span className="h-5">DONATE <span className="">{amountF.format(amount)}</span></span>
-                    </>
-                ) : (
-                    <>
-                        <span className="h-5">NEXT</span>
-                        <span className="">
-                            <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="8" height="16" fill="none" />
-                                <path d="M1.18457 13.6482L6.81656 8.00017L1.18457 2.35217" stroke="#665F4B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </span>
-                    </>
-                )}
-            </button>
-        </div>
+        <>
+            <div className={`flex ${page > 1 ? `justify-between` : `justify-end`} mt-20`}>
+                <button
+                    className={`${page > 1 ? `flex` : `hidden`} text-lff_800 flex font-sen items-center text-sm bg-transparentpy-3 space-x-2 w-48`}
+                    onClick={() => previous()}
+                >
+                    <span className="">
+                        <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.83984 1.35327L0.839844 9.35327L8.83984 17.3533" stroke="#3F3F3F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </span>
+                    <span className="h-4">back</span>
+                </button>
+                <button
+                    className="donate-button text-lff_800 flex font-sen items-center text-sm  py-5 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_200 hover:bg-lff_400 disabled:opacity-50"
+                    onClick={() => page == 4 ? donate() : next()}
+                >
+                    {page == 4 ? (
+                        <>
+                            <span className="">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.4135 13.8736C8.18683 13.9536 7.8135 13.9536 7.58683 13.8736C5.6535 13.2136 1.3335 10.4602 1.3335 5.79356C1.3335 3.73356 2.9935 2.06689 5.04016 2.06689C6.2535 2.06689 7.32683 2.65356 8.00016 3.56023C8.6735 2.65356 9.7535 2.06689 10.9602 2.06689C13.0068 2.06689 14.6668 3.73356 14.6668 5.79356C14.6668 10.4602 10.3468 13.2136 8.4135 13.8736Z" fill="#CCBD96" stroke="#CCBD96" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+
+                            </span>
+                            <span className="h-5">make a donation of <span className="underline underline-offset-4 text-lff_900">{
+                                amountF.format(
+                                    paymentMethod !== 'mpesa' ? amount : amount * exchangeRate
+                                )
+                            }</span></span>
+                        </>
+                    ) : (
+                        <>
+                            <span className="h-5">next</span>
+                            <span className="">
+                                <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="8" height="16" fill="none" />
+                                    <path d="M1.18457 13.6482L6.81656 8.00017L1.18457 2.35217" stroke="#665F4B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </span>
+                        </>
+                    )}
+                </button>
+            </div>
+            <div className={`${paymentMethod == `mpesa` ? `block` : `hidden`} w-full md:text-right text-sm mt-4 z-50`}>The exchange rate to <span className='underline decoration-clone' title='Kenya Shillings'>KES</span> is <span className='underline decoration-clone'>{exchangeRate}</span></div>
+        </>
     )
 }
 
@@ -1079,6 +1135,12 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
 }
 
 const UserInfo = ({ handleUserInfo, details, alert, hasError }) => {
+    const [country, setCountry] = useState('')
+
+    useEffect(() => {
+        if (country.length > 0) handleUserInfo('country', country[0])
+    }, [country])
+
     return (
         <>
             <div className="font-sorts text-3xl my-10 text-lff_900">User details</div>
@@ -1121,16 +1183,25 @@ const UserInfo = ({ handleUserInfo, details, alert, hasError }) => {
                         value={details.email}
                     />
                 </div >
+                <div className="w-full mb-5">
+                    <label htmlFor="country" className="font-sorts mb-4 text-lg text-lff_900">Country</label>
+                    <Select options={countries} name="country" placeholder="Enter your country" handleValue={setCountry} />
+                </div>
                 <div className="w-full">
                     <label htmlFor="phone" className="font-sorts mb-4 text-lg text-lff_900">Phone</label>
-                    <input
-                        id="phone"
-                        className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
-                        type="tel"
-                        placeholder="Enter your phone number"
-                        onChange={e => handleUserInfo('phone', e.target.value)}
-                        value={details.phone}
-                    />
+                    <div className='flex'>
+                        <span className='py-2 pr-1'>
+                            {details.dial_code}
+                        </span>
+                        <input
+                            id="phone"
+                            className="w-full appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800"
+                            type="tel"
+                            placeholder="Enter your phone number"
+                            onChange={e => handleUserInfo('phone', e.target.value)}
+                            value={`${details.phone}`}
+                        />
+                    </div>
                 </div>
             </div>
         </>
@@ -1138,12 +1209,6 @@ const UserInfo = ({ handleUserInfo, details, alert, hasError }) => {
 }
 
 const Address = ({ handleAddress, address, alert }) => {
-    const [country, setCountry] = useState('')
-
-    useEffect(() => {
-        if (country.length > 0) handleAddress('country', country[0])
-    }, [country])
-
     return (
         <>
             <div className="font-sorts text-3xl my-10 text-lff_900">Contact details</div>
@@ -1153,10 +1218,6 @@ const Address = ({ handleAddress, address, alert }) => {
             </div>
 
             <div className="flex justify-between flex-col relative z-50">
-                <div className="w-full mb-5">
-                    <label htmlFor="country" className="font-sorts mb-4 text-lg text-lff_900">Country</label>
-                    <Select options={countries} name="country" placeholder="Enter your country" handleValue={setCountry} />
-                </div>
                 <div className="w-full mb-5">
                     <label htmlFor="address" className="font-sorts mb-4 text-lg text-lff_900">Address</label>
                     <div className="flex font-sen py-0.5">
@@ -1235,18 +1296,17 @@ const PaymentInfo = ({
     city,
     country,
     email,
+    dial_code,
     phone,
     address,
     postalCode,
     amount,
     page,
+    paymentMethod
 }) => {
     const [active, setActive] = useState('card')
     const paypal = useRef(null)
     const mpesa = useRef(null)
-
-    const mpesa_online = () => {
-    }
 
     useEffect(() => {
         paypal.current.children[0].style.width = '50%'
@@ -1257,7 +1317,10 @@ const PaymentInfo = ({
         else {
             document.querySelector('.donate-button').classList.remove('hidden')
         }
-    }, [active, page])
+
+        paymentMethod(active)
+
+    }, [active, page, paymentMethod])
 
     return (
         <>
@@ -1622,7 +1685,8 @@ const PaymentInfo = ({
                     </div>
                     <div className="w-full mb-5">
                         <label htmlFor="city" className="font-sorts mb-4 text-lg text-lff_900">Phone</label>
-                        <div className="flex font-sen py-0.5">
+                        <div className='flex'>
+                            <span className='py-2 pr-1'>{dial_code}</span>
                             <input
                                 className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
                                 type="text"
