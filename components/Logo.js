@@ -16,7 +16,7 @@ const Logo = () => {
         <span ref={logo} className='absolute top-5 z-50 hidden lg:block'>
             <Link href={'/'}>
                 <a>
-                    <LFFLogo width="225" height="130" fill="#665F4B" />
+                    <LFFLogo width="200" height="105" fill="#665F4B" />
                 </a>
             </Link>
         </span>

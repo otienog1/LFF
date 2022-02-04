@@ -75,7 +75,7 @@ const NavBar = () => {
                             <SocialIcons width="19" height="19" ytHeight="20" ytWidth="21" fill="#332F26" />
                         </div>
                         <div ref={title} className="font-bold w-full lg:absolute lg:opacity-0 text-lff_900 text-lg leading-tight text-center">
-                            <Link href={'/'}>
+                            <Link scroll={false} href={'/'}>
                                 <a>The Luigi Footprints Foundation</a>
                             </Link>
                         </div>
@@ -103,13 +103,13 @@ export const DesktopNav = ({ menu }) => {
             <div className="flex items-center space-x-8 h-full">
                 {menu.map((link, i) => (
                     <span key={i} className="first:hidden">
-                        <Link href={link.url}>
+                        <Link scroll={false} href={link.url}>
                             <a className="hover:underline">{link.text}</a>
                         </Link>
                     </span>
                 ))}
                 <div ref={donateBtn} className="flex items-center text-center h-4/5 donate-btn bg-lff_900 text-lff_100">
-                    <Link href="/donate">
+                    <Link scroll={false} href="/donate">
                         <a className="hover:underline w-full">Support</a>
                     </Link>
                 </div>

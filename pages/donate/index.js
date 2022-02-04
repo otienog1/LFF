@@ -616,11 +616,11 @@ const DonationsForm = () => {
 
             await sendEmail({
                 variables: {
-                    to: "otienog1@gmail.com,otienog1@yahoo.com",
+                    to: "annabella@maniagosafaris.com,peter@maniagosafaris.com",
                     from: email,
                     subject: `New donation from ${firstName} ${lastName}`,
                     body: `
-                <p><strong>THIS IS A TEST EMAIL!</strong><br />
+                <p><strong>DONATION FROM THE WEBSITE</strong><br />
                     A donation has been sent from the LFF Website's donations Form! The details are listed below.
                 </p>
                 <table>
