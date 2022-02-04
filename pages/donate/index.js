@@ -698,7 +698,7 @@ const DonationsForm = () => {
             })
         }
         else {
-            await fetch('http://3.85.72.145/mpesa/checkout', {
+            await fetch('https://payutil.ddns.net/mpesa/checkout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -769,7 +769,7 @@ const DonationsForm = () => {
 
     }
     const exchangeRate = async () => {
-        await fetch('http://3.85.72.145/rates/kes', {
+        await fetch('https://payutil.ddns.net/rates/kes', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
