@@ -698,7 +698,7 @@ const DonationsForm = () => {
             })
         }
         else {
-            await fetch('http://localhost:5000/mpesa/checkout', {
+            await fetch('http://3.85.72.145/mpesa/checkout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -769,9 +769,9 @@ const DonationsForm = () => {
 
     }
     const exchangeRate = async () => {
-        await fetch('http://localhost:5000/rates/kes', {
-            method: 'GET',
-        }).then(response => response.json().then(data => setExchange_rate(data)))
+        await fetch('http://3.85.72.145/rates/kes', {
+            method: 'POST',
+        }).then(response => response.json().then(data => setExchange_rate(data))).catch(e => console.log(e.message))
     }
 
     useEffect(() => {
@@ -1764,7 +1764,7 @@ const PayPal = ({ opt }) => {
     return (
         <PayPalScriptProvider
             options={{
-                "client-id": "Aa5CY17icgSMkET-vRSn6f-BI3bEi0aRgwFRFY5fbufk6AXA4HBFB9vRJt-I0CmWiGWVThzHlTOEzNpo",
+                "client-id": "AVla9CAnkiTrjUQIWpHEIl5npbiA1qGO1YlYwrdcscUnLs6Bn0TgM6J-SdwVLL4nZB0x1TBwyMdTPFPD",
                 components: "buttons",
                 currency: "USD",
                 intent: "capture",
