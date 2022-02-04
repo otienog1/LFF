@@ -771,6 +771,22 @@ const DonationsForm = () => {
     const exchangeRate = async () => {
         await fetch('http://3.85.72.145/rates/kes', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                acquirerDetails: {
+                    bin: 424315,
+                    settlement: {
+                        currencyCode: "840"
+                    }
+                },
+                rateProductCode: "A",
+                markupRate: "0.00",
+                destinationCurrencyCode: "404",
+                sourceAmount: "1",
+                sourceCurrencyCode: "840"
+            })
         }).then(response => response.json().then(data => setExchange_rate(data))).catch(e => console.log(e.message))
     }
 
