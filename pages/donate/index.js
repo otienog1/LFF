@@ -782,7 +782,6 @@ const DonationsForm = () => {
                     }
                 },
                 rateProductCode: "A",
-                markupRate: "0.00",
                 destinationCurrencyCode: "404",
                 sourceAmount: "1",
                 sourceCurrencyCode: "840"
