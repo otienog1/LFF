@@ -86,10 +86,12 @@ const TeamMember = () => {
                 <div className="w-1/2 overflow-hidden html-5-picture">
                     <img ref={imageFallback} src={trustee.webp} className="imageFallback opacity-0" />
                 </div>
-                <div ref={elem} className="w-1/2 py-40 text-lff_800 md:pl-20">
-                    <h2 className="font-bold text-4xl" dangerouslySetInnerHTML={{ __html: trustee.name }}></h2>
-                    <h4 className="text-lff_700 font-bold mt-2" dangerouslySetInnerHTML={{ __html: trustee.title }}></h4>
-                    <div className="h-3/4 mt-20 text-xl overflow-y-auto" dangerouslySetInnerHTML={{ __html: trustee.content }}>
+                <div ref={elem} className="flex items-center w-1/2 py-40 text-lff_800 md:pl-20">
+                    <div className="h-3/4 max-h-full">
+                        <h2 className="font-bold text-3xl" dangerouslySetInnerHTML={{ __html: trustee.name }}></h2>
+                        <h4 className="text-lff_700 font-bold mt-2" dangerouslySetInnerHTML={{ __html: trustee.title }}></h4>
+                        <div className="max-h-full mt-10 text-base leading-relaxed overflow-y-auto" dangerouslySetInnerHTML={{ __html: trustee.content }}>
+                        </div>
                     </div>
                 </div>
                 <div className="absolute top-8 right-8 md:top16 md:right-16 cursor-pointer" onClick={() => handleClose()}>
