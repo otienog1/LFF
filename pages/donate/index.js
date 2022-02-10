@@ -8,12 +8,24 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
 import countries from '../../components/countries'
 import Select from '../../components/Select'
 import Logo from '../../components/Logo'
+import ThankYou from '../../components/ThankYou'
+import gsap from 'gsap'
 
 const Index = () => {
+    const [sent, setSent] = useState(false)
     const elem = useRef(null)
+    const thk = useRef(null)
+
     useEffect(() => {
-        // elem.current.style.paddingRight = `${(document.documentElement.clientWidth - document.querySelector('.container').offsetWidth) / 2}px`
-    }, [])
+        if (sent) {
+            gsap.to(thk.current, {
+                duration: .2,
+                opacity: 1,
+                ease: 'power3.inOut'
+            })
+            setTimeout(() => setSent(false), 5000)
+        }
+    }, [sent])
     return (
         <>
             <Layout preview>
@@ -23,7 +35,10 @@ const Index = () => {
 
                 <div ref={elem} className="w-full px-4 md:w-1/2 mx-auto">
                     <Logo />
-                    <DonationsForm />
+                    <DonationsForm sent={setSent} />
+                    <div ref={thk} className={`${sent ? 'flex' : 'hidden'} opacity-0`}>
+                        <ThankYou />
+                    </div>
                 </div>
 
             </Layout>
@@ -31,7 +46,7 @@ const Index = () => {
     )
 }
 
-const DonationsForm = () => {
+const DonationsForm = ({ sent }) => {
     const [firstName, setFirstName] = useState(''),
         [lastName, setLastName] = useState(''),
         [address, setAddress] = useState(''),
@@ -68,6 +83,7 @@ const DonationsForm = () => {
         EXPIRY_MASK = "XX / XX",
         CVC_MASK_3 = "XXX",
         CVC_MASK_4 = "XXXX",
+        [loading, setLoading] = useState(false),
         [cardNumberMask, setCardNumberMask] = useState(CREDIT_CARD_NUMBER_DEFAULT_MASK),
         [cvcMask, setCvcMask] = useState(CVC_MASK_3),
         KEYS = {
@@ -585,6 +601,7 @@ const DonationsForm = () => {
     }
 
     const handleDonation = async () => {
+        setLoading(true)
         if (paymentMethod == 'card') {
             const data = {
                 card: {
@@ -616,7 +633,8 @@ const DonationsForm = () => {
 
             await sendEmail({
                 variables: {
-                    to: "annabella@maniagosafaris.com,peter@maniagosafaris.com",
+                    // to: "annabella@maniagosafaris.com,peter@maniagosafaris.com",
+                    to: "otienog1@gmail.com",
                     from: email,
                     subject: `New donation from ${firstName} ${lastName}`,
                     body: `
@@ -695,6 +713,8 @@ const DonationsForm = () => {
                 setPage(1)
                 setPaymentMethod('card')
                 setAmount('0.00')
+                setLoading(false)
+                sent(true)
             })
         }
         else {
@@ -709,7 +729,9 @@ const DonationsForm = () => {
                     reference_code: 'Donation',
                     description: "A donation to The Luigi Footprints Foundation"
                 })
-            }).then(response => response.json().then(data => console.log(data)))
+            }).then(response => response.json().then(data => {
+                setLoading(false)
+            }))
         }
 
         // await fetch('http://localhost:8080/api/payment', {
@@ -786,7 +808,13 @@ const DonationsForm = () => {
                 sourceAmount: "1",
                 sourceCurrencyCode: "840"
             })
-        }).then(response => response.json().then(data => setExchange_rate(data))).catch(e => console.log(e.message))
+        }).then(
+            response => response.json().then(
+                data => setExchange_rate(data)
+            )
+        ).catch(
+            e => console.log(e.message)
+        )
     }
 
     useEffect(() => {
@@ -871,6 +899,7 @@ const DonationsForm = () => {
                         postalCode={postalCode}
                         page={page}
                         paymentMethod={setPaymentMethod}
+                        sent={sent}
                     />
                 </div>
 
@@ -901,6 +930,7 @@ const DonationsForm = () => {
                     handleInputAlerts={handleInputAlerts}
                     paymentMethod={paymentMethod}
                     exchangeRate={exchange_rate.rate}
+                    loading={loading}
 
                 />
             </div>
@@ -918,7 +948,8 @@ const Navigation = ({
     handleDonation,
     handleInputAlerts,
     paymentMethod,
-    exchangeRate
+    exchangeRate,
+    loading
 }) => {
 
     let alerts = {
@@ -1043,17 +1074,32 @@ const Navigation = ({
                     <span className="h-4">back</span>
                 </button>
                 <button
-                    className="donate-button text-lff_800 flex font-sen items-center text-sm  py-5 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_200 hover:bg-lff_400 disabled:opacity-50"
+                    className="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 donate-button text-lff_800 flex font-sen items-center text-sm  py-5 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_200 hover:bg-lff_400 disabled:opacity-50"
                     onClick={() => page == 4 ? donate() : next()}
+                    disabled={loading ? true : false}
                 >
                     {page == 4 ? (
                         <>
-                            <span className="">
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8.4135 13.8736C8.18683 13.9536 7.8135 13.9536 7.58683 13.8736C5.6535 13.2136 1.3335 10.4602 1.3335 5.79356C1.3335 3.73356 2.9935 2.06689 5.04016 2.06689C6.2535 2.06689 7.32683 2.65356 8.00016 3.56023C8.6735 2.65356 9.7535 2.06689 10.9602 2.06689C13.0068 2.06689 14.6668 3.73356 14.6668 5.79356C14.6668 10.4602 10.3468 13.2136 8.4135 13.8736Z" fill="#CCBD96" stroke="#CCBD96" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
+                            {
+                                !loading ?
+                                    (
+                                        <span className="">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M8.4135 13.8736C8.18683 13.9536 7.8135 13.9536 7.58683 13.8736C5.6535 13.2136 1.3335 10.4602 1.3335 5.79356C1.3335 3.73356 2.9935 2.06689 5.04016 2.06689C6.2535 2.06689 7.32683 2.65356 8.00016 3.56023C8.6735 2.65356 9.7535 2.06689 10.9602 2.06689C13.0068 2.06689 14.6668 3.73356 14.6668 5.79356C14.6668 10.4602 10.3468 13.2136 8.4135 13.8736Z" fill="#CCBD96" stroke="#CCBD96" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
 
-                            </span>
+                                        </span>
+                                    )
+                                    :
+                                    (
+                                        <span>
+                                            <svg className="animate-spin h-5 w-5 text-lff_800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            </svg>
+                                        </span>
+                                    )
+                            }
                             <span className="h-5">make a donation of <span className="underline underline-offset-4 text-lff_900">{
                                 amountF.format(
                                     paymentMethod !== 'mpesa' ? amount : amount * exchangeRate
@@ -1317,7 +1363,8 @@ const PaymentInfo = ({
     postalCode,
     amount,
     page,
-    paymentMethod
+    paymentMethod,
+    sent
 }) => {
     const [active, setActive] = useState('card')
     const paypal = useRef(null)
@@ -1671,6 +1718,7 @@ const PaymentInfo = ({
                                 phone: phone
                             }
                         }
+                        sent={sent}
                     />
                 </div>
                 <div ref={mpesa} className={`${active == 'mpesa' ? 'block' : 'hidden'}`}>
@@ -1717,7 +1765,7 @@ const PaymentInfo = ({
     )
 }
 
-const PayPal = ({ opt }) => {
+const PayPal = ({ opt, sent }) => {
     const approveOrder = async (data, actions) => {
         return actions.order.capture().then(details => {
             const name = `${details.payer.name.given_name} ${details.payer.name.surname}`;
@@ -1772,6 +1820,7 @@ const PayPal = ({ opt }) => {
                 },
             }
         }).then(orderId => {
+            sent(true)
             return orderId
         })
     }

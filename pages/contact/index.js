@@ -118,7 +118,8 @@ export const ContactForm = () => {
 
                         sendEmail({
                             variables: {
-                                to: "info@theluigifootprints.org",
+                                // to: "info@theluigifootprints.org",
+                                to: "otienog1@gmail.com",
                                 from: email,
                                 subject: `LFF Website Contact Page Message From - ${name}`,
                                 body: `<table>
@@ -175,7 +176,10 @@ export const ContactForm = () => {
                 >
                 </textarea>
                 <div className="flex items-center">
-                    <button className="donate-button text-lff_800 flex font-sen items-center text-sm  py-5 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_200 hover:bg-lff_400">
+                    <button
+                        className="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 donate-button text-lff_800 flex font-sen items-center text-sm  py-5 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_200 hover:bg-lff_400"
+                        disabled={loading ? true : false}
+                    >
                         <span className="text-lff_800 lowercase">Send Message</span>
                         <span>
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -186,15 +190,17 @@ export const ContactForm = () => {
                             </svg>
                         </span>
                     </button>
-                    {loading ? (<span className="pl-4 text-lff_800 flex items-center">
-                        <span>
-                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-lff_800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
+                    {loading ? (
+                        <span className="pl-4 text-lff_800 flex items-center">
+                            <span>
+                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-lff_800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </span>
+                            <span>Sending</span>
                         </span>
-                        <span>Sending</span>
-                    </span>) : ''}
+                    ) : ''}
                 </div>
             </form>
             <div className="absolute hidden md:block bottom-0">
