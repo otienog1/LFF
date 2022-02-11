@@ -1768,8 +1768,8 @@ const PaymentInfo = ({
 const PayPal = ({ opt, sent }) => {
     const approveOrder = async (data, actions) => {
         return actions.order.capture().then(details => {
-            const name = `${details.payer.name.given_name} ${details.payer.name.surname}`;
-            console.log(details)
+            // const name = `${details.payer.name.given_name} ${details.payer.name.surname}`;
+            if (details.status == 'COMPLETED') sent(true)
         });
     }
 
@@ -1777,6 +1777,11 @@ const PayPal = ({ opt, sent }) => {
         return actions.order.create({
             purchase_units: [
                 {
+                    sender_batch_header: {
+                        sender_batch_id: "Payouts_2018_100007",
+                        email_subject: "You have a payout!",
+                        email_message: "You have received a payout! Thanks for using our service!"
+                    },
                     amount: {
                         value: opt.amount,
                         breakdown: {
@@ -1794,7 +1799,11 @@ const PayPal = ({ opt, sent }) => {
                                 currency_code: "USD",
                                 value: opt.amount,
                             },
-                            category: "DONATION"
+                            category: "DONATION",
+                            recipient_type: "PAYPAL_ID",
+                            note: "Thanks for your patronage!",
+                            sender_item_id: "201403140003",
+                            receiver: "G83JXTJ5EHCQ2"
                         },
                     ],
                     shipping: {
@@ -1820,7 +1829,6 @@ const PayPal = ({ opt, sent }) => {
                 },
             }
         }).then(orderId => {
-            sent(true)
             return orderId
         })
     }
@@ -1828,7 +1836,7 @@ const PayPal = ({ opt, sent }) => {
     return (
         <PayPalScriptProvider
             options={{
-                "client-id": "AVla9CAnkiTrjUQIWpHEIl5npbiA1qGO1YlYwrdcscUnLs6Bn0TgM6J-SdwVLL4nZB0x1TBwyMdTPFPD",
+                "client-id": "ATtFv3Xz78g1Vs9CzK7INphsNrdhuqeguBocZMk7xPOqvyaeGsB9tUs9NnlgotEkBjVXG4qu55Ds5Ce0",
                 components: "buttons",
                 currency: "USD",
                 intent: "capture",

@@ -249,6 +249,10 @@
         animation: timer 8s linear forwards;
     }
 
+    .z-100{
+        z-index: 100;
+    }
+
     @keyframes timer {
         to {
             stroke-dashoffset: 0;
