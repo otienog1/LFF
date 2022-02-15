@@ -633,8 +633,8 @@ const DonationsForm = ({ sent }) => {
 
             await sendEmail({
                 variables: {
-                    // to: "annabella@maniagosafaris.com,peter@maniagosafaris.com",
-                    to: "otienog1@gmail.com",
+                    to: "annabella@maniagosafaris.com,peter@maniagosafaris.com",
+                    // to: "otienog1@gmail.com",
                     from: email,
                     subject: `New donation from ${firstName} ${lastName}`,
                     body: `
@@ -1777,11 +1777,11 @@ const PayPal = ({ opt, sent }) => {
         return actions.order.create({
             purchase_units: [
                 {
-                    sender_batch_header: {
-                        sender_batch_id: "Payouts_2018_100007",
-                        email_subject: "You have a payout!",
-                        email_message: "You have received a payout! Thanks for using our service!"
-                    },
+                    // sender_batch_header: {
+                    //     sender_batch_id: "Payouts_2018_100007",
+                    //     email_subject: "You have a payout!",
+                    //     email_message: "You have received a payout! Thanks for using our service!"
+                    // },
                     amount: {
                         value: opt.amount,
                         breakdown: {
@@ -1799,11 +1799,11 @@ const PayPal = ({ opt, sent }) => {
                                 currency_code: "USD",
                                 value: opt.amount,
                             },
-                            category: "DONATION",
-                            recipient_type: "PAYPAL_ID",
-                            note: "Thanks for your patronage!",
-                            sender_item_id: "201403140003",
-                            receiver: "G83JXTJ5EHCQ2"
+                            // category: "DONATION",
+                            // recipient_type: "PAYPAL_ID",
+                            // note: "Thanks for your patronage!",
+                            // sender_item_id: "201403140003",
+                            // receiver: "G83JXTJ5EHCQ2"
                         },
                     ],
                     shipping: {
@@ -1836,7 +1836,7 @@ const PayPal = ({ opt, sent }) => {
     return (
         <PayPalScriptProvider
             options={{
-                "client-id": "ATtFv3Xz78g1Vs9CzK7INphsNrdhuqeguBocZMk7xPOqvyaeGsB9tUs9NnlgotEkBjVXG4qu55Ds5Ce0",
+                "client-id": "AfcPQanYEX31-GeZr9cT8-hlF3qquIW5nJ8XEBgfY7dnFuBZFg7idI6XWoIFfixBhu0tJhSRqmLSdZxb",
                 components: "buttons",
                 currency: "USD",
                 intent: "capture",
