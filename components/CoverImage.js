@@ -11,13 +11,14 @@ const CoverImage = ({ title, coverImage, slug }) => {
             src={slug ? cover : coverImage?.sourceUrl}
             className="w-full"
             alt={title}
-        />)
+        />
+    )
 
     return (
         <>
             {slug ? (
                 <Link as={`/projects/${slug}`} href="/projects/[slug]">
-                    <a aria-label={title} className="w-full">{image}</a>
+                    <a aria-label={title} className="block w-full">{image}</a>
                 </Link>
             ) : (
                 image

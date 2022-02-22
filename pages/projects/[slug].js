@@ -46,8 +46,11 @@ export default function Project({ project, relatedProjects }) {
                         categories={typesOfProjects}
                     />
 
+                    {console.log(project.slug)}
                     <ProjectBody content={content} />
-                    <FirstHomes />
+                    <div className={`${project.slug == 'dignity-housing-for-wildife-rangers' ? 'flex' : 'hidden'}`}>
+                        <FirstHomes />
+                    </div>
                     {/* <footer>
                         {tags.length > 0 && <Tags tags={tags} />}
                     </footer> */}

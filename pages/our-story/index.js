@@ -25,7 +25,11 @@ const Index = ({ page }) => {
                             <Container>
                                 <div className='flex h-2/3 items-center'>
                                     <div className="h-full flex items-center w-full -translate-y-1/5 relative">
-                                        <p data-scroll-speed="50" className="text-3xl text-lff_100 leading-loose w-2/3 mt-16 tracking-wider z-20" dangerouslySetInnerHTML={{ __html: page.heroContent }}>
+                                        <p
+                                            data-scroll-speed="50"
+                                            className="text-3xl text-lff_100 leading-loose w-2/3 mt-16 tracking-wider z-20"
+                                            dangerouslySetInnerHTML={{ __html: page.heroContent }}
+                                        >
                                         </p>
                                         <img src={page.heroImage.sourceUrl} className='w-2/5 absolute right-0 z-10' />
                                     </div>

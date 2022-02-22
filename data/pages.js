@@ -189,3 +189,29 @@ export const QUERY_OURSTORY = gql`
         }
     }
 `
+export const QUERY_PROJECTS = gql`
+query Projects {
+  page(id: "cG9zdDo1Mzc=") {
+    projectsPage {
+      pageTitle
+      projectsText
+      projectsSectionTitle
+      projects {
+        image {
+          sourceUrl
+        }
+        title
+        slug
+      }
+      moreProjects {
+        image {
+          sourceUrl
+        }
+        title
+        slug
+      }
+    }
+  }
+}
+
+`

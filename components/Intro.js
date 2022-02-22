@@ -1,27 +1,32 @@
-import { useEffect, useRef } from "react"
 import Container from "./Container"
+import Logo from "./Logo"
 
-const Intro = () => {
-    const elem = useRef(null)
-    useEffect(() => {
-        elem.current.style.height = `${document.documentElement.clientHeight * .8}px`
-    }, [])
+const Intro = ({ title, text }) => {
     return (
-        <section ref={elem} className="px-6 lg:px-0 flex w-full min-h-screen justify-center">
-            <Container>
-                <div className="flex flex-col h-full">
-                    <div className="md:w-2/3 m-auto">
-                        <div className="text-center">
-                            <h1 className="text-5xl md:text-9xl leading-tight font-bold text-lff_800 tracking-tight">
-                                OUR PROJECTS
-                            </h1>
-                            <h4 className="leading-relaxed text-2xl mt-24 font-sorts text-lff_800">
-                                Maniago Safaris, through our Luigi Footprints Foundation, are working on several projects to help support  Wildlife Conservation efforts, the environment and Community projects, especially with the youth.
-                            </h4>
-                        </div>
-                    </div>
+        <section className="bg-lff_600">
+            <Logo />
+            <div className="h-screen">
+                <div className="flex md:h-1/2 justify-center items-end mb-20">
+                    <Container>
+                        <h1
+                            className="capitalize text-5xl md:text-7xl text-lff_400 text-center tracking-widest font-bold"
+                            dangerouslySetInnerHTML={{ __html: title }}>
+                        </h1>
+                    </Container>
                 </div>
-            </Container>
+                <div className="flex md:justify-center md:min-h-screen">
+                    <Container>
+                        <div className="flex h-2/3 items-center">
+                            <div className="h-full flex items-start w-full -translate-y-1/5 relative">
+                                <p
+                                    className="text-3xl text-lff_100 leading-loose w-full mt-16 tracking-wider"
+                                    dangerouslySetInnerHTML={{ __html: text }}
+                                ></p>
+                            </div>
+                        </div>
+                    </Container>
+                </div>
+            </div>
         </section>
     )
 }
