@@ -25,7 +25,7 @@ const CtaSection = ({ image, title, content }) => {
                             <p className="text-center text-lff_400 text-2xl my-16" dangerouslySetInnerHTML={{ __html: content }}></p>
                         </div>
                         <div className="flex justify-center relative">
-                            <Link href="/donate">
+                            <Link href="/donate" scroll={false}>
                                 <a className="inline-block px-16 py-5 bg-lffvegas_300 font-bold text-lff_800 cursor-pointer hover:bg-lffvegas_500 transition-all text-sm tracking-widest lowercase">Make a Donation</a>
                             </Link>
                         </div>
