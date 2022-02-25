@@ -82,16 +82,15 @@ const TeamMember = () => {
 
     return (
         <>
-            <div ref={modal} className="theTeam flex w-screen h-0 bg-lff_100 fixed bottom-0 left-0 z-50 overflow-hidden">
-                <div className="w-1/2 overflow-hidden html-5-picture">
+            <div ref={modal} className="theTeam flex flex-wrap w-screen h-0 bg-lff_100 fixed bottom-0 left-0 z-50 overflow-hidden">
+                <div className="hidden md:block w-full md:w-1/2 overflow-hidden html-5-picture">
                     <img ref={imageFallback} src={trustee.webp} className="imageFallback opacity-0" />
                 </div>
-                <div ref={elem} className="flex items-center w-1/2 py-40 text-lff_800 md:pl-20">
-                    <div className="h-3/4 max-h-full">
+                <div ref={elem} className="flex md:items-center w-full h-screen md:w-1/2 py-8 md:py-40 text-lff_800 md:pl-20">
+                    <div className="h-3/4 max-h-full mt-20 md:mt-0 px-8 md:px-0">
                         <h2 className="font-bold text-3xl" dangerouslySetInnerHTML={{ __html: trustee.name }}></h2>
                         <h4 className="text-lff_700 font-bold mt-2" dangerouslySetInnerHTML={{ __html: trustee.title }}></h4>
-                        <div className="max-h-full mt-10 text-base leading-relaxed overflow-y-auto" dangerouslySetInnerHTML={{ __html: trustee.content }}>
-                        </div>
+                        <div className="max-h-full mt-10 text-base leading-relaxed overflow-y-auto" dangerouslySetInnerHTML={{ __html: trustee.content }}></div>
                     </div>
                 </div>
                 <div className="absolute top-8 right-8 md:top16 md:right-16 cursor-pointer" onClick={() => handleClose()}>

@@ -18,11 +18,11 @@ const Index = () => {
                 <div className="flex md:justify-center p-6 md:p-0">
                     <Container>
                         <Logo />
-                        <div className="flex flex-col md:flex-row md:h-screen">
+                        <div className="flex mt-28 md:mt-0 flex-col md:flex-row md:h-screen">
                             <div className="flex w-full md:w-1/2 md:h-full relative items-center">
                                 <div>
                                     {/* <h2 className="text-base font-verl text-lff_800 mb-10 font-bold">Get In Touch</h2> */}
-                                    <h3 className="font-sorts text-4xl md:text-5xl xl:text-7xl 2xl:text-9xl text-lff_800 leading-none">We'd love to hear from you</h3>
+                                    <h3 className="text-center md:text-left font-sorts text-4xl md:text-5xl xl:text-7xl 2xl:text-9xl text-lff_800 leading-none">We'd love to hear from you</h3>
                                 </div>
                                 <div className="hidden md:flex w-3/4 justify-between absolute bottom-4 text-sm">
                                     <div>

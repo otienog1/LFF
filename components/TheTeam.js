@@ -27,7 +27,7 @@ const TheTeam = ({ title, trustees }) => {
     })
 
     return (
-        <section className="flex justify-end bg-lff_900 py-40 text-lff_100 relative px-4 md:px-0">
+        <section className="flex justify-end bg-lff_900 py-28 md:py-40 text-lff_100 relative px-4 md:px-0">
             <Container>
                 <>
                     <h4 className="text-sm" dangerouslySetInnerHTML={{ __html: title[0] }}></h4>
@@ -37,7 +37,6 @@ const TheTeam = ({ title, trustees }) => {
                     </div>
                 </>
             </Container>
-            {/* <div className="w-screen h-screen bg-lffvegas top-0 z-50 absolute"></div> */}
         </section>
     )
 }

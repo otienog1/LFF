@@ -22,9 +22,9 @@ const ProjectPreview = ({ title, coverImage, slug, }) => {
             <div className='w-1/2'>
                 <Link as={`/projects/${slug}`} href="/projects/[slug]" scroll={false}>
                     <a
-                        className="flex w-full h-full items-center pl-16"
+                        className="flex w-full h-full items-center pl-8 md:pl-16"
                     >
-                        <span className="flex text-3xl text-lff_100 leading-snug capitalize font-bold">
+                        <span className="flex text-xl md:text-3xl text-lff_100 leading-snug capitalize font-bold">
                             {title}
                         </span>
                     </a>

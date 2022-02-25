@@ -1,4 +1,3 @@
-import CoverImage from "./CoverImage"
 import Link from "next/link"
 import Container from "./Container"
 import { useEffect, useRef } from "react"
@@ -49,7 +48,7 @@ const HeroProject = ({ projects, title }) => {
                 <h3 dangerouslySetInnerHTML={{ __html: title }} className='text-lff_100 text-5xl lowercase text-center font-bold tracking-widest mb-28'></h3>
                 <div
                     ref={elem}
-                    className="columns-2 gap-8 mx-auto space-y-8 pb-28"
+                    className="columns-2 gap-4 md:gap-8 mx-auto space-y-4 md:space-y-8"
                 >
                     {projects.map((project, i) => (
                         <div

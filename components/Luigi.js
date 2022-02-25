@@ -19,7 +19,7 @@ const Luigi = ({ title, images, text, text1, text2 }) => {
                             <img src={images[0].image2.sourceUrl} className="w-full" />
                         </div>
                     </div>
-                    <div className="block md:flex w-full md:w-1/2 items-center justify-end py-10">
+                    <div className="block md:flex w-full md:w-1/2 items-center justify-end">
                         <div className='w-full md:w-4/5'>
                             <div className="w-full mb-10 md:mb-0 text-base">
                                 <h3 className="text-sm mb-10 capitalize">{title} —</h3>

@@ -52,7 +52,7 @@ const MoreProjects = ({ projects }) => {
     }, [])
     return (
         <Container>
-            <h3 className='text-5xl mb-20 text-lff_100 tracking-wider font-bold'>More projects</h3>
+            <h3 className='text-3xl text-center md:text-left md:text-5xl mb-20 text-lff_100 tracking-wider font-bold'>More projects</h3>
             <div ref={elem}>
                 {projects.map(project => (
                     <ProjectPreview

@@ -822,9 +822,9 @@ const DonationsForm = ({ sent }) => {
     }, [])
 
     return (
-        <div ref={form} className="flex min-h-screen items-center py-8">
+        <div ref={form} className="flex min-h-screen items-center py-28 md:py-8">
             <div className="w-full">
-                <div className="flex justify-between font-sen text-lff_700 tracking-widest">
+                <div className="flex justify-between font-sen text-lff_700 tracking-widest text-center md:text-left">
                     <span className={`${page == 1 ? 'text-lff_900' : ''}`}>1. Donations</span>
                     <span className={`${page == 2 ? 'text-lff_900' : ''}`}>2. Details</span>
                     <span className={`${page == 3 ? 'text-lff_900' : ''}`}>3. Address</span>
@@ -1392,8 +1392,8 @@ const PaymentInfo = ({
                 <Alert alert={alert} />
             </div>
 
-            <div className="flex mb-8 space-x-8">
-                <label className={`${active == `card` ? `bg-lff_400` : ''} flex border border-solid border-lff_700 rounded-sm items-center w-1/2 p-4 justify-between cursor-pointer z-50`}>
+            <div className="flex flex-wrap md:flex-nowrap mb-8 space-y-4 md:space-y-0 md:space-x-8">
+                <label className={`${active == `card` ? `bg-lff_400` : ''} flex border border-solid border-lff_700 rounded-sm items-center w-full md:w-1/3 p-4 justify-between cursor-pointer z-50`}>
                     <span className="flex items-center">
                         <span>
                             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1499,7 +1499,7 @@ const PaymentInfo = ({
                     </span>
                     <input type="radio" className="form-radio text-lff_800" name="radio" value="1" checked={active == 'card' ? true : false} onChange={() => setActive('card')} />
                 </label>
-                <label className={`${active == `paypal` ? `bg-lff_400` : ''} flex border border-solid border-lff_700 rounded-sm items-center w-1/2 p-4 justify-between cursor-pointer z-50`}>
+                <label className={`${active == `paypal` ? `bg-lff_400` : ''} flex border border-solid border-lff_700 rounded-sm items-center w-full md:w-1/3 p-4 justify-between cursor-pointer z-50`}>
                     <span className="flex items-center">
                         <span>
                             <svg width="31" height="36" viewBox="0 0 31 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1522,7 +1522,7 @@ const PaymentInfo = ({
                     </span>
                     <input type="radio" className="form-radio text-lff_800" name="radio" value="1" onChange={() => setActive('paypal')} />
                 </label>
-                <label className={`${active == `mpesa` ? `bg-lff_400` : ''} flex border border-solid border-lff_700 rounded-sm items-center w-1/2 p-4 justify-between cursor-pointer z-50`}>
+                <label className={`${active == `mpesa` ? `bg-lff_400` : ''} flex border border-solid border-lff_700 rounded-sm items-center w-full md:w-1/3 p-4 justify-between cursor-pointer z-50`}>
                     <span className="flex items-center">
                         <span>
                             <svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg">

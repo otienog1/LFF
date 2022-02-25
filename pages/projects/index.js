@@ -16,7 +16,7 @@ const Index = ({ page, more_projects }) => {
 
                 <Intro title={page.pageTitle} text={page.projectsText} />
                 <section
-                    className="py-28 min-h-screen bg-lff_600 border-t border-lff_500"
+                    className="py-28 md:min-h-screen bg-lff_600 border-t border-lff_500"
                 >
 
                     {page.projects && (

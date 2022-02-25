@@ -12,10 +12,6 @@ const Projects = ({ projects, text, title }) => {
 
         let children = [...elem.current.children]
 
-        // children.
-
-
-
         children.map((child, i) => {
 
             let image = child.getElementsByTagName('img')
@@ -49,23 +45,23 @@ const Projects = ({ projects, text, title }) => {
     }, [])
 
     return (
-        <section className="flex justify-end flex-wrap bg-lff_100 text-lff_800 border-b border-lff_600">
+        <section className="flex justify-end bg-lff_100 text-lff_800 border-b border-lff_600">
             <Container>
-                <div className="flex md:w-full px-4 md:px-0 items-center leading-loose">
-                    <div className="w-2/5">
+                <div className="flex flex-wrap w-full pt-28 md:py-0 md:px-0 items-center leading-loose">
+                    <div className="w-full md:w-2/5 px-4 pb-8 md:pb-0">
                         <h5 className="text-sm uppercase font-bold tracking-widest">projects</h5>
                         <h2 className="text-5xl font-extrabold my-10 tracking-wider" dangerouslySetInnerHTML={{ __html: title }}></h2>
-                        <div className='md:w-full text-base pr-20'>
+                        <div className='md:w-full text-base pr-0 md:pr-20'>
                             <p dangerouslySetInnerHTML={{ __html: text }}></p>
                         </div>
                     </div>
-                    <div ref={elem} className='picture flex w-3/5 h-full flex-wrap'>
+                    <div ref={elem} className='picture flex w-full md:w-3/5 h-full flex-wrap border-t md:border-t-0 border-lff_600'>
                         {works.map((work, i) => (
                             <div className='relative w-1/2 overflow-hidden border-b border-l border-lff_600 third-child:border-b-0 last:border-b-0' key={i}>
                                 <Link href={''}>
                                     <a className="flex project">
                                         <span className="decoration-wavy hidden"></span>
-                                        <span className="block text-lff_800 text-3xl leading-tight tracking-widest w-1/2 absolute bottom-8 left-4 underline-offset-8 z-50" dangerouslySetInnerHTML={{ __html: work.text }}></span>
+                                        <span className="block text-lff_800 text-lg md:text-3xl leading-tight tracking-widest w-1/2 absolute bottom-8 left-4 underline-offset-8 z-50" dangerouslySetInnerHTML={{ __html: work.text }}></span>
                                         <img className="w-full object-fill h-full opacity-0 scale-105 rotate-3" src={work.image.sourceUrl} />
                                     </a>
                                 </Link>
