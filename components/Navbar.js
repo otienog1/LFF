@@ -583,10 +583,10 @@ export const FullscreeMenu = ({ menu, clicked }) => {
                 <div className="mt-2.5">
                     <a
                         ref={mail}
-                        href="mailto:info@luigifootprints.org"
+                        href="mailto:info@theluigifootprints.org"
                         className="block font-sen text-lff_200 text-xl"
                     >
-                        info@luigifootprints.org
+                        info@theluigifootprints.org
                     </a>
                 </div>
             </div>
