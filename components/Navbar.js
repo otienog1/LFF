@@ -594,4 +594,5 @@ export const FullscreeMenu = ({ menu, clicked }) => {
     )
 }
 
+
 export default NavBar
