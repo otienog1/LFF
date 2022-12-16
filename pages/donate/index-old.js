@@ -5,6 +5,8 @@ import Alert from '../../components/Alert'
 import { SEND_EMAIL } from '../../data/contact'
 import { useMutation } from '@apollo/client'
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
+import countries from '../../components/countries'
+import Select from '../../components/Select'
 import Logo from '../../components/Logo'
 import ThankYou from '../../components/ThankYou'
 import gsap from 'gsap'
@@ -60,6 +62,7 @@ const DonationsForm = ({ sent }) => {
         [active, setActive] = useState('card'),
         [alerts, setAlerts] = useState({}),
         [btnDisabled, setBtnDisabled] = useState(true),
+        // [recurring, setRecurring] = useState(false),
         [cardNumber, setCardNumber] = useState(''),
         [cardType, setCardType] = useState(''),
         [expiryMonth, setExpiryMonth] = useState(''),
@@ -109,6 +112,27 @@ const DonationsForm = ({ sent }) => {
 
     const handleAmount = amount => {
         setAmount(amount)
+        setBtnDisabled(false)
+    }
+
+    const handleUserInfo = (key, value) => {
+        if (key == 'firstName') setFirstName(value)
+        if (key == 'lastName') setLastName(value)
+        if (key == 'email') setEmail(value)
+        if (key == 'country') {
+            setCountry(value.label)
+            setCountry_code(value.value)
+            setDial_code(value.dial_code)
+        }
+        if (key == 'phone') setPhone(value)
+        setBtnDisabled(false)
+    }
+
+    const handleAddressInfo = (key, value) => {
+        if (key == 'address') setAddress(value)
+        if (key == 'city') setCity(value)
+        if (key == 'state') setState(value)
+        if (key == 'postalCode') setPostalCode(value)
         setBtnDisabled(false)
     }
 
@@ -548,13 +572,19 @@ const DonationsForm = ({ sent }) => {
     const handlePage = string => {
         switch (string) {
             case 'previous':
-                if (page == 2) {
+                if (page == 4 && active == 'mpesa') {
+                    setPage(page - 2)
+                }
+                else {
                     setPage(page - 1)
                 }
                 break
 
             case 'next':
-                if (page == 1) {
+                if (page == 2 && active == 'mpesa') {
+                    setPage(page + 2)
+                }
+                else {
                     setPage(page + 1)
                 }
                 break
@@ -806,6 +836,12 @@ const DonationsForm = ({ sent }) => {
     return (
         <div ref={form} className="flex min-h-screen items-center py-28 md:py-8">
             <div className="w-full">
+                <div className="flex justify-between font-sen text-lff_700 tracking-widest text-center md:text-left">
+                    <span className={`${page == 1 ? 'text-lff_900' : ''}`}>1. Amount</span>
+                    <span className={`${page == 2 ? 'text-lff_900' : ''}`}>2. Details</span>
+                    <span className={`${page == 3 ? 'text-lff_900' : ''}`}>3. Address</span>
+                    <span className={`${page == 4 ? 'text-lff_900' : ''}`}>4. Confirm</span>
+                </div>
 
                 <div className={`${page === 1 ? `block` : `hidden`}`}>
                     <DonationAmount
@@ -819,6 +855,34 @@ const DonationsForm = ({ sent }) => {
                 </div>
 
                 <div className={`${page === 2 ? `block` : `hidden`}`}>
+                    <UserInfo
+                        handleUserInfo={handleUserInfo}
+                        details={{
+                            fname: firstName,
+                            lname: lastName,
+                            email: email,
+                            country: country,
+                            dial_code: dial_code,
+                            phone: phone
+                        }}
+                        alert={alerts}
+                    />
+                </div>
+
+                <div className={`${page === 3 ? `block` : `hidden`}`}>
+                    <Address
+                        handleAddress={handleAddressInfo}
+                        address={{
+                            address: address,
+                            city: city,
+                            state: state,
+                            postalCode: postalCode
+                        }}
+                        alert={alerts}
+                    />
+                </div>
+
+                <div className={`${page === 4 ? `block` : `hidden`}`}>
                     <PaymentInfo
                         cardNumber={cardNumber}
                         cardType={cardType}
@@ -859,6 +923,19 @@ const DonationsForm = ({ sent }) => {
                     page={page}
                     handlePage={handlePage}
                     amount={amount}
+                    userInfo={{
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        country: country,
+                        phone: phone
+                    }}
+                    addressInfo={{
+                        address: address,
+                        city: city,
+                        state: state,
+                        postalCode: postalCode
+                    }}
                     paymentInfo={{
                         name: `${firstName} ${lastName}`,
                         cardNumber: cardNumber,
@@ -881,6 +958,8 @@ const Navigation = ({
     page,
     handlePage,
     amount,
+    userInfo,
+    addressInfo,
     paymentInfo,
     handleDonation,
     handleInputAlerts,
@@ -905,6 +984,43 @@ const Navigation = ({
                 alerts.type = 'error'
             }
 
+        if (page == 2)
+            for (let [key, value] of Object.entries(userInfo)) {
+                if (isEmpty(value)) {
+                    if (key == 'firstName')
+                        error = 'First Name is required'
+                    else if (key == 'lastName')
+                        error = 'First Name is required'
+                    else if (key == 'email')
+                        error = 'Email address is required'
+                    else if (key == 'country')
+                        error = 'Country is required'
+                    else if (key == 'phone')
+                        error = 'Phone number is required'
+
+                    alerts.message[`${key}`] = error
+
+                    alerts.type = 'error'
+                }
+            }
+
+        if (page == 3)
+            for (let [key, value] of Object.entries(addressInfo)) {
+                if (isEmpty(value)) {
+                    if (key == 'address')
+                        error = 'Address is required'
+                    else if (key == 'city')
+                        error = 'City address is required'
+                    else if (key == 'state')
+                        error = 'State number is required'
+                    else if (key == 'postalCode')
+                        error = 'Postal Code number is required'
+
+                    alerts.message[`${key}`] = error
+                    alerts.type = 'error'
+                }
+            }
+
         if (alerts.type == 'error') {
             if (Object.keys(alerts.message).length > 1)
                 alerts.title += `There are ${Object.keys(alerts.message).length} errors with your submission`
@@ -924,11 +1040,17 @@ const Navigation = ({
     }
 
     const donate = async () => {
-        if (page == 2)
+        if (page == 4)
             for (let [key, value] of Object.entries(paymentInfo)) {
                 if (isEmpty(value) && paymentMethod !== 'mpesa') {
                     if (key == 'name')
                         error = 'Name is required'
+                    else if (key == 'cardNumber')
+                        error = 'Card number is required'
+                    else if (key == 'expiryMonthYear')
+                        error = 'Expiration address is required'
+                    else if (key == 'cvn')
+                        error = 'CVC is required'
 
                     alerts.message[`${key}`] = error
                     alerts.type = 'error'
@@ -968,19 +1090,20 @@ const Navigation = ({
                     <span className="h-4">back</span>
                 </button>
                 <button
-                    className="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 donate-button text-lff_900 flex font-mono items-center py-5 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_400 hover:bg-lff_700 disabled:opacity-50"
-                    onClick={() => page == 2 ? donate() : next()}
+                    className="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 donate-button text-lff_800 flex font-sen items-center text-sm  py-5 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_200 hover:bg-lff_400 disabled:opacity-50"
+                    onClick={() => page == 4 ? donate() : next()}
                     disabled={loading ? true : false}
                 >
-                    {page == 2 ? (
+                    {page == 4 ? (
                         <>
                             {
                                 !loading ?
                                     (
                                         <span className="">
-                                            <svg width="16" className='text-lff_800' height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M8.4135 13.8736C8.18683 13.9536 7.8135 13.9536 7.58683 13.8736C5.6535 13.2136 1.3335 10.4602 1.3335 5.79356C1.3335 3.73356 2.9935 2.06689 5.04016 2.06689C6.2535 2.06689 7.32683 2.65356 8.00016 3.56023C8.6735 2.65356 9.7535 2.06689 10.9602 2.06689C13.0068 2.06689 14.6668 3.73356 14.6668 5.79356C14.6668 10.4602 10.3468 13.2136 8.4135 13.8736Z" fill="#CCBD96" stroke="#CCBD96" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
+
                                         </span>
                                     )
                                     :
@@ -993,13 +1116,13 @@ const Navigation = ({
                                         </span>
                                     )
                             }
-                            <span className="">Make a donation of <span className="underline underline-offset-4 text-lff_900">{
+                            <span className="h-5">make a donation of <span className="underline underline-offset-4 text-lff_900">{
                                 amountF.format(amount)
                             }</span></span>
                         </>
                     ) : (
                         <>
-                            <span className="">next</span>
+                            <span className="h-5">next</span>
                             <span className="">
                                 <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="8" height="16" fill="none" />
@@ -1010,15 +1133,18 @@ const Navigation = ({
                     )}
                 </button>
             </div>
+            {/* <div className={`${paymentMethod == `mpesa` ? `block` : `hidden`} w-full md:text-right text-sm mt-4 z-50`}>The exchange rate to <span className='underline decoration-clone' title='Kenya Shillings'>KES</span> is <span className='underline decoration-clone'>{exchangeRate}</span></div> */}
         </>
     )
 }
 
-const DonationAmount = ({ handleAmount, amount, alert }) => {
+const DonationAmount = ({ handleAmount, amount, alert, active, setActive }) => {
     let amountInput = useRef()
-    const [active, setActive] = useState('usd')
+
 
     const clearAmount = () => amountInput.current.value = ""
+
+
 
     const _amounts_usd = {
         'row1': ['10.00', '50.00', '100.00'],
@@ -1032,7 +1158,7 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
     let _amounts = {}
     let currency = 'USD'
 
-    if (active == 'usd') {
+    if (active == 'card') {
         _amounts = _amounts_usd
         currency = 'USD'
     }
@@ -1048,15 +1174,15 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
 
     return (
         <>
-            <div className='flex space-x-1 text-base'>
-                <label className={`${active == `usd` ? `bg-lff_600` : ''} flex border border-solid border-lff_700 items-center py-1 px-4 cursor-pointer z-50 font-mono`}>
-                    <input type={'radio'} className="form-radio text-lff_800 hidden" checked={active == 'usd' ? true : false} onChange={() => setActive('usd')} /><span className='text-center'>USD</span>
+            <div className='pt-16 flex space-x-4'>
+                <label className={`${active == `card` ? `bg-lff_400` : ''} flex border border-solid border-lff_700 items-center w-full md:w-1/2 p-4 cursor-pointer z-50`}>
+                    <input type={'radio'} className="form-radio text-lff_800" checked={active == 'card' ? true : false} onChange={() => setActive('card')} /><span className='ml-4'>Card or Paypal</span>
                 </label>
-                <label className={`${active == `kes` ? `bg-lff_600` : ''} flex border border-solid border-lff_700 items-center py-1 px-4 cursor-pointer z-50 font-mono`}>
-                    <input type={'radio'} className="form-radio text-lff_800 hidden" checked={active == 'kes' ? true : false} onChange={() => setActive('kes')} /><span className='text-center'>KES</span>
+                <label className={`${active == `mpesa` ? `bg-lff_400` : ''} flex border border-solid border-lff_700 items-center w-full md:w-1/2 p-4 cursor-pointer z-50`}>
+                    <input type={'radio'} className="form-radio text-lff_800" checked={active == 'mpesa' ? true : false} onChange={() => setActive('mpesa')} /><span className='ml-4'>MPesa</span>
                 </label>
             </div>
-            <div className="font-mono text-xl my-8 text-lff_900">Donation Amount: {amountF.format(amount)}</div>
+            <div className="font-sorts text-3xl my-16 text-lff_900">Donation Amount: {amountF.format(amount)}</div>
 
             <div className={`${Object.keys(alert).length == 0 ? `hidden` : `flex`}`}>
                 <Alert alert={alert} />
@@ -1068,9 +1194,9 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
                         <div
                             onClick={() => { handleAmount(_amount); clearAmount() }}
                             className={
-                                `${Number(amount) === Number(_amount) ? `bg-lff_600 text-lff_900 border-lff_700` : `bg-transparent text-lff_700 border-lff_700`} 
-                                hover:border-lff_800 transition-all duration-150 ease-in-out 
-                                flex font-mono text-base  py-4 border border-solid  justify-center cursor-pointer tracking-widest flex-grow z-50`
+                                `${Number(amount) === Number(_amount) ? `bg-lff_500 text-lff_800 border-lff_800 ` : `bg-transparent text-lff_700 border-lff_600`} 
+                            hover:bg-lff_500 hover:text-lff_800 hover:border-lff_800 transition-all duration-500 ease-in-out 
+                            flex font-sen text-base  py-4 border border-solid  justify-center cursor-pointer tracking-widest flex-grow z-50`
                             }
                             key={i}
                         >{amountF.format(_amount)}</div>
@@ -1083,9 +1209,9 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
                         <div
                             onClick={() => { handleAmount(_amount); clearAmount() }}
                             className={
-                                `${Number(amount) === Number(_amount) ? `bg-lff_600 text-lff_900 border-lff_700 ` : `bg-transparent text-lff_700 border-lff_700`} 
-                                hover:border-lff_800 transition-all duration-150 ease-in-out 
-                                flex font-mono text-base  py-4 border border-solid  justify-center cursor-pointer tracking-widest flex-grow z-50`
+                                `${Number(amount) === Number(_amount) ? `bg-lff_500 text-lff_800 border-lff_800 ` : `bg-transparent text-lff_700 border-lff_600`} 
+                            hover:bg-lff_500 hover:text-lff_800 hover:border-lff_800 transition-all duration-500 ease-in-out 
+                            flex font-sen text-base  py-4 border border-solid  justify-center cursor-pointer tracking-widest flex-grow z-50`
                             }
                             key={i}
                         >{amountF.format(_amount)}</div>
@@ -1100,13 +1226,156 @@ const DonationAmount = ({ handleAmount, amount, alert }) => {
                     <span className="-mr-1 py-1.5">$</span>
                     <input
                         ref={amountInput}
-                        className="appearance-none font-mono bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 px-4 leading-tight focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                        className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 px-4 leading-tight focus:outline-none placeholder-lff_700 text-lff_800 w-full"
                         type="number"
                         placeholder="Other Amount"
                         min="0.00"
                         step="0.01"
                         onChange={e => handleAmount(`${e.target.value}`)}
                     />
+                </div>
+            </div>
+        </>
+    )
+}
+
+const UserInfo = ({ handleUserInfo, details, alert, hasError }) => {
+    const [country, setCountry] = useState('')
+
+    useEffect(() => {
+        if (country.length > 0) handleUserInfo('country', country[0])
+    }, [country])
+
+    return (
+        <>
+            <div className="font-sorts text-3xl my-10 text-lff_900">User details</div>
+
+            <div className={`${Object.keys(alert).length == 0 ? `hidden` : `flex`}`}>
+                <Alert alert={alert} />
+            </div>
+
+            <div className="flex justify-between flex-col relative z-50">
+                <div className="w-full mb-5">
+                    <label htmlFor="fname" className="font-sorts mb-4 text-lg text-lff_900">First Name</label>
+                    <input
+                        id="fname"
+                        className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                        type="text"
+                        placeholder="Enter your First Name"
+                        onChange={e => handleUserInfo('firstName', e.target.value)}
+                        value={details.fname}
+                    />
+                </div>
+                <div className="w-full mb-5">
+                    <label htmlFor="lname" className="font-sorts mb-4 text-lg text-lff_900">Last Name</label>
+                    <input
+                        id="lname"
+                        className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                        type="text"
+                        placeholder="Enter your Last Name"
+                        onChange={e => handleUserInfo('lastName', e.target.value)}
+                        value={details.lname}
+                    />
+                </div>
+                <div className="w-full mb-5" >
+                    <label htmlFor="email" className="font-sorts mb-4 text-lg text-lff_900">Email</label>
+                    <input
+                        id="email"
+                        className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                        type="email"
+                        placeholder="Enter your Email"
+                        onChange={e => handleUserInfo('email', e.target.value)}
+                        value={details.email}
+                    />
+                </div >
+                <div className="w-full mb-5">
+                    <label htmlFor="country" className="font-sorts mb-4 text-lg text-lff_900">Country</label>
+                    <Select options={countries} name="country" placeholder="Enter your country" handleValue={setCountry} />
+                </div>
+                <div className="w-full">
+                    <label htmlFor="phone" className="font-sorts mb-4 text-lg text-lff_900">Phone</label>
+                    <div className='flex'>
+                        <span className='py-2 pr-1'>
+                            {details.dial_code}
+                        </span>
+                        <input
+                            id="phone"
+                            className="w-full appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800"
+                            type="tel"
+                            placeholder="Enter your phone number"
+                            onChange={e => handleUserInfo('phone', e.target.value)}
+                            value={`${details.phone}`}
+                        />
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+const Address = ({ handleAddress, address, alert }) => {
+    return (
+        <>
+            <div className="font-sorts text-3xl my-10 text-lff_900">Contact details</div>
+
+            <div className={`${Object.keys(alert).length == 0 ? `hidden` : `flex`}`}>
+                <Alert alert={alert} />
+            </div>
+
+            <div className="flex justify-between flex-col relative z-50">
+                <div className="w-full mb-5">
+                    <label htmlFor="address" className="font-sorts mb-4 text-lg text-lff_900">Address</label>
+                    <div className="flex font-sen py-0.5">
+                        <input
+                            id="address"
+                            className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                            type="text"
+                            placeholder="Enter your address"
+                            value={address.address}
+                            onChange={e => handleAddress('address', e.target.value)}
+                        />
+                    </div>
+
+                </div>
+                <div className="w-full mb-5">
+                    <label htmlFor="city" className="font-sorts mb-4 text-lg text-lff_900">City</label>
+                    <div className="flex font-sen py-0.5">
+                        <input
+                            id="city"
+                            className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                            type="text"
+                            placeholder="Enter your city"
+                            value={address.city}
+                            onChange={e => handleAddress('city', e.target.value)}
+                        />
+                    </div>
+                </div>
+                <div className="w-full mb-5">
+                    <label htmlFor="state" className="font-sorts mb-4 text-lg text-lff_900">State</label>
+                    <div className="flex font-sen py-0.5">
+                        <input
+                            id="state"
+                            className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                            type="text"
+                            placeholder="Enter your state"
+                            value={address.state}
+                            onChange={e => handleAddress('state', e.target.value)}
+                        />
+                    </div>
+                </div>
+                <div className="w-full">
+                    <label htmlFor="postalCode" className="font-sorts mb-4 text-lg text-lff_900">Postal Code</label>
+                    <div className="flex font-sen py-0.5">
+                        <input
+                            id="postalCode"
+                            className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                            type="number"
+                            placeholder="Enter your postal code"
+                            value={address.postalCode}
+                            onChange={e => handleAddress('postalCode', e.target.value)}
+                        />
+                    </div>
+
                 </div>
             </div>
         </>
