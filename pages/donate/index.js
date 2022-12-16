@@ -21,7 +21,8 @@ const Index = () => {
                 opacity: 1,
                 ease: 'power3.inOut'
             })
-            setTimeout(() => setSent(false), 5000)
+            setTimeout(() => setSent(false),
+                5000)
         }
     }, [sent])
     return (
