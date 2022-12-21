@@ -8,6 +8,7 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
 import Logo from '../../components/Logo'
 import ThankYou from '../../components/ThankYou'
 import gsap from 'gsap'
+import { v4 } from 'uuid'
 
 const Index = () => {
     const [sent, setSent] = useState(false)
@@ -78,8 +79,7 @@ const DonationsForm = ({ sent }) => {
         [paymentMethod, setPaymentMethod] = useState('card'),
         [paymentCurrency, setPaymentCurrency] = useState('USD'),
         [exchange_rate, setExchange_rate] = useState(''),
-        [loading, setLoading] = useState(false),
-        [sessionId, setSessionId] = useState(null)
+        [loading, setLoading] = useState(false)
 
     let form = useRef()
 
@@ -121,29 +121,6 @@ const DonationsForm = ({ sent }) => {
                 }
             }
 
-            Checkout.configure({
-                session: {
-                    id: 'SESSION0002308019008F2520383N64'
-                },
-                merchant: "LUIGI",
-                order: {
-                    amount: amount,
-                    currency: paymentCurrency,
-                    description: "Donation to The Luigi Footprints Foundation",
-                    id: "602094pp",
-                    reference: "602094pp"
-                },
-                transaction: {
-                    reference: "602094pp"
-                },
-                interaction: {
-                    operation: "PURCHASE",
-                    merchant: {
-                        name: "Luigi Footprints Foundation",
-                    },
-                },
-            })
-
         }
         else {
             await fetch('https://payutil.tk/mpesa/checkout', {
@@ -167,12 +144,34 @@ const DonationsForm = ({ sent }) => {
         await fetch('https://ap-gateway.mastercard.com/api/rest/version/62/merchant/LUIGI/session', {
             method: 'POST',
             headers: {
-                // bWVyY2hhbnQuTFVJR0k6N2E1ODk5MjQ5Y2MxN2Q0NmM4YjczZDI4YjVhMjE1YjM=
                 'Authorization': 'Basic bWVyY2hhbnQuTFVJR0k6N2E1ODk5MjQ5Y2MxN2Q0NmM4YjczZDI4YjVhMjE1YjM=',
                 'Content-Type': 'application/json'
             }
         }).then(response => response.json().then(
-            data => setSessionId(data)
+            data => {
+                Checkout.configure({
+                    session: {
+                        id: data
+                    },
+                    merchant: "LUIGI",
+                    order: {
+                        amount: amount,
+                        currency: paymentCurrency,
+                        description: "Donation to The Luigi Footprints Foundation",
+                        id: v4(),
+                        reference: v4()
+                    },
+                    transaction: {
+                        reference: v4()
+                    },
+                    interaction: {
+                        operation: "PURCHASE",
+                        merchant: {
+                            name: "Luigi Footprints Foundation",
+                        },
+                    },
+                })
+            }
         ))
     }
 
