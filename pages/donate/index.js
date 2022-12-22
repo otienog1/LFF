@@ -140,11 +140,12 @@ const DonationsForm = ({ sent }) => {
         }
     }
 
-    const handleSession = async () => {
+    const handleCheckout = async () => {
+        let cred = btoa('merchant.LUIGI:7a5899249cc17d46c8b73d28b5a215b3')
         await fetch('https://ap-gateway.mastercard.com/api/rest/version/62/merchant/LUIGI/session', {
             method: 'POST',
             headers: {
-                'Authorization': 'Basic bWVyY2hhbnQuTFVJR0k6N2E1ODk5MjQ5Y2MxN2Q0NmM4YjczZDI4YjVhMjE1YjM=',
+                'Authorization': 'Basic ' + cred,
                 'Content-Type': 'application/json'
             }
         }).then(response => response.json().then(
@@ -204,7 +205,7 @@ const DonationsForm = ({ sent }) => {
 
     useEffect(() => {
         // exchangeRate()
-        handleSession()
+        handleCheckout()
     }, [])
 
     return (
