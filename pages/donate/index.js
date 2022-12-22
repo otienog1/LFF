@@ -141,8 +141,9 @@ const DonationsForm = ({ sent }) => {
     }
 
     const handleCheckout = async () => {
-        let cred = btoa('merchant.LUIGI:7a5899249cc17d46c8b73d28b5a215b3')
-        await fetch('https://ap-gateway.mastercard.com/api/rest/version/62/merchant/LUIGI/session', {
+        let cred = btoa('merchant.LUIGI:7a5899249cc17d46c8b73d28b5a215b3'),
+            url_sess = 'https://ap-gateway.mastercard.com/api/rest/version/62/merchant/LUIGI/session'
+        await fetch(url_sess, {
             method: 'POST',
             headers: {
                 'Authorization': 'Basic ' + cred,
