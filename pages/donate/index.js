@@ -254,7 +254,6 @@ const DonationsForm = ({ sent }) => {
                         expiryMonthYear: expiryMonthYear,
                         cvn: cvn
                     }}
-                    handleDonation={handleDonation}
                     handleInputAlerts={handleInputAlerts}
                     paymentCurrency={paymentCurrency}
                     paymentMethod={paymentMethod}
@@ -272,7 +271,6 @@ const Navigation = ({
     handlePage,
     amount,
     paymentInfo,
-    handleDonation,
     handleInputAlerts,
     paymentCurrency,
     paymentMethod,
@@ -315,26 +313,37 @@ const Navigation = ({
 
     const donate = async () => {
         if (page == 2)
-            for (let [key, value] of Object.entries(paymentInfo)) {
-                if (isEmpty(value) && paymentMethod !== 'mpesa') {
-                    if (key == 'name')
-                        error = 'Name is required'
+            if (paymentMethod == 'mpesa') {
+                for (let [key, value] of Object.entries(paymentInfo)) {
+                    if (isEmpty(value)) {
+                        if (key == 'name')
+                            error = 'Name is required'
+                        if (key == 'email')
+                            error = 'Email is required'
+                        if (key == 'phone')
+                            error = 'Phone number is required'
 
-                    alerts.message[`${key}`] = error
-                    alerts.type = 'error'
-                }
+                        alerts.message[`${key}`] = error
+                        alerts.type = 'error'
+                    }
 
-                if (alerts.type == 'error') {
-                    if (Object.keys(alerts.message).length > 1)
-                        alerts.title += `There are ${Object.keys(alerts.message).length} errors with your submission`
-                    else
-                        alerts.title += 'There is an error with your sumbission'
+                    if (alerts.type == 'error') {
+                        if (Object.keys(alerts.message).length > 1)
+                            alerts.title += `There are ${Object.keys(alerts.message).length} errors with your submission`
+                        else
+                            alerts.title += 'There is an error with your sumbission'
 
-                    handleInputAlerts(alerts)
-                    return
+                        handleInputAlerts(alerts)
+                        return
+                    }
                 }
             }
-        handleDonation()
+
+        if (paymentMethod == 'paypal')
+            return;
+
+        // handleDonation()
+        Checkout.showLightbox()
         handleInputAlerts(alerts = {})
     }
 
@@ -358,7 +367,7 @@ const Navigation = ({
                     <span className="h-4">back</span>
                 </button>
                 <button
-                    className="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 donate-button text-lff_900 flex font-mono items-center py-5 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_400 hover:bg-lff_700 disabled:opacity-50"
+                    className={`disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 donate-button text-lff_900 flex font-mono items-center py-5 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_400 hover:bg-lff_700 disabled:opacity-50 ${paymentMethod == 'paypal' ? 'hidden' : ''}`}
                     onClick={() => page == 2 ? donate() : next()}
                     disabled={loading ? true : false}
                 >
@@ -520,16 +529,16 @@ const PaymentInfo = ({
     useEffect(() => {
         paypal.current.children[0].style.width = '50%'
 
-        if (active == 'paypal' && page == 4) {
-            document.querySelector('.donate-button').classList.add('hidden')
-        }
-        else {
-            document.querySelector('.donate-button').classList.remove('hidden')
-        }
+        // if (active == 'paypal' && page == 2) {
+        //     document.querySelector('.donate-button').classList.add('hidden')
+        // }
+        // else {
+        //     document.querySelector('.donate-button').classList.remove('hidden')
+        // }
 
         paymentMethod(active)
 
-    }, [active, page, paymentMethod])
+    }, [active])
 
     return (
         <>
