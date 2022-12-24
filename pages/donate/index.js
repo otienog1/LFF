@@ -354,20 +354,20 @@ const Navigation = ({
 
     return (
         <>
-            <div className={`flex ${page > 1 ? `justify-between` : `justify-end`} mt-20`}>
+            <div className="flex mt-10 space-x-2">
                 <button
-                    className={`${page > 1 ? `flex` : `hidden`} text-lff_800 flex font-sen items-center text-sm bg-transparentpy-3 space-x-2 w-48`}
+                    className={`${page > 1 ? `flex` : `hidden`} disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 donate-button text-lff_900 font-mono items-center py-3 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-transparent hover:bg-lff_400 disabled:opacity-50`}
                     onClick={() => previous()}
                 >
-                    <span className="">
+                    {/* <span className="">
                         <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8.83984 1.35327L0.839844 9.35327L8.83984 17.3533" stroke="#3F3F3F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                    </span>
-                    <span className="h-4">back</span>
+                    </span> */}
+                    <span className="">Edit Amount</span>
                 </button>
                 <button
-                    className={`disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 donate-button text-lff_900 flex font-mono items-center py-5 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_400 hover:bg-lff_700 disabled:opacity-50 ${paymentMethod == 'paypal' ? 'hidden' : ''}`}
+                    className={`disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 donate-button text-lff_900 flex font-mono items-center py-3 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_600 hover:bg-lff_700 disabled:opacity-50 ${paymentMethod == 'paypal' && page == 2 ? 'hidden' : ''}`}
                     onClick={() => page == 2 ? donate() : next()}
                     disabled={loading ? true : false}
                 >
@@ -377,15 +377,15 @@ const Navigation = ({
                                 !loading ?
                                     (
                                         <span className="">
-                                            <svg width="16" className='text-lff_800' height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M8.4135 13.8736C8.18683 13.9536 7.8135 13.9536 7.58683 13.8736C5.6535 13.2136 1.3335 10.4602 1.3335 5.79356C1.3335 3.73356 2.9935 2.06689 5.04016 2.06689C6.2535 2.06689 7.32683 2.65356 8.00016 3.56023C8.6735 2.65356 9.7535 2.06689 10.9602 2.06689C13.0068 2.06689 14.6668 3.73356 14.6668 5.79356C14.6668 10.4602 10.3468 13.2136 8.4135 13.8736Z" fill="#CCBD96" stroke="#CCBD96" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            <svg width="16" className='text-lff_900' height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M8.4135 13.8736C8.18683 13.9536 7.8135 13.9536 7.58683 13.8736C5.6535 13.2136 1.3335 10.4602 1.3335 5.79356C1.3335 3.73356 2.9935 2.06689 5.04016 2.06689C6.2535 2.06689 7.32683 2.65356 8.00016 3.56023C8.6735 2.65356 9.7535 2.06689 10.9602 2.06689C13.0068 2.06689 14.6668 3.73356 14.6668 5.79356C14.6668 10.4602 10.3468 13.2136 8.4135 13.8736Z" fill="currentColor" stroke="currentColor" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
                                         </span>
                                     )
                                     :
                                     (
                                         <span>
-                                            <svg className="animate-spin h-5 w-5 text-lff_800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <svg className="animate-spin h-5 w-5 text-lff_900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                             </svg>
@@ -398,11 +398,11 @@ const Navigation = ({
                         </>
                     ) : (
                         <>
-                            <span className="">next</span>
-                            <span className="">
+                            <span className="text-lff_900">Next</span>
+                            <span className="text-lff_900">
                                 <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <rect width="8" height="16" fill="none" />
-                                    <path d="M1.18457 13.6482L6.81656 8.00017L1.18457 2.35217" stroke="#665F4B" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                    <path d="M1.18457 13.6482L6.81656 8.00017L1.18457 2.35217" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </span>
                         </>
@@ -542,14 +542,14 @@ const PaymentInfo = ({
 
     return (
         <>
-            <div className="font-sorts text-3xl my-10 text-lff_900">Payment method</div>
+            <div className="font-mono text-xl my-8 text-lff_900">Payment Method</div>
 
             <div className={`${Object.keys(alert).length == 0 ? `hidden` : `flex`}`}>
                 <Alert alert={alert} />
             </div>
 
             <div className="flex flex-wrap md:flex-nowrap mb-8 space-y-4 md:space-y-0 md:space-x-8">
-                <label className={`${active == `card` ? `bg-lff_700` : ''} flex border border-solid border-lff_800 items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
+                <label className={`${active == `card` ? `bg-lff_600 border-lff_800` : 'border-lff_600 hover:bg-lff_400'} flex border border-solid border-lff_600 items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
                     <span className="flex items-center">
                         <span>
                             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -655,7 +655,7 @@ const PaymentInfo = ({
                     </span>
                     <input type="radio" className="form-radio text-lff_800 hidden" name="radio" value="1" checked={active == 'card' ? true : false} onChange={() => setActive('card')} />
                 </label>
-                <label className={`${active == `paypal` ? `bg-lff_700` : ''} flex border border-solid border-lff_800 items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
+                <label className={`${active == `paypal` ? `bg-lff_600 border-lff_800` : 'border-lff_600 hover:bg-lff_400'} flex border border-solid border-lff_600 items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
                     <span className="flex items-center">
                         <span>
                             <svg width="31" height="36" viewBox="0 0 31 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -678,7 +678,7 @@ const PaymentInfo = ({
                     </span>
                     <input type="radio" className="form-radio text-lff_800 hidden" name="radio" value="1" onChange={() => setActive('paypal')} />
                 </label>
-                <label className={`${active == `mpesa` ? `bg-lff_700` : ''} flex border border-solid border-lff_800 items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
+                <label className={`${active == `mpesa` ? `bg-lff_600 border-lff_800` : 'border-lff_600 hover:bg-lff_400'} flex border border-solid border-lff_600 items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
                     <span className="flex items-center">
                         <span>
                             <svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -729,37 +729,37 @@ const PaymentInfo = ({
                 </div>
                 <div ref={mpesa} className={`${active == 'mpesa' ? 'block' : 'hidden'}`}>
                     <div className="w-full mb-5">
-                        <label htmlFor="city" className="font-sorts mb-4 text-lg text-lff_900">Name</label>
+                        {/* <label htmlFor="city" className="font-sorts mb-4 text-lg text-lff_900">Name</label> */}
                         <div className="flex font-sen py-0.5">
                             <input
-                                className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                                className="appearance-none font-mono text-xl bg-transparent border-b border-solid border-lff_600 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_900 w-full z-50 px-0"
                                 type="text"
-                                placeholder="Name"
-                                value={`${name.first} ${name.last}`}
+                                placeholder="Full name"
+                            // value={`${name}`}
                             // onChange={e => handleAddress('city', e.target.value)}
                             />
                         </div>
                     </div>
                     <div className="w-full mb-5">
-                        <label htmlFor="city" className="font-sorts mb-4 text-lg text-lff_900">Email</label>
+                        {/* <label htmlFor="city" className="font-sorts mb-4 text-lg text-lff_900">Email</label> */}
                         <div className="flex font-sen py-0.5">
                             <input
-                                className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                                className="appearance-none font-mono text-xl bg-transparent border-b border-solid border-lff_600 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_900 w-full z-50 px-0"
                                 type="text"
                                 placeholder="Email Address"
-                                value={`${email}`}
+                            // value={`${email}`}
                             // onChange={e => handleAddress('city', e.target.value)}
                             />
                         </div>
                     </div>
                     <div className="w-full mb-5">
-                        <label htmlFor="city" className="font-sorts mb-4 text-lg text-lff_900">Phone</label>
+                        {/* <label htmlFor="city" className="font-sorts mb-4 text-lg text-lff_900">Phone</label> */}
                         <div className='flex'>
                             <input
-                                className="appearance-none font-sen bg-transparent border-b border-solid border-lff_700 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_800 w-full"
+                                className="appearance-none font-mono text-xl bg-transparent border-b border-solid border-lff_600 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_900 w-full z-50 px-0"
                                 type="text"
                                 placeholder="Phone"
-                                value={`${phone}`}
+                            // value={`${phone}`}
                             // onChange={e => handleAddress('city', e.target.value)}
                             />
                         </div>
