@@ -26,8 +26,9 @@
   "devDependencies": {
     "@tailwindcss/custom-forms": "^0.2.1",
     "@types/react-transition-group": "^4.4.4",
-    "autoprefixer": "latest",
+    "autoprefixer": "10.4.5",
     "postcss": "latest",
     "tailwindcss": "latest"
-  }
+  },
+  "packageManager": "yarn@3.3.1"
 }

@@ -36,15 +36,42 @@ const Index = () => {
                 <div ref={elem} className="w-full px-4 md:w-1/2 mx-auto">
                     <Logo />
                     <DonationsForm sent={setSent} />
-                    <div ref={thk} className={`${sent ? 'flex' : 'hidden'} opacity-0`}>
+                    <div
+                        ref={thk}
+                        className={`${sent ? 'flex' : 'hidden'} opacity-0`}
+                    >
                         <ThankYou />
                     </div>
+
+                    {
+
+                        function errorCallback(error) {
+                            console.log(JSON.stringify(error))
+                        }
+                    }
+                    {
+                        function cancelCallback() {
+                            console.log("Payment cancelled")
+                        }
+                    }
+                    {
+                        function completeCallback(resultIndicator, sessionVersion) {
+                            console.log(sessionVersion)
+                            console.log(resultIndicator)
+                        }
+
+                    }
+
                     <script
-                        src="https://ap-gateway.mastercard.com/checkout/version/62/checkout.js"
-                        data-error="errorCallback"
-                        data-cancel="cancelCallback"
-                        data-complete="completeCallback">
-                    </script>
+                        src='https://ap-gateway.mastercard.com/checkout/version/61/checkout.js'
+                    // data-error="http://127.0.0.1:5000/mastercard/error"
+                    // data-cancel="http://127.0.0.1:5000/mastercard/cancel"
+                    // data-complete="http://127.0.0.1:5000/mastercard/complete"
+                    // data-error="errorCallback"
+                    // data-cancel="cancelCallback"
+                    // data-complete="completeCallback"
+                    />
+
                 </div>
 
             </Layout>
@@ -53,40 +80,21 @@ const Index = () => {
 }
 
 const DonationsForm = ({ sent }) => {
-    const [firstName, setFirstName] = useState(''),
-        [lastName, setLastName] = useState(''),
-        [address, setAddress] = useState(''),
-        [city, setCity] = useState(''),
-        [state, setState] = useState(''),
-        [postalCode, setPostalCode] = useState(''),
-        [country, setCountry] = useState(''),
-        [country_code, setCountry_code] = useState(''),
-        [dial_code, setDial_code] = useState(''),
+    const [name, setName] = useState(''),
         [email, setEmail] = useState(''),
         [phone, setPhone] = useState(''),
-        [expiryMonthValid, setExpiryMonthValid] = useState(false),
         [active, setActive] = useState('card'),
         [alerts, setAlerts] = useState({}),
         [btnDisabled, setBtnDisabled] = useState(true),
-        [cardNumber, setCardNumber] = useState(''),
-        [expiryMonth, setExpiryMonth] = useState(''),
-        [expiryYear, setExpiryYear] = useState(''),
-        [expiryMonthYear, setExpiryMonthYear] = useState(''),
-        [cvn, setCvn] = useState(''),
         [sendEmail] = useMutation(SEND_EMAIL),
         [amount, setAmount] = useState('0.00'),
         [page, setPage] = useState(1),
         [paymentMethod, setPaymentMethod] = useState('card'),
         [paymentCurrency, setPaymentCurrency] = useState('USD'),
-        [exchange_rate, setExchange_rate] = useState(''),
-        [loading, setLoading] = useState(false)
+        [loading, setLoading] = useState(false),
+        [sessionID, setSessionID] = useState('')
 
     let form = useRef()
-
-    const handleAmount = amount => {
-        setAmount(amount)
-        setBtnDisabled(false)
-    }
 
     const handleInputAlerts = (payload) => {
         setAlerts(payload)
@@ -111,103 +119,64 @@ const DonationsForm = ({ sent }) => {
         }
     }
 
-    const handleDonation = async () => {
+    const handleMpesa = async () => {
         setLoading(true)
-        if (paymentMethod == 'card') {
-            const data = {
-                amount: {
-                    totalAmount: amount,
-                    currency: "USD"
-                }
-            }
 
-        }
-        else {
-            await fetch('https://payutil.tk/mpesa/checkout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    phone_number: `${dial_code}${phone}`,
-                    amount: Math.ceil(amount),
-                    reference_code: 'Donation',
-                    description: "A donation to The Luigi Footprints Foundation"
-                })
-            }).then(response => response.json().then(data => {
-                setLoading(false)
-            }))
-        }
+        await fetch('https://payutil.tk/mpesa/checkout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                phone_number: phone,
+                amount: Math.ceil(amount),
+                reference_code: 'Donation',
+                description: "A donation to The Luigi Footprints Foundation"
+            })
+        }).then(response => response.json().then(data => {
+            setLoading(false)
+        }))
     }
 
     const handleCheckout = async () => {
-        let cred = btoa('merchant.LUIGI:7a5899249cc17d46c8b73d28b5a215b3'),
-            url_sess = 'https://ap-gateway.mastercard.com/api/rest/version/62/merchant/LUIGI/session'
+        let url_sess = 'https://payutil.tk/mastercard/authenticate'
+
         await fetch(url_sess, {
-            method: 'POST',
-            headers: {
-                'Authorization': 'Basic ' + cred,
-                'Content-Type': 'application/json'
-            }
+            method: 'POST'
         }).then(response => response.json().then(
             data => {
-                Checkout.configure({
-                    session: {
-                        id: data
-                    },
-                    merchant: "LUIGI",
-                    order: {
-                        amount: amount,
-                        currency: paymentCurrency,
-                        description: "Donation to The Luigi Footprints Foundation",
-                        id: v4(),
-                        reference: v4()
-                    },
-                    transaction: {
-                        reference: v4()
-                    },
-                    interaction: {
-                        operation: "PURCHASE",
-                        merchant: {
-                            name: "Luigi Footprints Foundation",
-                        },
-                    },
-                })
+                setSessionID(data.session.id)
             }
         ))
     }
 
-    // const exchangeRate = async () => {
-    //     await fetch('https://payutil.tk/rates/kes', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //             acquirerDetails: {
-    //                 bin: 424315,
-    //                 settlement: {
-    //                     currencyCode: "840"
-    //                 }
-    //             },
-    //             rateProductCode: "A",
-    //             destinationCurrencyCode: "404",
-    //             sourceAmount: "1",
-    //             sourceCurrencyCode: "840"
-    //         })
-    //     }).then(
-    //         response => response.json().then(
-    //             data => setExchange_rate(data)
-    //         )
-    //     ).catch(
-    //         e => console.log(e.message)
-    //     )
-    // }
+    const handleAmount = amt => setAmount(amt)
 
     useEffect(() => {
-        // exchangeRate()
         handleCheckout()
-    }, [])
+        Checkout.configure({
+            session: {
+                id: sessionID
+            },
+            merchant: "LUIGI",
+            order: {
+                amount: amount,
+                currency: paymentCurrency,
+                description: "Donation to The Luigi Footprints Foundation",
+                id: v4(),
+                reference: v4()
+            },
+            transaction: {
+                reference: v4()
+            },
+            interaction: {
+                operation: "PURCHASE",
+                merchant: {
+                    name: "Luigi Footprints Foundation:",
+                },
+            },
+        })
+    }, [amount, paymentCurrency])
 
     return (
         <div ref={form} className="flex min-h-screen items-center py-28 md:py-8">
@@ -228,16 +197,17 @@ const DonationsForm = ({ sent }) => {
 
                 <div className={`${page === 2 ? `block` : `hidden`}`}>
                     <PaymentInfo
-                        name={{
-                            first: firstName,
-                            last: lastName
-                        }}
                         alert={alerts}
                         amount={amount}
+                        name={name}
+                        setName={setName}
                         email={email}
+                        setEmail={setEmail}
                         phone={phone}
+                        setPhone={setPhone}
                         page={page}
-                        paymentMethod={setPaymentMethod}
+                        setPaymentCurrency={setPaymentCurrency}
+                        setPaymentMethod={setPaymentMethod}
                         sent={sent}
                         active={active}
                         setActive={setActive}
@@ -249,17 +219,16 @@ const DonationsForm = ({ sent }) => {
                     handlePage={handlePage}
                     amount={amount}
                     paymentInfo={{
-                        name: `${firstName} ${lastName}`,
-                        cardNumber: cardNumber,
-                        expiryMonthYear: expiryMonthYear,
-                        cvn: cvn
+                        name: name,
+                        email: email,
+                        phone: phone,
                     }}
                     handleInputAlerts={handleInputAlerts}
+                    handleMpesa={handleMpesa}
                     paymentCurrency={paymentCurrency}
                     paymentMethod={paymentMethod}
-                    exchangeRate={exchange_rate.rate}
                     loading={loading}
-
+                    setBtnDisabled={setBtnDisabled}
                 />
             </div>
         </div >
@@ -272,6 +241,7 @@ const Navigation = ({
     amount,
     paymentInfo,
     handleInputAlerts,
+    handleMpesa,
     paymentCurrency,
     paymentMethod,
     loading
@@ -287,11 +257,10 @@ const Navigation = ({
     const isEmpty = str => (!str || str.length == 0)
 
     const next = () => {
-        if (page == 1)
-            if (isEmpty(amount) || amount <= 0) {
-                alerts.message.amount = 'Please select or enter amount'
-                alerts.type = 'error'
-            }
+        if (isEmpty(amount) || amount <= 0) {
+            alerts.message.amount = 'Please select or enter amount'
+            alerts.type = 'error'
+        }
 
         if (alerts.type == 'error') {
             if (Object.keys(alerts.message).length > 1)
@@ -312,38 +281,41 @@ const Navigation = ({
     }
 
     const donate = async () => {
-        if (page == 2)
-            if (paymentMethod == 'mpesa') {
-                for (let [key, value] of Object.entries(paymentInfo)) {
-                    if (isEmpty(value)) {
-                        if (key == 'name')
-                            error = 'Name is required'
-                        if (key == 'email')
-                            error = 'Email is required'
-                        if (key == 'phone')
-                            error = 'Phone number is required'
+        if (paymentMethod == 'mpesa') {
+            for (let [key, value] of Object.entries(paymentInfo)) {
+                if (isEmpty(value)) {
+                    if (key == 'name')
+                        error = 'Name is required'
+                    if (key == 'email')
+                        error = 'Email address is required'
+                    if (key == 'phone')
+                        error = 'Phone number is required'
 
-                        alerts.message[`${key}`] = error
-                        alerts.type = 'error'
-                    }
+                    alerts.message[`${key}`] = error
+                    alerts.type = 'error'
+                }
 
-                    if (alerts.type == 'error') {
-                        if (Object.keys(alerts.message).length > 1)
-                            alerts.title += `There are ${Object.keys(alerts.message).length} errors with your submission`
-                        else
-                            alerts.title += 'There is an error with your sumbission'
+                if (alerts.type == 'error') {
+                    if (Object.keys(alerts.message).length > 1)
+                        alerts.title += `There are ${Object.keys(alerts.message).length} errors with your submission`
+                    else
+                        alerts.title += 'There is an error with your sumbission'
 
-                        handleInputAlerts(alerts)
-                        return
-                    }
+                    handleInputAlerts(alerts)
+                    return
                 }
             }
+        }
+
+        if (paymentMethod == 'card')
+            Checkout.showLightbox()
 
         if (paymentMethod == 'paypal')
             return;
 
-        // handleDonation()
-        Checkout.showLightbox()
+        if (paymentMethod == 'mpesa')
+            handleMpesa()
+
         handleInputAlerts(alerts = {})
     }
 
@@ -356,20 +328,21 @@ const Navigation = ({
         <>
             <div className="flex mt-10 space-x-2">
                 <button
-                    className={`${page > 1 ? `flex` : `hidden`} disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 donate-button text-lff_900 font-mono items-center py-3 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-transparent hover:bg-lff_400 disabled:opacity-50`}
+                    className={`${page > 1 ? `flex` : `hidden`} disabled:bg-slate-50 disabled:text-slate-600 disabled:border-slate-300 donate-button text-lff_900 font-mono items-center py-3 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-transparent hover:bg-lff_400`}
                     onClick={() => previous()}
+                    disabled={page == 2 && loading ? true : false}
                 >
                     {/* <span className="">
                         <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8.83984 1.35327L0.839844 9.35327L8.83984 17.3533" stroke="#3F3F3F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </span> */}
-                    <span className="">Edit Amount</span>
+                    <span className="">Edit amount</span>
                 </button>
                 <button
-                    className={`disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 donate-button text-lff_900 flex font-mono items-center py-3 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_600 hover:bg-lff_700 disabled:opacity-50 ${paymentMethod == 'paypal' && page == 2 ? 'hidden' : ''}`}
+                    className={`disabled:bg-slate-50 disabled:text-slate-600 disabled:border-slate-300 donate-button text-lff_900 flex font-mono items-center py-3 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_600 hover:bg-lff_700 ${paymentMethod == 'paypal' && page == 2 ? 'hidden' : ''}`}
                     onClick={() => page == 2 ? donate() : next()}
-                    disabled={loading ? true : false}
+                    disabled={page == 2 && loading ? true : false}
                 >
                     {page == 2 ? (
                         <>
@@ -415,7 +388,6 @@ const Navigation = ({
 
 const DonationAmount = ({ handleAmount, amount, alert, paymentCurrency, setPaymentCurrency }) => {
     let amountInput = useRef()
-    const [active, setActive] = useState('usd')
 
     const clearAmount = () => amountInput.current.value = ""
 
@@ -430,14 +402,10 @@ const DonationAmount = ({ handleAmount, amount, alert, paymentCurrency, setPayme
 
     let _amounts = {}
 
-    if (active == 'usd') {
+    if (paymentCurrency == 'USD')
         _amounts = _amounts_usd
-        setPaymentCurrency('USD')
-    }
-    else {
+    else
         _amounts = _amounts_ksh
-        setPaymentCurrency('KES')
-    }
 
     let amountF = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -447,11 +415,11 @@ const DonationAmount = ({ handleAmount, amount, alert, paymentCurrency, setPayme
     return (
         <>
             <div className='flex space-x-1 text-base'>
-                <label className={`${active == `usd` ? `bg-lff_600` : ''} flex border border-solid border-lff_700 items-center py-1 px-4 cursor-pointer z-50 font-mono`}>
-                    <input type={'radio'} className="form-radio text-lff_800 hidden" checked={active == 'usd' ? true : false} onChange={() => setActive('usd')} /><span className='text-center'>USD</span>
+                <label className={`${paymentCurrency == `USD` ? `bg-lff_600` : ''} flex border border-solid border-lff_700 items-center py-1 px-4 cursor-pointer z-50 font-mono`}>
+                    <input type={'radio'} className="form-radio text-lff_800 hidden" checked={paymentCurrency == 'USD' ? true : false} onChange={() => setPaymentCurrency('USD')} /><span className='text-center'>USD</span>
                 </label>
-                <label className={`${active == `kes` ? `bg-lff_600` : ''} flex border border-solid border-lff_700 items-center py-1 px-4 cursor-pointer z-50 font-mono`}>
-                    <input type={'radio'} className="form-radio text-lff_800 hidden" checked={active == 'kes' ? true : false} onChange={() => setActive('kes')} /><span className='text-center'>KES</span>
+                <label className={`${paymentCurrency == `KES` ? `bg-lff_600` : ''} flex border border-solid border-lff_700 items-center py-1 px-4 cursor-pointer z-50 font-mono`}>
+                    <input type={'radio'} className="form-radio text-lff_800 hidden" checked={paymentCurrency == 'KES' ? true : false} onChange={() => setPaymentCurrency('KES')} /><span className='text-center'>KES</span>
                 </label>
             </div>
             <div className="font-mono text-xl my-8 text-lff_900">Donation Amount: {amountF.format(amount)}</div>
@@ -512,13 +480,16 @@ const DonationAmount = ({ handleAmount, amount, alert, paymentCurrency, setPayme
 }
 
 const PaymentInfo = ({
-    name,
     alert,
+    name,
+    setName,
     email,
+    setEmail,
     phone,
+    setPhone,
     amount,
-    page,
-    paymentMethod,
+    setPaymentMethod,
+    setPaymentCurrency,
     sent,
     active,
     setActive
@@ -529,14 +500,7 @@ const PaymentInfo = ({
     useEffect(() => {
         paypal.current.children[0].style.width = '50%'
 
-        // if (active == 'paypal' && page == 2) {
-        //     document.querySelector('.donate-button').classList.add('hidden')
-        // }
-        // else {
-        //     document.querySelector('.donate-button').classList.remove('hidden')
-        // }
-
-        paymentMethod(active)
+        setPaymentMethod(active)
 
     }, [active])
 
@@ -549,14 +513,14 @@ const PaymentInfo = ({
             </div>
 
             <div className="flex flex-wrap md:flex-nowrap mb-8 space-y-4 md:space-y-0 md:space-x-8">
-                <label className={`${active == `card` ? `bg-lff_600 border-lff_800` : 'border-lff_600 hover:bg-lff_400'} flex border border-solid border-lff_600 items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
+                <label className={`${active == `card` ? `bg-lff_600 border-lff_700` : 'border-lff_600 hover:bg-lff_400'} flex border border-solid  items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
                     <span className="flex items-center">
                         <span>
                             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3 12.7573H33" stroke="#ccbd96" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M9 24.7573H12" stroke="#ccbd96" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M15.75 24.7573H21.75" stroke="#ccbd96" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M9.66 5.25732H26.325C31.665 5.25732 33 6.57732 33 11.8423V24.1573C33 29.4223 31.665 30.7423 26.34 30.7423H9.66C4.335 30.7573 3 29.4373 3 24.1723V11.8423C3 6.57732 4.335 5.25732 9.66 5.25732Z" stroke="#ccbd96" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M3 12.7573H33" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M9 24.7573H12" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M15.75 24.7573H21.75" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+                                <path d="M9.66 5.25732H26.325C31.665 5.25732 33 6.57732 33 11.8423V24.1573C33 29.4223 31.665 30.7423 26.34 30.7423H9.66C4.335 30.7573 3 29.4373 3 24.1723V11.8423C3 6.57732 4.335 5.25732 9.66 5.25732Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </span>
                         <span className="ml-2">
@@ -655,7 +619,7 @@ const PaymentInfo = ({
                     </span>
                     <input type="radio" className="form-radio text-lff_800 hidden" name="radio" value="1" checked={active == 'card' ? true : false} onChange={() => setActive('card')} />
                 </label>
-                <label className={`${active == `paypal` ? `bg-lff_600 border-lff_800` : 'border-lff_600 hover:bg-lff_400'} flex border border-solid border-lff_600 items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
+                <label className={`${active == `paypal` ? `bg-lff_600 border-lff_700` : 'border-lff_600 hover:bg-lff_400'} flex border border-solid items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
                     <span className="flex items-center">
                         <span>
                             <svg width="31" height="36" viewBox="0 0 31 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -678,7 +642,7 @@ const PaymentInfo = ({
                     </span>
                     <input type="radio" className="form-radio text-lff_800 hidden" name="radio" value="1" onChange={() => setActive('paypal')} />
                 </label>
-                <label className={`${active == `mpesa` ? `bg-lff_600 border-lff_800` : 'border-lff_600 hover:bg-lff_400'} flex border border-solid border-lff_600 items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
+                <label className={`${active == `mpesa` ? `bg-lff_600 border-lff_700` : 'border-lff_600 hover:bg-lff_400'} flex border border-solid items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
                     <span className="flex items-center">
                         <span>
                             <svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -709,7 +673,17 @@ const PaymentInfo = ({
                             </span>
                         </span>
                     </span>
-                    <input type="radio" className="form-radio text-lff_800 hidden" name="radio" value="1" checked={active == 'mpesa' ? true : false} onChange={() => setActive('mpesa')} />
+                    <input
+                        type="radio"
+                        className="form-radio text-lff_800 hidden"
+                        name="radio"
+                        value="1"
+                        checked={active == 'mpesa' ? true : false}
+                        onChange={() => {
+                            setActive('mpesa')
+                            setPaymentCurrency('KES')
+                        }}
+                    />
                 </label>
             </div>
 
@@ -718,10 +692,15 @@ const PaymentInfo = ({
                     <PayPal
                         opt={
                             {
-                                amount: amount,
-                                name: name,
-                                email: email,
-                                phone: phone
+                                // amount: amount,
+                                // name: name,
+                                // address: address,
+                                // city: city,
+                                // state: state,
+                                // country: country,
+                                // postalCode: postalCode,
+                                // email: email,
+                                // phone: phone
                             }
                         }
                         sent={sent}
@@ -735,8 +714,8 @@ const PaymentInfo = ({
                                 className="appearance-none font-mono text-xl bg-transparent border-b border-solid border-lff_600 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_900 w-full z-50 px-0"
                                 type="text"
                                 placeholder="Full name"
-                            // value={`${name}`}
-                            // onChange={e => handleAddress('city', e.target.value)}
+                                // value={`${name}`}
+                                onChange={e => setName(e.target.value)}
                             />
                         </div>
                     </div>
@@ -746,9 +725,9 @@ const PaymentInfo = ({
                             <input
                                 className="appearance-none font-mono text-xl bg-transparent border-b border-solid border-lff_600 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_900 w-full z-50 px-0"
                                 type="text"
-                                placeholder="Email Address"
-                            // value={`${email}`}
-                            // onChange={e => handleAddress('city', e.target.value)}
+                                placeholder="Email address"
+                                // value={`${email}`}
+                                onChange={e => setEmail(e.target.value)}
                             />
                         </div>
                     </div>
@@ -758,9 +737,9 @@ const PaymentInfo = ({
                             <input
                                 className="appearance-none font-mono text-xl bg-transparent border-b border-solid border-lff_600 focus:border-lff_800 py-2 focus:outline-none placeholder-lff_700 text-lff_900 w-full z-50 px-0"
                                 type="text"
-                                placeholder="Phone"
-                            // value={`${phone}`}
-                            // onChange={e => handleAddress('city', e.target.value)}
+                                placeholder="Phone number"
+                                // value={`${phone}`}
+                                onChange={e => setPhone(e.target.value)}
                             />
                         </div>
                     </div>
