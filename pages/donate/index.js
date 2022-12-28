@@ -642,7 +642,12 @@ const PaymentInfo = ({
                             </span>
                         </span>
                     </span>
-                    <input type="radio" className="form-radio text-lff_800 hidden" name="radio" value="1" onChange={() => setActive('paypal')} />
+                    <input type="radio" className="form-radio text-lff_800 hidden" name="radio" value="1" onChange={() => {
+                        setActive('paypal')
+                        setPaymentCurrency('USD')
+                    }
+                    }
+                    />
                 </label>
                 <label className={`${active == `mpesa` ? `bg-lff_600 border-lff_700` : 'border-lff_600 hover:bg-lff_400'} flex border border-solid items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
                     <span className="flex items-center">
@@ -755,7 +760,6 @@ const PaymentInfo = ({
 const PayPal = ({ opt, sent }) => {
     const approveOrder = async (data, actions) => {
         return actions.order.capture().then(details => {
-            // const name = `${details.payer.name.given_name} ${details.payer.name.surname}`;
             if (details.status == 'COMPLETED') sent(true)
         });
     }
@@ -825,7 +829,7 @@ const PayPal = ({ opt, sent }) => {
             options={{
                 "client-id": "AfcPQanYEX31-GeZr9cT8-hlF3qquIW5nJ8XEBgfY7dnFuBZFg7idI6XWoIFfixBhu0tJhSRqmLSdZxb",
                 components: "buttons",
-                currency: "USD",
+                currency: opt.currency,
                 intent: "capture",
             }}
         >
