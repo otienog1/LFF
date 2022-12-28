@@ -206,6 +206,7 @@ const DonationsForm = ({ sent }) => {
                         phone={phone}
                         setPhone={setPhone}
                         page={page}
+                        paymentCurrency={paymentCurrency}
                         setPaymentCurrency={setPaymentCurrency}
                         setPaymentMethod={setPaymentMethod}
                         sent={sent}
@@ -489,6 +490,7 @@ const PaymentInfo = ({
     setPhone,
     amount,
     setPaymentMethod,
+    paymentCurrency,
     setPaymentCurrency,
     sent,
     active,
@@ -692,7 +694,8 @@ const PaymentInfo = ({
                     <PayPal
                         opt={
                             {
-                                // amount: amount,
+                                amount: amount,
+                                currency: paymentCurrency
                                 // name: name,
                                 // address: address,
                                 // city: city,
@@ -770,7 +773,7 @@ const PayPal = ({ opt, sent }) => {
                         value: opt.amount,
                         breakdown: {
                             item_total: {
-                                currency_code: "USD",
+                                currency_code: opt.currency,
                                 value: opt.amount,
                             },
                         },
@@ -780,7 +783,7 @@ const PayPal = ({ opt, sent }) => {
                             name: "lff-donation",
                             quantity: "1",
                             unit_amount: {
-                                currency_code: "USD",
+                                currency_code: opt.currency,
                                 value: opt.amount,
                             },
                             // category: "DONATION",
@@ -790,28 +793,28 @@ const PayPal = ({ opt, sent }) => {
                             // receiver: "G83JXTJ5EHCQ2"
                         },
                     ],
-                    shipping: {
-                        address: {
-                            address_line_1: opt.address,
-                            country_code: 'KE',
-                            admin_area_1: opt.state,
-                            admin_area_2: opt.city,
-                            postal_code: opt.postalCode,
-                        },
-                    },
+                    // shipping: {
+                    //     address: {
+                    //         address_line_1: opt.address,
+                    //         country_code: 'KE',
+                    //         admin_area_1: opt.state,
+                    //         admin_area_2: opt.city,
+                    //         postal_code: opt.postalCode,
+                    //     },
+                    // },
                 },
             ],
             application_context: {
                 brand_name: "The Luigi Footprints Foundation",
                 shipping_preference: "NO_SHIPPING",
             },
-            payer: {
-                payer_info: {
-                    email: opt.email,
-                    first_name: opt.name.first,
-                    last_name: opt.name.last
-                },
-            }
+            // payer: {
+            //     payer_info: {
+            //         email: opt.email,
+            //         first_name: opt.name,
+            //         last_name: opt.name.last
+            //     },
+            // }
         }).then(orderId => {
             return orderId
         })
