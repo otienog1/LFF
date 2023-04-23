@@ -62,16 +62,6 @@ const Index = () => {
 
                     }
 
-                    <script
-                        src='https://ap-gateway.mastercard.com/checkout/version/61/checkout.js'
-                    // data-error="http://127.0.0.1:5000/mastercard/error"
-                    // data-cancel="http://127.0.0.1:5000/mastercard/cancel"
-                    // data-complete="http://127.0.0.1:5000/mastercard/complete"
-                    // data-error="errorCallback"
-                    // data-cancel="cancelCallback"
-                    // data-complete="completeCallback"
-                    />
-
                 </div>
 
             </Layout>
