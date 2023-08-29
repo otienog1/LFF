@@ -2,7 +2,7 @@ module.exports = {
     client: {
         service: {
             name: 'wpgraphql',
-            url: 'https://api.theluigifootprints.org/graphql',
+            url: process.env.LFF_API_URL,
         }
     }
 };

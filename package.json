@@ -30,5 +30,5 @@
     "postcss": "latest",
     "tailwindcss": "latest"
   },
-  "packageManager": "yarn@3.3.1"
+  "packageManager": "yarn@3.6.2"
 }

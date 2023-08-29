@@ -492,6 +492,10 @@ const PaymentInfo = ({
     useEffect(() => {
         paypal.current.children[0].style.width = '50%'
 
+        let adjHeight = document.querySelector('.scrollbody').clientHeight + 500
+
+        document.querySelector('.scrollbody').style.height = `${adjHeight}px`
+
         setPaymentMethod(active)
 
     }, [active])

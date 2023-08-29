@@ -86,9 +86,8 @@ const Layout = ({ children }) => {
         window.addEventListener('resize', calcWinsize)
 
         let docScroll;
-        const getPageYScroll = () => docScroll = window.pageYOffset || document.documentElement.scrollTop
+        const getPageYScroll = () => docScroll = window.scrollY || document.documentElement.scrollTop
         window.addEventListener('scroll', getPageYScroll)
-
 
         class Item {
             constructor(el) {
@@ -164,7 +163,6 @@ const Layout = ({ children }) => {
 
                     this.layout()
                 }
-
             }
             layout() {
                 this.el.style.transform = `translate3d(0,${this.renderedStyles.translationY.previous}px,0)`
@@ -297,7 +295,7 @@ const Layout = ({ children }) => {
 
         <div className="font-sen antialiased">
             <Meta />
-            <div ref={Body} className="bg-lff_200">
+            <div ref={Body} className="bg-lff_200 scrollbody">
                 <main ref={Main}>
                     <MobileNav />
                     <Header />
