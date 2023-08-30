@@ -198,6 +198,7 @@ const DonationsForm = ({ sent }) => {
                         page={page}
                         paymentCurrency={paymentCurrency}
                         setPaymentCurrency={setPaymentCurrency}
+                        paymentMethod={paymentMethod}
                         setPaymentMethod={setPaymentMethod}
                         sent={sent}
                         active={active}
@@ -331,9 +332,9 @@ const Navigation = ({
                     <span className="">Edit amount</span>
                 </button>
                 <button
-                    className={`disabled:bg-slate-50 disabled:text-slate-600 disabled:border-slate-300 donate-button text-lff_900 flex font-mono items-center py-3 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_600 hover:bg-lff_700 ${paymentMethod == 'paypal' && page == 2 ? 'hidden' : ''}`}
+                    className={`disabled:opacity-30 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-600 disabled:border-slate-300 donate-button text-lff_900 flex font-mono items-center py-3 px-8 space-x-2 border-solid border border-lff_800 w-auto justify-center bg-lff_600 hover:bg-lff_700 ${paymentMethod == 'paypal' && page == 2 ? 'hidden' : ''}`}
                     onClick={() => page == 2 ? donate() : next()}
-                    disabled={page == 2 && loading ? true : false}
+                    disabled={(page == 2 && loading) || (page == 2 && paymentMethod == 'card') ? true : false}
                 >
                     {page == 2 ? (
                         <>
@@ -479,6 +480,7 @@ const PaymentInfo = ({
     phone,
     setPhone,
     amount,
+    paymentMethod,
     setPaymentMethod,
     paymentCurrency,
     setPaymentCurrency,
@@ -509,7 +511,7 @@ const PaymentInfo = ({
             </div>
 
             <div className="flex flex-wrap md:flex-nowrap mb-8 space-y-4 md:space-y-0 md:space-x-8">
-                <label className={`${active == `card` ? `bg-lff_600 border-lff_700` : 'border-lff_600 hover:bg-lff_400'} flex border border-solid  items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
+                <label className={`${active == `card` ? `bg-lff_600 border-lff_700` : 'border-lff_600 hover:bg-lff_400'} flex border border-solid  items-center w-full md:w-1/3 px-6 py-4 justify-between z-50 opacity-25 cursor-not-allowed`}>
                     <span className="flex items-center">
                         <span>
                             <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -613,7 +615,7 @@ const PaymentInfo = ({
                             </span>
                         </span>
                     </span>
-                    <input type="radio" className="form-radio text-lff_800 hidden" name="radio" value="1" checked={active == 'card' ? true : false} onChange={() => setActive('card')} />
+                    <input type="radio" className="form-radio text-lff_800 hidden" name="radio" value="1" checked={active == 'card' ? true : false} onChange={() => setActive('card')} disabled />
                 </label>
                 <label className={`${active == `paypal` ? `bg-lff_600 border-lff_700` : 'border-lff_600 hover:bg-lff_400'} flex border border-solid items-center w-full md:w-1/3 px-6 py-4 justify-between cursor-pointer z-50`}>
                     <span className="flex items-center">
@@ -687,9 +689,15 @@ const PaymentInfo = ({
                     />
                 </label>
             </div>
+            {
+                paymentMethod != 'mpesa' ?
+                    <p className='mt-10 text-center'>To donate with card, select Paypal then click on Debit or Credit Card button</p>
+                    :
+                    ""
+            }
 
             <div>
-                <div ref={paypal} className={`${active == 'paypal' ? 'block' : 'hidden'} flex justify-center pt-16`}>
+                <div ref={paypal} className={`${active == 'paypal' ? 'block' : 'hidden'} flex justify-center pt-6`}>
                     <PayPal
                         opt={
                             {
