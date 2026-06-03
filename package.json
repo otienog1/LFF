@@ -7,12 +7,10 @@
     "export": "yarn build && next export"
   },
   "dependencies": {
-    "@apollo/client": "^3.4.8",
     "@paypal/react-paypal-js": "^7.5.0",
     "classnames": "^2.3.1",
     "cors": "^2.8.5",
     "date-fns": "^2.23.0",
-    "graphql": "^15.5.1",
     "gsap": "^3.8.0",
     "locomotive-scroll": "^4.1.2",
     "next": "12.1.0",
