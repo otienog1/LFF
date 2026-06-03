@@ -2,8 +2,6 @@ import Head from 'next/head'
 import Layout from '../../components/Layout'
 import { useState, useEffect, useRef } from 'react'
 import Alert from '../../components/Alert'
-import { SEND_EMAIL } from '../../data/contact'
-import { useMutation } from '@apollo/client'
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
 import Logo from '../../components/Logo'
 import ThankYou from '../../components/ThankYou'
@@ -76,7 +74,6 @@ const DonationsForm = ({ sent }) => {
         [active, setActive] = useState('card'),
         [alerts, setAlerts] = useState({}),
         [btnDisabled, setBtnDisabled] = useState(true),
-        [sendEmail] = useMutation(SEND_EMAIL),
         [amount, setAmount] = useState('0.00'),
         [page, setPage] = useState(1),
         [paymentMethod, setPaymentMethod] = useState('card'),
