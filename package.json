@@ -3,30 +3,30 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "export": "yarn build && next export"
+    "start": "next start"
   },
   "dependencies": {
-    "@paypal/react-paypal-js": "^7.5.0",
+    "@paypal/react-paypal-js": "^8",
     "classnames": "^2.3.1",
-    "cors": "^2.8.5",
-    "date-fns": "^2.23.0",
-    "gsap": "^3.8.0",
-    "locomotive-scroll": "^4.1.2",
-    "next": "12.1.0",
-    "next-transpile-modules": "^9.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-transition-group": "^4.4.2",
-    "sharp": "^0.29.2",
-    "uuid": "^9.0.0"
+    "date-fns": "^3",
+    "gsap": "^3",
+    "next": "^15",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-transition-group": "^4",
+    "sharp": "^0.33",
+    "uuid": "^9"
   },
   "devDependencies": {
     "@tailwindcss/custom-forms": "^0.2.1",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "@types/react-transition-group": "^4.4.4",
     "autoprefixer": "10.4.5",
     "postcss": "latest",
-    "tailwindcss": "latest"
+    "tailwindcss": "latest",
+    "typescript": "^5"
   },
   "packageManager": "yarn@4.16.0"
 }
