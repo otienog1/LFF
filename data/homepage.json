@@ -1,0 +1,43 @@
+{
+  "heroText": "Together we can make a difference",
+  "heroSlider": [
+    {
+      "image1": { "sourceUrl": "/placeholder.jpg" },
+      "image2": { "sourceUrl": "/placeholder.jpg" },
+      "image3": { "sourceUrl": "/placeholder.jpg" }
+    }
+  ],
+  "sliderText": [
+    {
+      "text":  { "heading": "Heading 1", "explainer": "Explainer 1" },
+      "text1": { "heading": "Heading 2", "explainer": "Explainer 2" },
+      "text2": { "heading": "Heading 3", "explainer": "Explainer 3" }
+    }
+  ],
+  "philosophyImage": { "sourceUrl": "/placeholder.jpg" },
+  "philosophyTitle": "Our Philosophy",
+  "philosophyText": "Philosophy text here.",
+  "ourStoryTitle": "Our Story",
+  "ourStoryIntro": "Intro text here.",
+  "ourStoryText": "Story text here.",
+  "ourStoryImage": { "sourceUrl": "/placeholder.jpg" },
+  "projectsTitle": "Our Projects",
+  "projectText": "Projects text here.",
+  "projects": {
+    "projectOne":   { "image": { "sourceUrl": "/placeholder.jpg" }, "text": "Project one" },
+    "projectTwo":   { "image": { "sourceUrl": "/placeholder.jpg" }, "text": "Project two" },
+    "projectThree": { "image": { "sourceUrl": "/placeholder.jpg" }, "text": "Project three" },
+    "projectFour":  { "image": { "sourceUrl": "/placeholder.jpg" }, "text": "Project four" }
+  },
+  "luigiTitle": "Luigi",
+  "luigiText": "Luigi text.",
+  "luigiText1": "Luigi text 1.",
+  "luigiText2": "Luigi text 2.",
+  "luigiImages": {
+    "image1": { "sourceUrl": "/placeholder.jpg" },
+    "image2": { "sourceUrl": "/placeholder.jpg" }
+  },
+  "ctaImage": { "sourceUrl": "/placeholder.jpg" },
+  "ctaTitle": "CTA Title",
+  "ctaText": "CTA text here."
+}

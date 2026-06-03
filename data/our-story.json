@@ -1,0 +1,18 @@
+{
+  "heroContent": "Our story content here.",
+  "heroImage": { "sourceUrl": "/placeholder.jpg" },
+  "whoWeAreTitle": "Who We Are",
+  "whoWeAreImage": { "sourceUrl": "/placeholder.jpg" },
+  "whoWeAreText": "Who we are text.",
+  "whoWeAreText1": "Who we are extended text.",
+  "title1": "Our Trustees",
+  "title2": "Meet The Team",
+  "trustees": {
+    "trustee1": { "name": "Trustee 1", "title": "Title", "thumb": { "sourceUrl": "/placeholder.jpg" }, "image": { "sourceUrl": "/placeholder.jpg" }, "text1": "Bio text.", "text2": "Extended bio." },
+    "trustee2": { "name": "Trustee 2", "title": "Title", "thumb": { "sourceUrl": "/placeholder.jpg" }, "image": { "sourceUrl": "/placeholder.jpg" }, "text1": "Bio text.", "text2": "Extended bio." },
+    "trustee3": { "name": "Trustee 3", "title": "Title", "thumb": { "sourceUrl": "/placeholder.jpg" }, "image": { "sourceUrl": "/placeholder.jpg" }, "text1": "Bio text.", "text2": "Extended bio." },
+    "trustee4": { "name": "Trustee 4", "title": "Title", "thumb": { "sourceUrl": "/placeholder.jpg" }, "image": { "sourceUrl": "/placeholder.jpg" }, "text1": "Bio text.", "text2": "Extended bio." },
+    "trustee5": { "name": "Trustee 5", "title": "Title", "thumb": { "sourceUrl": "/placeholder.jpg" }, "image": { "sourceUrl": "/placeholder.jpg" }, "text1": "Bio text.", "text2": "Extended bio." }
+  },
+  "banner": { "sourceUrl": "/placeholder.jpg" }
+}
