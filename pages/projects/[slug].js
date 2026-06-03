@@ -1,5 +1,6 @@
 // import { useRouter } from 'next/router'
 // import ErrorPage from 'next/error'
+import Link from 'next/link'
 import Container from '../../components/Container'
 import ProjectBody from '../../components/ProjectBody'
 // import MoreProjects from '../../components/MoreProjects'
@@ -68,7 +69,7 @@ export default function Project({ project, relatedProjects }) {
                             <span>More Projects</span>
                         )}
                         <ul>
-                            {relatedPostsList.map((project) => (
+                            {relatedProjectsList.map((project) => (
                                 <li key={project.title}>
                                     <Link href={projectPathBySlug(project.slug)}>
                                         <a>{project.title}</a>
@@ -88,9 +89,10 @@ export async function getStaticProps({ params = {} } = {}) {
     const { project } = await getProjectBySlug(params?.slug),
 
         { typesOfProjects, databaseId: projectId } = project,
-        category = typesOfProjects.length && typesOfProjects[0]
+        category = typesOfProjects.length ? typesOfProjects[0] : null
 
-    let { name, slug } = category
+    const name = category?.name || null
+    const slug = category?.slug || null
 
     return {
         props: {
@@ -99,7 +101,7 @@ export async function getStaticProps({ params = {} } = {}) {
                 projects: await getRelatedProjects(category, projectId),
                 title: {
                     name: name || null,
-                    link: categoryPathBySlug(slug)
+                    link: slug ? categoryPathBySlug(slug) : null
                 },
             },
         },
