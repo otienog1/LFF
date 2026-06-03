@@ -1,43 +1,98 @@
 {
-  "heroText": "Together we can make a difference",
+  "heroText": "The living world is a unique and spectacular marvel",
   "heroSlider": [
     {
-      "image1": { "sourceUrl": "/placeholder.jpg" },
-      "image2": { "sourceUrl": "/placeholder.jpg" },
-      "image3": { "sourceUrl": "/placeholder.jpg" }
+      "image1": {
+        "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/03/DSC03367-scaled.webp"
+      },
+      "image2": {
+        "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/2180F9B2-4402-4B2C-B0D3-9AA2FCB7533E-scaled.webp"
+      },
+      "image3": {
+        "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/0DD90D3B-607E.webp"
+      }
     }
   ],
   "sliderText": [
     {
-      "text":  { "heading": "Heading 1", "explainer": "Explainer 1" },
-      "text1": { "heading": "Heading 2", "explainer": "Explainer 2" },
-      "text2": { "heading": "Heading 3", "explainer": "Explainer 3" }
+      "text": [
+        {
+          "heading": "wildlife & environmental conservation",
+          "explainer": "The living world is a unique and spectacular marvel."
+        }
+      ],
+      "text1": [
+        {
+          "heading": "community development",
+          "explainer": "Empowering communities and empowering lives"
+        }
+      ],
+      "text2": [
+        {
+          "heading": "youth empowerment",
+          "explainer": "The living world is a unique and spectacular marvel"
+        }
+      ]
     }
   ],
-  "philosophyImage": { "sourceUrl": "/placeholder.jpg" },
+  "philosophyImage": {
+    "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2021/12/philosophy-image-1.webp"
+  },
   "philosophyTitle": "Our Philosophy",
-  "philosophyText": "Philosophy text here.",
-  "ourStoryTitle": "Our Story",
-  "ourStoryIntro": "Intro text here.",
-  "ourStoryText": "Story text here.",
-  "ourStoryImage": { "sourceUrl": "/placeholder.jpg" },
-  "projectsTitle": "Our Projects",
-  "projectText": "Projects text here.",
-  "projects": {
-    "projectOne":   { "image": { "sourceUrl": "/placeholder.jpg" }, "text": "Project one" },
-    "projectTwo":   { "image": { "sourceUrl": "/placeholder.jpg" }, "text": "Project two" },
-    "projectThree": { "image": { "sourceUrl": "/placeholder.jpg" }, "text": "Project three" },
-    "projectFour":  { "image": { "sourceUrl": "/placeholder.jpg" }, "text": "Project four" }
+  "philosophyText": "<p>There is an opportunity to make amends, manage our impact, and again become species in harmony with nature.</p>\n<p>The will to accomplish this is all we need.</p>\n<p>We now have the opportunity to create for ourselves the perfect home and restore the rich, healthy, wonderful world we inherited.</p>\n",
+  "ourStoryTitle": "rewild the world",
+  "ourStoryIntro": "We identified these focus areas as those that require great intervention to ensure improved quality of life for communities across the country",
+  "ourStoryText": "We are a Non-Governmental Organization involved in wildlife conservation and community development.",
+  "ourStoryImage": {
+    "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2021/12/our-story-image-1.webp"
   },
-  "luigiTitle": "Luigi",
-  "luigiText": "Luigi text.",
-  "luigiText1": "Luigi text 1.",
-  "luigiText2": "Luigi text 2.",
-  "luigiImages": {
-    "image1": { "sourceUrl": "/placeholder.jpg" },
-    "image2": { "sourceUrl": "/placeholder.jpg" }
+  "projectsTitle": "Our Work",
+  "projectText": "Maniago Safaris, through our Luigi Footprints Foundation, are working on several projects to help support  Wildlife Conservation efforts, the environment and Community projects, especially with the youth",
+  "projects": [
+    {
+      "projectOne": {
+        "image": {
+          "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/wildlife_conservation.webp"
+        },
+        "text": "Wildlife <span class=\"underline decoration-wavy\">Conservation</span>"
+      },
+      "projectTwo": {
+        "image": {
+          "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/youth-empowerment.webp"
+        },
+        "text": "Youth <span class=\"underline decoration-wavy\">Empowerment</span>"
+      },
+      "projectThree": {
+        "image": {
+          "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/community-development.webp"
+        },
+        "text": "Community <span class=\"underline decoration-wavy\">Development</span>"
+      },
+      "projectFour": {
+        "image": {
+          "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/environmental-conservation.webp"
+        },
+        "text": "Environmental <span class=\"underline decoration-wavy\">Conservation</span>"
+      }
+    }
+  ],
+  "luigiTitle": "Who was Luigi",
+  "luigiText": "<strong>Luigi Francescon</strong> was born into a family who loved animals. As a child in Kenya, he grew up very far out of Nairobi, in what was then the bush. Being quite isolated as a child, he spent much of his time with his dogs and his mother’s vervet monkey friends.",
+  "luigiText1": "Being close to the Nairobi National Park, where there were no fences or border lines, he lived in the midst wildlife and saw many huge wildebeest and zebra migrations with the ensuing lions following them through the garden. This experience remained embedded in his mind and soul for all his life. He also witnessed many children around him not having access to education, which he felt was crucial to anyone’s future.",
+  "luigiText2": "Luigi Francescon died in 2016 leaving much of his estate to benefit wildlife and the education of children in Kenya. The Luigi Footprints Foundation was set up in his honour to manage his vision and desires for the good of wildlife and children in Kenya.",
+  "luigiImages": [
+    {
+      "image1": {
+        "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2021/12/Rectangle-113.webp"
+      },
+      "image2": {
+        "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2021/12/cta-3.webp"
+      }
+    }
+  ],
+  "ctaImage": {
+    "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2021/12/cta-4.webp"
   },
-  "ctaImage": { "sourceUrl": "/placeholder.jpg" },
-  "ctaTitle": "CTA Title",
-  "ctaText": "CTA text here."
+  "ctaTitle": "Nature is our biggest ally and our greatest inspiration. If we take care of nature, nature will take care of us.",
+  "ctaText": "Conservation is not just about saving our planet. It’s about saving ourselves."
 }

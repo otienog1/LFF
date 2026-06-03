@@ -1,18 +1,91 @@
 {
-  "heroContent": "Our story content here.",
-  "heroImage": { "sourceUrl": "/placeholder.jpg" },
-  "whoWeAreTitle": "Who We Are",
-  "whoWeAreImage": { "sourceUrl": "/placeholder.jpg" },
-  "whoWeAreText": "Who we are text.",
-  "whoWeAreText1": "Who we are extended text.",
-  "title1": "Our Trustees",
-  "title2": "Meet The Team",
-  "trustees": {
-    "trustee1": { "name": "Trustee 1", "title": "Title", "thumb": { "sourceUrl": "/placeholder.jpg" }, "image": { "sourceUrl": "/placeholder.jpg" }, "text1": "Bio text.", "text2": "Extended bio." },
-    "trustee2": { "name": "Trustee 2", "title": "Title", "thumb": { "sourceUrl": "/placeholder.jpg" }, "image": { "sourceUrl": "/placeholder.jpg" }, "text1": "Bio text.", "text2": "Extended bio." },
-    "trustee3": { "name": "Trustee 3", "title": "Title", "thumb": { "sourceUrl": "/placeholder.jpg" }, "image": { "sourceUrl": "/placeholder.jpg" }, "text1": "Bio text.", "text2": "Extended bio." },
-    "trustee4": { "name": "Trustee 4", "title": "Title", "thumb": { "sourceUrl": "/placeholder.jpg" }, "image": { "sourceUrl": "/placeholder.jpg" }, "text1": "Bio text.", "text2": "Extended bio." },
-    "trustee5": { "name": "Trustee 5", "title": "Title", "thumb": { "sourceUrl": "/placeholder.jpg" }, "image": { "sourceUrl": "/placeholder.jpg" }, "text1": "Bio text.", "text2": "Extended bio." }
+  "heroContent": "The Luigi Footprints Foundation was set up in honour of Luigi Francescon to manage his vision and desires for the good of wildlife and children in Kenya",
+  "heroImage": {
+    "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Luigi.webp"
   },
-  "banner": { "sourceUrl": "/placeholder.jpg" }
+  "whoWeAreTitle": "who we are",
+  "whoWeAreImage": {
+    "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp"
+  },
+  "whoWeAreText": "We are building new sustainable opportunities to communities, and saving wildlife and natural ecosystems simultaneously. \r\n",
+  "whoWeAreText1": "We work directly with communities to understand their their unique challenges and provide tailored, holistic solutions to improve their lives while also benefiting conservation. These solutions provide jobs, conservation training, educational opportunities and ability of people to diversify their livelihood and secure a promising future for their communities.",
+  "title1": "Meet the team",
+  "title2": "Trustees",
+  "trustees": [
+    {
+      "trustee1": [
+        {
+          "name": "Annabella Francescon",
+          "title": "Chairman",
+          "thumb": {
+            "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2021/12/Group-239-1.webp"
+          },
+          "image": {
+            "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-105-1.webp"
+          },
+          "text1": "<p>Conservation of wildlife and the environment as well as youth engagement has always been of interest to me.</p>\n<p>From childhood, when driving between Nairobi and Mombasa was a real safari on a dirt track when thousands of elephants would cross our paths, I was mesmerized by these special creatures. Elephants became my emblem animal and I have worked and supported every effort for the survival of elephants in particular but also rhinos and all wildlife in general.</p>\n<p>I enjoy youth with their exuberance and joy of life. Today and the future belongs to them. I am always happy when we can help them with both formal and practical education towards the understanding of the life that is ahead of them</p>\n",
+          "text2": null
+        }
+      ],
+      "trustee2": [
+        {
+          "name": "Peter Mwangi Karanja",
+          "title": "Secretary",
+          "thumb": {
+            "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Peter_Karanja.webp"
+          },
+          "image": {
+            "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Group-293.webp"
+          },
+          "text1": "<p>Conservation is my second name! I have been a conservationist as long as l can remember perhaps because of where l was born and raised.</p>\n<p>I come from a beautiful place called Loitokitok on the slopes of Mt. Kilimanjaro which also neighbours Amboseli National Park on one side and Tsavo West on the other. I have therefore spent all my life with the animals.</p>\n<p>In school, l was an active member of the Wildlife Clubs of Kenya and l still remember with nostalgia the many trips we made to Amboseli and Tsavo West National Parks to learn about animals and their habitats. My love for nature and animals in particular continued to grow and indeed influenced my future career in the tourism industry.</p>\n<p>After school, l joined the tourism industry which accorded me more opportunities to interact and get to learn more about our habitat through my work but more so through my interaction with some of the best conservationists around namely Annabella, Pat Awori, Cynthia Moss and Jonathan Scott to name a few. Over the years, l have come to appreciate our environment and its irreplaceable role in our lives which has also been another push on my conservation button.</p>\n<p>Witnessing the poaching menace of the 90’s and 20’s was a rallying call for me to do something. Working with my colleagues in the tourism industry, the government and communities, the situation has been brought down to manageable levels and our animals have a breather.</p>\n<p>The wanton destruction of our forest cover across the country including Loitokitok has given me a sense of urgency to do more by planting more trees whenever l can. Indeed, my desire is to see our country’s forest cover reach the recommended 10% cover in the next two years. It is possible to achieve this through a collective effort.</p>\n<p>I am blessed to be a member of the Luigi Footprints Foundation which has done so much for communities and wildlife. The Luigi Footprints Foundation can achieve so much with your support because as the Swahili saying goes- Kidogo Kidogo Hujaza Kibaba (loosely translated to English means Little by little makes a lot) and so, let us all pull together for the good of our environment because without it the whole of the human race is doomed to perish.</p>\n",
+          "text2": null
+        }
+      ],
+      "trustee3": [
+        {
+          "name": "Jose Manuel Lapena Casamayor",
+          "title": "Treasurer",
+          "thumb": {
+            "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-99-1-1.webp"
+          },
+          "image": {
+            "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-106-1-2.webp"
+          },
+          "text1": "<p>Many years ago, I will not mention how many, I had the chance to travel to Kenya for the first time. Annabella was my “guide”, and I then discovered a world plenty of nature, pristine, so close to the wild life which I always had dreamed with… From that very first time I realized we still have something we need to preserve and legate to the future generations. After that trip I have gone so many times to many places in Africa, and this first feeling remains and has grown day by day, and I’ll do as much as I can to contribute to conserve our natural planet.</p>\n",
+          "text2": null
+        }
+      ],
+      "trustee4": [
+        {
+          "name": "Daniel Muturi Gatumbo",
+          "title": "Member and Operations coordinator",
+          "thumb": {
+            "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2021/12/Group-240.webp"
+          },
+          "image": {
+            "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2021/11/DG.webp"
+          },
+          "text1": "<p>I became a conservationist through gradual awareness of the negative effects of human actions that are not conscious about the environment.</p>\n<p>At primary school, we would be asked occasionally to plant trees and grass on hilly and bare land to prevent soil erosion which I liked. I would also hear stories of extinct animals like Dinosaurs due to hunting or destruction of habitat by human, so I would imagine what would happen if all animals got extinct and all trees and vegetation is destroyed, then the world would be a desert and we would all die.</p>\n<p>These thoughts progressively built an interest in me to do whatever I can to conserve and make awareness in the society as well. This interest was even strengthened by my entry into Tourism when I finished collage because I realised without animals and beautiful scenery and all that is around us I would have no job.</p>\n<p>&nbsp;</p>\n",
+          "text2": null
+        }
+      ],
+      "trustee5": [
+        {
+          "name": "Justin Chuma Kenya",
+          "title": "Member and Accountant",
+          "thumb": {
+            "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2021/12/Rectangle-101-1.webp"
+          },
+          "image": {
+            "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2021/11/chuma.webp"
+          },
+          "text1": "<p>My name is Chuma Kenya, I can’t say that I had a very unique upbringing. Raised on the slopes of Mount Kenya where green vegetation used to cover over fifty percent of the land.</p>\n<p>There was no worse feeling than seeing all the environmental destruction, deforestation due to domestic and commercial demand of timber and fire wood in my area and wanting to make a positive contribution, but barely having the means to do so. I had to join various environmental clubs in my primary school, secondary school and college life to restore the beauty of nature which I knew when growing up.</p>\n<p>My passion for indigenous trees to exotic species made me mobilize locals to restore the lost beauty of the area by planting more trees than what was lost. Through the support of the locals and the authority my dream was realized which was also a motivator to extend it to other localities.<br />\nI love nature in its natural way and its ecosystem, having in mind what its destruction means to humanity existence. GLOBAL WARMING.</p>\n",
+          "text2": null
+        }
+      ]
+    }
+  ],
+  "banner": {
+    "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp"
+  }
 }
