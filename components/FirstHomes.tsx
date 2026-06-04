@@ -1,3 +1,5 @@
+'use client'
+
 export default function FirstHomes() {
   const images = Array(36).fill('https://maniagosafaris.com/images/lff/dignity_housing/')
   return (

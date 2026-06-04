@@ -1,0 +1,26 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+import Link from 'next/link'
+import LFFLogo from './LFFLogo'
+import { isMobile } from './Layout'
+
+const Logo = () => {
+    const logo = useRef(null)
+
+    useEffect(() => {
+        if (isMobile) {
+            logo.current.style.left = `${(document.documentElement.clientWidth - (document.documentElement.clientWidth * .91666667)) / 2}px`
+        }
+    })
+
+    return (
+        <span ref={logo} className='absolute top-5 z-50 hidden lg:block'>
+            <Link href="/">
+                <LFFLogo width="200" height="105" fill="#665F4B" />
+            </Link>
+        </span>
+    )
+}
+
+export default Logo
