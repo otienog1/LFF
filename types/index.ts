@@ -4,7 +4,7 @@ export interface ImageRef {
 
 export interface FeaturedImage {
   altText: string
-  caption: string
+  caption: string | null
   sourceUrl: string
   srcSet: string
   sizes: string
@@ -24,7 +24,7 @@ export interface Project {
   title: string
   slug: string
   excerpt: string
-  content: string
+  content: string | null
   date: string
   modified: string
   featuredImage: FeaturedImage
