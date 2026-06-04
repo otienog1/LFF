@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Layout from '@/components/Layout'
-import Container from '@/components/Container'
 import ProjectBody from '@/components/ProjectBody'
 import ProjectHeader from '@/components/ProjectHeader'
 import SectionSeparator from '@/components/SectionSeparator'
