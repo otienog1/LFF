@@ -38,7 +38,7 @@ const Index = () => {
     }, [sent])
     return (
         <>
-            <Layout preview>
+            <Layout>
                 <div ref={elem} className="w-full px-4 md:w-1/2 mx-auto">
                     <Logo />
                     <DonationsForm sent={setSent} />
@@ -48,25 +48,6 @@ const Index = () => {
                     >
                         <ThankYou />
                     </div>
-
-                    {
-
-                        function errorCallback(error) {
-                            console.log(JSON.stringify(error))
-                        }
-                    }
-                    {
-                        function cancelCallback() {
-                            console.log("Payment cancelled")
-                        }
-                    }
-                    {
-                        function completeCallback(resultIndicator, sessionVersion) {
-                            console.log(sessionVersion)
-                            console.log(resultIndicator)
-                        }
-
-                    }
 
                 </div>
 
@@ -89,7 +70,7 @@ const DonationsForm = ({ sent }) => {
         [loading, setLoading] = useState(false),
         [sessionID, setSessionID] = useState('')
 
-    let form = useRef()
+    let form = useRef<HTMLDivElement>(null)
 
     const handleInputAlerts = (payload) => {
         setAlerts(payload)
@@ -124,7 +105,7 @@ const DonationsForm = ({ sent }) => {
             },
             body: JSON.stringify({
                 phone_number: phone,
-                amount: Math.ceil(amount),
+                amount: Math.ceil(parseFloat(amount)),
                 reference_code: 'Donation',
                 description: "A donation to The Luigi Footprints Foundation"
             })
@@ -241,15 +222,16 @@ const Navigation = ({
     handleMpesa,
     paymentCurrency,
     paymentMethod,
-    loading
-}) => {
+    loading,
+    setBtnDisabled,
+}: any) => {
 
-    let alerts = {
+    let alerts: { title: string; message: Record<string, string>; type: string } = {
         title: 'Your attention is required. ',
         message: {},
         type: 'success'
     },
-        error
+        error: string
 
     const isEmpty = str => (!str || str.length == 0)
 
@@ -269,12 +251,12 @@ const Navigation = ({
             return
         }
         handlePage('next')
-        handleInputAlerts(alerts = {})
+        handleInputAlerts({})
     }
 
     const previous = () => {
         handlePage('previous')
-        handleInputAlerts(alerts = {})
+        handleInputAlerts({})
     }
 
     const donate = async () => {
@@ -313,7 +295,7 @@ const Navigation = ({
         if (paymentMethod == 'mpesa')
             handleMpesa()
 
-        handleInputAlerts(alerts = {})
+        handleInputAlerts({})
     }
 
     let amountF = new Intl.NumberFormat('en-US', {
@@ -383,10 +365,10 @@ const Navigation = ({
     )
 }
 
-const DonationAmount = ({ handleAmount, amount, alert, paymentCurrency, setPaymentCurrency }) => {
-    let amountInput = useRef()
+const DonationAmount = ({ handleAmount, amount, alert, paymentCurrency, setPaymentCurrency, paymentMethod, active, setActive }: any) => {
+    let amountInput = useRef<HTMLInputElement>(null)
 
-    const clearAmount = () => amountInput.current.value = ""
+    const clearAmount = () => { if (amountInput.current) amountInput.current.value = "" }
 
     const _amounts_usd = {
         'row1': ['10.00', '50.00', '100.00'],
@@ -397,7 +379,7 @@ const DonationAmount = ({ handleAmount, amount, alert, paymentCurrency, setPayme
         'row2': ['20000.00', '50000.00', '100000.00']
     }
 
-    let _amounts = {}
+    let _amounts: { row1: string[]; row2: string[] } = _amounts_usd
 
     if (paymentCurrency == 'USD')
         _amounts = _amounts_usd
@@ -436,7 +418,7 @@ const DonationAmount = ({ handleAmount, amount, alert, paymentCurrency, setPayme
                                 flex font-mono text-base  py-4 border border-solid  justify-center cursor-pointer tracking-widest flex-grow z-50`
                             }
                             key={i}
-                        >{amountF.format(_amount)}</div>
+                        >{amountF.format(parseFloat(_amount))}</div>
 
                     ))}
                 </div>
@@ -451,7 +433,7 @@ const DonationAmount = ({ handleAmount, amount, alert, paymentCurrency, setPayme
                                 flex font-mono text-base  py-4 border border-solid  justify-center cursor-pointer tracking-widest flex-grow z-50`
                             }
                             key={i}
-                        >{amountF.format(_amount)}</div>
+                        >{amountF.format(parseFloat(_amount))}</div>
 
                     ))}
                 </div>
@@ -491,8 +473,9 @@ const PaymentInfo = ({
     setPaymentCurrency,
     sent,
     active,
-    setActive
-}) => {
+    setActive,
+    page,
+}: any) => {
     const paypal = useRef(null)
     const mpesa = useRef(null)
 
@@ -501,7 +484,7 @@ const PaymentInfo = ({
 
         let adjHeight = document.querySelector('.scrollbody').clientHeight + 500
 
-        document.querySelector('.scrollbody').style.height = `${adjHeight}px`
+        ;(document.querySelector('.scrollbody') as HTMLElement).style.height = `${adjHeight}px`
 
         setPaymentMethod(active)
 
@@ -834,7 +817,7 @@ const PayPal = ({ opt, sent }) => {
     return (
         <PayPalScriptProvider
             options={{
-                "client-id": "AfcPQanYEX31-GeZr9cT8-hlF3qquIW5nJ8XEBgfY7dnFuBZFg7idI6XWoIFfixBhu0tJhSRqmLSdZxb",
+                clientId: "AfcPQanYEX31-GeZr9cT8-hlF3qquIW5nJ8XEBgfY7dnFuBZFg7idI6XWoIFfixBhu0tJhSRqmLSdZxb",
                 components: "buttons",
                 currency: opt.currency,
                 intent: "capture",

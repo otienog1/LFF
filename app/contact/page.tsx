@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <Layout preview>
+    <Layout>
       <div className="flex md:justify-center p-6 md:p-0">
         <Container>
           <Logo />

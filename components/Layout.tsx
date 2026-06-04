@@ -7,6 +7,8 @@ import TeamMember from './TeamMember'
 import gsap from 'gsap'
 import { MobileNav } from './Navbar'
 
+declare const imagesLoaded: (el: any, options: any, callback: any) => void
+
 export const isMobile = () => {
     let isMobile = false;
 
@@ -91,7 +93,12 @@ const Layout = ({ children }) => {
         window.addEventListener('scroll', getPageYScroll)
 
         class Item {
-            constructor(el) {
+            el: HTMLElement
+            renderedStyles: Record<string, any>
+            props: { height: number; top: number }
+            isVisible: boolean
+            observer: IntersectionObserver
+            constructor(el: HTMLElement) {
                 this.el = el
                 this.renderedStyles = {
                     translationY: {
@@ -176,7 +183,7 @@ const Layout = ({ children }) => {
 
             let items = []
 
-            scrollsp.forEach(item => items.push(new Item(item)))
+            scrollsp.forEach(item => items.push(new Item(item as HTMLElement)))
 
             let renderedStyles = {
                 translationY: {

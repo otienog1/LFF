@@ -63,15 +63,15 @@ const HeroSlider = props => {
 
     const initSlide = () => {
         slider('.slide').forEach(slider => {
-            slider.style.zIndex = 1
+            slider.style.zIndex = '1'
         });
 
-        sliders.current.children[next].style.zIndex = 2
-        sliders.current.children[current].style.zIndex = 3
-        sliders.current.children[current].style.opacity = 1
+        sliders.current.children[next].style.zIndex = '2'
+        sliders.current.children[current].style.zIndex = '3'
+        sliders.current.children[current].style.opacity = '1'
 
-        textWrapper.current.children[next].style.opacity = 0
-        textWrapper.current.children[current].style.opacity = 1
+        textWrapper.current.children[next].style.opacity = '0'
+        textWrapper.current.children[current].style.opacity = '1'
 
         bullets.current.children[current].classList.add("is__active")
         startAutoplay();
@@ -130,18 +130,18 @@ const HeroSlider = props => {
         bullet('.list__item')[next].classList.add("is__active")
 
         slider('.slide').forEach(slider => {
-            slider.style.zIndex = 1
+            slider.style.zIndex = '1'
         });
 
-        sliders.current.children[next].style.zIndex = 3
-        sliders.current.children[current].style.zIndex = 2
+        sliders.current.children[next].style.zIndex = '3'
+        sliders.current.children[current].style.zIndex = '2'
 
         textWrappers('.slideText').forEach(tt => {
-            tt.style.opacity = 0
+            tt.style.opacity = '0'
         });
 
-        textWrapper.current.children[next].style.opacity = 0
-        textWrapper.current.children[current].style.opacity = 1
+        textWrapper.current.children[next].style.opacity = '0'
+        textWrapper.current.children[current].style.opacity = '1'
     }
 
     const getSlide = () => {
@@ -157,7 +157,7 @@ const HeroSlider = props => {
 
     }
 
-    const clickEvent = (e) => {
+    const clickEvent = () => {
         bullet('.list__item').forEach((bullet, i) => {
             bullet.addEventListener('click', () => {
                 direction = "next"
@@ -176,7 +176,7 @@ const HeroSlider = props => {
         sliders.current.style.height = `${(document.documentElement.clientHeight - 35)}px`
 
         if (!isMobile()) {
-            bullets.current.parentElement.style.right = `${(document.querySelector('.donate-btn').offsetWidth + 20)}px`
+            bullets.current.parentElement.style.right = `${((document.querySelector('.donate-btn') as HTMLElement).offsetWidth + 20)}px`
             textWrapper.current.style.left = `${(document.documentElement.clientWidth - (document.documentElement.clientWidth * .91666667)) / 2}px`
             indicator.current.style.left = `${(document.documentElement.clientWidth - (document.documentElement.clientWidth * .91666667)) / 2}px`
             logo.current.style.left = `${(document.documentElement.clientWidth - (document.documentElement.clientWidth * .91666667)) / 2}px`
@@ -206,7 +206,7 @@ const HeroSlider = props => {
     return (
         <>
             <div ref={sliders} className="w-full md:w-full relative overflow-hidden">
-                {newSlides.map((slide, i) => <Slide source={slide[1].sourceUrl} key={i} />)}
+                {newSlides.map((slide, i) => <Slide source={(slide[1] as any).sourceUrl} key={i} />)}
             </div>
             <div className="absolute bottom-10 z-50 left-1/2 lg:left-auto -translate-x-1/2 lg:translate-x-0">
                 <ul className="flex" ref={bullets}>

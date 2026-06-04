@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 
-const CoverImage = ({ title, coverImage, slug }) => {
-    let cover = coverImage?.sourceUrl.split('.')
+const CoverImage = ({ title, coverImage, slug }: { title?: string; coverImage?: { sourceUrl: string }; slug?: string }) => {
+    let cover: any = coverImage?.sourceUrl.split('.')
     cover = `${cover.slice(0, -3)}.${cover[cover.length - 3]}.${cover[cover.length - 2]}_cover.${cover[cover.length - 1]}`
 
     const image = (

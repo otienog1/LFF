@@ -1,6 +1,6 @@
 'use client'
 
-const Tags = () => (
+const Tags = ({ tags }: { tags: any }) => (
     <div className="max-w-2xl mx-auto">
         <p className="mt-8 text-lg font-bold">
             Tagged

@@ -4,6 +4,8 @@ import { useEffect, useRef } from "react"
 import Container from "./Container"
 import gsap from "gsap"
 
+declare const imagesLoaded: (el: any, options: any, callback: any) => void
+
 const TheTeam = ({ title, trustees }) => {
     const elem = useRef(null)
 
@@ -17,7 +19,7 @@ const TheTeam = ({ title, trustees }) => {
     }
 
     useEffect(() => {
-        elem.current.style.paddingRight = `${(document.documentElement.clientWidth - document.querySelector('.container').offsetWidth) / 2}px`
+        elem.current!.style.paddingRight = `${(document.documentElement.clientWidth - (document.querySelector('.container') as HTMLElement).offsetWidth) / 2}px`
 
         preloadImages().then(() => {
             gsap.to(document.querySelectorAll('.picture'), {

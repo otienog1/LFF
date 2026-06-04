@@ -90,11 +90,11 @@ const NavBar = () => {
 }
 {/* <LFFLogo width="225" height="130" fill="#665F4B" /> */ }
 export const DesktopNav = ({ menu }) => {
-    const donateBtn = useRef(),
-        elem = useRef(null)
+    const donateBtn = useRef<HTMLDivElement>(null),
+        elem = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        let elemW = document.querySelector('.elem').offsetWidth,
+        let elemW = (document.querySelector('.elem') as HTMLElement).offsetWidth,
             documentWidth = document.documentElement.clientWidth
 
         donateBtn.current.style.minWidth = `${(documentWidth - elemW) / 2}px`
@@ -323,7 +323,7 @@ export const BurgerBtn = ({ button }) => {
                 className="flex flex-col space-y-1 w-10 h-4 mx-auto overflow-hidden z-20"
             >
                 {Array(3)
-                    .fill()
+                    .fill(null)
                     .map((_, i) => (
                         <span className="w-full bg-lff_800 h-1 rounded-sm" key={i}></span>
                     ))}
@@ -333,7 +333,7 @@ export const BurgerBtn = ({ button }) => {
                 className="flex flex-col absolute overflow-hidden w-8 h-8 left-1/2 -translate-x-1/2 rotate-45"
             >
                 {Array(2)
-                    .fill()
+                    .fill(null)
                     .map((_, i) => (
                         <span
                             className="bg-lff_200 first:w-full first:h-1 absolute first:top-3.5 last:w-1 last:h-full last:left-3.5 rounded-sm"

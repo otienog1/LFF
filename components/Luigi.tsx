@@ -4,10 +4,10 @@ import { useEffect, useRef } from 'react'
 import Container from './Container'
 
 const Luigi = ({ title, images, text, text1, text2 }) => {
-    const elem = useRef()
+    const elem = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        elem.current.style.paddingRight = `${(document.documentElement.clientWidth - document.querySelector('.container').offsetWidth) / 2}px`
+        elem.current!.style.paddingRight = `${(document.documentElement.clientWidth - (document.querySelector('.container') as HTMLElement).offsetWidth) / 2}px`
     }, [])
     return (
         <section className="flex justify-end py-28 md:py-40 md:pb-96 text-lff_800 text-lg bg-lff_100 px-4 md:px-0">

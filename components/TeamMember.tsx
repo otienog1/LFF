@@ -3,8 +3,12 @@
 import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 
+declare const imagesLoaded: (el: any, options: any, callback: any) => void
+
+type Trustee = { webp: string; jpeg: string; name: string; title: string; content: string }
+
 const TeamMember = () => {
-    const [trustee, setTrustee] = useState({})
+    const [trustee, setTrustee] = useState<Partial<Trustee>>({})
     const elem = useRef(null),
         overlay = useRef(null),
         imageFallback = useRef(null)
@@ -30,7 +34,7 @@ const TeamMember = () => {
     useEffect(() => {
         let member = document.querySelectorAll('.member')
         member.forEach((m, i) => {
-            let picture = m.querySelector('.picture').children[0].src
+            let picture = (m.querySelector('.picture')!.children[0] as HTMLImageElement).src
             let name = m.querySelector('.name').innerHTML
             let title = m.querySelector('.title').innerHTML
             let content = m.querySelector('.content').innerHTML
@@ -58,8 +62,9 @@ const TeamMember = () => {
             })
         })
 
-        elem.current.style.paddingRight = `${(document.documentElement.clientWidth - document.querySelector('.container').offsetWidth) / 2}px`
-        elem.current.style.paddingLeft = `${(document.documentElement.clientWidth - document.querySelector('.container').offsetWidth) / 2}px`
+        const containerWidth = (document.querySelector('.container') as HTMLElement).offsetWidth
+        elem.current!.style.paddingRight = `${(document.documentElement.clientWidth - containerWidth) / 2}px`
+        elem.current!.style.paddingLeft = `${(document.documentElement.clientWidth - containerWidth) / 2}px`
     }, [])
 
     const handleClose = () => {

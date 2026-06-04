@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 const Projects = ({ projects, text, title }) => {
     const elem = useRef(null)
-    let works = Object.values(projects[0])
+    let works = Object.values(projects[0]) as Array<{ text: string; image: { sourceUrl: string } }>
     works.shift()
 
 

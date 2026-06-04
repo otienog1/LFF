@@ -1,22 +1,86 @@
 /* Google font */
 @import url("https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap");
 
-@tailwind base;
+@import "tailwindcss";
 
-/* Write your own custom base styles here */
+/* ─── Custom theme tokens ─── */
+@theme {
+  /* Fonts */
+  --font-itc: "ITC Berkeley Oldstyle Std", Georgia, serif;
+  --font-sen: "Sen", sans-serif;
+  --font-sorts: "Sen", sans-serif;
+  --font-poppins: "poppins";
+  --font-verl: "Verlag";
+  --font-tenor: "Tenor Sans";
 
-/* Start purging... */
-@tailwind components;
-/* Stop purging. */
+  /* lff scale */
+  --color-lff_100: #FFFBF2;
+  --color-lff_200: #FFF8E4;
+  --color-lff_300: #FFF4D7;
+  --color-lff_400: #FFF0C9;
+  --color-lff_500: #FFECBC;
+  --color-lff_600: #CCBD96;
+  --color-lff_700: #998E71;
+  --color-lff_800: #665F4B;
+  --color-lff_900: #332F26;
+  --color-lff_success: #3BBA5D;
+  --color-lff_danger: #E94F2C;
 
-/* Write you own custom component styles here */
+  /* Named lff colors */
+  --color-lffgreen: #145A32;
+  --color-lffvegas: #C4B454;
+  --color-lffbg: #FFECBC;
+  --color-lffdark: #292D32;
+  --color-lfffooter: #234A34;
+  --color-lfflighter: #FFF7E1;
+  --color-lfflight: #FFFAED;
 
-/* Start purging... */
-@tailwind utilities;
-/* Stop purging. */
+  /* lffgreen scale */
+  --color-lffgreen_400: #437B5B;
+  --color-lffgreen_500: #145A32;
+  --color-lffgreen_600: #104828;
 
-/* Your own custom utilities */
+  /* lffvegas scale */
+  --color-lffvegas_100: #F3F0DD;
+  --color-lffvegas_200: #E7E1BB;
+  --color-lffvegas_300: #DCD298;
+  --color-lffvegas_500: #C4B454;
+  --color-lffvegas_600: #9D9043;
+  --color-lffvegas_700: #766C32;
+  --color-lffvegas_800: #4E4822;
+  --color-lffvegas_900: #272411;
 
+  /* Text-only colors */
+  --color-primary: #3F3F3F;
+  --color-faded: #292D32;
+
+  /* Custom breakpoint */
+  --breakpoint-3xl: 1920px;
+
+  /* Timer animation (SVG stroke) */
+  --animate-timer: timer 8s linear forwards;
+  @keyframes timer {
+    to { stroke-dashoffset: 0; }
+  }
+}
+
+/* ─── Custom container — replaces addComponents plugin in tailwind.config.js ─── */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @media (width >= 640px)  { max-width: 768px; }
+  @media (width >= 768px)  { max-width: 1024px; }
+  @media (width >= 1024px) { max-width: 1024px; }
+  @media (width >= 1280px) { max-width: 1200px; }
+  @media (width >= 1536px) { max-width: 1440px; }
+  @media (width >= 1920px) { max-width: 1536px; }
+}
+
+/* ─── third-child variant — replaces addVariant plugin in tailwind.config.js ─── */
+@variant third-child (&:nth-child(3));
+
+/* ─── @font-face (unchanged) ─── */
 @layer base {
     @font-face {
         font-family: "Verlag";
@@ -245,18 +309,8 @@
         margin-right: 0;
     }
 
-    .list__item.is__active svg circle {
-        animation: timer 8s linear forwards;
-    }
-
     .z-100{
         z-index: 100;
-    }
-
-    @keyframes timer {
-        to {
-            stroke-dashoffset: 0;
-        }
     }
 
     p {
@@ -278,7 +332,6 @@
     }
 
     .main::before {
-        /* animation: grain 8s steps(10) infinite; */
         animation: noise 1s steps(2) infinite;
         background-image: url(/noise.png);
         content: "";
@@ -292,93 +345,30 @@
     }
 
     @keyframes grain {
-
-        0%,
-        100% {
-            transform: translate(0, 0);
-        }
-
-        10% {
-            transform: translate(-5%, -10%);
-        }
-
-        20% {
-            transform: translate(-15%, 5%);
-        }
-
-        30% {
-            transform: translate(7%, -25%);
-        }
-
-        40% {
-            transform: translate(-5%, 25%);
-        }
-
-        50% {
-            transform: translate(-15%, 10%);
-        }
-
-        60% {
-            transform: translate(15%, 0%);
-        }
-
-        70% {
-            transform: translate(0%, 15%);
-        }
-
-        80% {
-            transform: translate(3%, 35%);
-        }
-
-        90% {
-            transform: translate(-10%, 10%);
-        }
+        0%, 100% { transform: translate(0, 0); }
+        10% { transform: translate(-5%, -10%); }
+        20% { transform: translate(-15%, 5%); }
+        30% { transform: translate(7%, -25%); }
+        40% { transform: translate(-5%, 25%); }
+        50% { transform: translate(-15%, 10%); }
+        60% { transform: translate(15%, 0%); }
+        70% { transform: translate(0%, 15%); }
+        80% { transform: translate(3%, 35%); }
+        90% { transform: translate(-10%, 10%); }
     }
 
     @keyframes noise {
-        0% {
-            transform: translate3d(0, 9rem, 0);
-        }
-
-        10% {
-            transform: translate3d(-1rem, -4rem, 0);
-        }
-
-        20% {
-            transform: translate3d(-8rem, 2rem, 0);
-        }
-
-        30% {
-            transform: translate3d(9rem, -9rem, 0);
-        }
-
-        40% {
-            transform: translate3d(-2rem, 7rem, 0);
-        }
-
-        50% {
-            transform: translate3d(-9rem, -4rem, 0);
-        }
-
-        60% {
-            transform: translate3d(2rem, 6rem, 0);
-        }
-
-        70% {
-            transform: translate3d(7rem, -8rem, 0);
-        }
-
-        80% {
-            transform: translate3d(-9rem, 1rem, 0);
-        }
-
-        90% {
-            transform: translate3d(6rem, -5rem, 0);
-        }
-
-        to {
-            transform: translate3d(-7rem, 0, 0);
-        }
+        0%   { transform: translate3d(0, 9rem, 0); }
+        10%  { transform: translate3d(-1rem, -4rem, 0); }
+        20%  { transform: translate3d(-8rem, 2rem, 0); }
+        30%  { transform: translate3d(9rem, -9rem, 0); }
+        40%  { transform: translate3d(-2rem, 7rem, 0); }
+        50%  { transform: translate3d(-9rem, -4rem, 0); }
+        60%  { transform: translate3d(2rem, 6rem, 0); }
+        70%  { transform: translate3d(7rem, -8rem, 0); }
+        80%  { transform: translate3d(-9rem, 1rem, 0); }
+        90%  { transform: translate3d(6rem, -5rem, 0); }
+        to   { transform: translate3d(-7rem, 0, 0); }
     }
 
     a,
@@ -393,20 +383,15 @@
         height: 16px;
     }
 
-    /* Track */
     ::-webkit-scrollbar-track {
-        /* border-radius: 100vh; */
         background: #ffecbc;
     }
 
-    /* Handle */
     ::-webkit-scrollbar-thumb {
         background: #998e71;
-        /* border-radius: 100vh; */
         border: 2px solid #ffecbc;
     }
 
-    /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
         background: #665f4b;
     }
@@ -450,21 +435,9 @@
     }
 
     @keyframes iconscroll {
-        0% {
-            opacity: 0
-        }
-
-        20% {
-            opacity: 1
-        }
-
-        45% {
-            opacity: 1
-        }
-
-        100% {
-            opacity: 0;
-            top: calc(100% - 100px)
-        }
+        0%   { opacity: 0; }
+        20%  { opacity: 1; }
+        45%  { opacity: 1; }
+        100% { opacity: 0; top: calc(100% - 100px); }
     }
 }
