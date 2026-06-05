@@ -21,7 +21,9 @@ interface ProjectsGridProps {
 
 export default function ProjectsGrid({ projects, title, text }: ProjectsGridProps) {
   const sectionRef = useRef<HTMLElement>(null)
-  const entries = Object.values(projects).slice(0, 3)
+  // Runtime data shape: Array<Record<string, ProjectEntry>> — flatten before slicing
+  const rawGroups = projects as unknown as Array<Record<string, ProjectEntry>>
+  const entries = rawGroups.flatMap(group => Object.values(group)).slice(0, 3)
 
   useGSAP(() => {
     gsap.from('.home-project-card', {

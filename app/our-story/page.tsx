@@ -1,76 +1,80 @@
 import type { Metadata } from 'next'
-import Layout from '@/components/Layout'
-import Container from '@/components/Container'
-import TheTeam from '@/components/TheTeam'
-import Logo from '@/components/Logo'
+import Layout from '@/components/layout/Layout'
+import TeamGrid from '@/components/team/TeamGrid'
+import type { TrusteeData } from '@/components/team/TeamSheet'
 import { getOurStory } from '@/lib/pages'
 
-export const metadata: Metadata = {
-  title: 'Our Story',
-}
+export const metadata: Metadata = { title: 'Our Story' }
 
 export default async function OurStoryPage() {
   const { page } = await getOurStory()
 
+  // Runtime data shape: Array<Record<string, TrusteeData[]>>
+  // TypeScript type is Record<string, TrusteeData> — cast to flatten safely
+  const trusteeGroups = page.trustees as unknown as Array<Record<string, TrusteeData[]>>
+  const members: TrusteeData[] = trusteeGroups.flatMap(group =>
+    Object.values(group).flatMap(arr => arr)
+  )
+
   return (
     <Layout>
-      <section className="bg-lff_600">
-        <Logo />
-        <div className="h-screen">
-          <div className="flex h-1/2 justify-center items-end pb-40 md:pb-0 md:mb-40">
-            <Container>
-              <h1 className="text-5xl md:text-7xl text-lff_400 text-center tracking-widest font-bold">Our Story</h1>
-            </Container>
-          </div>
-          <div className="flex md:justify-end md:min-h-screen">
-            <Container>
-              <div className="flex h-1/2 md:h-2/3 md:items-center">
-                <div className="h-full md:flex md:items-center w-full -translate-y-1/5 relative">
-                  <img src={page.heroImage.sourceUrl} className="w-full md:hidden" alt="" />
-                  <p
-                    className="md:hidden text-xl md:text-3xl text-lff_100 leading-loose md:w-2/3 mt-16 tracking-wider z-20 px-4 md:px-0"
-                    dangerouslySetInnerHTML={{ __html: page.heroContent }}
-                  />
-                  <p
-                    data-scroll-speed="50"
-                    className="hidden md:block text-xl md:text-3xl text-lff_100 leading-loose md:w-2/3 mt-16 tracking-wider z-20 px-4 md:px-0"
-                    dangerouslySetInnerHTML={{ __html: page.heroContent }}
-                  />
-                  <img src={page.heroImage.sourceUrl} className="w-2/5 hidden md:block absolute right-0 z-10" alt="" />
-                </div>
-              </div>
-            </Container>
-          </div>
-        </div>
-        <div className="flex md:py-40 mt-80">
-          <Container>
-            <div className="flex w-full items-center flex-wrap">
-              <div className="w-full md:w-6/12">
-                <img src={page.whoWeAreImage.sourceUrl} className="w-full" alt="" />
-              </div>
-              <div className="w-full md:w-6/12 pt-16 md:pt-0 px-4 md:px-0 md:pl-16">
-                <h5
-                  dangerouslySetInnerHTML={{ __html: page.whoWeAreTitle }}
-                  className="text-lff_100 text-base uppercase font-bold tracking-widest"
-                />
-                <h3
-                  dangerouslySetInnerHTML={{ __html: page.whoWeAreText }}
-                  className="text-lff_100 text-3xl my-10 leading-tight font-extrabold"
-                />
-                <h3
-                  dangerouslySetInnerHTML={{ __html: page.whoWeAreText1 }}
-                  className="text-lff_100 text-lg leading-relaxed"
-                />
-              </div>
-            </div>
-          </Container>
-        </div>
-        <div className="pt-28 md:mt-40 overflow-hidden">
-          <img data-scroll-speed="120" src={page.banner.sourceUrl} className="hidden md:block w-full" alt="" />
-          <img src={page.banner.sourceUrl} className="w-full md:hidden" alt="" />
+      {/* Hero */}
+      <section className="relative h-svh overflow-hidden flex items-end">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full bg-cover bg-center"
+          style={{ backgroundImage: `url(${page.heroImage.sourceUrl})` }}
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-[rgba(26,21,16,0.5)]" />
+        <div className="relative z-10 max-w-[1280px] mx-auto px-8 pb-20 w-full">
+          <p className="font-body text-[10px] uppercase tracking-[0.2em] text-gold mb-4">
+            Non-Governmental · Kenya
+          </p>
+          <div className="w-10 h-px bg-gold mb-6" />
+          <h1 className="font-display italic text-[clamp(48px,7vw,80px)] text-cream leading-[1.0]">
+            Our Story
+          </h1>
         </div>
       </section>
-      <TheTeam title={[page.title1, page.title2]} trustees={page.trustees} />
+
+      {/* Who We Are */}
+      <section className="bg-base py-[120px] px-8">
+        <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <img src={page.whoWeAreImage.sourceUrl} alt="" className="w-full" />
+          <div>
+            <p
+              className="font-body text-[10px] uppercase tracking-[0.2em] text-gold mb-6"
+              dangerouslySetInnerHTML={{ __html: page.whoWeAreTitle }}
+            />
+            <h2
+              className="font-display italic text-[clamp(28px,3vw,40px)] text-cream leading-[1.15] mb-8"
+              dangerouslySetInnerHTML={{ __html: page.whoWeAreText }}
+            />
+            <p
+              className="font-body font-light text-[16px] text-muted leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: page.whoWeAreText1 }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Editorial text */}
+      <section className="bg-surface py-[80px] px-8">
+        <div className="max-w-[720px] mx-auto">
+          <p
+            className="font-body font-light text-[18px] text-muted leading-[1.8]"
+            dangerouslySetInnerHTML={{ __html: page.heroContent }}
+          />
+        </div>
+      </section>
+
+      {/* Banner */}
+      <div className="overflow-hidden">
+        <img src={page.banner.sourceUrl} alt="" className="w-full" />
+      </div>
+
+      {/* Team */}
+      <TeamGrid title={[page.title1, page.title2]} members={members} />
     </Layout>
   )
 }
