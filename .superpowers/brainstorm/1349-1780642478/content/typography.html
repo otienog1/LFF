@@ -1,0 +1,91 @@
+<h2>Typography pairing for the redesign</h2>
+<p class="subtitle">The headline/body pair sets the entire personality of the site</p>
+
+<style>
+  .type-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 28px 0; }
+  .type-card { border: 2px solid transparent; border-radius: 12px; overflow: hidden; cursor: pointer; transition: all .25s; }
+  .type-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.15); }
+  .type-card.selected { border-color: #c8b87a; box-shadow: 0 0 0 4px rgba(200,184,122,.2); }
+  .type-preview { height: 280px; background: #1e1a13; padding: 32px 28px; display: flex; flex-direction: column; justify-content: space-between; }
+  .type-body-card { padding: 16px 20px 20px; background: #fff; }
+  .type-tag { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; color: #c8b87a; }
+  .type-name { font-size: 16px; font-weight: 700; margin: 0 0 6px; color: #111; }
+  .type-desc { font-size: 12.5px; color: #666; line-height: 1.5; margin: 0; }
+
+  /* Shared dark preview elements */
+  .pre-eyebrow { font-size: 9px; letter-spacing: .22em; text-transform: uppercase; color: #c8b87a; margin-bottom: 10px; }
+  .pre-rule { width: 36px; height: 1px; background: #c8b87a; margin-bottom: 14px; }
+  .pre-body { font-size: 11px; color: #9a8e7e; line-height: 1.6; margin-top: auto; }
+
+  /* A: Playfair Display + Jost */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Jost:wght@300;400&display=swap');
+  .ta-headline { font-family: 'Playfair Display', Georgia, serif; font-size: 34px; font-weight: 700; font-style: italic; color: #f5ede0; line-height: 1.05; letter-spacing: -.01em; }
+  .ta-body { font-family: 'Jost', sans-serif; font-weight: 300; }
+
+  /* B: Cormorant Garamond + Inter */
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@300;400&display=swap');
+  .tb-headline { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 40px; font-weight: 600; font-style: italic; color: #f5ede0; line-height: 1.0; letter-spacing: .01em; }
+  .tb-body { font-family: 'Inter', sans-serif; font-weight: 300; }
+
+  /* C: DM Serif Display + DM Sans */
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400&display=swap');
+  .tc-headline { font-family: 'DM Serif Display', Georgia, serif; font-size: 36px; font-style: italic; color: #f5ede0; line-height: 1.08; letter-spacing: -.02em; }
+  .tc-body { font-family: 'DM Sans', sans-serif; font-weight: 300; }
+</style>
+
+<div class="type-cards">
+
+  <!-- Option A: Playfair + Jost -->
+  <div class="type-card" data-choice="playfair" onclick="toggleSelect(this)">
+    <div class="type-preview">
+      <div>
+        <div class="pre-eyebrow ta-body">Wildlife · Kenya</div>
+        <div class="pre-rule"></div>
+        <div class="ta-headline">Rewild the<br>World</div>
+      </div>
+      <div class="pre-body ta-body">Conserving wildlife and empowering communities across East Africa — one footprint at a time.</div>
+    </div>
+    <div class="type-body-card">
+      <div class="type-tag">Option A</div>
+      <div class="type-name">Playfair Display + Jost</div>
+      <p class="type-desc">Classic editorial serif with a clean geometric sans. Feels like Vogue or National Geographic — high drama, high contrast.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Cormorant + Inter -->
+  <div class="type-card" data-choice="cormorant" onclick="toggleSelect(this)">
+    <div class="type-preview">
+      <div>
+        <div class="pre-eyebrow tb-body">Wildlife · Kenya</div>
+        <div class="pre-rule"></div>
+        <div class="tb-headline">Rewild the<br>World</div>
+      </div>
+      <div class="pre-body tb-body">Conserving wildlife and empowering communities across East Africa — one footprint at a time.</div>
+    </div>
+    <div class="type-body-card">
+      <div class="type-tag">Option B</div>
+      <div class="type-name">Cormorant Garamond + Inter</div>
+      <p class="type-desc">Ultra-refined old-style serif — tall, thin, aristocratic — paired with neutral Inter. Closer to luxury fashion brands like Bottega Veneta.</p>
+    </div>
+  </div>
+
+  <!-- Option C: DM Serif + DM Sans -->
+  <div class="type-card" data-choice="dm-serif" onclick="toggleSelect(this)">
+    <div class="type-preview">
+      <div>
+        <div class="pre-eyebrow tc-body">Wildlife · Kenya</div>
+        <div class="pre-rule"></div>
+        <div class="tc-headline">Rewild the<br>World</div>
+      </div>
+      <div class="pre-body tc-body">Conserving wildlife and empowering communities across East Africa — one footprint at a time.</div>
+    </div>
+    <div class="type-body-card">
+      <div class="type-tag">Option C</div>
+      <div class="type-name">DM Serif Display + DM Sans</div>
+      <p class="type-desc">A matched serif/sans family — cohesive and warm. Less theatrical than A or B, but very refined. Closest to the LFF brand's current warmth.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:8px">Click to select. All three are Google Fonts — free, fast, no licensing issues. My pick: <strong>B (Cormorant + Inter)</strong> for the most distinctive luxury feel.</p>

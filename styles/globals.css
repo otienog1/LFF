@@ -25,19 +25,6 @@
   --color-gold-light: #d4c88a;
   --color-green: #1a4a28;
 
-  /* Keep legacy lff_* tokens until old components are deleted in Task 18 */
-  --color-lff_100: #FFFBF2;
-  --color-lff_200: #FFF8E4;
-  --color-lff_300: #FFF4D7;
-  --color-lff_400: #FFF0C9;
-  --color-lff_500: #FFECBC;
-  --color-lff_600: #CCBD96;
-  --color-lff_700: #998E71;
-  --color-lff_800: #665F4B;
-  --color-lff_900: #332F26;
-  --color-lffgreen: #145A32;
-  --color-lffvegas: #C4B454;
-
   /* Breakpoint */
   --breakpoint-3xl: 1920px;
 
