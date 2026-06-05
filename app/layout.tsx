@@ -1,11 +1,23 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import { Cormorant_Garamond, Inter } from 'next/font/google'
 import GsapTransitionWrapper from '@/components/GsapTransitionWrapper'
 import '../styles/globals.css'
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400'],
+  variable: '--font-inter',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -27,14 +39,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
+    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <head>
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-TileColor" content="#1a1510" />
         <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-        <meta name="theme-color" content="#000" />
+        <meta name="theme-color" content="#1a1510" />
       </head>
-      <body>
+      <body className="bg-base text-cream">
         <GsapTransitionWrapper>
           {children}
         </GsapTransitionWrapper>

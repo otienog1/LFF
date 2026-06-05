@@ -42,7 +42,7 @@ export default function GsapTransitionWrapper({ children }: Props) {
       >
         <>
           {children}
-          <div ref={overlay} className="z-50 bg-lff_600 fixed w-full bottom-0 h-0" />
+          <div ref={overlay} className="z-50 bg-base fixed w-full bottom-0 h-0" />
         </>
       </Transition>
     </SwitchTransition>
