@@ -67,7 +67,7 @@ export default function Navbar() {
               className="group relative font-body text-[11px] uppercase tracking-[0.12em] text-cream/70 hover:text-cream transition-colors duration-200"
             >
               {label}
-              <span className="absolute -bottom-0.5 left-0 w-full h-px bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-250 origin-left" />
+              <span className="absolute -bottom-0.5 left-0 w-full h-px bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-[250ms] origin-left" />
             </Link>
           ))}
           <Link

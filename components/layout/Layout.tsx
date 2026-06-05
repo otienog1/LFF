@@ -19,7 +19,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   const [lenis, setLenis] = useState<Lenis | null>(null)
-  const mainRef = useRef<HTMLDivElement>(null)
+  const mainRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const lenisInstance = new Lenis({ autoRaf: false })
