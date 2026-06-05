@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Cormorant_Garamond, Inter } from 'next/font/google'
-import GsapTransitionWrapper from '@/components/GsapTransitionWrapper'
 import '../styles/globals.css'
 
 const cormorant = Cormorant_Garamond({
@@ -46,10 +45,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
         <meta name="theme-color" content="#1a1510" />
       </head>
-      <body className="bg-base text-cream">
-        <GsapTransitionWrapper>
-          {children}
-        </GsapTransitionWrapper>
+      <body className="bg-base text-cream" suppressHydrationWarning>
+        {children}
         <Script src="/js/imagesloaded.min.js" strategy="beforeInteractive" />
       </body>
     </html>

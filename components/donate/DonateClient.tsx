@@ -2,7 +2,7 @@
 
 import Layout from '@/components/layout/Layout'
 import { useState, useEffect, useRef } from 'react'
-import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
+import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js'
 import gsap from 'gsap'
 import { v4 } from 'uuid'
 import { Input } from '@/components/ui/input'
@@ -61,6 +61,31 @@ function AmountPill({
   )
 }
 
+function PayPalSection({ currency, amount, onSuccess }: { currency: string; amount: string; onSuccess: () => void }) {
+  const [{ isRejected }] = usePayPalScriptReducer()
+  if (isRejected) {
+    return (
+      <p className="font-body font-light text-[14px] text-muted">
+        PayPal is temporarily unavailable. Please use card or M-Pesa.
+      </p>
+    )
+  }
+  return (
+    <PayPalButtons
+      style={{ layout: 'vertical', color: 'gold', shape: 'rect' }}
+      createOrder={(_data, actions) =>
+        actions.order.create({
+          intent: 'CAPTURE',
+          purchase_units: [{ amount: { currency_code: currency, value: amount } }],
+        })
+      }
+      onApprove={(_data, actions) =>
+        actions.order!.capture().then(onSuccess)
+      }
+    />
+  )
+}
+
 export default function DonateClient() {
   const [page, setPage] = useState(1)
   const [amount, setAmount] = useState('25')
@@ -87,6 +112,7 @@ export default function DonateClient() {
       .then(data => setSessionID(data?.session?.id ?? ''))
       .catch(() => {})
 
+    if (typeof Checkout === 'undefined') return
     Checkout.configure({
       session: { id: sessionID },
       merchant: 'LUIGI',
@@ -221,7 +247,7 @@ export default function DonateClient() {
                     {' '}via secure Mastercard checkout.
                   </p>
                   <Button
-                    onClick={() => Checkout.showLightbox?.()}
+                    onClick={() => typeof Checkout !== 'undefined' && Checkout.showLightbox?.()}
                     className="font-body text-[11px] uppercase tracking-[0.15em] bg-gold text-base hover:bg-gold-light border-0 rounded-none px-8 py-3 h-auto"
                   >
                     Pay with Card →
@@ -237,19 +263,10 @@ export default function DonateClient() {
                       currency,
                     }}
                   >
-                    <PayPalButtons
-                      style={{ layout: 'vertical', color: 'gold', shape: 'rect' }}
-                      createOrder={(_data, actions) =>
-                        actions.order.create({
-                          intent: 'CAPTURE',
-                          purchase_units: [{
-                            amount: { currency_code: currency, value: amount },
-                          }],
-                        })
-                      }
-                      onApprove={(_data, actions) =>
-                        actions.order!.capture().then(() => setSent(true))
-                      }
+                    <PayPalSection
+                      currency={currency}
+                      amount={amount}
+                      onSuccess={() => setSent(true)}
                     />
                   </PayPalScriptProvider>
                 </div>
