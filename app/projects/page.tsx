@@ -12,15 +12,22 @@ export default async function ProjectsPage() {
 
   return (
     <Layout>
-      {/* Minimal hero */}
-      <section className="bg-base pt-40 pb-20 px-8">
-        <div className="max-w-[1280px] mx-auto">
-          <p className="font-body text-[10px] uppercase tracking-[0.2em] text-gold mb-6">
-            {page.pageTitle}
-          </p>
-          <h1 className="font-display italic text-[clamp(48px,6vw,72px)] text-cream leading-[1.0] max-w-xl">
-            Conservation in Action
-          </h1>
+      {/* Page header */}
+      <section className="bg-base pt-40 pb-16 px-8">
+        <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
+          <div>
+            <p className="font-body text-[10px] uppercase tracking-[0.2em] text-gold mb-4">
+              {page.pageTitle}
+            </p>
+            <h1 className="font-display italic text-[clamp(40px,5vw,68px)] text-cream leading-tight">
+              Conservation<br />in Action
+            </h1>
+          </div>
+          <div>
+            <p className="font-body font-light text-[15px] text-muted leading-[1.8]">
+              {page.projectsText.replace(/<[^>]*>/g, '')}
+            </p>
+          </div>
         </div>
       </section>
 

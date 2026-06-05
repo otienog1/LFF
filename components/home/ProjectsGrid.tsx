@@ -40,14 +40,14 @@ export default function ProjectsGrid({ projects, title, text }: ProjectsGridProp
     <section ref={sectionRef} className="bg-surface py-[120px] px-8">
       <div className="max-w-[1280px] mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end mb-16">
           <div>
             <p className="font-body text-[10px] uppercase tracking-[0.2em] text-gold mb-4">Selected Work</p>
             <h2 className="font-display italic text-[clamp(32px,4vw,52px)] text-cream leading-[1.1]">
               {title}
             </h2>
           </div>
-          <p className="font-body font-light text-[14px] text-muted max-w-xs" dangerouslySetInnerHTML={{ __html: text }} />
+          <p className="font-body font-light text-[14px] text-muted w-full">{text.replace(/<[^>]*>/g, '')}</p>
         </div>
 
         {/* Grid */}

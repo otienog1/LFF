@@ -42,7 +42,7 @@ export default function LuigiSection({ images, title, text, text1, text2 }: Luig
   }, { scope: sectionRef, dependencies: [] })
 
   return (
-    <section ref={sectionRef} className="relative h-[70vh] overflow-hidden flex items-center justify-center">
+    <section ref={sectionRef} className="relative h-svh overflow-hidden flex items-center justify-center">
       {/* Parallax background */}
       <div
         ref={bgRef}
@@ -53,16 +53,18 @@ export default function LuigiSection({ images, title, text, text1, text2 }: Luig
       <div aria-hidden="true" className="absolute inset-0 bg-[rgba(26,21,16,0.60)]" />
 
       {/* Content */}
-      <div className="luigi-content relative z-10 max-w-[800px] mx-auto px-8 text-center">
-        <h2 className="font-display italic text-[clamp(28px,4vw,52px)] text-cream leading-[1.15] mb-6"
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
-        <p className="font-body font-light text-[15px] text-cream/70 leading-relaxed mb-2"
-          dangerouslySetInnerHTML={{ __html: text }}
-        />
-        <p className="font-body font-light text-[13px] text-gold uppercase tracking-[0.15em]"
-          dangerouslySetInnerHTML={{ __html: text1 }}
-        />
+      <div className="luigi-content relative z-10 max-w-180 mx-auto px-8 text-center flex flex-col items-center">
+        <p className="font-body text-[10px] uppercase tracking-[0.25em] text-gold mb-8">Who was Luigi</p>
+        <div className="w-8 h-px bg-gold/60 mb-8" />
+        <h2 className="font-display italic text-[clamp(40px,6vw,80px)] text-cream leading-[1.05] mb-8">
+          Luigi Francescon
+        </h2>
+        <p className="font-body font-light text-[16px] text-cream/70 leading-[1.9] mb-6 max-w-lg">
+          {text.replace(/<[^>]*>/g, '')}
+        </p>
+        <p className="font-body font-light text-[16px] text-cream/70 leading-[1.9] max-w-lg">
+          {text1.replace(/<[^>]*>/g, '')}
+        </p>
       </div>
     </section>
   )

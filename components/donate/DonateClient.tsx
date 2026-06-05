@@ -8,7 +8,6 @@ import { v4 } from 'uuid'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
 declare const Checkout: {
   configure: (config: {
@@ -21,45 +20,20 @@ declare const Checkout: {
   showLightbox?: () => void
 }
 
-const AMOUNTS_USD = { row1: ['10', '25', '50'], row2: ['100', '250', '500'] }
-const AMOUNTS_KES = { row1: ['500', '1000', '2500'], row2: ['5000', '10000', '25000'] }
+const CURRENCIES = ['USD', 'KES', 'EUR', 'GBP']
 
-function ProgressBar({ step }: { step: number }) {
-  return (
-    <div className="w-full h-px bg-border mb-12">
-      <div
-        className="h-full bg-gold transition-all duration-500"
-        style={{ width: `${(step / 2) * 100}%` }}
-      />
-    </div>
-  )
+const AMOUNTS: Record<string, string[]> = {
+  USD: ['10', '25', '50', '100', '250', '500'],
+  KES: ['500', '1000', '2500', '5000', '10000', '25000'],
+  EUR: ['10', '25', '50', '100', '250', '500'],
+  GBP: ['10', '25', '50', '100', '250', '500'],
 }
 
-function AmountPill({
-  value,
-  selected,
-  currency,
-  onClick,
-}: {
-  value: string
-  selected: boolean
-  currency: string
-  onClick: () => void
-}) {
-  const fmt = new Intl.NumberFormat('en', { style: 'currency', currency })
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={[
-        'font-body text-[13px] px-4 py-2 border transition-all duration-200',
-        selected ? 'bg-gold text-base border-gold' : 'border-border text-muted hover:border-gold hover:text-cream',
-      ].join(' ')}
-    >
-      {fmt.format(parseFloat(value))}
-    </button>
-  )
-}
+const PAYMENT_METHODS = [
+  { id: 'card', label: 'Card' },
+  { id: 'paypal', label: 'PayPal' },
+  { id: 'mpesa', label: 'M-Pesa' },
+]
 
 function PayPalSection({ currency, amount, onSuccess }: { currency: string; amount: string; onSuccess: () => void }) {
   const [{ isRejected }] = usePayPalScriptReducer()
@@ -97,7 +71,9 @@ export default function DonateClient() {
   const [sent, setSent] = useState(false)
   const thankRef = useRef<HTMLDivElement>(null)
 
-  const amounts = currency === 'KES' ? AMOUNTS_KES : AMOUNTS_USD
+  const fmt = new Intl.NumberFormat('en', { style: 'currency', currency })
+  const parsedAmount = parseFloat(amount)
+  const validAmount = !isNaN(parsedAmount) && parsedAmount > 0
 
   useEffect(() => {
     if (sent && thankRef.current) {
@@ -138,7 +114,7 @@ export default function DonateClient() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         phone_number: phone,
-        amount: Math.ceil(parseFloat(amount)),
+        amount: Math.ceil(parsedAmount),
         reference_code: 'Donation',
         description: 'A donation to The Luigi Footprints Foundation',
       }),
@@ -149,148 +125,195 @@ export default function DonateClient() {
 
   return (
     <Layout>
-      <section className="bg-base min-h-svh pt-40 pb-20 px-8">
-        <div className="max-w-[640px] mx-auto">
-          <p className="font-body text-[10px] uppercase tracking-[0.2em] text-gold mb-4">Support our work</p>
-          <h1 className="font-display italic text-[clamp(36px,4vw,56px)] text-cream leading-[1.05] mb-12">
-            Make a Donation
+      <section className="bg-base min-h-svh grid grid-cols-1 lg:grid-cols-2">
+
+        {/* Left: editorial panel */}
+        <div className="bg-surface flex flex-col justify-end px-10 pt-40 pb-16 lg:sticky lg:top-0 lg:h-svh">
+          <p className="font-body text-[10px] uppercase tracking-[0.2em] text-gold mb-6">Support our mission</p>
+          <h1 className="font-display italic text-[clamp(48px,5vw,80px)] text-cream leading-[1.0] mb-8">
+            Every gift<br />leaves a<br />footprint.
           </h1>
+          <div className="w-8 h-px bg-gold mb-8" />
+          <p className="font-body font-light text-[15px] text-muted leading-[1.8] max-w-sm">
+            Your contribution directly funds wildlife conservation, community education, and environmental stewardship across East Africa.
+          </p>
+        </div>
 
-          <ProgressBar step={page - 1} />
+        {/* Right: form panel */}
+        <div className="flex flex-col justify-center px-10 pt-16 lg:pt-0 pb-16 min-h-svh">
 
-          {/* Step 1: Amount */}
+          {/* Step indicator */}
+          <div className="flex items-center gap-4 mb-12">
+            <div className="flex items-center gap-2">
+              <span className={`font-body text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${page === 1 ? 'text-gold' : 'text-muted/40'}`}>01</span>
+              <span className={`font-body text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${page === 1 ? 'text-cream' : 'text-muted/40'}`}>Amount</span>
+            </div>
+            <div className="flex-1 h-px bg-border" />
+            <div className="flex items-center gap-2">
+              <span className={`font-body text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${page === 2 ? 'text-gold' : 'text-muted/40'}`}>02</span>
+              <span className={`font-body text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${page === 2 ? 'text-cream' : 'text-muted/40'}`}>Payment</span>
+            </div>
+          </div>
+
+          {/* ── Step 1: Amount ── */}
           {page === 1 && (
-            <div className="space-y-8">
-              <div className="space-y-2">
-                <Label className="font-body text-[11px] uppercase tracking-[0.12em] text-muted">Currency</Label>
-                <Select value={currency} onValueChange={setCurrency}>
-                  <SelectTrigger className="bg-surface border-border text-cream w-40 focus:ring-gold">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-surface border-border">
-                    <SelectItem value="USD" className="text-cream focus:bg-gold/20">USD</SelectItem>
-                    <SelectItem value="KES" className="text-cream focus:bg-gold/20">KES</SelectItem>
-                    <SelectItem value="EUR" className="text-cream focus:bg-gold/20">EUR</SelectItem>
-                    <SelectItem value="GBP" className="text-cream focus:bg-gold/20">GBP</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+            <div className="space-y-10">
 
-              <div className="space-y-2">
-                <Label className="font-body text-[11px] uppercase tracking-[0.12em] text-muted">Amount</Label>
-                <div className="flex flex-wrap gap-2 mb-2">
-                  {amounts.row1.map(v => (
-                    <AmountPill key={v} value={v} selected={amount === v} currency={currency} onClick={() => setAmount(v)} />
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {amounts.row2.map(v => (
-                    <AmountPill key={v} value={v} selected={amount === v} currency={currency} onClick={() => setAmount(v)} />
+              {/* Currency tabs */}
+              <div className="space-y-3">
+                <p className="font-body text-[10px] uppercase tracking-[0.2em] text-muted">Currency</p>
+                <div className="flex gap-2 flex-wrap">
+                  {CURRENCIES.map(c => (
+                    <button
+                      key={c}
+                      type="button"
+                      onClick={() => { setCurrency(c); setAmount(AMOUNTS[c]?.[1] ?? '25') }}
+                      className={[
+                        'font-body text-[11px] uppercase tracking-[0.12em] px-5 py-2.5 border transition-all duration-200',
+                        currency === c
+                          ? 'bg-gold text-base border-gold'
+                          : 'border-border text-muted hover:border-gold hover:text-cream',
+                      ].join(' ')}
+                    >
+                      {c}
+                    </button>
                   ))}
                 </div>
               </div>
 
+              {/* Amount grid */}
+              <div className="space-y-3">
+                <p className="font-body text-[10px] uppercase tracking-[0.2em] text-muted">Select amount</p>
+                <div className="grid grid-cols-3 gap-2">
+                  {(AMOUNTS[currency] ?? AMOUNTS.USD).map(v => (
+                    <button
+                      key={v}
+                      type="button"
+                      onClick={() => setAmount(v)}
+                      className={[
+                        'font-body text-[13px] py-4 border transition-all duration-200 text-center',
+                        amount === v
+                          ? 'bg-gold text-base border-gold'
+                          : 'border-border text-muted hover:border-gold hover:text-cream',
+                      ].join(' ')}
+                    >
+                      {new Intl.NumberFormat('en', { style: 'currency', currency }).format(parseFloat(v))}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Custom amount */}
               <div className="space-y-2">
-                <Label htmlFor="custom-amount" className="font-body text-[11px] uppercase tracking-[0.12em] text-muted">
-                  Custom amount
+                <Label htmlFor="custom-amount" className="font-body text-[10px] uppercase tracking-[0.2em] text-muted">
+                  Or enter custom amount
                 </Label>
-                <Input
-                  id="custom-amount"
-                  type="number"
-                  min="1"
-                  placeholder="Enter amount"
-                  onChange={e => setAmount(e.target.value)}
-                  className="bg-surface border-border text-cream placeholder:text-muted/40 focus-visible:ring-gold w-48"
-                />
+                <div className="relative flex items-center">
+                  <span className="font-body text-[13px] text-muted pr-3 select-none">{currency}</span>
+                  <Input
+                    id="custom-amount"
+                    type="number"
+                    min="1"
+                    placeholder="0.00"
+                    onChange={e => setAmount(e.target.value)}
+                    className="font-body text-[15px] bg-transparent border-0 border-b border-border rounded-none text-cream placeholder:text-muted/30 focus-visible:ring-0 focus-visible:border-gold pb-2 h-auto"
+                  />
+                </div>
               </div>
 
               <Button
                 onClick={() => setPage(2)}
-                disabled={!amount || parseFloat(amount) <= 0}
-                className="font-body text-[11px] uppercase tracking-[0.15em] bg-gold text-base hover:bg-gold-light border-0 rounded-none px-8 py-3 h-auto disabled:opacity-40"
+                disabled={!validAmount}
+                className="font-body text-[11px]! uppercase tracking-[0.15em] bg-gold text-base hover:bg-gold-light border-0 rounded-none px-8 py-4 h-auto w-full disabled:opacity-40"
               >
-                Continue →
+                Continue {validAmount ? `— ${fmt.format(parsedAmount)}` : ''} →
               </Button>
             </div>
           )}
 
-          {/* Step 2: Payment */}
+          {/* ── Step 2: Payment ── */}
           {page === 2 && (
-            <div className="space-y-8">
-              <div className="flex gap-2">
-                {[
-                  { id: 'card', label: 'Card' },
-                  { id: 'paypal', label: 'PayPal' },
-                  { id: 'mpesa', label: 'M-Pesa' },
-                ].map(m => (
-                  <button
-                    key={m.id}
-                    type="button"
-                    onClick={() => setPaymentMethod(m.id)}
-                    className={[
-                      'font-body text-[11px] uppercase tracking-[0.12em] px-4 py-2 border transition-all duration-200',
-                      paymentMethod === m.id ? 'bg-gold text-base border-gold' : 'border-border text-muted hover:border-gold',
-                    ].join(' ')}
-                  >
-                    {m.label}
-                  </button>
-                ))}
+            <div className="space-y-10">
+
+              {/* Donation summary */}
+              <div className="border-l-2 border-gold pl-5">
+                <p className="font-body text-[10px] uppercase tracking-[0.2em] text-muted mb-1">Donating</p>
+                <p className="font-display italic text-[36px] text-cream leading-tight">
+                  {fmt.format(parsedAmount)}
+                </p>
               </div>
 
+              {/* Payment method tabs */}
+              <div className="space-y-3">
+                <p className="font-body text-[10px] uppercase tracking-[0.2em] text-muted">Payment method</p>
+                <div className="flex gap-2">
+                  {PAYMENT_METHODS.map(m => (
+                    <button
+                      key={m.id}
+                      type="button"
+                      onClick={() => setPaymentMethod(m.id)}
+                      className={[
+                        'font-body text-[11px] uppercase tracking-[0.12em] px-5 py-3 border transition-all duration-200',
+                        paymentMethod === m.id
+                          ? 'bg-gold text-base border-gold'
+                          : 'border-border text-muted hover:border-gold hover:text-cream',
+                      ].join(' ')}
+                    >
+                      {m.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Card */}
               {paymentMethod === 'card' && (
-                <div className="space-y-4">
-                  <p className="font-body font-light text-[14px] text-muted">
+                <div className="space-y-5">
+                  <p className="font-body font-light text-[14px] text-muted leading-relaxed">
                     You will be charged{' '}
-                    <span className="text-cream">
-                      {new Intl.NumberFormat('en', { style: 'currency', currency }).format(parseFloat(amount))}
-                    </span>
+                    <span className="text-cream">{fmt.format(parsedAmount)}</span>
                     {' '}via secure Mastercard checkout.
                   </p>
                   <Button
                     onClick={() => typeof Checkout !== 'undefined' && Checkout.showLightbox?.()}
-                    className="font-body text-[11px] uppercase tracking-[0.15em] bg-gold text-base hover:bg-gold-light border-0 rounded-none px-8 py-3 h-auto"
+                    className="font-body text-[11px]! uppercase tracking-[0.15em] bg-gold text-base hover:bg-gold-light border-0 rounded-none px-8 py-4 h-auto w-full"
                   >
                     Pay with Card →
                   </Button>
                 </div>
               )}
 
+              {/* PayPal */}
               {paymentMethod === 'paypal' && (
-                <div>
-                  <PayPalScriptProvider
-                    options={{
-                      clientId: 'AfcPQsuVQb3JFz4o8t3g3JolRBipWWIpAjHM5-6dLqYbmtfwz34Ey-aOZyByb_mFkjkVGJCJMjJfGK4EqOCy5n5BkTOZ8X5F',
-                      currency,
-                    }}
-                  >
-                    <PayPalSection
-                      currency={currency}
-                      amount={amount}
-                      onSuccess={() => setSent(true)}
-                    />
-                  </PayPalScriptProvider>
-                </div>
+                <PayPalScriptProvider
+                  options={{
+                    clientId: 'AfcPQsuVQb3JFz4o8t3g3JolRBipWWIpAjHM5-6dLqYbmtfwz34Ey-aOZyByb_mFkjkVGJCJMjJfGK4EqOCy5n5BkTOZ8X5F',
+                    currency,
+                  }}
+                >
+                  <PayPalSection currency={currency} amount={amount} onSuccess={() => setSent(true)} />
+                </PayPalScriptProvider>
               )}
 
+              {/* M-Pesa */}
               {paymentMethod === 'mpesa' && (
-                <div className="space-y-4">
+                <div className="space-y-5">
                   <div className="space-y-2">
-                    <Label htmlFor="phone" className="font-body text-[11px] uppercase tracking-[0.12em] text-muted">
+                    <Label htmlFor="phone" className="font-body text-[10px] uppercase tracking-[0.2em] text-muted">
                       Phone number (with country code)
                     </Label>
                     <Input
                       id="phone"
                       type="tel"
-                      placeholder="+254..."
+                      placeholder="+254 700 000 000"
                       value={phone}
                       onChange={e => setPhone(e.target.value)}
-                      className="bg-surface border-border text-cream placeholder:text-muted/40 focus-visible:ring-gold"
+                      className="font-body text-[15px] bg-transparent border-0 border-b border-border rounded-none text-cream placeholder:text-muted/30 focus-visible:ring-0 focus-visible:border-gold pb-2 h-auto"
                     />
                   </div>
                   <Button
                     onClick={handleMpesa}
                     disabled={loading || !phone}
-                    className="font-body text-[11px] uppercase tracking-[0.15em] bg-gold text-base hover:bg-gold-light border-0 rounded-none px-8 py-3 h-auto disabled:opacity-40"
+                    className="font-body text-[11px]! uppercase tracking-[0.15em] bg-gold text-base hover:bg-gold-light border-0 rounded-none px-8 py-4 h-auto w-full disabled:opacity-40"
                   >
                     {loading ? 'Processing…' : 'Pay via M-Pesa →'}
                   </Button>
@@ -302,19 +325,21 @@ export default function DonateClient() {
                 onClick={() => setPage(1)}
                 className="font-body text-[11px] uppercase tracking-[0.12em] text-muted hover:text-cream transition-colors duration-200"
               >
-                ← Back
+                ← Change amount
               </button>
             </div>
           )}
 
+          {/* Thank you */}
           {sent && (
-            <div ref={thankRef} className="opacity-0 mt-8 p-6 border border-gold bg-gold/10">
-              <p className="font-display italic text-[24px] text-cream mb-2">Thank you.</p>
-              <p className="font-body font-light text-[14px] text-muted">
+            <div ref={thankRef} className="opacity-0 mt-10 p-8 border border-gold/40 bg-gold/5">
+              <p className="font-display italic text-[28px] text-cream mb-3">Thank you.</p>
+              <p className="font-body font-light text-[14px] text-muted leading-relaxed">
                 Your donation to the Luigi Footprints Foundation is deeply appreciated.
               </p>
             </div>
           )}
+
         </div>
       </section>
     </Layout>

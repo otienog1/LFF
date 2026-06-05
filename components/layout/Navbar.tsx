@@ -53,7 +53,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="font-display not-italic text-[11px] tracking-[0.25em] uppercase text-cream"
+          className="font-body text-[14px] tracking-[0.25em] uppercase text-cream"
         >
           Luigi Footprints Foundation
         </Link>

@@ -36,7 +36,7 @@ export default function Philosophy({ title, content }: PhilosophyProps) {
       <div className="philosophy-content max-w-[800px] text-center">
         <p className="font-body text-[10px] uppercase tracking-[0.2em] text-gold mb-8">{title}</p>
         <blockquote
-          className="font-display italic text-[clamp(28px,4vw,52px)] text-base leading-[1.2]"
+          className="font-display italic text-[clamp(20px,2.5vw,36px)] text-base leading-[1.2]"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>
