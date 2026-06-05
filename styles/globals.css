@@ -1,22 +1,57 @@
 /* Google font */
 @import url("https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap");
 
-@tailwind base;
+@import "tailwindcss";
 
-/* Write your own custom base styles here */
+@import "tw-animate-css";
 
-/* Start purging... */
-@tailwind components;
-/* Stop purging. */
+@import "shadcn/tailwind.css";
 
-/* Write you own custom component styles here */
+@custom-variant dark (&:is(.dark *));
 
-/* Start purging... */
-@tailwind utilities;
-/* Stop purging. */
+/* ─── Custom theme tokens ─── */
+@theme {
+  /* Fonts — populated by next/font CSS variables injected on <html> */
+  --font-display: var(--font-cormorant);
+  --font-body: var(--font-inter);
 
-/* Your own custom utilities */
+  /* New palette */
+  --color-base: #1a1510;
+  --color-surface: #242018;
+  --color-border: #3a3228;
+  --color-cream: #f5ede0;
+  --color-muted: #9a8e7e;
+  --color-gold: #c8b87a;
+  --color-gold-light: #d4c88a;
+  --color-green: #1a4a28;
 
+  /* Breakpoint */
+  --breakpoint-3xl: 1920px;
+
+  /* Timer animation (hero slider dot) */
+  --animate-timer: timer 8s linear forwards;
+  @keyframes timer {
+    to { stroke-dashoffset: 0; }
+  }
+}
+
+/* ─── Custom container — replaces addComponents plugin in tailwind.config.js ─── */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @media (width >= 640px)  { max-width: 768px; }
+  @media (width >= 768px)  { max-width: 1024px; }
+  @media (width >= 1024px) { max-width: 1024px; }
+  @media (width >= 1280px) { max-width: 1200px; }
+  @media (width >= 1536px) { max-width: 1440px; }
+  @media (width >= 1920px) { max-width: 1536px; }
+}
+
+/* ─── third-child variant — replaces addVariant plugin in tailwind.config.js ─── */
+@variant third-child (&:nth-child(3));
+
+/* ─── @font-face (unchanged) ─── */
 @layer base {
     @font-face {
         font-family: "Verlag";
@@ -197,6 +232,15 @@
         font-style: italic;
         font-display: swap;
     }
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }
 
 @layer components {
@@ -245,18 +289,8 @@
         margin-right: 0;
     }
 
-    .list__item.is__active svg circle {
-        animation: timer 8s linear forwards;
-    }
-
     .z-100{
         z-index: 100;
-    }
-
-    @keyframes timer {
-        to {
-            stroke-dashoffset: 0;
-        }
     }
 
     p {
@@ -278,7 +312,6 @@
     }
 
     .main::before {
-        /* animation: grain 8s steps(10) infinite; */
         animation: noise 1s steps(2) infinite;
         background-image: url(/noise.png);
         content: "";
@@ -292,93 +325,30 @@
     }
 
     @keyframes grain {
-
-        0%,
-        100% {
-            transform: translate(0, 0);
-        }
-
-        10% {
-            transform: translate(-5%, -10%);
-        }
-
-        20% {
-            transform: translate(-15%, 5%);
-        }
-
-        30% {
-            transform: translate(7%, -25%);
-        }
-
-        40% {
-            transform: translate(-5%, 25%);
-        }
-
-        50% {
-            transform: translate(-15%, 10%);
-        }
-
-        60% {
-            transform: translate(15%, 0%);
-        }
-
-        70% {
-            transform: translate(0%, 15%);
-        }
-
-        80% {
-            transform: translate(3%, 35%);
-        }
-
-        90% {
-            transform: translate(-10%, 10%);
-        }
+        0%, 100% { transform: translate(0, 0); }
+        10% { transform: translate(-5%, -10%); }
+        20% { transform: translate(-15%, 5%); }
+        30% { transform: translate(7%, -25%); }
+        40% { transform: translate(-5%, 25%); }
+        50% { transform: translate(-15%, 10%); }
+        60% { transform: translate(15%, 0%); }
+        70% { transform: translate(0%, 15%); }
+        80% { transform: translate(3%, 35%); }
+        90% { transform: translate(-10%, 10%); }
     }
 
     @keyframes noise {
-        0% {
-            transform: translate3d(0, 9rem, 0);
-        }
-
-        10% {
-            transform: translate3d(-1rem, -4rem, 0);
-        }
-
-        20% {
-            transform: translate3d(-8rem, 2rem, 0);
-        }
-
-        30% {
-            transform: translate3d(9rem, -9rem, 0);
-        }
-
-        40% {
-            transform: translate3d(-2rem, 7rem, 0);
-        }
-
-        50% {
-            transform: translate3d(-9rem, -4rem, 0);
-        }
-
-        60% {
-            transform: translate3d(2rem, 6rem, 0);
-        }
-
-        70% {
-            transform: translate3d(7rem, -8rem, 0);
-        }
-
-        80% {
-            transform: translate3d(-9rem, 1rem, 0);
-        }
-
-        90% {
-            transform: translate3d(6rem, -5rem, 0);
-        }
-
-        to {
-            transform: translate3d(-7rem, 0, 0);
-        }
+        0%   { transform: translate3d(0, 9rem, 0); }
+        10%  { transform: translate3d(-1rem, -4rem, 0); }
+        20%  { transform: translate3d(-8rem, 2rem, 0); }
+        30%  { transform: translate3d(9rem, -9rem, 0); }
+        40%  { transform: translate3d(-2rem, 7rem, 0); }
+        50%  { transform: translate3d(-9rem, -4rem, 0); }
+        60%  { transform: translate3d(2rem, 6rem, 0); }
+        70%  { transform: translate3d(7rem, -8rem, 0); }
+        80%  { transform: translate3d(-9rem, 1rem, 0); }
+        90%  { transform: translate3d(6rem, -5rem, 0); }
+        to   { transform: translate3d(-7rem, 0, 0); }
     }
 
     a,
@@ -393,22 +363,17 @@
         height: 16px;
     }
 
-    /* Track */
     ::-webkit-scrollbar-track {
-        /* border-radius: 100vh; */
-        background: #ffecbc;
+        background: #1a1510;
     }
 
-    /* Handle */
     ::-webkit-scrollbar-thumb {
-        background: #998e71;
-        /* border-radius: 100vh; */
-        border: 2px solid #ffecbc;
+        background: #3a3228;
+        border: 2px solid #1a1510;
     }
 
-    /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-        background: #665f4b;
+        background: #c8b87a;
     }
 
     .icon-scroll-line {
@@ -450,21 +415,94 @@
     }
 
     @keyframes iconscroll {
-        0% {
-            opacity: 0
-        }
-
-        20% {
-            opacity: 1
-        }
-
-        45% {
-            opacity: 1
-        }
-
-        100% {
-            opacity: 0;
-            top: calc(100% - 100px)
-        }
+        0%   { opacity: 0; }
+        20%  { opacity: 1; }
+        45%  { opacity: 1; }
+        100% { opacity: 0; top: calc(100% - 100px); }
     }
+}
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Re-assert custom palette tokens that shadcn @theme overrides */
+@theme {
+  --color-muted: #9a8e7e;
+  --color-border: #3a3228;
+}
+
+:root {
+  --background: hsl(30 24% 8%);
+  --foreground: hsl(35 66% 92%);
+  --card: hsl(33 19% 12%);
+  --card-foreground: hsl(35 66% 92%);
+  --popover: hsl(33 19% 12%);
+  --popover-foreground: hsl(35 66% 92%);
+  --primary: hsl(42 42% 63%);
+  --primary-foreground: hsl(30 24% 8%);
+  --secondary: hsl(33 19% 12%);
+  --secondary-foreground: hsl(35 66% 92%);
+  --muted: hsl(33 19% 12%);
+  --muted-foreground: hsl(30 12% 55%);
+  --accent: hsl(42 42% 63%);
+  --accent-foreground: hsl(30 24% 8%);
+  --destructive: hsl(0 84% 60%);
+  --destructive-foreground: hsl(35 66% 92%);
+  --border: hsl(28 18% 19%);
+  --input: hsl(28 18% 19%);
+  --ring: hsl(42 42% 63%);
+  --radius: 0.25rem;
+  --chart-1: hsl(42 42% 63%);
+  --chart-2: hsl(33 19% 12%);
+  --chart-3: hsl(30 12% 55%);
+  --chart-4: hsl(28 18% 19%);
+  --chart-5: hsl(30 24% 8%);
+  --sidebar: hsl(33 19% 12%);
+  --sidebar-foreground: hsl(35 66% 92%);
+  --sidebar-primary: hsl(42 42% 63%);
+  --sidebar-primary-foreground: hsl(30 24% 8%);
+  --sidebar-accent: hsl(28 18% 19%);
+  --sidebar-accent-foreground: hsl(35 66% 92%);
+  --sidebar-border: hsl(28 18% 19%);
+  --sidebar-ring: hsl(42 42% 63%);
 }

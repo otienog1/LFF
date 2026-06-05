@@ -1,0 +1,36 @@
+{
+  "pageTitle": "our work",
+  "projectsText": "Maniago Safaris, through our Luigi Footprints Foundation, are working on several projects to help support  Wildlife Conservation efforts, the environment and Community projects, especially with the youth",
+  "projectsSectionTitle": "projects",
+  "projects": [
+    {
+      "image": {
+        "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-1-2.webp"
+      },
+      "title": "Dignity Housing for Wildlife Rangers",
+      "slug": "dignity-housing-for-wildife-rangers"
+    },
+    {
+      "image": {
+        "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-117.webp"
+      },
+      "title": "Eradicating the invasive parthenium weed",
+      "slug": "eradicating-the-ivasive-parthenium-weed"
+    },
+    {
+      "image": {
+        "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-108-1.webp"
+      },
+      "title": "Tree Planting at The Nairobi National Park",
+      "slug": "tree-planting-at-the-nairobi-national-park"
+    },
+    {
+      "image": {
+        "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-118.webp"
+      },
+      "title": "Sustaining community livelihoods during covid-19",
+      "slug": "sustaining-community-livelihoods-during-covid-19"
+    }
+  ],
+  "moreProjects": null
+}

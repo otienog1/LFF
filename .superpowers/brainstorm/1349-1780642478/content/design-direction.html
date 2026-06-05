@@ -1,0 +1,111 @@
+<h2>Which design direction feels right for LFF?</h2>
+<p class="subtitle">Three distinct visual directions — each minimal and premium, but with a different personality</p>
+
+<style>
+  .dir-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 28px 0; }
+  .dir-card { border: 2px solid transparent; border-radius: 12px; overflow: hidden; cursor: pointer; transition: all .25s; }
+  .dir-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.15); }
+  .dir-card.selected { border-color: #6366f1; box-shadow: 0 0 0 4px rgba(99,102,241,.2); }
+  .dir-preview { height: 260px; display: flex; flex-direction: column; padding: 28px 24px; position: relative; overflow: hidden; }
+  .dir-body { padding: 16px 20px 20px; background: #fff; }
+  .dir-tag { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+  .dir-name { font-size: 17px; font-weight: 700; margin: 0 0 6px; }
+  .dir-desc { font-size: 13px; color: #666; line-height: 1.5; margin: 0; }
+
+  /* A: Editorial Luxury */
+  .dir-a .dir-preview { background: #1a1a18; color: #f5f0e8; }
+  .dir-a-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: auto; }
+  .dir-a-logo { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #c8b87a; font-weight: 600; }
+  .dir-a-links { display: flex; gap: 16px; font-size: 10px; letter-spacing: .1em; color: #9a9080; text-transform: uppercase; }
+  .dir-a-hero { margin-top: auto; }
+  .dir-a-kicker { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: #c8b87a; margin-bottom: 10px; }
+  .dir-a-headline { font-size: 28px; font-weight: 700; line-height: 1.1; color: #f5f0e8; font-style: italic; letter-spacing: -.02em; margin: 0 0 12px; }
+  .dir-a-bar { width: 40px; height: 1px; background: #c8b87a; }
+
+  /* B: Modern Conservation */
+  .dir-b .dir-preview { background: #fafafa; color: #111; }
+  .dir-b-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #e5e5e5; }
+  .dir-b-logo { font-size: 13px; font-weight: 800; letter-spacing: -.04em; color: #111; }
+  .dir-b-logo span { color: #16a34a; }
+  .dir-b-links { display: flex; gap: 16px; font-size: 10px; color: #888; }
+  .dir-b-img { width: 100%; height: 100px; background: linear-gradient(135deg, #16a34a 0%, #052e16 100%); border-radius: 6px; margin-bottom: 14px; display: flex; align-items: flex-end; padding: 10px 12px; }
+  .dir-b-img-tag { font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+  .dir-b-headline { font-size: 20px; font-weight: 900; letter-spacing: -.04em; color: #111; line-height: 1; }
+  .dir-b-sub { font-size: 10px; color: #888; margin-top: 6px; }
+
+  /* C: Warm Minimal */
+  .dir-c .dir-preview { background: #fdf8ef; color: #1a1208; }
+  .dir-c-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+  .dir-c-logo { font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: #4a3b1e; }
+  .dir-c-btn { font-size: 9px; background: #1a1208; color: #fdf8ef; padding: 5px 12px; letter-spacing: .08em; }
+  .dir-c-eyebrow { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: #9d7e3a; margin-bottom: 8px; }
+  .dir-c-headline { font-size: 26px; font-weight: 400; line-height: 1.2; color: #1a1208; margin: 0 0 12px; }
+  .dir-c-headline em { font-style: italic; color: #5c4a20; }
+  .dir-c-divider { width: 32px; height: 2px; background: #9d7e3a; margin-bottom: 10px; }
+  .dir-c-body { font-size: 11px; color: #6b5535; line-height: 1.5; }
+</style>
+
+<div class="dir-cards">
+
+  <!-- A: Editorial Luxury -->
+  <div class="dir-card dir-a" data-choice="a" onclick="toggleSelect(this)">
+    <div class="dir-preview">
+      <div class="dir-a-nav">
+        <div class="dir-a-logo">Luigi Footprints</div>
+        <div class="dir-a-links"><span>Story</span><span>Projects</span><span>Donate</span></div>
+      </div>
+      <div class="dir-a-hero">
+        <div class="dir-a-kicker">Wildlife · Community · Youth</div>
+        <div class="dir-a-headline">Rewild<br>the World</div>
+        <div class="dir-a-bar"></div>
+      </div>
+    </div>
+    <div class="dir-body">
+      <div class="dir-tag" style="color:#c8b87a">A — Editorial Luxury</div>
+      <div class="dir-name">Dark, cinematic & gold</div>
+      <p class="dir-desc">Deep charcoal canvas, serif italic headlines, gold accents. Feels like a high-end conservation magazine. Bold, dramatic, unforgettable.</p>
+    </div>
+  </div>
+
+  <!-- B: Modern Conservation -->
+  <div class="dir-card dir-b" data-choice="b" onclick="toggleSelect(this)">
+    <div class="dir-preview">
+      <div class="dir-b-nav">
+        <div class="dir-b-logo">LFF <span>●</span></div>
+        <div class="dir-b-links"><span>Story</span><span>Projects</span><span>Donate</span></div>
+      </div>
+      <div class="dir-b-img">
+        <div class="dir-b-img-tag">East Africa · Since 2018</div>
+      </div>
+      <div class="dir-b-headline">Wildlife<br>Conservation</div>
+      <div class="dir-b-sub">Maniago Safaris · Luigi Footprints Foundation</div>
+    </div>
+    <div class="dir-body">
+      <div class="dir-tag" style="color:#16a34a">B — Modern Conservation</div>
+      <div class="dir-name">Light, bold & green</div>
+      <p class="dir-desc">White base, heavy geometric sans, forest green as the signature accent. Clean and confident. Feels authoritative and modern, like a well-funded NGO.</p>
+    </div>
+  </div>
+
+  <!-- C: Warm Minimal -->
+  <div class="dir-card dir-c" data-choice="c" onclick="toggleSelect(this)">
+    <div class="dir-preview">
+      <div class="dir-c-nav">
+        <div class="dir-c-logo">Luigi Footprints Foundation</div>
+        <div class="dir-c-btn">Support Us</div>
+      </div>
+      <div class="dir-c-eyebrow">Non-Governmental · Kenya</div>
+      <div class="dir-c-divider"></div>
+      <div class="dir-c-headline">Rewild the <em>world</em><br>one step at a time</div>
+      <div class="dir-c-body">Conserving wildlife and empowering communities across East Africa.</div>
+    </div>
+    <div class="dir-body">
+      <div class="dir-tag" style="color:#9d7e3a">C — Warm Minimal</div>
+      <div class="dir-name">Cream, serif & gold</div>
+      <p class="dir-desc">Parchment warmth, refined serif typography, muted gold. Keeps LFF's existing brand DNA but strips it to essentials. Feels like Aesop — calm, considered, premium.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:8px">Click a card to select it, then tell me your thoughts in the terminal. You can mix ideas too — e.g. "A's mood, C's warmth".</p>
