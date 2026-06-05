@@ -1,13 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Layout from '@/components/Layout'
+import Layout from '@/components/layout/Layout'
 import ProjectBody from '@/components/ProjectBody'
-import ProjectHeader from '@/components/ProjectHeader'
-import SectionSeparator from '@/components/SectionSeparator'
-import Logo from '@/components/Logo'
-import FirstHomes from '@/components/FirstHomes'
 import { getProjectBySlug, getAllProjects, getRelatedProjects, projectPathBySlug } from '@/lib/projects'
-import { categoryPathBySlug } from '@/lib/catogories'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -36,48 +31,70 @@ export default async function ProjectPage({ params }: PageProps) {
   const { typesOfProjects, databaseId: projectId } = project
   const category = typesOfProjects.length ? typesOfProjects[0] : null
   const categoryName = category?.name ?? null
-  const categorySlug = category?.slug ?? null
 
   const relatedProjectsList = await getRelatedProjects(category ?? null, projectId)
-  const relatedProjectsTitle = {
-    name: categoryName,
-    link: categorySlug ? categoryPathBySlug(categorySlug) : null,
-  }
 
   return (
     <Layout>
-      <article>
-        <Logo />
-        <ProjectHeader
-          title={project.title}
-          coverImage={project.featuredImage}
-          date={project.date}
-          categories={project.typesOfProjects}
+      {/* Hero */}
+      <section className="relative h-svh overflow-hidden">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full bg-cover bg-center"
+          style={{ backgroundImage: `url(${project.featuredImage?.sourceUrl})` }}
         />
-        <ProjectBody content={project.content} />
-        {project.slug === 'dignity-housing-for-wildife-rangers' && <FirstHomes />}
-      </article>
-      <SectionSeparator />
-      {relatedProjectsList.length > 0 && (
-        <div>
-          {relatedProjectsTitle.name ? (
-            <span>
-              More from{' '}
-              <Link href={relatedProjectsTitle.link ?? ''}>
-                {relatedProjectsTitle.name}
-              </Link>
+        <div aria-hidden="true" className="absolute inset-0 bg-[rgba(26,21,16,0.5)]" />
+        <div className="absolute bottom-16 left-0 right-0 max-w-[1280px] mx-auto px-8 z-10">
+          {categoryName && (
+            <span className="font-body text-[9px] uppercase tracking-[0.15em] text-gold border border-green px-2 py-0.5 bg-green/20 inline-block mb-4">
+              {categoryName}
             </span>
-          ) : (
-            <span>More Projects</span>
           )}
-          <ul>
-            {relatedProjectsList.map(p => (
-              <li key={p.title}>
-                <Link href={projectPathBySlug(p.slug)}>{p.title}</Link>
-              </li>
-            ))}
-          </ul>
+          <h1 className="font-display italic text-[clamp(40px,5vw,64px)] text-cream leading-[1.05] max-w-2xl mb-3">
+            {project.title}
+          </h1>
+          <p className="font-body text-[12px] uppercase tracking-[0.12em] text-cream/50">
+            {new Date(project.date).getFullYear()}
+          </p>
         </div>
+      </section>
+
+      {/* Back link */}
+      <div className="max-w-[720px] mx-auto px-8 pt-16">
+        <Link
+          href="/projects"
+          className="font-body text-[11px] uppercase tracking-[0.15em] text-gold hover:text-gold-light transition-colors duration-200"
+        >
+          ← All Projects
+        </Link>
+      </div>
+
+      {/* Content */}
+      <article className="max-w-[720px] mx-auto px-8 py-12">
+        <ProjectBody content={project.content} />
+      </article>
+
+      {/* Related projects */}
+      {relatedProjectsList.length > 0 && (
+        <section className="bg-surface py-16 px-8">
+          <div className="max-w-[1280px] mx-auto">
+            <p className="font-body text-[10px] uppercase tracking-[0.2em] text-gold mb-6">
+              {categoryName ? `More from ${categoryName}` : 'More Projects'}
+            </p>
+            <ul className="flex flex-wrap gap-4">
+              {relatedProjectsList.map(p => (
+                <li key={p.title}>
+                  <Link
+                    href={projectPathBySlug(p.slug)}
+                    className="font-body text-[12px] uppercase tracking-[0.1em] text-muted hover:text-cream border border-border px-4 py-2 hover:border-gold transition-all duration-200 block"
+                  >
+                    {p.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
       )}
     </Layout>
   )
