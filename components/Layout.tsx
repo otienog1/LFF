@@ -271,7 +271,7 @@ const Layout = ({ children }) => {
             animateOut()
 
             getPageYScroll()
-            new SmoothScroll()
+            SmoothScroll()
         })
 
         window.addEventListener('scroll', () => {
