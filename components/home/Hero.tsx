@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -19,7 +19,10 @@ interface HeroProps {
 export default function Hero({ slides, intro }: HeroProps) {
   const containerRef = useRef<HTMLElement>(null)
   const currentSlide = useRef(0)
-  const images = [slides.image1.sourceUrl, slides.image2.sourceUrl, slides.image3.sourceUrl]
+  const images = useMemo(
+    () => [slides.image1.sourceUrl, slides.image2.sourceUrl, slides.image3.sourceUrl],
+    [slides.image1.sourceUrl, slides.image2.sourceUrl, slides.image3.sourceUrl]
+  )
 
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
@@ -43,7 +46,7 @@ export default function Hero({ slides, intro }: HeroProps) {
     }, 6000)
 
     return () => clearInterval(interval)
-  }, [images.length])
+  }, [images])
 
   return (
     <section ref={containerRef} className="relative w-full h-svh overflow-hidden">
@@ -51,12 +54,13 @@ export default function Hero({ slides, intro }: HeroProps) {
       {images.map((src, i) => (
         <div
           key={src}
+          aria-hidden="true"
           className={`hero-slide absolute inset-0 bg-cover bg-center ${i === 0 ? 'opacity-100' : 'opacity-0'}`}
           style={{ backgroundImage: `url(${src})` }}
         />
       ))}
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[rgba(26,21,16,0.55)]" />
+      <div aria-hidden="true" className="absolute inset-0 bg-[rgba(26,21,16,0.55)]" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col justify-end h-full max-w-[1280px] mx-auto px-8 pb-20 md:pb-28">
