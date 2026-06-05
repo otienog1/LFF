@@ -73,13 +73,19 @@ function HomeProjectCard({ entry }: { entry: ProjectEntry }) {
   const cardRef = useRef<HTMLDivElement>(null)
 
   const handleMouseEnter = () => {
-    gsap.to(cardRef.current!.querySelector('.card-overlay'), { opacity: 1, duration: 0.3 })
-    gsap.to(cardRef.current!.querySelector('.card-img'), { scale: 1.05, duration: 0.4 })
+    if (!cardRef.current) return
+    const overlay = cardRef.current.querySelector('.card-overlay')
+    const img = cardRef.current.querySelector('.card-img')
+    if (overlay) gsap.to(overlay, { opacity: 1, duration: 0.3 })
+    if (img) gsap.to(img, { scale: 1.05, duration: 0.4 })
   }
 
   const handleMouseLeave = () => {
-    gsap.to(cardRef.current!.querySelector('.card-overlay'), { opacity: 0, duration: 0.3 })
-    gsap.to(cardRef.current!.querySelector('.card-img'), { scale: 1, duration: 0.4 })
+    if (!cardRef.current) return
+    const overlay = cardRef.current.querySelector('.card-overlay')
+    const img = cardRef.current.querySelector('.card-img')
+    if (overlay) gsap.to(overlay, { opacity: 0, duration: 0.3 })
+    if (img) gsap.to(img, { scale: 1, duration: 0.4 })
   }
 
   return (
