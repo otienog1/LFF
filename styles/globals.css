@@ -465,6 +465,12 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Re-assert custom palette tokens that shadcn @theme overrides */
+@theme {
+  --color-muted: #9a8e7e;
+  --color-border: #3a3228;
+}
+
 :root {
   --background: hsl(30 24% 8%);
   --foreground: hsl(35 66% 92%);
