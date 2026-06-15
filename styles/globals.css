@@ -1,38 +1,27 @@
-/* Google font */
-@import url("https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap");
-
 @import "tailwindcss";
-
 @import "tw-animate-css";
-
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
-/* ─── Custom theme tokens ─── */
 @theme {
-  /* Fonts — populated by next/font CSS variables injected on <html> */
-  --font-display: var(--font-cormorant);
+  /* Fonts — CSS vars injected on <html> by next/font */
+  --font-display: var(--font-fraunces);
   --font-body: var(--font-inter);
 
-  /* New palette */
-  --color-base: #1a1510;
-  --color-surface: #242018;
-  --color-border: #3a3228;
-  --color-cream: #f5ede0;
-  --color-muted: #9a8e7e;
-  --color-gold: #c8b87a;
-  --color-gold-light: #d4c88a;
-  --color-green: #1a4a28;
+  /* Editorial Mono palette */
+  --color-paper: #FAF8F4;
+  --color-paper-deep: #F1ECE3;
+  --color-ink: #141414;
+  --color-ink-soft: #565049;
+  --color-line: #E3DDD1;
+  --color-green: #1E5631;
+  --color-green-deep: #163F24;
 
-  /* Breakpoint */
   --breakpoint-3xl: 1920px;
 
-  /* Timer animation (hero slider dot) */
   --animate-timer: timer 8s linear forwards;
-  @keyframes timer {
-    to { stroke-dashoffset: 0; }
-  }
+  @keyframes timer { to { stroke-dashoffset: 0; } }
 }
 
 /* ─── Custom container — replaces addComponents plugin in tailwind.config.js ─── */
@@ -506,3 +495,20 @@
   --sidebar-border: hsl(28 18% 19%);
   --sidebar-ring: hsl(42 42% 63%);
 }
+
+@layer base {
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body), system-ui, sans-serif;
+  }
+  ::selection { background: var(--color-green); color: var(--color-paper); }
+  :focus-visible { outline: 2px solid var(--color-green); outline-offset: 2px; }
+}
+
+@utility display-1 { font-family: var(--font-display), serif; font-weight: 500; line-height: 1.05; letter-spacing: -0.01em; font-size: clamp(2.5rem, 5vw, 4.5rem); }
+@utility display-2 { font-family: var(--font-display), serif; font-weight: 500; line-height: 1.08; letter-spacing: -0.01em; font-size: clamp(1.875rem, 3.5vw, 2.875rem); }
+@utility display-3 { font-family: var(--font-display), serif; font-weight: 500; line-height: 1.15; font-size: clamp(1.3125rem, 2vw, 1.75rem); }
+@utility eyebrow { font-family: var(--font-body), sans-serif; font-weight: 600; font-size: 0.6875rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-green); }
+@utility body-lg { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.6; }

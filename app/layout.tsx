@@ -1,19 +1,18 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Cormorant_Garamond, Inter } from 'next/font/google'
+import { Fraunces, Inter } from 'next/font/google'
 import '../styles/globals.css'
 
-const cormorant = Cormorant_Garamond({
+const fraunces = Fraunces({
   subsets: ['latin'],
-  weight: ['400', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-cormorant',
+  weight: ['400', '500', '600'],
+  variable: '--font-fraunces',
   display: 'swap',
 })
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400'],
+  weight: ['300', '400', '500', '600'],
   variable: '--font-inter',
   display: 'swap',
 })
@@ -38,7 +37,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
       <head>
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         <meta name="msapplication-TileColor" content="#1a1510" />
