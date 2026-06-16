@@ -49,7 +49,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <LenisContext.Provider value={lenis}>
       <Navbar />
-      <main ref={mainRef}>
+      <main ref={mainRef} className="min-h-screen">
         {children}
       </main>
       <Footer />
