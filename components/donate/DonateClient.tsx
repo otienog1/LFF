@@ -1,6 +1,5 @@
 'use client'
 
-import Layout from '@/components/layout/Layout'
 import { useState, useEffect, useRef } from 'react'
 import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js'
 import gsap from 'gsap'
@@ -8,6 +7,7 @@ import { v4 } from 'uuid'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
+import { Eyebrow } from '@/components/ui/Eyebrow'
 
 declare const Checkout: {
   configure: (config: {
@@ -39,7 +39,7 @@ function PayPalSection({ currency, amount, onSuccess }: { currency: string; amou
   const [{ isRejected }] = usePayPalScriptReducer()
   if (isRejected) {
     return (
-      <p className="font-body font-light text-[14px] text-muted">
+      <p className="text-sm text-ink-soft">
         PayPal is temporarily unavailable. Please use card or M-Pesa.
       </p>
     )
@@ -124,224 +124,222 @@ export default function DonateClient() {
   }
 
   return (
-    <Layout>
-      <section className="bg-base min-h-svh grid grid-cols-1 lg:grid-cols-2">
+    <section className="bg-paper min-h-svh grid grid-cols-1 lg:grid-cols-2">
 
-        {/* Left: editorial panel */}
-        <div className="bg-surface flex flex-col justify-end px-10 pt-40 pb-16 lg:sticky lg:top-0 lg:h-svh">
-          <p className="font-body text-[10px] uppercase tracking-[0.2em] text-gold mb-6">Support our mission</p>
-          <h1 className="font-display italic text-[clamp(48px,5vw,80px)] text-cream leading-[1.0] mb-8">
-            Every gift<br />leaves a<br />footprint.
-          </h1>
-          <div className="w-8 h-px bg-gold mb-8" />
-          <p className="font-body font-light text-[15px] text-muted leading-[1.8] max-w-sm">
-            Your contribution directly funds wildlife conservation, community education, and environmental stewardship across East Africa.
-          </p>
+      {/* Left: editorial panel */}
+      <div className="bg-ink flex flex-col justify-end px-10 pt-40 pb-16 lg:sticky lg:top-0 lg:h-svh">
+        <Eyebrow className="text-paper/70! mb-6">Support our mission</Eyebrow>
+        <h1 className="display-1 text-paper mb-8">
+          Every gift<br />leaves a<br />footprint.
+        </h1>
+        <div className="w-8 h-px bg-green mb-8" />
+        <p className="text-paper/70 text-sm leading-relaxed max-w-sm">
+          Your contribution directly funds wildlife conservation, community education, and environmental stewardship across East Africa.
+        </p>
+      </div>
+
+      {/* Right: form panel */}
+      <div className="flex flex-col justify-center px-10 pt-16 lg:pt-0 pb-16 min-h-svh">
+
+        {/* Step indicator */}
+        <div className="flex items-center gap-4 mb-12">
+          <div className="flex items-center gap-2">
+            <span className={`eyebrow transition-colors duration-300 ${page === 1 ? 'text-green' : 'text-ink/30'}`}>01</span>
+            <span className={`text-[11px] uppercase tracking-widest transition-colors duration-300 ${page === 1 ? 'text-ink' : 'text-ink/30'}`}>Amount</span>
+          </div>
+          <div className="flex-1 h-px bg-line" />
+          <div className="flex items-center gap-2">
+            <span className={`eyebrow transition-colors duration-300 ${page === 2 ? 'text-green' : 'text-ink/30'}`}>02</span>
+            <span className={`text-[11px] uppercase tracking-widest transition-colors duration-300 ${page === 2 ? 'text-ink' : 'text-ink/30'}`}>Payment</span>
+          </div>
         </div>
 
-        {/* Right: form panel */}
-        <div className="flex flex-col justify-center px-10 pt-16 lg:pt-0 pb-16 min-h-svh">
+        {/* ── Step 1: Amount ── */}
+        {page === 1 && (
+          <div className="space-y-10">
 
-          {/* Step indicator */}
-          <div className="flex items-center gap-4 mb-12">
-            <div className="flex items-center gap-2">
-              <span className={`font-body text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${page === 1 ? 'text-gold' : 'text-muted/40'}`}>01</span>
-              <span className={`font-body text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${page === 1 ? 'text-cream' : 'text-muted/40'}`}>Amount</span>
+            {/* Currency tabs */}
+            <div className="space-y-3">
+              <p className="eyebrow">Currency</p>
+              <div className="flex gap-2 flex-wrap">
+                {CURRENCIES.map(c => (
+                  <button
+                    key={c}
+                    type="button"
+                    onClick={() => { setCurrency(c); setAmount(AMOUNTS[c]?.[1] ?? '25') }}
+                    className={[
+                      'text-[11px] uppercase tracking-[0.12em] px-5 py-2.5 border transition-all duration-200',
+                      currency === c
+                        ? 'bg-green text-paper border-green'
+                        : 'border-line text-ink-soft hover:border-green hover:text-ink',
+                    ].join(' ')}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
             </div>
-            <div className="flex-1 h-px bg-border" />
-            <div className="flex items-center gap-2">
-              <span className={`font-body text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${page === 2 ? 'text-gold' : 'text-muted/40'}`}>02</span>
-              <span className={`font-body text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${page === 2 ? 'text-cream' : 'text-muted/40'}`}>Payment</span>
+
+            {/* Amount grid */}
+            <div className="space-y-3">
+              <p className="eyebrow">Select amount</p>
+              <div className="grid grid-cols-3 gap-2">
+                {(AMOUNTS[currency] ?? AMOUNTS.USD).map(v => (
+                  <button
+                    key={v}
+                    type="button"
+                    onClick={() => setAmount(v)}
+                    className={[
+                      'text-[13px] py-4 border transition-all duration-200 text-center',
+                      amount === v
+                        ? 'bg-green text-paper border-green'
+                        : 'border-line text-ink-soft hover:border-green hover:text-ink',
+                    ].join(' ')}
+                  >
+                    {new Intl.NumberFormat('en', { style: 'currency', currency }).format(parseFloat(v))}
+                  </button>
+                ))}
+              </div>
             </div>
+
+            {/* Custom amount */}
+            <div className="space-y-2">
+              <Label htmlFor="custom-amount" className="eyebrow">
+                Or enter custom amount
+              </Label>
+              <div className="relative flex items-center">
+                <span className="text-[13px] text-ink-soft pr-3 select-none">{currency}</span>
+                <Input
+                  id="custom-amount"
+                  type="number"
+                  min="1"
+                  placeholder="0.00"
+                  onChange={e => setAmount(e.target.value)}
+                  className="text-[15px] bg-transparent border-0 border-b border-line rounded-none placeholder:text-ink/30 focus-visible:ring-0 focus-visible:border-green pb-2 h-auto"
+                />
+              </div>
+            </div>
+
+            <Button
+              onClick={() => setPage(2)}
+              disabled={!validAmount}
+              className="w-full"
+            >
+              Continue {validAmount ? `— ${fmt.format(parsedAmount)}` : ''} →
+            </Button>
           </div>
+        )}
 
-          {/* ── Step 1: Amount ── */}
-          {page === 1 && (
-            <div className="space-y-10">
+        {/* ── Step 2: Payment ── */}
+        {page === 2 && (
+          <div className="space-y-10">
 
-              {/* Currency tabs */}
-              <div className="space-y-3">
-                <p className="font-body text-[10px] uppercase tracking-[0.2em] text-muted">Currency</p>
-                <div className="flex gap-2 flex-wrap">
-                  {CURRENCIES.map(c => (
-                    <button
-                      key={c}
-                      type="button"
-                      onClick={() => { setCurrency(c); setAmount(AMOUNTS[c]?.[1] ?? '25') }}
-                      className={[
-                        'font-body text-[11px] uppercase tracking-[0.12em] px-5 py-2.5 border transition-all duration-200',
-                        currency === c
-                          ? 'bg-gold text-base border-gold'
-                          : 'border-border text-muted hover:border-gold hover:text-cream',
-                      ].join(' ')}
-                    >
-                      {c}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Amount grid */}
-              <div className="space-y-3">
-                <p className="font-body text-[10px] uppercase tracking-[0.2em] text-muted">Select amount</p>
-                <div className="grid grid-cols-3 gap-2">
-                  {(AMOUNTS[currency] ?? AMOUNTS.USD).map(v => (
-                    <button
-                      key={v}
-                      type="button"
-                      onClick={() => setAmount(v)}
-                      className={[
-                        'font-body text-[13px] py-4 border transition-all duration-200 text-center',
-                        amount === v
-                          ? 'bg-gold text-base border-gold'
-                          : 'border-border text-muted hover:border-gold hover:text-cream',
-                      ].join(' ')}
-                    >
-                      {new Intl.NumberFormat('en', { style: 'currency', currency }).format(parseFloat(v))}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Custom amount */}
-              <div className="space-y-2">
-                <Label htmlFor="custom-amount" className="font-body text-[10px] uppercase tracking-[0.2em] text-muted">
-                  Or enter custom amount
-                </Label>
-                <div className="relative flex items-center">
-                  <span className="font-body text-[13px] text-muted pr-3 select-none">{currency}</span>
-                  <Input
-                    id="custom-amount"
-                    type="number"
-                    min="1"
-                    placeholder="0.00"
-                    onChange={e => setAmount(e.target.value)}
-                    className="font-body text-[15px] bg-transparent border-0 border-b border-border rounded-none text-cream placeholder:text-muted/30 focus-visible:ring-0 focus-visible:border-gold pb-2 h-auto"
-                  />
-                </div>
-              </div>
-
-              <Button
-                onClick={() => setPage(2)}
-                disabled={!validAmount}
-                className="font-body text-[11px]! uppercase tracking-[0.15em] bg-gold text-base hover:bg-gold-light border-0 rounded-none px-8 py-4 h-auto w-full disabled:opacity-40"
-              >
-                Continue {validAmount ? `— ${fmt.format(parsedAmount)}` : ''} →
-              </Button>
-            </div>
-          )}
-
-          {/* ── Step 2: Payment ── */}
-          {page === 2 && (
-            <div className="space-y-10">
-
-              {/* Donation summary */}
-              <div className="border-l-2 border-gold pl-5">
-                <p className="font-body text-[10px] uppercase tracking-[0.2em] text-muted mb-1">Donating</p>
-                <p className="font-display italic text-[36px] text-cream leading-tight">
-                  {fmt.format(parsedAmount)}
-                </p>
-              </div>
-
-              {/* Payment method tabs */}
-              <div className="space-y-3">
-                <p className="font-body text-[10px] uppercase tracking-[0.2em] text-muted">Payment method</p>
-                <div className="flex gap-2">
-                  {PAYMENT_METHODS.map(m => (
-                    <button
-                      key={m.id}
-                      type="button"
-                      onClick={() => setPaymentMethod(m.id)}
-                      className={[
-                        'font-body text-[11px] uppercase tracking-[0.12em] px-5 py-3 border transition-all duration-200',
-                        paymentMethod === m.id
-                          ? 'bg-gold text-base border-gold'
-                          : 'border-border text-muted hover:border-gold hover:text-cream',
-                      ].join(' ')}
-                    >
-                      {m.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Card */}
-              {paymentMethod === 'card' && (
-                <div className="space-y-5">
-                  <p className="font-body font-light text-[14px] text-muted leading-relaxed">
-                    You will be charged{' '}
-                    <span className="text-cream">{fmt.format(parsedAmount)}</span>
-                    {' '}via secure Mastercard checkout.
-                  </p>
-                  <Button
-                    onClick={() => typeof Checkout !== 'undefined' && Checkout.showLightbox?.()}
-                    className="font-body text-[11px]! uppercase tracking-[0.15em] bg-gold text-base hover:bg-gold-light border-0 rounded-none px-8 py-4 h-auto w-full"
-                  >
-                    Pay with Card →
-                  </Button>
-                </div>
-              )}
-
-              {/* PayPal */}
-              {paymentMethod === 'paypal' && (
-                <PayPalScriptProvider
-                  options={{
-                    clientId: 'AfcPQsuVQb3JFz4o8t3g3JolRBipWWIpAjHM5-6dLqYbmtfwz34Ey-aOZyByb_mFkjkVGJCJMjJfGK4EqOCy5n5BkTOZ8X5F',
-                    currency,
-                  }}
-                >
-                  <PayPalSection currency={currency} amount={amount} onSuccess={() => setSent(true)} />
-                </PayPalScriptProvider>
-              )}
-
-              {/* M-Pesa */}
-              {paymentMethod === 'mpesa' && (
-                <div className="space-y-5">
-                  <div className="space-y-2">
-                    <Label htmlFor="phone" className="font-body text-[10px] uppercase tracking-[0.2em] text-muted">
-                      Phone number (with country code)
-                    </Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="+254 700 000 000"
-                      value={phone}
-                      onChange={e => setPhone(e.target.value)}
-                      className="font-body text-[15px] bg-transparent border-0 border-b border-border rounded-none text-cream placeholder:text-muted/30 focus-visible:ring-0 focus-visible:border-gold pb-2 h-auto"
-                    />
-                  </div>
-                  <Button
-                    onClick={handleMpesa}
-                    disabled={loading || !phone}
-                    className="font-body text-[11px]! uppercase tracking-[0.15em] bg-gold text-base hover:bg-gold-light border-0 rounded-none px-8 py-4 h-auto w-full disabled:opacity-40"
-                  >
-                    {loading ? 'Processing…' : 'Pay via M-Pesa →'}
-                  </Button>
-                </div>
-              )}
-
-              <button
-                type="button"
-                onClick={() => setPage(1)}
-                className="font-body text-[11px] uppercase tracking-[0.12em] text-muted hover:text-cream transition-colors duration-200"
-              >
-                ← Change amount
-              </button>
-            </div>
-          )}
-
-          {/* Thank you */}
-          {sent && (
-            <div ref={thankRef} className="opacity-0 mt-10 p-8 border border-gold/40 bg-gold/5">
-              <p className="font-display italic text-[28px] text-cream mb-3">Thank you.</p>
-              <p className="font-body font-light text-[14px] text-muted leading-relaxed">
-                Your donation to the Luigi Footprints Foundation is deeply appreciated.
+            {/* Donation summary */}
+            <div className="border-l-2 border-green pl-5">
+              <p className="eyebrow mb-1">Donating</p>
+              <p className="display-2 text-ink">
+                {fmt.format(parsedAmount)}
               </p>
             </div>
-          )}
 
-        </div>
-      </section>
-    </Layout>
+            {/* Payment method tabs */}
+            <div className="space-y-3">
+              <p className="eyebrow">Payment method</p>
+              <div className="flex gap-2">
+                {PAYMENT_METHODS.map(m => (
+                  <button
+                    key={m.id}
+                    type="button"
+                    onClick={() => setPaymentMethod(m.id)}
+                    className={[
+                      'text-[11px] uppercase tracking-[0.12em] px-5 py-3 border transition-all duration-200',
+                      paymentMethod === m.id
+                        ? 'bg-green text-paper border-green'
+                        : 'border-line text-ink-soft hover:border-green hover:text-ink',
+                    ].join(' ')}
+                  >
+                    {m.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Card */}
+            {paymentMethod === 'card' && (
+              <div className="space-y-5">
+                <p className="text-sm text-ink-soft leading-relaxed">
+                  You will be charged{' '}
+                  <span className="text-ink">{fmt.format(parsedAmount)}</span>
+                  {' '}via secure Mastercard checkout.
+                </p>
+                <Button
+                  onClick={() => typeof Checkout !== 'undefined' && Checkout.showLightbox?.()}
+                  className="w-full"
+                >
+                  Pay with Card →
+                </Button>
+              </div>
+            )}
+
+            {/* PayPal */}
+            {paymentMethod === 'paypal' && (
+              <PayPalScriptProvider
+                options={{
+                  clientId: 'AfcPQsuVQb3JFz4o8t3g3JolRBipWWIpAjHM5-6dLqYbmtfwz34Ey-aOZyByb_mFkjkVGJCJMjJfGK4EqOCy5n5BkTOZ8X5F',
+                  currency,
+                }}
+              >
+                <PayPalSection currency={currency} amount={amount} onSuccess={() => setSent(true)} />
+              </PayPalScriptProvider>
+            )}
+
+            {/* M-Pesa */}
+            {paymentMethod === 'mpesa' && (
+              <div className="space-y-5">
+                <div className="space-y-2">
+                  <Label htmlFor="phone" className="eyebrow">
+                    Phone number (with country code)
+                  </Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="+254 700 000 000"
+                    value={phone}
+                    onChange={e => setPhone(e.target.value)}
+                    className="text-[15px] bg-transparent border-0 border-b border-line rounded-none placeholder:text-ink/30 focus-visible:ring-0 focus-visible:border-green pb-2 h-auto"
+                  />
+                </div>
+                <Button
+                  onClick={handleMpesa}
+                  disabled={loading || !phone}
+                  className="w-full"
+                >
+                  {loading ? 'Processing…' : 'Pay via M-Pesa →'}
+                </Button>
+              </div>
+            )}
+
+            <button
+              type="button"
+              onClick={() => setPage(1)}
+              className="text-[11px] uppercase tracking-[0.12em] text-ink-soft hover:text-ink transition-colors duration-200"
+            >
+              ← Change amount
+            </button>
+          </div>
+        )}
+
+        {/* Thank you */}
+        {sent && (
+          <div ref={thankRef} className="opacity-0 mt-10 p-8 border border-green/40 bg-green/5">
+            <p className="display-2 text-ink mb-3">Thank you.</p>
+            <p className="text-sm text-ink-soft leading-relaxed">
+              Your donation to the Luigi Footprints Foundation is deeply appreciated.
+            </p>
+          </div>
+        )}
+
+      </div>
+    </section>
   )
 }
