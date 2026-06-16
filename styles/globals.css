@@ -360,22 +360,29 @@
         z-index: 50;
     }
 
+    /* ── Scrollbar — editorial mono theme ── */
+    /* ── Scrollbar — editorial mono theme ── */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-ink-soft) var(--color-paper-deep);
+    }
+
     ::-webkit-scrollbar {
-        width: 8px;
-        height: 16px;
+        width: 6px;
+        height: 6px;
     }
 
     ::-webkit-scrollbar-track {
-        background: #1a1510;
+        background: var(--color-paper-deep);
     }
 
     ::-webkit-scrollbar-thumb {
-        background: #3a3228;
-        border: 2px solid #1a1510;
+        background: var(--color-ink-soft);
+        border-radius: 9999px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: #c8b87a;
+        background: var(--color-green);
     }
 
     .icon-scroll-line {
