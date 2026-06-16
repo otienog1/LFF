@@ -41,9 +41,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
       <head>
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-        <meta name="msapplication-TileColor" content="#1a1510" />
+        <meta name="msapplication-TileColor" content="#FAF8F4" />
         <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-        <meta name="theme-color" content="#1a1510" />
+        <meta name="theme-color" content="#FAF8F4" />
       </head>
       <body suppressHydrationWarning>
         <Layout>{children}</Layout>

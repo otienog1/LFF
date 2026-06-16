@@ -61,7 +61,7 @@ export default function Navbar() {
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger aria-label="Open menu">
-              <Menu />
+              <Menu aria-hidden="true" />
             </SheetTrigger>
             <SheetContent side="right" className="bg-paper">
               <div className="flex flex-col gap-6 mt-10 text-lg px-6">

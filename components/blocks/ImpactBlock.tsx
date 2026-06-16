@@ -14,7 +14,7 @@ export function ImpactBlock({ block }: { block: ImpactBlockType }) {
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-14">
         {block.items.map((item) => (
           <div key={item.title}>
-            <AnimatedNumber value={item.title} className="block display-1 text-green" />
+            <AnimatedNumber value={item.title} className="block display-1 text-green-light" />
             <p className="mt-3 text-paper/70 text-sm">{item.description}</p>
           </div>
         ))}
