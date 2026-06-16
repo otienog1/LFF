@@ -14,6 +14,7 @@ import {
 const LINKS = [
   { href: "/about", label: "About" },
   { href: "/our-work", label: "Our Work" },
+  { href: "/projects", label: "Projects" },
   { href: "/impact", label: "Impact" },
   { href: "/get-involved", label: "Get Involved" },
 ];
