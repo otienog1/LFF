@@ -1,18 +1,28 @@
 import type { Metadata } from 'next'
 import ContactForm from '@/components/contact/ContactForm'
+import { getPage } from '@/lib/content'
+import type { ContactBlock as ContactBlockType } from '@/types/content'
 
-export const metadata: Metadata = { title: 'Contact' }
+export function generateMetadata(): Metadata {
+  const page = getPage('/contact')
+  return { title: page?.seo.title, description: page?.seo.description }
+}
 
 export default function ContactPage() {
+  const page = getPage('/contact')
+  const [hero] = (page?.blocks ?? []) as [ContactBlockType]
+
   return (
     <>
       <section className="bg-paper min-h-svh grid grid-cols-1 lg:grid-cols-2">
 
         {/* Left: editorial panel */}
         <div className="bg-ink text-paper flex flex-col px-10 py-20 lg:sticky lg:top-0 lg:h-svh">
-          <p className="eyebrow text-paper/70! mb-6">Get in touch</p>
+          <p className="eyebrow text-paper/70! mb-6">{hero?.subtitle ?? 'Get in touch'}</p>
           <h1 className="display-1 text-paper leading-tight mb-8">
-            We&apos;d love to<br />hear from you.
+            {(hero?.title ?? "We'd love to\nhear from you.").split('\n').map((line, i, arr) => (
+              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+            ))}
           </h1>
           <div className="w-8 h-px bg-green mb-10" />
 

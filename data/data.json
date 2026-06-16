@@ -436,6 +436,50 @@
                     }
                 }
             ]
+        },
+        {
+            "slug": "/contact",
+            "title": "Contact",
+            "seo": {
+                "title": "Contact | The Luigi Footprints Foundation",
+                "description": "Get in touch with the Luigi Footprints Foundation. We'd love to hear from you about our work in wildlife conservation and community development."
+            },
+            "blocks": [
+                {
+                    "id": "contact-hero",
+                    "type": "contact",
+                    "title": "We'd love to\nhear from you.",
+                    "subtitle": "Get in touch",
+                    "content": null,
+                    "image": null
+                }
+            ]
+        },
+        {
+            "slug": "/projects",
+            "title": "Projects & Programmes",
+            "seo": {
+                "title": "Projects & Programmes | The Luigi Footprints Foundation",
+                "description": "A record of conservation, community, and wildlife programmes carried out by the Luigi Footprints Foundation across Kenya."
+            },
+            "blocks": [
+                {
+                    "id": "projects-hero",
+                    "type": "projects-hero",
+                    "subtitle": "Field Work",
+                    "title": "Projects & Programmes",
+                    "content": "A record of conservation, community, and wildlife initiatives carried out across Kenya since the Foundation began.",
+                    "image": null
+                },
+                {
+                    "id": "projects-commitment",
+                    "type": "commitment",
+                    "subtitle": "Our Commitment",
+                    "title": "The Luigi Footprints Foundation · Nairobi, Kenya",
+                    "content": "Every project the Foundation undertakes begins with one question: how does this leave the land — and the people — better than we found them?",
+                    "image": null
+                }
+            ]
         }
     ],
     "projects": [

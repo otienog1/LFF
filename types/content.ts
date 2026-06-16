@@ -13,7 +13,10 @@ export interface ImpactBlock extends BlockBase { type: "impact"; items: ImpactIt
 export interface TeamMember { name: string; role: string; bio: string; image: ImageRef; }
 export interface TeamBlock extends BlockBase { type: "team"; items: TeamMember[]; }
 export interface CtaBlock extends BlockBase { type: "cta"; }
+export interface ContactBlock extends BlockBase { type: "contact"; }
+export interface ProjectsHeroBlock extends BlockBase { type: "projects-hero"; }
+export interface CommitmentBlock extends BlockBase { type: "commitment"; }
 
-export type Block = HeroBlock | ContentBlock | CardsBlock | ImpactBlock | TeamBlock | CtaBlock;
+export type Block = HeroBlock | ContentBlock | CardsBlock | ImpactBlock | TeamBlock | CtaBlock | ContactBlock | ProjectsHeroBlock | CommitmentBlock;
 export interface Page { slug: string; title: string; seo: Seo; blocks: Block[]; }
 export interface SiteData { pages: Page[]; }

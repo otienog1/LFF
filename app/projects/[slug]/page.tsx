@@ -4,6 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getProject, getProjects } from "@/lib/projects";
+import { getPage } from "@/lib/content";
+import type { ProjectsHeroBlock, CommitmentBlock } from "@/types/content";
 
 export function generateStaticParams() {
   return getProjects().map((p) => ({ slug: p.slug }));
@@ -55,6 +57,9 @@ export default async function ProjectPage({
   const categories = project.typesOfProjects ?? [];
   const excerpt = project.excerpt ? stripHtml(project.excerpt) : null;
 
+  const projectsPage = getPage("/projects");
+  const [, commitment] = (projectsPage?.blocks ?? []) as [ProjectsHeroBlock, CommitmentBlock];
+
   return (
     <>
       {/* ── Hero ── */}
@@ -80,6 +85,7 @@ export default async function ProjectPage({
             <ArrowLeft size={13} />
             All Projects
           </Link>
+
 
           {categories.length > 0 && (
             <div className="flex gap-2 mb-4">
@@ -121,23 +127,24 @@ export default async function ProjectPage({
       )}
 
       {/* ── Foundation Context ── */}
-      <section className="bg-green text-paper border-b border-green-deep py-20 md:py-28">
-        <div className="container">
-          <div className="max-w-[54ch]">
-            <p className="eyebrow text-paper/50 mb-6">Our Commitment</p>
-            <p className="font-display font-light text-2xl md:text-3xl lg:text-[2rem] leading-[1.4] text-paper/90">
-              Every project the Foundation undertakes begins with one question: how does
-              this leave the land — and the people — better than we found them?
-            </p>
-            <div className="mt-10 flex items-center gap-5">
-              <div className="w-8 h-px bg-paper/30" />
-              <p className="text-[11px] tracking-[0.2em] uppercase text-paper/40">
-                The Luigi Footprints Foundation · Nairobi, Kenya
+      {commitment && (
+        <section className="bg-green text-paper border-b border-green-deep py-20 md:py-28">
+          <div className="container">
+            <div className="max-w-[54ch]">
+              <p className="eyebrow text-paper/50 mb-6">{commitment.subtitle}</p>
+              <p className="font-display font-light text-2xl md:text-3xl lg:text-[2rem] leading-[1.4] text-paper/90">
+                {commitment.content}
               </p>
+              <div className="mt-10 flex items-center gap-5">
+                <div className="w-8 h-px bg-paper/30" />
+                <p className="text-[11px] tracking-[0.2em] uppercase text-paper/40">
+                  {commitment.title}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── Prev / Next ── */}
       {(prev || next) && (

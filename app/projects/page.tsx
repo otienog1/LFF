@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getProjects } from "@/lib/projects";
+import { getPage } from "@/lib/content";
+import type { ProjectsHeroBlock } from "@/types/content";
 
-export const metadata: Metadata = {
-  title: "Projects | The Luigi Footprints Foundation",
-  description: "A record of conservation, community, and wildlife programmes carried out by the Luigi Footprints Foundation across Kenya.",
-};
+export function generateMetadata(): Metadata {
+  const page = getPage("/projects");
+  return { title: page?.seo.title, description: page?.seo.description };
+}
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-GB", {
@@ -17,17 +19,18 @@ function formatDate(iso: string) {
 
 export default function ProjectsPage() {
   const projects = getProjects();
+  const page = getPage("/projects");
+  const [hero] = (page?.blocks ?? []) as [ProjectsHeroBlock];
 
   return (
     <>
       {/* Hero */}
       <section className="bg-ink text-paper border-b border-paper/10 pt-32 pb-20 md:pt-40 md:pb-28">
         <div className="container">
-          <p className="eyebrow text-paper/50 mb-4">Field Work</p>
-          <h1 className="display-1 max-w-[16ch]">Projects &amp; Programmes</h1>
+          <p className="eyebrow text-paper/50 mb-4">{hero?.subtitle ?? "Field Work"}</p>
+          <h1 className="display-1 max-w-[16ch]">{hero?.title ?? "Projects & Programmes"}</h1>
           <p className="mt-5 text-paper/60 text-base md:text-lg max-w-[48ch] leading-relaxed">
-            A record of conservation, community, and wildlife initiatives carried
-            out across Kenya since the Foundation began.
+            {hero?.content ?? "A record of conservation, community, and wildlife initiatives carried out across Kenya since the Foundation began."}
           </p>
         </div>
       </section>
@@ -40,7 +43,7 @@ export default function ProjectsPage() {
               <Link href={`/projects/${project.slug}`} key={project.id}>
                 <article className="group flex flex-col">
                   {project.featuredImage && (
-                    <div className="relative aspect-[4/3] overflow-hidden mb-5">
+                    <div className="relative aspect-4/3 overflow-hidden mb-5">
                       <Image
                         src={project.featuredImage.sourceUrl}
                         alt={project.featuredImage.altText || project.title}
