@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Fraunces, Inter } from 'next/font/google'
+import Layout from '@/components/layout/Layout'
 import '../styles/globals.css'
 
 const fraunces = Fraunces({
@@ -44,8 +45,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
         <meta name="theme-color" content="#1a1510" />
       </head>
-      <body className="bg-base text-cream" suppressHydrationWarning>
-        {children}
+      <body suppressHydrationWarning>
+        <Layout>{children}</Layout>
         <Script src="/js/imagesloaded.min.js" strategy="beforeInteractive" />
       </body>
     </html>

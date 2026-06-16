@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Layout from '@/components/layout/Layout'
 import ProjectBody from '@/components/ProjectBody'
 import { getProjectBySlug, getAllProjects, getRelatedProjects, projectPathBySlug } from '@/lib/projects'
 
@@ -35,7 +34,7 @@ export default async function ProjectPage({ params }: PageProps) {
   const relatedProjectsList = await getRelatedProjects(category ?? null, projectId)
 
   return (
-    <Layout>
+    <>
       {/* Hero */}
       <section className="relative h-svh overflow-hidden">
         <div
@@ -96,6 +95,6 @@ export default async function ProjectPage({ params }: PageProps) {
           </div>
         </section>
       )}
-    </Layout>
+    </>
   )
 }

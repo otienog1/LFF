@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Layout from '@/components/layout/Layout'
 import ContactForm from '@/components/contact/ContactForm'
 
 export const metadata: Metadata = { title: 'Contact' }
@@ -33,7 +32,7 @@ function YoutubeIcon() {
 
 export default function ContactPage() {
   return (
-    <Layout>
+    <>
       <section className="bg-base min-h-svh grid grid-cols-1 lg:grid-cols-2">
 
         {/* Left: editorial panel */}
@@ -96,6 +95,6 @@ export default function ContactPage() {
         </div>
 
       </section>
-    </Layout>
+    </>
   )
 }

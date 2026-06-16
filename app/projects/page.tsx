@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Layout from '@/components/layout/Layout'
 import ProjectsClient from '@/components/projects/ProjectsClient'
 import { getOurProjects } from '@/lib/pages'
 import { getMoreProjects } from '@/lib/projects'
@@ -11,7 +10,7 @@ export default async function ProjectsPage() {
   const moreProjects = await getMoreProjects(20)
 
   return (
-    <Layout>
+    <>
       {/* Page header */}
       <section className="bg-base pt-40 pb-16 px-8">
         <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
@@ -37,6 +36,6 @@ export default async function ProjectsPage() {
         sectionTitle={page.projectsSectionTitle}
         introText={page.projectsText}
       />
-    </Layout>
+    </>
   )
 }

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Layout from '@/components/layout/Layout'
 import TeamGrid from '@/components/team/TeamGrid'
 import type { TrusteeData } from '@/components/team/TeamSheet'
 import { getOurStory } from '@/lib/pages'
@@ -17,7 +16,7 @@ export default async function OurStoryPage() {
   )
 
   return (
-    <Layout>
+    <>
       {/* Hero */}
       <section className="relative h-svh overflow-hidden flex items-end">
         <div
@@ -75,6 +74,6 @@ export default async function OurStoryPage() {
 
       {/* Team */}
       <TeamGrid title={[page.title1, page.title2]} members={members} />
-    </Layout>
+    </>
   )
 }
