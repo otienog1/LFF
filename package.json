@@ -34,10 +34,10 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-transition-group": "^4.4.4",
-    "@types/uuid": "^11.0.0",
     "postcss": "latest",
     "tailwindcss": "latest",
     "typescript": "^5",
+    "vite": "^6.0.0",
     "vitest": "^4.1.9"
   },
   "packageManager": "yarn@4.16.0",
