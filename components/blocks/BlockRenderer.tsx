@@ -6,7 +6,7 @@ import { ImpactBlock } from "./ImpactBlock";
 import { TeamBlock } from "./TeamBlock";
 import { CtaBlock } from "./CtaBlock";
 
-export function BlockRenderer({ blocks, heroVariant = "home" }: { blocks: Block[]; heroVariant?: "home" | "interior"; }) {
+export function BlockRenderer({ blocks, heroVariant = "home" }: { blocks: Block[]; heroVariant?: "home" | "interior" | "interior-dropcap" | "interior-split" | "interior-pullquote" | "interior-preview"; }) {
   let contentIndex = 0;
   return (
     <>

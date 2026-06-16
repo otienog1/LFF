@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
 import { getPage } from "@/lib/content";
-import { BlockRenderer } from "@/components/blocks/BlockRenderer";
+import { HeroBlock } from "@/components/blocks/HeroBlock";
+import { ImpactBlock } from "@/components/blocks/ImpactBlock";
+import { ContentBlock } from "@/components/blocks/ContentBlock";
+import { CardsBlock } from "@/components/blocks/CardsBlock";
+import { TestimonialTicker } from "@/components/impact/TestimonialTicker";
+import type {
+  HeroBlock as HeroBlockType,
+  ImpactBlock as ImpactBlockType,
+  ContentBlock as ContentBlockType,
+  CardsBlock as CardsBlockType,
+} from "@/types/content";
 
 export function generateMetadata(): Metadata {
   const page = getPage("/impact");
@@ -10,5 +20,19 @@ export function generateMetadata(): Metadata {
 export default function ImpactPage() {
   const page = getPage("/impact");
   if (!page) return null;
-  return <BlockRenderer blocks={page.blocks} heroVariant="interior" />;
+  const [hero, stats, crisisResponse, summary] = page.blocks as [
+    HeroBlockType,
+    ImpactBlockType,
+    ContentBlockType,
+    CardsBlockType,
+  ];
+  return (
+    <>
+      <HeroBlock block={hero} variant="interior-pullquote" />
+      <ImpactBlock block={stats} />
+      <TestimonialTicker />
+      <ContentBlock block={crisisResponse} index={0} variant="deep" />
+      <CardsBlock block={summary} variant="deep" />
+    </>
+  );
 }

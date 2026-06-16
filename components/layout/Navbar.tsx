@@ -31,7 +31,7 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        "fixed inset-x-0 top-0 z-100 transition-colors duration-300",
         solid
           ? "bg-paper/95 backdrop-blur border-b border-line"
           : "bg-transparent"
@@ -39,17 +39,17 @@ export default function Navbar() {
     >
       <nav className="container flex items-center justify-between py-4">
         {/* Logo */}
-        <Link href="/" className="font-display text-xl">
-          Luigi Footprints
+        <Link href="/" className={cn("font-display text-xl transition-colors duration-300", solid ? "text-ink" : "text-paper")}>
+          The Luigi Footprints Foundation
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-7 text-[13px]">
+        <div className="hidden md:flex items-center gap-7 text-[12px] tracking-[0.1em] uppercase">
           {LINKS.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-ink-soft hover:text-ink transition-colors"
+              className={cn("transition-colors duration-300", solid ? "text-ink-soft hover:text-ink" : "text-paper/80 hover:text-paper")}
             >
               {l.label}
             </Link>
@@ -58,7 +58,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile hamburger + Sheet */}
-        <div className="md:hidden">
+        <div className={cn("md:hidden transition-colors duration-300", solid ? "text-ink" : "text-paper")}>
           <Sheet>
             <SheetTrigger aria-label="Open menu">
               <Menu aria-hidden="true" />

@@ -1,12 +1,14 @@
 'use client'
 
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import Lenis from 'lenis'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import { BackToTop } from '@/components/ui/BackToTop'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -20,6 +22,8 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   const [lenis, setLenis] = useState<Lenis | null>(null)
   const mainRef = useRef<HTMLElement>(null)
+
+  const pathname = usePathname()
 
   useEffect(() => {
     const lenisInstance = new Lenis({ autoRaf: false })
@@ -35,6 +39,12 @@ export default function Layout({ children }: LayoutProps) {
     }
   }, [])
 
+  // Reset scroll to top on every client-side navigation
+  useEffect(() => {
+    if (!lenis) return
+    lenis.scrollTo(0, { immediate: true })
+  }, [pathname, lenis])
+
   useGSAP(() => {
     if (!mainRef.current) return
     gsap.from(mainRef.current, {
@@ -42,7 +52,7 @@ export default function Layout({ children }: LayoutProps) {
       y: 24,
       duration: 0.8,
       ease: 'power2.out',
-      clearProps: 'all',
+      clearProps: 'opacity,transform',
     })
   }, { scope: mainRef, dependencies: [] })
 
@@ -53,6 +63,7 @@ export default function Layout({ children }: LayoutProps) {
         {children}
       </main>
       <Footer />
+      <BackToTop />
     </LenisContext.Provider>
   )
 }

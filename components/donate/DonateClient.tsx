@@ -223,7 +223,7 @@ export default function DonateClient() {
             <Button
               onClick={() => setPage(2)}
               disabled={!validAmount}
-              className="w-full"
+              className="w-full rounded-none"
             >
               Continue {validAmount ? `— ${fmt.format(parsedAmount)}` : ''} →
             </Button>
@@ -274,7 +274,7 @@ export default function DonateClient() {
                 </p>
                 <Button
                   onClick={() => typeof Checkout !== 'undefined' && Checkout.showLightbox?.()}
-                  className="w-full"
+                  className="w-full rounded-none"
                 >
                   Pay with Card →
                 </Button>
@@ -312,7 +312,7 @@ export default function DonateClient() {
                 <Button
                   onClick={handleMpesa}
                   disabled={loading || !phone}
-                  className="w-full"
+                  className="w-full rounded-none"
                 >
                   {loading ? 'Processing…' : 'Pay via M-Pesa →'}
                 </Button>
