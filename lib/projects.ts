@@ -1,4 +1,11 @@
-import { projects as projectsData } from "@/data/data.json";
+import dataJson from "@/data/data.json";
+
+export interface ProjectCategory {
+  databaseId: number;
+  id: string;
+  name: string;
+  slug: string;
+}
 
 export interface Project {
   id: string;
@@ -15,11 +22,11 @@ export interface Project {
     sizes: string;
     id: string;
   } | null;
-  typesOfProjects: string[];
+  typesOfProjects: ProjectCategory[];
   tags: string[];
 }
 
-const projects = projectsData as Project[];
+const projects = (dataJson as { projects: Project[] }).projects;
 
 export function getProjects(): Project[] {
   return projects;
