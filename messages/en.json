@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "about": "About",
+    "ourWork": "Our Work",
+    "projects": "Projects",
+    "impact": "Impact",
+    "getInvolved": "Get Involved",
+    "donate": "Donate",
+    "openMenu": "Open menu"
+  },
+  "footer": {
+    "tagline": "Protecting wildlife by empowering communities across Kenya's Amboseli ecosystem and beyond.",
+    "getInTouch": "Get in touch",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "youtube": "YouTube",
+    "rights": "Luigi Footprints Foundation. All rights reserved.",
+    "motto": "Protecting Wildlife. Empowering Communities. Inspiring Change."
+  },
+  "contact": {
+    "emailLabel": "Email",
+    "followLabel": "Follow"
+  },
+  "projects": {
+    "allProjects": "All Projects",
+    "aboutThisProject": "About this project",
+    "previous": "Previous",
+    "next": "Next",
+    "moreProjects": "More Projects",
+    "fallbackMeta": "A field project by The Luigi Footprints Foundation."
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "readMore": "Read More"
+  }
+}
