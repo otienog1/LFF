@@ -5,14 +5,14 @@ import Layout from '@/components/layout/Layout'
 import '../styles/globals.css'
 
 const fraunces = Fraunces({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
   weight: ['400', '500', '600'],
   variable: '--font-fraunces',
   display: 'swap',
 })
 
 const inter = Inter({
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
   weight: ['300', '400', '500', '600'],
   variable: '--font-inter',
   display: 'swap',
