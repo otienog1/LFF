@@ -18,7 +18,7 @@ export default function LocaleSwitcher() {
       // Strip /es or /pt prefix to get English path
       return pathname.replace(/^\/(es|pt)/, '') || '/';
     }
-    // For es/pt: replace /en (if any) or prepend locale prefix
+    // Strip any existing locale prefix (es/pt); en paths never carry one
     const stripped = pathname.replace(/^\/(es|pt)/, '');
     return `/${targetLocale}${stripped || '/'}`;
   }
