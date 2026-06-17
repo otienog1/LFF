@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale, getMessages } from 'next-intl/server';
+import HtmlLang from '@/components/ui/HtmlLang';
 
 export function generateStaticParams() {
   return [{ locale: 'es' }, { locale: 'pt' }];
@@ -17,6 +18,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
+      <HtmlLang />
       {children}
     </NextIntlClientProvider>
   );
