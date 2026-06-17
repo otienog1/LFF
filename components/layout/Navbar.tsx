@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -19,13 +19,13 @@ export default function Navbar() {
   const locale = useLocale();
   const prefix = locale === "en" ? "" : "/" + locale;
 
-  const LINKS = [
+  const LINKS = useMemo(() => [
     { href: prefix + "/about", label: t("about") },
     { href: prefix + "/our-work", label: t("ourWork") },
     { href: prefix + "/projects", label: t("projects") },
     { href: prefix + "/impact", label: t("impact") },
     { href: prefix + "/get-involved", label: t("getInvolved") },
-  ];
+  ], [prefix, t]);
 
   const [solid, setSolid] = useState(false);
 
