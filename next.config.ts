@@ -1,4 +1,7 @@
-import type { NextConfig } from 'next'
+import createNextIntlPlugin from 'next-intl/plugin';
+import type { NextConfig } from 'next';
+
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
   output: 'export',
@@ -6,6 +9,6 @@ const nextConfig: NextConfig = {
     remotePatterns: [{ protocol: 'https', hostname: 'api.theluigifootprints.org', pathname: '/wp-content/**' }],
     unoptimized: true,
   },
-}
+};
 
-export default nextConfig
+export default withNextIntl(nextConfig);
