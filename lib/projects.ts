@@ -1,4 +1,7 @@
-import dataJson from "@/data/data.json";
+import dataEn from "@/data/data.json";
+import dataEs from "@/data/data.es.json";
+import dataPt from "@/data/data.pt.json";
+import type { Locale } from "@/i18n/config";
 
 export interface ProjectCategory {
   databaseId: number;
@@ -26,12 +29,21 @@ export interface Project {
   tags: string[];
 }
 
-const projects = (dataJson as { projects: Project[] }).projects;
-
-export function getProjects(): Project[] {
-  return projects;
+function getProjectData(locale: Locale = "en"): { projects: Project[] } {
+  switch (locale) {
+    case "es":
+      return dataEs as { projects: Project[] };
+    case "pt":
+      return dataPt as { projects: Project[] };
+    default:
+      return dataEn as { projects: Project[] };
+  }
 }
 
-export function getProject(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
+export function getProjects(locale: Locale = "en"): Project[] {
+  return getProjectData(locale).projects;
+}
+
+export function getProject(slug: string, locale: Locale = "en"): Project | undefined {
+  return getProjectData(locale).projects.find((p) => p.slug === slug);
 }
