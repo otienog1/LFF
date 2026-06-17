@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "about": "Acerca de",
+    "ourWork": "Nuestro Trabajo",
+    "projects": "Proyectos",
+    "impact": "Impacto",
+    "getInvolved": "Partícipa",
+    "donate": "Donar",
+    "openMenu": "Abrir menú"
+  },
+  "footer": {
+    "tagline": "Protegiendo la vida silvestre empoderando a las comunidades del ecosistema de Amboseli en Kenia y más allá.",
+    "getInTouch": "Contáctanos",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "youtube": "YouTube",
+    "rights": "Fundación Luigi Footprints. Todos los derechos reservados.",
+    "motto": "Protegiendo la Fauna. Empoderando Comunidades. Inspirando el Cambio."
+  },
+  "contact": {
+    "emailLabel": "Correo electrónico",
+    "followLabel": "Síguenos"
+  },
+  "projects": {
+    "allProjects": "Todos los Proyectos",
+    "aboutThisProject": "Sobre este proyecto",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "moreProjects": "Más Proyectos",
+    "fallbackMeta": "Un proyecto de campo de la Fundación Luigi Footprints."
+  },
+  "common": {
+    "learnMore": "Saber Más",
+    "readMore": "Leer Más"
+  }
+}
