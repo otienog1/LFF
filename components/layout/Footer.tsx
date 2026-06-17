@@ -3,18 +3,14 @@
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 
-const NAV_LINKS = [
-  { href: "/about", label: "About" },
-  { href: "/our-work", label: "Our Work" },
-  { href: "/impact", label: "Impact" },
-  { href: "/get-involved", label: "Get Involved" },
-  { href: "/donate", label: "Donate" },
-  { href: "/contact", label: "Contact" },
-];
+const NAV_HREFS = ["/about", "/our-work", "/impact", "/get-involved", "/donate", "/contact"];
+const NAV_KEYS = ["about", "ourWork", "impact", "getInvolved", "donate", "contact"] as const;
 
 export default function Footer() {
   const t = useTranslations("footer");
+  const tNav = useTranslations("nav");
   const locale = useLocale();
+  const prefix = locale === "en" ? "" : "/" + locale;
 
   return (
     <footer className="bg-ink text-paper">
@@ -30,9 +26,9 @@ export default function Footer() {
 
         {/* Nav */}
         <nav aria-label="Footer" className="flex-1 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-paper/50">
-          {NAV_LINKS.map((l) => (
-            <Link key={l.href} href={`/${locale}${l.href}`} className="hover:text-paper transition-colors">
-              {l.label}
+          {NAV_HREFS.map((href, i) => (
+            <Link key={href} href={prefix + href} className="hover:text-paper transition-colors">
+              {tNav(NAV_KEYS[i])}
             </Link>
           ))}
         </nav>
