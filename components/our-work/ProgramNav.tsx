@@ -1,15 +1,17 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { useLenis } from "@/components/layout/Layout";
 
-const PROGRAMS = [
-  { id: "education-program",    label: "Education & Youth" },
-  { id: "environmental-program", label: "Restoration" },
-  { id: "community-program",    label: "Empowerment" },
-  { id: "coexistence-program",  label: "Coexistence" },
-];
+const PROGRAM_IDS = [
+  { id: "education-program",    key: "education" },
+  { id: "environmental-program", key: "restoration" },
+  { id: "community-program",    key: "empowerment" },
+  { id: "coexistence-program",  key: "coexistence" },
+] as const;
 
 export function ProgramNav() {
+  const t         = useTranslations("ourWork");
   const wrapperRef = useRef<HTMLDivElement>(null);
   const navRef    = useRef<HTMLDivElement>(null);
   const lenis     = useLenis();
@@ -59,14 +61,14 @@ export function ProgramNav() {
         style={pinned ? { position: "fixed", top: navbarH, left: 0, right: 0 } : undefined}
       >
         <div className="container py-3 flex gap-2 overflow-x-auto scrollbar-hide">
-          {PROGRAMS.map((p) => (
+          {PROGRAM_IDS.map((p) => (
             <a
               key={p.id}
               href={`#${p.id}`}
               onClick={(e) => handleClick(e, p.id)}
               className="shrink-0 text-[11px] tracking-[0.15em] uppercase font-medium px-4 py-2 rounded-full border border-line text-ink-soft hover:bg-ink hover:text-paper hover:border-ink transition-colors"
             >
-              {p.label}
+              {t(p.key)}
             </a>
           ))}
         </div>

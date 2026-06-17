@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
@@ -12,6 +13,7 @@ const fieldClass =
 const labelClass = 'text-[10px] uppercase tracking-[0.2em] opacity-60'
 
 export default function ContactForm() {
+  const t = useTranslations('contact')
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [sent, setSent] = useState(false)
 
@@ -29,29 +31,29 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
       <div className="space-y-2">
-        <Label htmlFor="name" className={labelClass}>Name</Label>
-        <Input id="name" value={form.name} onChange={set('name')} required placeholder="Your full name" className={fieldClass} />
+        <Label htmlFor="name" className={labelClass}>{t('formName')}</Label>
+        <Input id="name" value={form.name} onChange={set('name')} required placeholder={t('formNamePlaceholder')} className={fieldClass} />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="email" className={labelClass}>Email</Label>
+        <Label htmlFor="email" className={labelClass}>{t('formEmail')}</Label>
         <Input id="email" type="email" value={form.email} onChange={set('email')} required placeholder="your@email.com" className={fieldClass} />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="subject" className={labelClass}>Subject</Label>
-        <Input id="subject" value={form.subject} onChange={set('subject')} required placeholder="How can we help?" className={fieldClass} />
+        <Label htmlFor="subject" className={labelClass}>{t('formSubject')}</Label>
+        <Input id="subject" value={form.subject} onChange={set('subject')} required placeholder={t('formSubjectPlaceholder')} className={fieldClass} />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="message" className={labelClass}>Message</Label>
-        <Textarea id="message" value={form.message} onChange={set('message')} required rows={4} placeholder="Tell us more…" className={`${fieldClass} resize-none`} />
+        <Label htmlFor="message" className={labelClass}>{t('formMessage')}</Label>
+        <Textarea id="message" value={form.message} onChange={set('message')} required rows={4} placeholder={t('formMessagePlaceholder')} className={`${fieldClass} resize-none`} />
       </div>
 
       {sent ? (
-        <p className="display-3 text-current">Message sent. Thank you.</p>
+        <p className="display-3 text-current">{t('formSent')}</p>
       ) : (
-        <Button type="submit" className="w-full">Send Message →</Button>
+        <Button type="submit" className="w-full">{t('formSubmit')}</Button>
       )}
     </form>
   )

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getPage } from "@/lib/content";
 import type { Locale } from "@/i18n/config";
 import ContactForm from "@/components/contact/ContactForm";
@@ -28,6 +28,7 @@ export default async function ContactPage({
   const { locale } = await params;
   const loc = locale as Locale;
   setRequestLocale(loc);
+  const t = await getTranslations('contact');
 
   const page = getPage("/contact", loc);
   const [hero] = (page?.blocks ?? []) as [ContactBlockType];
@@ -48,7 +49,7 @@ export default async function ContactPage({
 
           <div className="space-y-8">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-paper/50 mb-3">Email</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-paper/50 mb-3">{t('emailLabel')}</p>
               <a
                 href="mailto:info@theluigifootprints.org"
                 className="text-sm text-paper/70 hover:text-paper transition-colors duration-200"
@@ -58,7 +59,7 @@ export default async function ContactPage({
             </div>
 
             <div>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-paper/50 mb-4">Follow</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-paper/50 mb-4">{t('followLabel')}</p>
               <div className="flex gap-5 text-sm text-paper/70">
                 <a href="https://www.instagram.com/maniagosafaris/" target="_blank" rel="noopener noreferrer" className="hover:text-paper transition-colors duration-200">Instagram</a>
                 <a href="https://www.facebook.com/ManiagoSafarisEastAfrica" target="_blank" rel="noopener noreferrer" className="hover:text-paper transition-colors duration-200">Facebook</a>

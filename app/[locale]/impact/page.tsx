@@ -10,6 +10,7 @@ import { TestimonialTicker } from "@/components/impact/TestimonialTicker";
 import type {
   HeroBlock as HeroBlockType,
   ImpactBlock as ImpactBlockType,
+  TestimonialsBlock as TestimonialsBlockType,
   ContentBlock as ContentBlockType,
   CardsBlock as CardsBlockType,
 } from "@/types/content";
@@ -40,9 +41,10 @@ export default async function ImpactPage({
 
   const page = getPage("/impact", loc);
   if (!page) return null;
-  const [hero, stats, crisisResponse, summary] = page.blocks as [
+  const [hero, stats, testimonials, crisisResponse, summary] = page.blocks as [
     HeroBlockType,
     ImpactBlockType,
+    TestimonialsBlockType,
     ContentBlockType,
     CardsBlockType,
   ];
@@ -50,7 +52,7 @@ export default async function ImpactPage({
     <>
       <HeroBlock block={hero} variant="interior-pullquote" />
       <ImpactBlock block={stats} />
-      <TestimonialTicker />
+      <TestimonialTicker block={testimonials} />
       <ContentBlock block={crisisResponse} index={0} variant="deep" />
       <CardsBlock block={summary} variant="deep" />
     </>

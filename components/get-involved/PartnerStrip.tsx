@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import gsap from "gsap";
 
 const PARTNERS = [
@@ -17,6 +18,7 @@ const PARTNERS = [
 const SPEED = 60; // px/sec
 
 export function PartnerStrip() {
+  const t = useTranslations('getInvolved');
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -38,7 +40,7 @@ export function PartnerStrip() {
 
   return (
     <div className="bg-white border-b border-line py-10 overflow-hidden select-none">
-      <p className="container eyebrow mb-6 text-ink/40">Partners &amp; Supporters</p>
+      <p className="container eyebrow mb-6 text-ink/40">{t('partnersTitle')}</p>
       <div ref={trackRef} className="flex will-change-transform">
         {[0, 1, 2, 3].map((i) => (
           <div key={i} aria-hidden={i > 0 ? true : undefined} className="flex shrink-0 items-center">

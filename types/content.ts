@@ -16,7 +16,11 @@ export interface CtaBlock extends BlockBase { type: "cta"; }
 export interface ContactBlock extends BlockBase { type: "contact"; }
 export interface ProjectsHeroBlock extends BlockBase { type: "projects-hero"; }
 export interface CommitmentBlock extends BlockBase { type: "commitment"; }
+export interface EditorialBlock extends BlockBase { type: "editorial"; subtitle: string; content: string; title: string; }
+export interface LuigiPanelBlock extends BlockBase { type: "luigi-panel"; content: string; subtitle: string; image: ImageRef; }
+export interface TestimonialItem { quote: string; attribution: string; }
+export interface TestimonialsBlock extends BlockBase { type: "testimonials"; items: TestimonialItem[]; }
 
-export type Block = HeroBlock | ContentBlock | CardsBlock | ImpactBlock | TeamBlock | CtaBlock | ContactBlock | ProjectsHeroBlock | CommitmentBlock;
+export type Block = HeroBlock | ContentBlock | CardsBlock | ImpactBlock | TeamBlock | CtaBlock | ContactBlock | ProjectsHeroBlock | CommitmentBlock | EditorialBlock | LuigiPanelBlock | TestimonialsBlock;
 export interface Page { slug: string; title: string; seo: Seo; blocks: Block[]; }
 export interface SiteData { pages: Page[]; }

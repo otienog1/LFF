@@ -22,8 +22,8 @@ export async function generateMetadata({
   return { title: page?.seo.title, description: page?.seo.description };
 }
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-GB", {
+function formatDate(iso: string, locale: string) {
+  return new Date(iso).toLocaleDateString(locale, {
     year: "numeric",
     month: "long",
   });
@@ -74,7 +74,7 @@ export default async function ProjectsPage({
                       />
                     </div>
                   )}
-                  <p className="eyebrow text-ink/40 mb-2">{formatDate(project.date)}</p>
+                  <p className="eyebrow text-ink/40 mb-2">{formatDate(project.date, loc)}</p>
                   <h2 className="font-display font-medium text-lg leading-[1.3] text-ink capitalize group-hover:text-green transition-colors">
                     {project.title}
                   </h2>

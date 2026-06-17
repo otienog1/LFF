@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { useTranslations } from 'next-intl'
 import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js'
 import gsap from 'gsap'
 import { v4 } from 'uuid'
@@ -30,19 +31,15 @@ const AMOUNTS: Record<string, string[]> = {
 }
 
 const PAYMENT_METHODS = [
-  { id: 'card', label: 'Card' },
+  { id: 'card',   label: 'Card' },
   { id: 'paypal', label: 'PayPal' },
-  { id: 'mpesa', label: 'M-Pesa' },
+  { id: 'mpesa',  label: 'M-Pesa' },
 ]
 
-function PayPalSection({ currency, amount, onSuccess }: { currency: string; amount: string; onSuccess: () => void }) {
+function PayPalSection({ currency, amount, onSuccess, unavailableMsg }: { currency: string; amount: string; onSuccess: () => void; unavailableMsg: string }) {
   const [{ isRejected }] = usePayPalScriptReducer()
   if (isRejected) {
-    return (
-      <p className="text-sm text-ink-soft">
-        PayPal is temporarily unavailable. Please use card or M-Pesa.
-      </p>
-    )
+    return <p className="text-sm text-ink-soft">{unavailableMsg}</p>
   }
   return (
     <PayPalButtons
@@ -61,6 +58,7 @@ function PayPalSection({ currency, amount, onSuccess }: { currency: string; amou
 }
 
 export default function DonateClient() {
+  const t = useTranslations('donate')
   const [page, setPage] = useState(1)
   const [amount, setAmount] = useState('25')
   const [currency, setCurrency] = useState('USD')
@@ -123,18 +121,22 @@ export default function DonateClient() {
       .then(() => setLoading(false))
   }
 
+  const headline = t('headline').split('\n')
+
   return (
     <section className="bg-paper min-h-svh grid grid-cols-1 lg:grid-cols-2">
 
       {/* Left: editorial panel */}
       <div className="bg-ink flex flex-col justify-end px-10 pt-40 pb-16 lg:sticky lg:top-0 lg:h-svh">
-        <Eyebrow className="text-paper/70! mb-6">Support our mission</Eyebrow>
+        <Eyebrow className="text-paper/70! mb-6">{t('supportMission')}</Eyebrow>
         <h1 className="display-1 text-paper mb-8">
-          Every gift<br />leaves a<br />footprint.
+          {headline.map((line, i) => (
+            <span key={i}>{line}{i < headline.length - 1 && <br />}</span>
+          ))}
         </h1>
         <div className="w-8 h-px bg-green mb-8" />
         <p className="text-paper/70 text-sm leading-relaxed max-w-sm">
-          Your contribution directly funds wildlife conservation, community education, and environmental stewardship across East Africa.
+          {t('bodyText')}
         </p>
       </div>
 
@@ -145,12 +147,12 @@ export default function DonateClient() {
         <div className="flex items-center gap-4 mb-12">
           <div className="flex items-center gap-2">
             <span className={`eyebrow transition-colors duration-300 ${page === 1 ? 'text-green' : 'text-ink/30'}`}>01</span>
-            <span className={`text-[11px] uppercase tracking-widest transition-colors duration-300 ${page === 1 ? 'text-ink' : 'text-ink/30'}`}>Amount</span>
+            <span className={`text-[11px] uppercase tracking-widest transition-colors duration-300 ${page === 1 ? 'text-ink' : 'text-ink/30'}`}>{t('step1')}</span>
           </div>
           <div className="flex-1 h-px bg-line" />
           <div className="flex items-center gap-2">
             <span className={`eyebrow transition-colors duration-300 ${page === 2 ? 'text-green' : 'text-ink/30'}`}>02</span>
-            <span className={`text-[11px] uppercase tracking-widest transition-colors duration-300 ${page === 2 ? 'text-ink' : 'text-ink/30'}`}>Payment</span>
+            <span className={`text-[11px] uppercase tracking-widest transition-colors duration-300 ${page === 2 ? 'text-ink' : 'text-ink/30'}`}>{t('step2')}</span>
           </div>
         </div>
 
@@ -160,7 +162,7 @@ export default function DonateClient() {
 
             {/* Currency tabs */}
             <div className="space-y-3">
-              <p className="eyebrow">Currency</p>
+              <p className="eyebrow">{t('currencyLabel')}</p>
               <div className="flex gap-2 flex-wrap">
                 {CURRENCIES.map(c => (
                   <button
@@ -182,7 +184,7 @@ export default function DonateClient() {
 
             {/* Amount grid */}
             <div className="space-y-3">
-              <p className="eyebrow">Select amount</p>
+              <p className="eyebrow">{t('selectAmount')}</p>
               <div className="grid grid-cols-3 gap-2">
                 {(AMOUNTS[currency] ?? AMOUNTS.USD).map(v => (
                   <button
@@ -205,7 +207,7 @@ export default function DonateClient() {
             {/* Custom amount */}
             <div className="space-y-2">
               <Label htmlFor="custom-amount" className="eyebrow">
-                Or enter custom amount
+                {t('customAmount')}
               </Label>
               <div className="relative flex items-center">
                 <span className="text-[13px] text-ink-soft pr-3 select-none">{currency}</span>
@@ -225,7 +227,7 @@ export default function DonateClient() {
               disabled={!validAmount}
               className="w-full rounded-none"
             >
-              Continue {validAmount ? `— ${fmt.format(parsedAmount)}` : ''} →
+              {t('continueBtn')}{validAmount ? ` — ${fmt.format(parsedAmount)}` : ''} →
             </Button>
           </div>
         )}
@@ -236,7 +238,7 @@ export default function DonateClient() {
 
             {/* Donation summary */}
             <div className="border-l-2 border-green pl-5">
-              <p className="eyebrow mb-1">Donating</p>
+              <p className="eyebrow mb-1">{t('donating')}</p>
               <p className="display-2 text-ink">
                 {fmt.format(parsedAmount)}
               </p>
@@ -244,7 +246,7 @@ export default function DonateClient() {
 
             {/* Payment method tabs */}
             <div className="space-y-3">
-              <p className="eyebrow">Payment method</p>
+              <p className="eyebrow">{t('paymentMethod')}</p>
               <div className="flex gap-2">
                 {PAYMENT_METHODS.map(m => (
                   <button
@@ -268,15 +270,13 @@ export default function DonateClient() {
             {paymentMethod === 'card' && (
               <div className="space-y-5">
                 <p className="text-sm text-ink-soft leading-relaxed">
-                  You will be charged{' '}
-                  <span className="text-ink">{fmt.format(parsedAmount)}</span>
-                  {' '}via secure Mastercard checkout.
+                  {t('cardDescription', { amount: fmt.format(parsedAmount) })}
                 </p>
                 <Button
                   onClick={() => typeof Checkout !== 'undefined' && Checkout.showLightbox?.()}
                   className="w-full rounded-none"
                 >
-                  Pay with Card →
+                  {t('payWithCard')}
                 </Button>
               </div>
             )}
@@ -289,7 +289,7 @@ export default function DonateClient() {
                   currency,
                 }}
               >
-                <PayPalSection currency={currency} amount={amount} onSuccess={() => setSent(true)} />
+                <PayPalSection currency={currency} amount={amount} onSuccess={() => setSent(true)} unavailableMsg={t('paypalUnavailable')} />
               </PayPalScriptProvider>
             )}
 
@@ -298,12 +298,12 @@ export default function DonateClient() {
               <div className="space-y-5">
                 <div className="space-y-2">
                   <Label htmlFor="phone" className="eyebrow">
-                    Phone number (with country code)
+                    {t('phoneLabel')}
                   </Label>
                   <Input
                     id="phone"
                     type="tel"
-                    placeholder="+254 700 000 000"
+                    placeholder={t('phonePlaceholder')}
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
                     className="text-[15px] bg-transparent border-0 border-b border-line rounded-none placeholder:text-ink/30 focus-visible:ring-0 focus-visible:border-green pb-2 h-auto"
@@ -314,7 +314,7 @@ export default function DonateClient() {
                   disabled={loading || !phone}
                   className="w-full rounded-none"
                 >
-                  {loading ? 'Processing…' : 'Pay via M-Pesa →'}
+                  {loading ? t('processing') : t('payMpesa')}
                 </Button>
               </div>
             )}
@@ -324,7 +324,7 @@ export default function DonateClient() {
               onClick={() => setPage(1)}
               className="text-[11px] uppercase tracking-[0.12em] text-ink-soft hover:text-ink transition-colors duration-200"
             >
-              ← Change amount
+              {t('changeAmount')}
             </button>
           </div>
         )}
@@ -332,9 +332,9 @@ export default function DonateClient() {
         {/* Thank you */}
         {sent && (
           <div ref={thankRef} className="opacity-0 mt-10 p-8 border border-green/40 bg-green/5">
-            <p className="display-2 text-ink mb-3">Thank you.</p>
+            <p className="display-2 text-ink mb-3">{t('thankYouTitle')}</p>
             <p className="text-sm text-ink-soft leading-relaxed">
-              Your donation to the Luigi Footprints Foundation is deeply appreciated.
+              {t('thankYouBody')}
             </p>
           </div>
         )}

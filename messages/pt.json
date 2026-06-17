@@ -20,7 +20,16 @@
   },
   "contact": {
     "emailLabel": "Email",
-    "followLabel": "Seguir"
+    "followLabel": "Seguir",
+    "formName": "Nome",
+    "formEmail": "Endereço de email",
+    "formSubject": "Assunto",
+    "formMessage": "Mensagem",
+    "formNamePlaceholder": "O seu nome completo",
+    "formSubjectPlaceholder": "Como podemos ajudar?",
+    "formMessagePlaceholder": "Diga-nos mais…",
+    "formSent": "Mensagem enviada. Obrigado.",
+    "formSubmit": "Enviar Mensagem →"
   },
   "projects": {
     "allProjects": "Todos os Projetos",
@@ -33,5 +42,47 @@
   "common": {
     "learnMore": "Saber Mais",
     "readMore": "Ler Mais"
+  },
+  "ourWork": {
+    "education": "Educação e Juventude",
+    "restoration": "Restauração",
+    "empowerment": "Capacitação",
+    "coexistence": "Coexistência"
+  },
+  "getInvolved": {
+    "partnersTitle": "Parceiros e Apoiadores",
+    "yourImpact": "O Seu Impacto",
+    "giveNow": "Doe agora →",
+    "seedlingLabel": "Muda",
+    "seedlingImpact": "Planta 10 árvores nativas no viveiro de Olchani",
+    "scholarLabel": "Bolseiro",
+    "scholarImpact": "Financia o kit escolar completo de um aluno por um trimestre",
+    "guardianLabel": "Guardião",
+    "guardianImpact": "Equipa um guardião comunitário de conservação durante um mês",
+    "stewardLabel": "Administrador",
+    "stewardImpact": "Sustenta uma empresa de mulheres maasái durante toda uma época"
+  },
+  "donate": {
+    "supportMission": "Apoia a nossa missão",
+    "headline": "Cada donativo\ndeixa uma\npegada.",
+    "bodyText": "A sua contribuição financia diretamente a conservação da fauna, a educação comunitária e a gestão ambiental na África Oriental.",
+    "step1": "Valor",
+    "step2": "Pagamento",
+    "currencyLabel": "Moeda",
+    "selectAmount": "Seleciona o valor",
+    "customAmount": "Ou introduz um valor personalizado",
+    "continueBtn": "Continuar",
+    "donating": "A Doar",
+    "paymentMethod": "Método de pagamento",
+    "cardDescription": "Será cobrado {amount} através de pagamento seguro com cartão.",
+    "payWithCard": "Pagar com Cartão →",
+    "paypalUnavailable": "O PayPal está temporariamente indisponível. Por favor usa cartão ou M-Pesa.",
+    "phoneLabel": "Número de telemóvel (com indicativo do país)",
+    "phonePlaceholder": "+254 700 000 000",
+    "payMpesa": "Pagar com M-Pesa →",
+    "processing": "A processar…",
+    "changeAmount": "← Alterar valor",
+    "thankYouTitle": "Obrigado.",
+    "thankYouBody": "A sua doação à Fundação Luigi Footprints é profundamente apreciada."
   }
 }

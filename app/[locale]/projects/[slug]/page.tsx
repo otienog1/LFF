@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getProject, getProjects } from "@/lib/projects";
 import { getPage } from "@/lib/content";
 import type { Locale } from "@/i18n/config";
@@ -25,18 +25,20 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params;
   const loc = locale as Locale;
+  setRequestLocale(loc);
   const project = getProject(slug, loc);
   if (!project) return {};
+  const t = await getTranslations('projects');
   return {
     title: `${project.title} | The Luigi Footprints Foundation`,
     description:
       project.excerpt?.replace(/<[^>]+>/g, "").trim() ||
-      "A field project by The Luigi Footprints Foundation.",
+      t('fallbackMeta'),
   };
 }
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-GB", {
+function formatDate(iso: string, locale: string) {
+  return new Date(iso).toLocaleDateString(locale, {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -58,6 +60,7 @@ export default async function ProjectPage({
 
   const project = getProject(slug, loc);
   if (!project) notFound();
+  const t = await getTranslations('projects');
 
   const all = getProjects(loc);
   const idx = all.findIndex((p) => p.slug === slug);
@@ -94,7 +97,7 @@ export default async function ProjectPage({
             className="inline-flex items-center gap-2 text-paper/60 hover:text-paper text-[11px] tracking-[0.15em] uppercase transition-colors mb-8"
           >
             <ArrowLeft size={13} />
-            All Projects
+            {t('allProjects')}
           </Link>
 
           {categories.length > 0 && (
@@ -113,7 +116,7 @@ export default async function ProjectPage({
           <h1 className="display-1 text-paper max-w-[20ch] capitalize leading-[1.05]">
             {project.title}
           </h1>
-          <p className="mt-4 eyebrow text-paper/50">{formatDate(project.date)}</p>
+          <p className="mt-4 eyebrow text-paper/50">{formatDate(project.date, loc)}</p>
         </div>
       </section>
 
@@ -123,7 +126,7 @@ export default async function ProjectPage({
           <div className="container">
             <div className="grid md:grid-cols-[200px_1fr] lg:grid-cols-[260px_1fr] gap-12">
               <div>
-                <p className="eyebrow">About this project</p>
+                <p className="eyebrow">{t('aboutThisProject')}</p>
                 <div className="mt-4 w-8 h-px bg-ink/20" />
               </div>
               <div className="md:border-l md:border-line md:pl-12 lg:pl-20">
@@ -170,7 +173,7 @@ export default async function ProjectPage({
                   className="shrink-0 text-ink/30 group-hover:text-ink transition-colors"
                 />
                 <span>
-                  <p className="eyebrow text-ink/40 mb-1">Previous</p>
+                  <p className="eyebrow text-ink/40 mb-1">{t('previous')}</p>
                   <p className="text-sm font-medium text-ink capitalize leading-snug group-hover:text-green transition-colors line-clamp-2">
                     {prev.title}
                   </p>
@@ -185,7 +188,7 @@ export default async function ProjectPage({
                 className="group flex items-center gap-4 text-right max-w-[40%] ml-auto"
               >
                 <span>
-                  <p className="eyebrow text-ink/40 mb-1">Next</p>
+                  <p className="eyebrow text-ink/40 mb-1">{t('next')}</p>
                   <p className="text-sm font-medium text-ink capitalize leading-snug group-hover:text-green transition-colors line-clamp-2">
                     {next.title}
                   </p>
@@ -203,12 +206,12 @@ export default async function ProjectPage({
       {/* ── Related Projects ── */}
       <section className="bg-paper border-b border-line py-20 md:py-28">
         <div className="container">
-          <p className="eyebrow mb-10">More Projects</p>
+          <p className="eyebrow mb-10">{t('moreProjects')}</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {related.map((p) => (
               <Link href={`/${loc}/projects/${p.slug}`} key={p.id} className="group flex flex-col">
                 {p.featuredImage && (
-                  <div className="relative aspect-[4/3] overflow-hidden mb-4">
+                  <div className="relative aspect-4/3 overflow-hidden mb-4">
                     <Image
                       src={p.featuredImage.sourceUrl}
                       alt={p.featuredImage.altText || p.title}
@@ -218,7 +221,7 @@ export default async function ProjectPage({
                     />
                   </div>
                 )}
-                <p className="eyebrow text-ink/40 mb-1">{formatDate(p.date)}</p>
+                <p className="eyebrow text-ink/40 mb-1">{formatDate(p.date, loc)}</p>
                 <h3 className="font-display font-medium text-base leading-snug text-ink capitalize group-hover:text-green transition-colors">
                   {p.title}
                 </h3>

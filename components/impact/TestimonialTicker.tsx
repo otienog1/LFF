@@ -2,17 +2,18 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-const TESTIMONIALS = [
-  { quote: "LFF changed how my children see their future.", attribution: "Community mother, Amboseli" },
-  { quote: "The tree nursery gave us income and pride.", attribution: "Youth group member, Olchani" },
-  { quote: "We now know how to live peacefully with elephants.", attribution: "Community ranger, Amboseli" },
-  { quote: "Our daughters can go to school because of this foundation.", attribution: "Local elder, Kajiado" },
-  { quote: "I plant trees knowing my grandchildren will sit in their shade.", attribution: "Community elder, Amboseli" },
-];
+interface Testimonial {
+  quote: string;
+  attribution: string;
+}
+
+interface TestimonialsBlock {
+  items: Testimonial[];
+}
 
 const SPEED = 60; // px/sec
 
-export function TestimonialTicker() {
+export function TestimonialTicker({ block }: { block: TestimonialsBlock }) {
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,13 +38,13 @@ export function TestimonialTicker() {
       <div ref={trackRef} className="flex will-change-transform">
         {[0, 1, 2, 3].map((i) => (
           <div key={i} aria-hidden={i > 0 ? true : undefined} className="flex shrink-0 gap-10 pr-10">
-            {TESTIMONIALS.map((t, j) => (
+            {block.items.map((item, j) => (
               <div key={j} className="shrink-0 w-64 border-l-2 border-green/30 pl-5">
                 <p className="font-display italic text-[15px] text-ink leading-[1.55]">
-                  &ldquo;{t.quote}&rdquo;
+                  &ldquo;{item.quote}&rdquo;
                 </p>
                 <p className="mt-2 text-[10px] tracking-[0.15em] uppercase text-ink/40">
-                  {t.attribution}
+                  {item.attribution}
                 </p>
               </div>
             ))}

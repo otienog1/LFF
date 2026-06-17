@@ -12,6 +12,7 @@ import type {
   HeroBlock as HeroBlockType,
   ContentBlock as ContentBlockType,
   CardsBlock as CardsBlockType,
+  LuigiPanelBlock as LuigiPanelBlockType,
   TeamBlock as TeamBlockType,
   CtaBlock as CtaBlockType,
 } from "@/types/content";
@@ -42,9 +43,10 @@ export default async function AboutPage({
 
   const page = getPage("/about", loc);
   if (!page) return null;
-  const [hero, legacy, guides, team, cta] = page.blocks as [
+  const [hero, legacy, luigiPanel, guides, team, cta] = page.blocks as [
     HeroBlockType,
     ContentBlockType,
+    LuigiPanelBlockType,
     CardsBlockType,
     TeamBlockType,
     CtaBlockType,
@@ -53,7 +55,7 @@ export default async function AboutPage({
     <>
       <HeroBlock block={hero} variant="interior-split" />
       <ContentBlock block={legacy} index={0} />
-      <LuigiPanel />
+      <LuigiPanel block={luigiPanel} />
       <CardsBlock block={guides} />
       <TeamBlock block={team} />
       <CtaBlock block={cta} />

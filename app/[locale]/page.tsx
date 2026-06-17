@@ -13,6 +13,7 @@ import type {
   ContentBlock as ContentBlockType,
   CardsBlock as CardsBlockType,
   ImpactBlock as ImpactBlockType,
+  EditorialBlock as EditorialBlockType,
   CtaBlock as CtaBlockType,
 } from "@/types/content";
 
@@ -42,11 +43,12 @@ export default async function HomePage({
 
   const page = getPage("/", loc);
   if (!page) return null;
-  const [hero, philosophy, focusAreas, impactHighlight, cta] = page.blocks as [
+  const [hero, philosophy, focusAreas, impactHighlight, belief, cta] = page.blocks as [
     HeroBlockType,
     ContentBlockType,
     CardsBlockType,
     ImpactBlockType,
+    EditorialBlockType,
     CtaBlockType,
   ];
   return (
@@ -55,7 +57,7 @@ export default async function HomePage({
       <ContentBlock block={philosophy} index={0} />
       <CardsBlock block={focusAreas} />
       <ImpactBlock block={impactHighlight} variant="deep" />
-      <EditorialStatement />
+      <EditorialStatement block={belief} />
       <CtaBlock block={cta} />
     </>
   );

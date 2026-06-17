@@ -20,7 +20,16 @@
   },
   "contact": {
     "emailLabel": "Email",
-    "followLabel": "Follow"
+    "followLabel": "Follow",
+    "formName": "Name",
+    "formEmail": "Email address",
+    "formSubject": "Subject",
+    "formMessage": "Message",
+    "formNamePlaceholder": "Your full name",
+    "formSubjectPlaceholder": "How can we help?",
+    "formMessagePlaceholder": "Tell us more…",
+    "formSent": "Message sent. Thank you.",
+    "formSubmit": "Send Message →"
   },
   "projects": {
     "allProjects": "All Projects",
@@ -33,5 +42,47 @@
   "common": {
     "learnMore": "Learn More",
     "readMore": "Read More"
+  },
+  "ourWork": {
+    "education": "Education & Youth",
+    "restoration": "Restoration",
+    "empowerment": "Empowerment",
+    "coexistence": "Coexistence"
+  },
+  "getInvolved": {
+    "partnersTitle": "Partners & Supporters",
+    "yourImpact": "Your Impact",
+    "giveNow": "Give now →",
+    "seedlingLabel": "Seedling",
+    "seedlingImpact": "Plants 10 indigenous trees in the Olchani nursery",
+    "scholarLabel": "Scholar",
+    "scholarImpact": "Funds a full school term kit for one student",
+    "guardianLabel": "Guardian",
+    "guardianImpact": "Equips a community conservation ranger for one month",
+    "stewardLabel": "Steward",
+    "stewardImpact": "Sustains a Maasai women's enterprise for one full season"
+  },
+  "donate": {
+    "supportMission": "Support our mission",
+    "headline": "Every gift\nleaves a\nfootprint.",
+    "bodyText": "Your contribution directly funds wildlife conservation, community education, and environmental stewardship across East Africa.",
+    "step1": "Amount",
+    "step2": "Payment",
+    "currencyLabel": "Currency",
+    "selectAmount": "Select amount",
+    "customAmount": "Or enter custom amount",
+    "continueBtn": "Continue",
+    "donating": "Donating",
+    "paymentMethod": "Payment method",
+    "cardDescription": "You will be charged {amount} via secure Mastercard checkout.",
+    "payWithCard": "Pay with Card →",
+    "paypalUnavailable": "PayPal is temporarily unavailable. Please use card or M-Pesa.",
+    "phoneLabel": "Phone number (with country code)",
+    "phonePlaceholder": "+254 700 000 000",
+    "payMpesa": "Pay via M-Pesa →",
+    "processing": "Processing…",
+    "changeAmount": "← Change amount",
+    "thankYouTitle": "Thank you.",
+    "thankYouBody": "Your donation to the Luigi Footprints Foundation is deeply appreciated."
   }
 }
