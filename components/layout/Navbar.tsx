@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -10,16 +12,21 @@ import {
   SheetTrigger,
   SheetContent,
 } from "@/components/ui/sheet";
-
-const LINKS = [
-  { href: "/about", label: "About" },
-  { href: "/our-work", label: "Our Work" },
-  { href: "/projects", label: "Projects" },
-  { href: "/impact", label: "Impact" },
-  { href: "/get-involved", label: "Get Involved" },
-];
+import LocaleSwitcher from "@/components/ui/LocaleSwitcher";
 
 export default function Navbar() {
+  const t = useTranslations("nav");
+  const locale = useLocale();
+  const prefix = locale === "en" ? "" : "/" + locale;
+
+  const LINKS = [
+    { href: prefix + "/about", label: t("about") },
+    { href: prefix + "/our-work", label: t("ourWork") },
+    { href: prefix + "/projects", label: t("projects") },
+    { href: prefix + "/impact", label: t("impact") },
+    { href: prefix + "/get-involved", label: t("getInvolved") },
+  ];
+
   const [solid, setSolid] = useState(false);
 
   useEffect(() => {
@@ -40,7 +47,7 @@ export default function Navbar() {
     >
       <nav className="container flex items-center justify-between py-4">
         {/* Logo */}
-        <Link href="/" className={cn("font-display text-xl transition-colors duration-300", solid ? "text-ink" : "text-paper")}>
+        <Link href={prefix || "/"} className={cn("font-display text-xl transition-colors duration-300", solid ? "text-ink" : "text-paper")}>
           The Luigi Footprints Foundation
         </Link>
 
@@ -55,13 +62,14 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <Link href="/donate" className={buttonVariants()}>Donate</Link>
+          <Link href={prefix + "/donate"} className={buttonVariants()}>{t("donate")}</Link>
+          <LocaleSwitcher />
         </div>
 
         {/* Mobile hamburger + Sheet */}
         <div className={cn("md:hidden transition-colors duration-300", solid ? "text-ink" : "text-paper")}>
           <Sheet>
-            <SheetTrigger aria-label="Open menu">
+            <SheetTrigger aria-label={t("openMenu")}>
               <Menu aria-hidden="true" />
             </SheetTrigger>
             <SheetContent side="right" className="bg-paper">
@@ -75,7 +83,8 @@ export default function Navbar() {
                     {l.label}
                   </Link>
                 ))}
-                <Link href="/donate" className={buttonVariants()}>Donate</Link>
+                <Link href={prefix + "/donate"} className={buttonVariants()}>{t("donate")}</Link>
+                <LocaleSwitcher />
               </div>
             </SheetContent>
           </Sheet>
