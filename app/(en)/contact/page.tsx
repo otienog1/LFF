@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 import ContactForm from '@/components/contact/ContactForm'
 import { getPage } from '@/lib/content'
 import type { ContactBlock as ContactBlockType } from '@/types/content'
@@ -8,7 +9,8 @@ export function generateMetadata(): Metadata {
   return { title: page?.seo.title, description: page?.seo.description }
 }
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const t = await getTranslations('contact')
   const page = getPage('/contact')
   const [hero] = (page?.blocks ?? []) as [ContactBlockType]
 
@@ -28,7 +30,7 @@ export default function ContactPage() {
 
           <div className="space-y-8">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-paper/50 mb-3">Email</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-paper/50 mb-3">{t('emailLabel')}</p>
               <a
                 href="mailto:info@theluigifootprints.org"
                 className="text-sm text-paper/70 hover:text-paper transition-colors duration-200"
@@ -38,7 +40,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-paper/50 mb-4">Follow</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-paper/50 mb-4">{t('followLabel')}</p>
               <div className="flex gap-5 text-sm text-paper/70">
                 <a href="https://www.instagram.com/maniagosafaris/" target="_blank" rel="noopener noreferrer" className="hover:text-paper transition-colors duration-200">Instagram</a>
                 <a href="https://www.facebook.com/ManiagoSafarisEastAfrica" target="_blank" rel="noopener noreferrer" className="hover:text-paper transition-colors duration-200">Facebook</a>
