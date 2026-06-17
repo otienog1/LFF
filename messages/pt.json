@@ -1,0 +1,36 @@
+{
+  "nav": {
+    "about": "Sobre",
+    "ourWork": "Nosso Trabalho",
+    "projects": "Projetos",
+    "impact": "Impacto",
+    "getInvolved": "Participe",
+    "donate": "Doar",
+    "openMenu": "Abrir menu"
+  },
+  "footer": {
+    "tagline": "Protegendo a vida selvagem capacitando comunidades no ecossistema de Amboseli, no Quénia, e além.",
+    "getInTouch": "Entre em contacto",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "youtube": "YouTube",
+    "rights": "Fundação Luigi Footprints. Todos os direitos reservados.",
+    "motto": "Protegendo a Fauna. Capacitando Comunidades. Inspirando a Mudança."
+  },
+  "contact": {
+    "emailLabel": "Email",
+    "followLabel": "Seguir"
+  },
+  "projects": {
+    "allProjects": "Todos os Projetos",
+    "aboutThisProject": "Sobre este projeto",
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "moreProjects": "Mais Projetos",
+    "fallbackMeta": "Um projeto de campo da Fundação Luigi Footprints."
+  },
+  "common": {
+    "learnMore": "Saber Mais",
+    "readMore": "Ler Mais"
+  }
+}
