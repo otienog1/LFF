@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import ContactForm from '@/components/contact/ContactForm'
 import { getPage } from '@/lib/content'
 import type { ContactBlock as ContactBlockType } from '@/types/content'
@@ -10,6 +10,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function ContactPage() {
+  setRequestLocale('en')
   const t = await getTranslations('contact')
   const page = getPage('/contact')
   const [hero] = (page?.blocks ?? []) as [ContactBlockType]

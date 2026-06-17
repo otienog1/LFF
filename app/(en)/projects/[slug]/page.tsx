@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getProject, getProjects } from "@/lib/projects";
 import { getPage } from "@/lib/content";
 import type { ProjectsHeroBlock, CommitmentBlock } from "@/types/content";
@@ -17,6 +17,7 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
+  setRequestLocale('en');
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
@@ -46,6 +47,7 @@ export default async function ProjectPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  setRequestLocale('en');
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
