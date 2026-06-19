@@ -124,10 +124,11 @@ export default function DonateClient() {
   const headline = t('headline').split('\n')
 
   return (
-    <section className="bg-paper min-h-svh grid grid-cols-1 lg:grid-cols-2">
+    <section className="grid grid-cols-1 lg:grid-cols-2">
 
       {/* Left: editorial panel */}
-      <div className="bg-ink flex flex-col justify-end px-10 pt-40 pb-16 lg:sticky lg:top-0 lg:h-svh">
+      <div className="bg-ink flex flex-col justify-end px-8 md:px-16 pt-40 pb-16
+                      lg:sticky lg:top-16 lg:h-[calc(100svh-4rem)] lg:pt-20">
         <Eyebrow className="text-paper/70! mb-6">{t('supportMission')}</Eyebrow>
         <h1 className="display-1 text-paper mb-8">
           {headline.map((line, i) => (
@@ -141,7 +142,8 @@ export default function DonateClient() {
       </div>
 
       {/* Right: form panel */}
-      <div className="flex flex-col justify-center px-10 pt-16 lg:pt-0 pb-16 min-h-svh">
+      <div className="flex flex-col justify-center px-8 md:px-16 py-16 lg:py-24 lg:min-h-[calc(100svh-4rem)]">
+        <div className="max-w-md w-full mx-auto">
 
         {/* Step indicator */}
         <div className="flex items-center gap-4 mb-12">
@@ -339,6 +341,7 @@ export default function DonateClient() {
           </div>
         )}
 
+        </div>{/* /max-w-md */}
       </div>
     </section>
   )
