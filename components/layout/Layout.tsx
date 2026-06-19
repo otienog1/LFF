@@ -10,6 +10,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import { BackToTop } from '@/components/ui/BackToTop'
+import { PageTransition } from './PageTransition'
 import en from '@/messages/en.json'
 import es from '@/messages/es.json'
 import pt from '@/messages/pt.json'
@@ -79,6 +80,7 @@ export default function Layout({ children }: LayoutProps) {
         </main>
         <Footer />
         <BackToTop />
+        <PageTransition />
       </LenisContext.Provider>
     </NextIntlClientProvider>
   )

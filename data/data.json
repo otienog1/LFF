@@ -103,7 +103,17 @@
           "cta": {
             "label": "Get Involved",
             "link": "/get-involved"
-          }
+          },
+          "images": [
+            {
+              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp",
+              "alt": "Join hands with Luigi Footprints Foundation"
+            },
+            {
+              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
+              "alt": "Community members planting trees together"
+            }
+          ]
         }
       ]
     },
@@ -237,7 +247,17 @@
           "cta": {
             "label": "Get Involved",
             "link": "/get-involved"
-          }
+          },
+          "images": [
+            {
+              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp",
+              "alt": "Support the Luigi Footprints Foundation"
+            },
+            {
+              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
+              "alt": "Community members planting trees together"
+            }
+          ]
         }
       ]
     },
@@ -477,7 +497,17 @@
           "cta": {
             "label": "Donate & Support Us",
             "link": "/donate"
-          }
+          },
+          "images": [
+            {
+              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp",
+              "alt": "Empower communities and protect wildlife"
+            },
+            {
+              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
+              "alt": "Community members planting trees together"
+            }
+          ]
         }
       ]
     },

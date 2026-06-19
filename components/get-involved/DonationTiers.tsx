@@ -1,5 +1,6 @@
+'use client';
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import { buttonVariants } from "@/components/ui/button";
 
 const TIERS = [
@@ -9,8 +10,8 @@ const TIERS = [
   { amount: "$250", key: "steward" },
 ] as const;
 
-export async function DonationTiers() {
-  const t = await getTranslations('getInvolved');
+export function DonationTiers() {
+  const t = useTranslations('getInvolved');
   return (
     <section className="bg-paper-deep border-b border-line py-20 md:py-28">
       <div className="container">

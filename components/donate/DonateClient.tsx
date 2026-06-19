@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js'
 import gsap from 'gsap'
@@ -124,37 +125,51 @@ export default function DonateClient() {
   const headline = t('headline').split('\n')
 
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2">
+    <section className="grid grid-cols-1 lg:grid-cols-2 lg:pt-16">
 
       {/* Left: editorial panel */}
-      <div className="bg-ink flex flex-col justify-end px-8 md:px-16 pt-40 pb-16
-                      lg:sticky lg:top-16 lg:h-[calc(100svh-4rem)] lg:pt-20">
-        <Eyebrow className="text-paper/70! mb-6">{t('supportMission')}</Eyebrow>
-        <h1 className="display-1 text-paper mb-8">
-          {headline.map((line, i) => (
-            <span key={i}>{line}{i < headline.length - 1 && <br />}</span>
-          ))}
-        </h1>
-        <div className="w-8 h-px bg-green mb-8" />
-        <p className="text-paper/70 text-sm leading-relaxed max-w-sm">
-          {t('bodyText')}
-        </p>
+      <div className="relative overflow-hidden bg-ink flex flex-col justify-end px-8 md:px-16 pt-40 pb-16
+                      lg:sticky lg:top-0 lg:h-svh lg:pt-20">
+        {/* Background image */}
+        <Image
+          src="https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp"
+          alt=""
+          fill
+          sizes="50vw"
+          className="object-cover object-center"
+          priority
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-ink/65" />
+        {/* Content */}
+        <div className="relative z-10">
+          <Eyebrow className="text-paper/70! mb-6">{t('supportMission')}</Eyebrow>
+          <h1 className="display-1 text-paper mb-8">
+            {headline.map((line, i) => (
+              <span key={i}>{line}{i < headline.length - 1 && <br />}</span>
+            ))}
+          </h1>
+          <div className="w-8 h-px bg-green mb-8" />
+          <p className="text-paper/70 text-sm leading-relaxed max-w-sm">
+            {t('bodyText')}
+          </p>
+        </div>
       </div>
 
       {/* Right: form panel */}
-      <div className="flex flex-col justify-center px-8 md:px-16 py-16 lg:py-24 lg:min-h-[calc(100svh-4rem)]">
-        <div className="max-w-md w-full mx-auto">
+      <div className="flex flex-col justify-center py-16 lg:py-24 lg:min-h-svh">
+        <div className="w-full pl-6 md:pl-10 pr-6">
 
         {/* Step indicator */}
         <div className="flex items-center gap-4 mb-12">
           <div className="flex items-center gap-2">
             <span className={`eyebrow transition-colors duration-300 ${page === 1 ? 'text-green' : 'text-ink/30'}`}>01</span>
-            <span className={`text-[11px] uppercase tracking-widest transition-colors duration-300 ${page === 1 ? 'text-ink' : 'text-ink/30'}`}>{t('step1')}</span>
+            <span className={`text-[11px] uppercase tracking-[0.06em]r transition-colors duration-300 ${page === 1 ? 'text-ink' : 'text-ink/30'}`}>{t('step1')}</span>
           </div>
           <div className="flex-1 h-px bg-line" />
           <div className="flex items-center gap-2">
             <span className={`eyebrow transition-colors duration-300 ${page === 2 ? 'text-green' : 'text-ink/30'}`}>02</span>
-            <span className={`text-[11px] uppercase tracking-widest transition-colors duration-300 ${page === 2 ? 'text-ink' : 'text-ink/30'}`}>{t('step2')}</span>
+            <span className={`text-[11px] uppercase tracking-[0.06em]r transition-colors duration-300 ${page === 2 ? 'text-ink' : 'text-ink/30'}`}>{t('step2')}</span>
           </div>
         </div>
 
@@ -164,7 +179,7 @@ export default function DonateClient() {
 
             {/* Currency tabs */}
             <div className="space-y-3">
-              <p className="eyebrow">{t('currencyLabel')}</p>
+              <p className="eyebrow [letter-spacing:0.06em]">{t('currencyLabel')}</p>
               <div className="flex gap-2 flex-wrap">
                 {CURRENCIES.map(c => (
                   <button
@@ -172,7 +187,7 @@ export default function DonateClient() {
                     type="button"
                     onClick={() => { setCurrency(c); setAmount(AMOUNTS[c]?.[1] ?? '25') }}
                     className={[
-                      'text-[11px] uppercase tracking-[0.12em] px-5 py-2.5 border transition-all duration-200',
+                      'text-[11px] uppercase tracking-[0.06em] px-5 py-2.5 border transition-all duration-200',
                       currency === c
                         ? 'bg-green text-paper border-green'
                         : 'border-line text-ink-soft hover:border-green hover:text-ink',
@@ -186,7 +201,7 @@ export default function DonateClient() {
 
             {/* Amount grid */}
             <div className="space-y-3">
-              <p className="eyebrow">{t('selectAmount')}</p>
+              <p className="eyebrow [letter-spacing:0.06em]">{t('selectAmount')}</p>
               <div className="grid grid-cols-3 gap-2">
                 {(AMOUNTS[currency] ?? AMOUNTS.USD).map(v => (
                   <button
@@ -208,7 +223,7 @@ export default function DonateClient() {
 
             {/* Custom amount */}
             <div className="space-y-2">
-              <Label htmlFor="custom-amount" className="eyebrow">
+              <Label htmlFor="custom-amount" className="eyebrow [letter-spacing:0.06em]">
                 {t('customAmount')}
               </Label>
               <div className="relative flex items-center">
@@ -227,7 +242,7 @@ export default function DonateClient() {
             <Button
               onClick={() => setPage(2)}
               disabled={!validAmount}
-              className="w-full rounded-none"
+              className="w-full"
             >
               {t('continueBtn')}{validAmount ? ` — ${fmt.format(parsedAmount)}` : ''} →
             </Button>
@@ -248,7 +263,7 @@ export default function DonateClient() {
 
             {/* Payment method tabs */}
             <div className="space-y-3">
-              <p className="eyebrow">{t('paymentMethod')}</p>
+              <p className="eyebrow [letter-spacing:0.06em]">{t('paymentMethod')}</p>
               <div className="flex gap-2">
                 {PAYMENT_METHODS.map(m => (
                   <button
@@ -256,7 +271,7 @@ export default function DonateClient() {
                     type="button"
                     onClick={() => setPaymentMethod(m.id)}
                     className={[
-                      'text-[11px] uppercase tracking-[0.12em] px-5 py-3 border transition-all duration-200',
+                      'text-[11px] uppercase tracking-[0.06em] px-5 py-3 border transition-all duration-200',
                       paymentMethod === m.id
                         ? 'bg-green text-paper border-green'
                         : 'border-line text-ink-soft hover:border-green hover:text-ink',
@@ -276,7 +291,7 @@ export default function DonateClient() {
                 </p>
                 <Button
                   onClick={() => typeof Checkout !== 'undefined' && Checkout.showLightbox?.()}
-                  className="w-full rounded-none"
+                  className="w-full"
                 >
                   {t('payWithCard')}
                 </Button>
@@ -299,7 +314,7 @@ export default function DonateClient() {
             {paymentMethod === 'mpesa' && (
               <div className="space-y-5">
                 <div className="space-y-2">
-                  <Label htmlFor="phone" className="eyebrow">
+                  <Label htmlFor="phone" className="eyebrow [letter-spacing:0.06em]">
                     {t('phoneLabel')}
                   </Label>
                   <Input
@@ -314,7 +329,7 @@ export default function DonateClient() {
                 <Button
                   onClick={handleMpesa}
                   disabled={loading || !phone}
-                  className="w-full rounded-none"
+                  className="w-full"
                 >
                   {loading ? t('processing') : t('payMpesa')}
                 </Button>
@@ -324,7 +339,7 @@ export default function DonateClient() {
             <button
               type="button"
               onClick={() => setPage(1)}
-              className="text-[11px] uppercase tracking-[0.12em] text-ink-soft hover:text-ink transition-colors duration-200"
+              className="text-[11px] uppercase tracking-[0.06em] text-ink-soft hover:text-ink transition-colors duration-200"
             >
               {t('changeAmount')}
             </button>

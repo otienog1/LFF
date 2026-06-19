@@ -52,7 +52,7 @@ export default function Navbar() {
           : "bg-transparent"
       )}
     >
-      <nav className="container flex items-center justify-between py-4">
+      <nav className="container flex items-center justify-between py-2.5">
         {/* Logo */}
         <Link href={prefix || "/"} className={cn("font-display text-xl transition-colors duration-300", solid ? "text-ink" : "text-paper")}>
           The Luigi Footprints Foundation
@@ -70,7 +70,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link href={prefix + "/donate"} className={buttonVariants()}>{t("donate")}</Link>
-          <LocaleSwitcher />
+          <LocaleSwitcher solid={solid} />
         </div>
 
         {/* Mobile hamburger + Sheet */}
@@ -91,7 +91,7 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <Link href={prefix + "/donate"} className={buttonVariants()}>{t("donate")}</Link>
-                <LocaleSwitcher />
+                <LocaleSwitcher solid={true} />
               </div>
             </SheetContent>
           </Sheet>

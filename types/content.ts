@@ -12,7 +12,7 @@ export interface ImpactItem { title: string; description: string; }
 export interface ImpactBlock extends BlockBase { type: "impact"; items: ImpactItem[]; }
 export interface TeamMember { name: string; role: string; bio: string; image: ImageRef; }
 export interface TeamBlock extends BlockBase { type: "team"; items: TeamMember[]; }
-export interface CtaBlock extends BlockBase { type: "cta"; }
+export interface CtaBlock extends BlockBase { type: "cta"; images?: ImageRef[]; }
 export interface ContactBlock extends BlockBase { type: "contact"; }
 export interface ProjectsHeroBlock extends BlockBase { type: "projects-hero"; }
 export interface CommitmentBlock extends BlockBase { type: "commitment"; }
