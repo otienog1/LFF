@@ -1,7 +1,9 @@
 'use client';
 import { useEffect, useRef, useCallback } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import gsap from 'gsap';
+
+const NAV_DELAY = 600; // ms to show loading screen before navigating
 
 export function PageTransition() {
   const overlayRef  = useRef<HTMLDivElement>(null);
@@ -11,6 +13,7 @@ export function PageTransition() {
   const minTime     = useRef(0);
   const progress    = useRef({ value: 0 });
   const pathname    = usePathname();
+  const router      = useRouter();
 
   const show = useCallback(() => {
     const el  = overlayRef.current;
@@ -91,15 +94,24 @@ export function PageTransition() {
         href.startsWith('#')
       ) return;
       if (href === window.location.pathname) return;
+      e.preventDefault();
       show();
+      setTimeout(() => router.push(href), NAV_DELAY);
     };
+
+    const onLocaleNav = (e: Event) => {
+      const href = (e as CustomEvent<string>).detail;
+      show();
+      setTimeout(() => router.push(href), NAV_DELAY);
+    };
+
     document.addEventListener('click', onClick);
-    window.addEventListener('page-transition-start', show);
+    window.addEventListener('page-transition-start', onLocaleNav);
     return () => {
       document.removeEventListener('click', onClick);
-      window.removeEventListener('page-transition-start', show);
+      window.removeEventListener('page-transition-start', onLocaleNav);
     };
-  }, [show]);
+  }, [show, router]);
 
   return (
     <div

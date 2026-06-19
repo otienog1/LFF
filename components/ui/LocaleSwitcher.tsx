@@ -1,6 +1,5 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { ChevronDownIcon, CheckIcon } from 'lucide-react';
@@ -18,7 +17,6 @@ interface Props { solid?: boolean; mobile?: boolean }
 export default function LocaleSwitcher({ solid = false, mobile = false }: Props) {
   const locale = useLocale();
   const pathname = usePathname();
-  const router = useRouter();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const active = LOCALES.find(l => l.code === locale) ?? LOCALES[0];
@@ -32,8 +30,7 @@ export default function LocaleSwitcher({ solid = false, mobile = false }: Props)
   function navigate(code: string) {
     setOpen(false);
     if (code === locale) return;
-    window.dispatchEvent(new CustomEvent('page-transition-start'));
-    router.push(getLocalizedHref(code));
+    window.dispatchEvent(new CustomEvent('page-transition-start', { detail: getLocalizedHref(code) }));
   }
 
   useEffect(() => {
