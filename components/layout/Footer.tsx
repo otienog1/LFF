@@ -25,7 +25,7 @@ export default function Footer() {
         </div>
 
         {/* Nav */}
-        <nav aria-label="Footer" className="flex-1 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-paper/50">
+        <nav aria-label="Footer" className="flex-1 flex flex-wrap justify-start md:justify-center gap-x-6 gap-y-2 text-sm text-paper/50">
           {NAV_HREFS.map((href, i) => (
             <Link key={href} href={prefix + href} className="hover:text-paper transition-colors">
               {tNav(NAV_KEYS[i])}
@@ -40,7 +40,7 @@ export default function Footer() {
             className="text-xs text-paper/40 hover:text-paper transition-colors">
             info@theluigifootprints.org
           </a>
-          <div className="mt-2 flex gap-3 md:justify-end text-xs text-paper/30">
+          <div className="mt-2 flex gap-3 md:justify-end text-xs text-paper/30 justify-start">
             <a href="https://www.facebook.com/ManiagoSafarisEastAfrica" target="_blank" rel="noopener noreferrer" className="hover:text-paper/80 transition-colors">{t("facebook")}</a>
             <a href="https://www.instagram.com/maniagosafaris/" target="_blank" rel="noopener noreferrer" className="hover:text-paper/80 transition-colors">{t("instagram")}</a>
             <a href="https://www.youtube.com/channel/UCVmNdFZ3SvfszacIMCfpPHg" target="_blank" rel="noopener noreferrer" className="hover:text-paper/80 transition-colors">{t("youtube")}</a>

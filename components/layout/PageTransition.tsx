@@ -111,13 +111,13 @@ export function PageTransition() {
         <span
           ref={numRef}
           className="font-display text-ink"
-          style={{ fontSize: 'clamp(80px, 14vw, 140px)', letterSpacing: '-0.04em', lineHeight: 1 }}
+          style={{ fontSize: 'clamp(48px, 8vw, 80px)', letterSpacing: '-0.04em', lineHeight: 1 }}
         >
           0
         </span>
         <span
           className="font-display text-ink/25"
-          style={{ fontSize: 'clamp(24px, 4vw, 44px)', marginTop: '0.12em', marginLeft: '4px', lineHeight: 1 }}
+          style={{ fontSize: 'clamp(14px, 2.2vw, 24px)', marginTop: '0.12em', marginLeft: '3px', lineHeight: 1 }}
         >
           %
         </span>

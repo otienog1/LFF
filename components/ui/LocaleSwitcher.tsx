@@ -13,9 +13,9 @@ const LOCALES = [
   { code: 'pt', label: 'PT', Flag: PT },
 ];
 
-interface Props { solid?: boolean }
+interface Props { solid?: boolean; mobile?: boolean }
 
-export default function LocaleSwitcher({ solid = false }: Props) {
+export default function LocaleSwitcher({ solid = false, mobile = false }: Props) {
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
@@ -44,6 +44,27 @@ export default function LocaleSwitcher({ solid = false }: Props) {
     document.addEventListener('mousedown', onOutside);
     return () => document.removeEventListener('mousedown', onOutside);
   }, [open]);
+
+  if (mobile) {
+    return (
+      <div className="flex items-center gap-4">
+        {LOCALES.map(({ code, label, Flag }) => (
+          <button
+            key={code}
+            type="button"
+            onClick={() => navigate(code)}
+            className={cn(
+              'flex items-center gap-2 text-[11px] tracking-[0.12em] uppercase font-medium transition-colors duration-200 outline-none',
+              locale === code ? 'text-paper' : 'text-paper/30 hover:text-paper/60'
+            )}
+          >
+            <Flag className="w-5 h-auto" aria-hidden="true" />
+            {label}
+          </button>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div ref={ref} className="relative">
