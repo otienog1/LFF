@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
@@ -27,14 +28,20 @@ export default function Navbar() {
     { href: prefix + "/get-involved", label: t("getInvolved") },
   ], [prefix, t]);
 
-  const [solid, setSolid] = useState(false);
+  const pathname = usePathname();
+  // Pages with a light background at the top need the navbar always solid
+  const alwaysSolid = /\/(donate|contact)$/.test(pathname);
+
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const solid = alwaysSolid || scrolled;
 
   return (
     <header
