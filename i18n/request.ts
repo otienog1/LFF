@@ -8,5 +8,5 @@ const messages = { en, es, pt } as const;
 export default getRequestConfig(async ({ requestLocale }) => {
   const locale = (await requestLocale) ?? 'en';
   const msgs = messages[locale as keyof typeof messages] ?? messages.en;
-  return { locale, messages: msgs };
+  return { locale, messages: msgs, timeZone: 'Africa/Nairobi' };
 });

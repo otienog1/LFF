@@ -71,7 +71,7 @@ export default function Layout({ children }: LayoutProps) {
   }, { scope: mainRef, dependencies: [] })
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
+    <NextIntlClientProvider locale={locale} messages={messages} timeZone="Africa/Nairobi">
       <LenisContext.Provider value={lenis}>
         <Navbar />
         <main ref={mainRef} className="min-h-screen">
