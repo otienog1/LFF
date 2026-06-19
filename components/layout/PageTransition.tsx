@@ -77,6 +77,7 @@ export function PageTransition() {
 
   useEffect(() => { hide(); }, [pathname, hide]);
 
+
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       const anchor = (e.target as HTMLElement).closest('a');

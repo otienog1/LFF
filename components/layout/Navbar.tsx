@@ -88,7 +88,7 @@ export default function Navbar() {
 
                 {/* Custom close button */}
                 <SheetClose className="absolute top-4 right-5 text-paper/50 hover:text-paper border border-paper/20 hover:border-paper/60 rounded-none p-2 transition-colors duration-200">
-                  <X size={44} aria-hidden="true" />
+                  <X size={20} aria-hidden="true" />
                   <span className="sr-only">Close</span>
                 </SheetClose>
 
