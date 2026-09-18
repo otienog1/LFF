@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getPage } from "@/lib/content";
-import { HeroBlock } from "@/components/blocks/HeroBlock";
-import { CardsBlock } from "@/components/blocks/CardsBlock";
-import { ContentBlock } from "@/components/blocks/ContentBlock";
+import { getProjectsBySlugs } from "@/lib/projects";
+import { pageMetadata } from "@/lib/site";
+import { InteriorHero } from "@/components/shared/InteriorHero";
+import { Lede } from "@/components/home/Lede";
+import { WaysIndex } from "@/components/get-involved/WaysIndex";
+import { StorySpread } from "@/components/shared/StorySpread";
 import { CtaBlock } from "@/components/blocks/CtaBlock";
-import { DonationTiers } from "@/components/get-involved/DonationTiers";
-import { PartnerStrip } from "@/components/get-involved/PartnerStrip";
 import type {
   HeroBlock as HeroBlockType,
   CardsBlock as CardsBlockType,
@@ -14,26 +16,31 @@ import type {
 } from "@/types/content";
 
 export function generateMetadata(): Metadata {
-  const page = getPage("/get-involved");
-  return { title: page?.seo.title, description: page?.seo.description };
+  return pageMetadata(getPage("/get-involved"), "/get-involved", "en");
 }
 
-export default function GetInvolvedPage() {
+export default async function GetInvolvedPage() {
+  // Static rendering: every page that reads translations must set the locale itself.
+  setRequestLocale("en");
   const page = getPage("/get-involved");
   if (!page) return null;
-  const [hero, ways, tourism, cta] = page.blocks as [
-    HeroBlockType,
-    CardsBlockType,
-    ContentBlockType,
-    CtaBlockType,
-  ];
+  const tNav = await getTranslations("nav");
+  const tCommon = await getTranslations("common");
+  const [hero, ways, tourism, cta] = page.blocks as [HeroBlockType, CardsBlockType, ContentBlockType, CtaBlockType];
   return (
     <>
-      <HeroBlock block={hero} variant="interior-dropcap" />
-      <CardsBlock block={ways} />
-      <DonationTiers />
-      <ContentBlock block={tourism} index={0} variant="deep" />
-      <PartnerStrip />
+      <InteriorHero block={hero} />
+      {hero.content && <Lede number="01" text={hero.content} />}
+      <WaysIndex block={ways} number="02" locale="en" actions={{ "/donate": tNav("donate"), "/contact": tCommon("writeToUs") }} />
+      <StorySpread
+        block={tourism}
+        number="03"
+        side="left"
+        tone="deep"
+        projects={getProjectsBySlugs(tourism.projects ?? [], "en")}
+        locale="en"
+        fieldLabel={tCommon("fromTheField")}
+      />
       <CtaBlock block={cta} />
     </>
   );

@@ -1,0 +1,259 @@
+[
+  {
+    "id": "lff-home-2026-09-17-pass2",
+    "date": "2026-09-17",
+    "page": "/",
+    "mood": "elegant",
+    "macrostructure": "Editorial Chapters (numbered chapters on a hairline column grid)",
+    "archetypes": {
+      "nav": "product bar: wordmark, inline links, primary button, locale switcher",
+      "hero": "full-bleed photograph with hairline frame, corner notes, headline bottom-left, scroll cue",
+      "feature": "numbered index rows (programmes)",
+      "proof": "two-by-two figures rising from masks beside one photograph",
+      "cta": "invitation with paired portraits",
+      "footer": "editorial three-column",
+      "sectionHead": "chapter numeral + rule + eyebrow, then split-reveal heading"
+    },
+    "arc": [
+      "hook: hero",
+      "problem/solution: opening lede + belief",
+      "how it works: programmes index",
+      "proof: numbers",
+      "close: statement band + invitation"
+    ],
+    "critique": {
+      "showTell": 4,
+      "philosophy": 4,
+      "hierarchy": 5,
+      "specificity": 4,
+      "restraint": 4,
+      "variety": 4
+    },
+    "outcome": "pending"
+  },
+  {
+    "id": "lff-about-2026-09-17",
+    "date": "2026-09-17",
+    "page": "/about",
+    "mood": "elegant",
+    "macrostructure": "Editorial Chapters (same grid as home)",
+    "archetypes": {
+      "nav": "product bar",
+      "hero": "full-bleed photograph, interior height, no frame or corner notes",
+      "feature": "three statements in the display face (principles)",
+      "proof": "trustee rows with full biographies, portrait as tall as its own row",
+      "cta": "invitation with paired field photographs",
+      "footer": "editorial three-column",
+      "sectionHead": "chapter numeral + rule + eyebrow, split-reveal heading"
+    },
+    "arc": [
+      "hook: hero",
+      "story: opening paragraph",
+      "problem/solution: legacy",
+      "voice: in his words",
+      "values: principles",
+      "people: trustees",
+      "close: invitation"
+    ],
+    "critique": {
+      "showTell": 4,
+      "philosophy": 4,
+      "hierarchy": 5,
+      "specificity": 5,
+      "restraint": 4,
+      "variety": 4
+    },
+    "outcome": "pending"
+  },
+  {
+    "id": "lff-our-work-2026-09-17",
+    "date": "2026-09-17",
+    "page": "/our-work",
+    "mood": "elegant",
+    "macrostructure": "Editorial Chapters (programme spreads)",
+    "archetypes": {
+      "nav": "product bar",
+      "hero": "full-bleed photograph, interior height, no frame",
+      "feature": "one pinned column of stacked photographs (left), four scrolling texts (middle), thumbnail rail navigation (right); wipe transitions",
+      "proof": "field-project rows with photographs and dates under each programme",
+      "cta": "left-aligned invitation, primary button and text link",
+      "footer": "editorial three-column",
+      "sectionHead": "chapter numeral + rule + eyebrow, split-reveal heading"
+    },
+    "arc": [
+      "hook: hero",
+      "frame: opening lede",
+      "how it works: four programme chapters",
+      "proof: field projects inside each chapter",
+      "close: invitation to impact and involvement"
+    ],
+    "critique": {
+      "showTell": 5,
+      "philosophy": 4,
+      "hierarchy": 5,
+      "specificity": 5,
+      "restraint": 4,
+      "variety": 4
+    },
+    "outcome": "pending"
+  },
+  {
+    "id": "lff-impact-2026-09-17",
+    "date": "2026-09-17",
+    "page": "/impact",
+    "mood": "elegant",
+    "macrostructure": "Editorial Chapters",
+    "archetypes": {
+      "nav": "product bar",
+      "hero": "full-bleed photograph, interior height, no frame",
+      "feature": "figures ledger on ink (numeral left, description right, drawn hairlines)",
+      "proof": "emergency-response spread with field-project rows; four photograph-led meanings linking to programmes",
+      "cta": "left-aligned invitation, primary button and text link",
+      "footer": "editorial three-column",
+      "sectionHead": "chapter numeral + rule + eyebrow, split-reveal heading"
+    },
+    "arc": [
+      "hook: hero",
+      "frame: opening lede",
+      "proof: figures",
+      "story: emergency response + projects",
+      "meaning: what the numbers mean",
+      "close: invitation"
+    ],
+    "critique": {
+      "showTell": 5,
+      "philosophy": 4,
+      "hierarchy": 5,
+      "specificity": 5,
+      "restraint": 4,
+      "variety": 4
+    },
+    "outcome": "pending"
+  },
+  {
+    "id": "lff-get-involved-2026-09-18",
+    "date": "2026-09-18",
+    "page": "/get-involved",
+    "mood": "elegant",
+    "macrostructure": "Editorial Chapters",
+    "archetypes": {
+      "nav": "product bar",
+      "hero": "full-bleed photograph, interior height, no frame",
+      "feature": "action index rows with square photographs and destination labels",
+      "proof": "tourism spread with a field-project row",
+      "cta": "invitation with paired photographs",
+      "footer": "editorial three-column",
+      "sectionHead": "chapter numeral + rule + eyebrow, split-reveal heading"
+    },
+    "arc": [
+      "hook: hero",
+      "frame: opening lede",
+      "how to help: four actions",
+      "story: conservation through tourism",
+      "close: invitation"
+    ],
+    "critique": {
+      "showTell": 4,
+      "philosophy": 4,
+      "hierarchy": 5,
+      "specificity": 5,
+      "restraint": 4,
+      "variety": 4
+    },
+    "outcome": "pending"
+  },
+  {
+    "id": "lff-projects-2026-09-18",
+    "date": "2026-09-18",
+    "page": "/projects",
+    "mood": "elegant",
+    "macrostructure": "Editorial Chapters",
+    "archetypes": {
+      "nav": "product bar",
+      "hero": "full-bleed photograph, interior height, no frame",
+      "feature": "flagship chapter on ink: full-width photograph, opening of the write-up, figure, sponsorship panel, photograph row",
+      "proof": "photograph-led archive grid, three to a row",
+      "cta": "sponsorship panel inside the flagship chapter",
+      "footer": "editorial three-column",
+      "sectionHead": "chapter numeral + rule + eyebrow, split-reveal heading"
+    },
+    "arc": [
+      "hook: hero",
+      "frame: opening line",
+      "flagship: Dignity Housing with the ask",
+      "archive: the other nine"
+    ],
+    "critique": {
+      "showTell": 5,
+      "philosophy": 4,
+      "hierarchy": 5,
+      "specificity": 5,
+      "restraint": 4,
+      "variety": 4
+    },
+    "outcome": "pending"
+  },
+  {
+    "id": "lff-donate-2026-09-18",
+    "date": "2026-09-18",
+    "page": "/donate",
+    "mood": "elegant",
+    "macrostructure": "Editorial Chapters",
+    "archetypes": {
+      "nav": "product bar",
+      "hero": "full-bleed photograph, interior height, no frame",
+      "feature": "project cards with reported progress; per project an itemised ledger beside a pinned photograph that shows the item pointed at",
+      "proof": "the project story with its reported progress, and its own field photographs",
+      "cta": "your gift: chosen lines by project, total, donor details, Paystack; the same chapter becomes the confirmation",
+      "footer": "editorial three-column",
+      "sectionHead": "chapter numeral + rule + eyebrow, split-reveal heading"
+    },
+    "arc": [
+      "hook: hero",
+      "frame: what a gift funds",
+      "choose: six projects",
+      "give: any amount where needed most",
+      "close: your gift and the checkout"
+    ],
+    "critique": {
+      "showTell": 4,
+      "philosophy": 4,
+      "hierarchy": 5,
+      "specificity": 5,
+      "restraint": 4,
+      "variety": 4
+    },
+    "outcome": "pending"
+  },
+  {
+    "id": "lff-contact-2026-09-18",
+    "date": "2026-09-18",
+    "page": "/contact",
+    "mood": "elegant",
+    "macrostructure": "Editorial Chapters",
+    "archetypes": {
+      "nav": "product bar",
+      "hero": "full-bleed photograph, interior height, no frame",
+      "feature": "the letter: underline fields on the right seven columns, the ways to reach the foundation as a definition list on the left four",
+      "proof": "the page's own opening line; the foundation's address, social links and place",
+      "cta": "the home invitation without portraits",
+      "footer": "editorial three-column",
+      "sectionHead": "chapter numeral + rule + eyebrow, split-reveal heading"
+    },
+    "arc": [
+      "hook: hero",
+      "frame: what to write about",
+      "act: the letter and the direct ways",
+      "close: the invitation"
+    ],
+    "critique": {
+      "showTell": 4,
+      "philosophy": 4,
+      "hierarchy": 5,
+      "specificity": 4,
+      "restraint": 5,
+      "variety": 4
+    },
+    "outcome": "pending"
+  }
+]

@@ -40,3 +40,4 @@ yarn-error.log*
 # tooling artifacts
 /graphify-out/
 /.superpowers/
+.pnp.loader.mjs

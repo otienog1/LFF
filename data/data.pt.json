@@ -4,188 +4,192 @@
       "slug": "/",
       "title": "Início",
       "seo": {
-        "title": "Luigi Footprints Foundation | Conservação da Fauna Liderada pela Comunidade",
-        "description": "Protegendo a fauna capacitando comunidades. Descubra como a Luigi Footprints Foundation equilibra a restauração do ecossistema, a coexistência humano-fauna e a educação no Quénia."
+        "title": "Luigi Footprints Foundation | Conservação comunitária no Quênia",
+        "description": "Uma fundação queniana que protege a vida selvagem fortalecendo as comunidades que convivem com ela: educação, viveiros de árvores, empreendedorismo feminino e convivência entre pessoas e animais no ecossistema de Amboseli, no Parque Nacional de Nairóbi e na Reserva Nacional de Samburu."
       },
       "blocks": [
         {
           "id": "home-hero",
           "type": "hero",
-          "title": "Construindo um Futuro onde Comunidades e Fauna Prosperam Juntas",
-          "subtitle": "Protegendo a Fauna. Capacitando Comunidades. Inspirando a Mudança.",
-          "content": "Na Luigi Footprints Foundation (LFF), acreditamos que a conservação duradoura começa pelas pessoas. Em todo o ecossistema de Amboseli no Quénia e além, criamos soluções sustentáveis que capacitam as comunidades locais, restauram ecossistemas, protegem a fauna e inspiram a próxima geração de líderes em conservação.",
+          "title": "Proteger a vida selvagem fortalecendo comunidades",
+          "subtitle": "Conservação liderada pelas comunidades no Quênia, do ecossistema de Amboseli ao Parque Nacional de Nairóbi e à Reserva Nacional de Samburu.",
+          "content": "No coração do Quênia, onde os elefantes ainda seguem antigas rotas migratórias e as comunidades convivem com a vida selvagem há gerações, o futuro das pessoas e o da natureza estão profundamente ligados. Acreditamos que conservação não é apenas proteger animais. É criar oportunidades, restaurar a dignidade e dar às comunidades os meios para construir um futuro sustentável. Quando as comunidades prosperam, a vida selvagem também prospera.",
           "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Luigi.webp",
-            "alt": "Fauna e paisagens do ecossistema Amboseli do Quénia"
+            "url": "/index/give.webp",
+            "alt": "Uma manada de elefantes caminhando entre acácias, com garças-boieiras a seus pés"
           },
           "cta": {
-            "label": "Explorar o Nosso Trabalho",
+            "label": "Conheça nosso trabalho",
             "link": "/our-work"
           }
         },
         {
           "id": "home-philosophy",
           "type": "content",
-          "title": "O Nosso Princípio Fundamental",
-          "subtitle": "A Dignidade das Comunidades é Igual à Proteção da Fauna.",
-          "content": "Não vemos a conservação da fauna e o desenvolvimento humano como objetivos separados — estão profundamente interligados. Quando as comunidades prosperam, a fauna prospera. Quando os ecossistemas são restaurados, as oportunidades económicas sustentáveis crescem. Ao reunir educação, restauração ambiental, capacitação económica e mitigação inovadora de conflitos, construímos um futuro onde as pessoas e a natureza florescem juntas.",
+          "title": "No que acreditamos",
+          "subtitle": "Dignidade para as comunidades equivale a proteção para a vida selvagem.",
+          "content": "Por muito tempo, a conservação foi tratada como algo separado do dia a dia das pessoas. Nossa experiência mostra o contrário. As comunidades que vivem mais perto da vida selvagem não são obstáculos à conservação. São suas maiores parceiras.\n\nQuando os jovens recebem educação, tornam-se os próximos líderes da conservação. Quando as mulheres têm renda, as famílias ficam mais resilientes. Quando as paisagens são restauradas, a vida selvagem e as pessoas se beneficiam. E quando as pessoas se sentem incluídas e respeitadas, a conservação dura.",
           "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
-            "alt": "Membros da comunidade a trabalhar juntos em iniciativas ambientais"
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/15.webp",
+            "alt": "Jovens voluntários plantando mudas de mangue no litoral do Quênia",
+            "aspect": "4/3"
           }
         },
         {
-          "id": "home-focus-areas",
+          "id": "home-programmes",
           "type": "cards",
-          "title": "Como Criamos a Mudança",
-          "subtitle": "A nossa abordagem holística para a conservação centrada na comunidade.",
-          "content": "",
-          "image": null,
+          "title": "O que fazemos",
+          "subtitle": "Quatro programas, uma ideia: uma conservação que compensa para quem vive mais perto dela.",
           "items": [
             {
-              "title": "Educação e Juventude",
-              "description": "Equipando os jovens com bolsas de estudo, formação em liderança e programas de conservação para cultivar a próxima geração de guardiões ambientais."
+              "title": "Educação e juventude",
+              "description": "Bolsas para o ensino médio, oficinas de conservação e mentoria para jovens de todo o ecossistema de Amboseli, e o Coro OYC de Amboseli, que leva mensagens de conservação por meio da música, da dança e da poesia.",
+              "link": "/our-work#education"
             },
             {
-              "title": "Restauração da Paisagem",
-              "description": "Reconstruindo habitats degradados, assegurando corredores vitais para a fauna e fomentando viveiros de árvores indígenas através do nosso Olchani Project."
+              "title": "Restauração da paisagem",
+              "description": "O Projeto Olchani: quatro viveiros gerenciados pela comunidade, conduzidos por mulheres e jovens locais, com capacidade para 42.000 mudas nativas, restaurando terras degradadas e corredores de fauna.",
+              "link": "/our-work#restoration"
             },
             {
-              "title": "Capacitação Comunitária",
-              "description": "Fomentando meios de vida sustentáveis através de programas de costura, empresa comunitária e economias de artesanato tradicional que respeitam o ambiente."
+              "title": "Empreendedorismo comunitário",
+              "description": "O programa Dignity Tailors e a loja Inkaramatak Ildepen Maasai Ushanga, onde mulheres maasai vendem seus trabalhos em miçangas diretamente aos viajantes e ficam com todo o valor do seu artesanato.",
+              "link": "/our-work#enterprise"
+            },
+            {
+              "title": "Convivência e guardas-florestais",
+              "description": "Iluminação que afasta predadores das casas, apicultura que mantém os elefantes longe dos povoados e as moradias Dignity Housing para os guardas de rinocerontes do Parque Nacional de Nairóbi.",
+              "link": "/our-work#coexistence"
+            }
+          ]
+        },
+        {
+          "id": "home-impact",
+          "type": "impact",
+          "title": "Em números",
+          "subtitle": "O que foi feito até agora, ao lado das comunidades com que trabalhamos.",
+          "items": [
+            {
+              "title": "2,553+",
+              "description": "Estudantes alcançados por meio da educação em conservação e do programa Embaixadores dos Elefantes."
+            },
+            {
+              "title": "3,500+",
+              "description": "Árvores nativas plantadas no ecossistema de Amboseli, no Parque Nacional de Nairóbi e na Reserva Nacional de Samburu."
+            },
+            {
+              "title": "4",
+              "description": "Viveiros gerenciados pela comunidade, conduzidos por mulheres e jovens locais."
+            },
+            {
+              "title": "42,000",
+              "description": "Capacidade de mudas nesses quatro viveiros."
             }
           ],
           "cta": {
-            "label": "Conhecer Mais Sobre o Nosso Impacto",
+            "label": "Mais sobre nosso impacto",
             "link": "/impact"
+          },
+          "image": {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-1.webp",
+            "alt": "Estudantes fazendo uma prova em uma sala de aula no Quênia",
+            "aspect": "3/4"
           }
-        },
-        {
-          "id": "home-impact-highlight",
-          "type": "impact",
-          "title": "As Nossas Pegadas em Resumo",
-          "subtitle": "Marcos reais e mensuráveis alcançados em conjunto com as comunidades locais.",
-          "content": "A conservação tem sucesso quando se traduz em mudanças tangíveis para as pessoas na linha da frente. Eis o que alcançámos juntos até agora:",
-          "image": null,
-          "items": [
-            {
-              "title": "2.553+",
-              "description": "Estudantes alcançados através de educação intensiva em conservação e iniciativas de Embaixadores do Elefante."
-            },
-            {
-              "title": "3.500+",
-              "description": "Árvores indígenas plantadas no ecossistema Amboseli e no Parque Nacional de Nairobi para fortalecer a resiliência climática."
-            },
-            {
-              "title": "42.000+",
-              "description": "Capacidade de mudas em quatro viveiros comunitários geridos por mulheres e jovens locais."
-            }
-          ]
         },
         {
           "id": "home-belief",
           "type": "editorial",
-          "subtitle": "A nossa crença",
+          "subtitle": "Nossa convicção",
           "content": "Cada pegada",
-          "title": "deixa uma marca.",
-          "image": null
+          "title": "deixa uma marca."
         },
         {
           "id": "home-cta",
           "type": "cta",
-          "title": "Deixa a Tua Pegada Hoje",
-          "subtitle": "Juntos, podemos moldar um futuro harmonioso.",
-          "content": "Seja através de parcerias corporativas dinâmicas, voluntariado prático, patrocínios educativos ou doações diretas, o teu apoio garante que a fauna possa circular livremente e que as comunidades possam prosperar.",
-          "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp",
-            "alt": "Junta-te à Luigi Footprints Foundation"
-          },
-          "cta": {
-            "label": "Participe",
-            "link": "/get-involved"
-          },
+          "title": "Faça parte da jornada",
+          "content": "Seja doando, sendo parceiro, voluntário ou patrocinando um projeto, você se junta a uma comunidade crescente que trabalha para proteger a vida selvagem do Quênia e apoiar as pessoas que convivem com ela.",
           "images": [
             {
-              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp",
-              "alt": "Junta-te à Luigi Footprints Foundation"
+              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-105-1.webp",
+              "alt": "A curadora Annabella Francescon com um elefante jovem"
             },
             {
-              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
-              "alt": "Membros da comunidade plantando árvores"
+              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-106-1-2.webp",
+              "alt": "O curador José Manuel Lapeña Casamayor com um elefante jovem"
             }
-          ]
+          ],
+          "cta": {
+            "label": "Formas de participar",
+            "link": "/get-involved"
+          }
         }
       ]
     },
     {
       "slug": "/about",
-      "title": "Sobre Nós",
+      "title": "Quem somos",
       "seo": {
-        "title": "Sobre Nós | A Nossa História, Filosofia e Liderança",
-        "description": "Descubra o legado de Luigi Francescon e conheça o Conselho de Administração que guia a nossa missão de proteger a fauna e elevar as comunidades no Quénia."
+        "title": "Quem somos | O legado de Luigi Francescon e nosso conselho",
+        "description": "A Luigi Footprints Foundation foi criada em memória de Luigi Francescon. Conheça sua história, o que guia a fundação e os membros do Conselho de Curadores."
       },
       "blocks": [
         {
           "id": "about-hero",
           "type": "hero",
-          "title": "A Nossa História",
-          "subtitle": "Inspirados pelo amor à fauna, impulsionados pelo compromisso com as pessoas.",
-          "content": "A Luigi Footprints Foundation foi criada em honra de Luigi Francescon para dar continuidade à sua visão de proteger a fauna enquanto cria oportunidades sustentáveis para crianças, famílias e comunidades em todo o Quénia.",
+          "title": "Nossa história",
+          "subtitle": "Fundada em memória de Luigi Francescon, cujo amor pelo Quênia, sua vida selvagem e seu povo ainda guia o trabalho.",
+          "content": "Crescendo perto do Parque Nacional de Nairóbi, Luigi conheceu um Quênia em que a vida selvagem se movia livremente pela paisagem e a natureza fazia parte do cotidiano. Aqueles primeiros anos lhe deram um respeito duradouro pelo mundo natural e uma profunda preocupação com o bem-estar das gerações futuras.",
           "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Luigi.webp",
-            "alt": "Luigi Francescon no Quénia"
+            "url": "/about/13-scaled.webp",
+            "alt": "Membros e apoiadores da Fundação ao lado de um veículo da Walk for Elephants"
           }
         },
         {
           "id": "legacy",
           "type": "content",
-          "title": "O Legado de Luigi Francescon",
-          "subtitle": "Uma vida de ligação ao património natural do Quénia.",
-          "content": "Crescendo perto do Parque Nacional de Nairobi, Luigi experienciou um Quénia onde a fauna se movia livremente pela paisagem e onde a natureza era parte integrante da vida quotidiana. Essas experiências precoces incutiram-lhe um respeito vitalício pelo mundo natural e uma profunda preocupação com o bem-estar das gerações futuras. Compreendeu que a conservação e o desenvolvimento humano são inseparáveis — a fauna não pode sobreviver se as comunidades estiverem a lutar, e as comunidades não podem prosperar se os ecossistemas de que dependem se perderem. Após o seu falecimento em 2016, a fundação foi criada para transformar este entendimento profundo em programas práticos, liderados pela comunidade, que geram uma harmonia duradoura entre as pessoas e a natureza.",
+          "title": "O legado",
+          "subtitle": "Ele entendia que conservação e desenvolvimento humano são inseparáveis.",
+          "content": "A vida selvagem não sobrevive se as comunidades passam dificuldades. As comunidades não prosperam se os ecossistemas de que dependem são perdidos.\n\nApós o falecimento de Luigi, em 2016, a fundação foi criada para levar adiante essa convicção: proteger a vida selvagem e, ao mesmo tempo, criar oportunidades para crianças, famílias e comunidades em todo o Quênia. Hoje ela atua por meio de programas práticos, liderados pela comunidade, no ecossistema de Amboseli, no Parque Nacional de Nairóbi e na Reserva Nacional de Samburu.",
           "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
-            "alt": "Iniciativa comunitária de plantação de árvores que reflete o legado de Luigi"
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-108-1.webp",
+            "alt": "Visitantes e membros da comunidade plantando árvores no Parque Nacional de Nairóbi",
+            "aspect": "4/3"
           }
         },
         {
           "id": "about-luigi-panel",
           "type": "luigi-panel",
-          "content": "Ele acreditava que proteger a fauna e elevar as comunidades nunca foram forças opostas — apenas dois lados da mesma pegada.",
-          "subtitle": "Luigi Francescon · 1948 – 2016",
+          "content": "Proteger a vida selvagem e elevar as comunidades nunca foram forças opostas. São dois lados da mesma pegada.",
+          "subtitle": "Luigi Francescon, 1948–2016",
           "image": {
             "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Luigi.webp",
-            "alt": "Luigi Francescon"
+            "alt": "Retrato de Luigi Francescon"
           }
         },
         {
-          "id": "mission-vision-philosophy",
+          "id": "guides",
           "type": "cards",
-          "title": "O Que Nos Guia",
-          "subtitle": "Os princípios fundamentais por detrás de cada pegada que deixamos.",
-          "content": "Não vemos a conservação da fauna e o desenvolvimento humano como objetivos separados. Estão interligados. Ao trabalhar diretamente com as comunidades para compreender os seus desafios únicos, fornecemos soluções holísticas e personalizadas que melhoram vidas enquanto protegem os ecossistemas.",
-          "image": null,
+          "title": "O que nos guia",
           "items": [
             {
-              "title": "A Nossa Missão",
-              "description": "Criar comunidades prósperas que participem ativamente na conservação da fauna e dos ecossistemas naturais através da educação, da capacitação económica, dos meios de vida sustentáveis e da gestão ambiental."
+              "title": "Missão",
+              "description": "Criar comunidades prósperas que participem ativamente da conservação da vida selvagem e dos ecossistemas naturais, por meio da educação, do fortalecimento econômico, de meios de vida sustentáveis e do cuidado com o meio ambiente."
             },
             {
-              "title": "A Nossa Visão",
-              "description": "Um mundo onde comunidades capacitadas e ecossistemas saudáveis coexistam em completa harmonia, assegurando um futuro vibrante e sustentável para as gerações vindouras."
+              "title": "Visão",
+              "description": "Um mundo em que comunidades fortalecidas e ecossistemas saudáveis convivem, garantindo um futuro sustentável para as gerações futuras."
             },
             {
-              "title": "A Nossa Filosofia",
-              "description": "A dignidade das comunidades é igual à proteção da fauna. Quando os jovens recebem educação, as mulheres ganham independência financeira e as paisagens são restauradas, a conservação torna-se uma escolha natural liderada pela comunidade."
+              "title": "Filosofia",
+              "description": "Dignidade para as comunidades equivale a proteção para a vida selvagem. Quando os jovens estudam, as mulheres têm renda e as paisagens são restauradas, a conservação se torna uma escolha natural, liderada pela comunidade."
             }
           ]
         },
         {
           "id": "trustees",
           "type": "team",
-          "title": "Conselho de Administração",
-          "subtitle": "Líderes experientes unidos por um compromisso partilhado e vitalício com a conservação e o desenvolvimento comunitário.",
-          "content": "Os nossos administradores fornecem a governação, o pulso e a experiência prática necessários para manter os nossos programas transparentes, impactantes e profundamente enraizados nas comunidades locais.",
-          "image": null,
+          "title": "Conselho de Curadores",
+          "subtitle": "As pessoas responsáveis pela governança da fundação e pelo seu trabalho em campo.",
           "items": [
             {
               "name": "Annabella Francescon",
@@ -193,7 +197,8 @@
               "bio": "Para Annabella, a conservação da fauna e o envolvimento com a juventude são vocações de toda a vida. Enquanto crescia, foi testemunha de um Quénia pristino e intocado, quando viajar entre Nairobi e Mombaça significava fazer um verdadeiro safari em caminhos de terra rodeada por milhares de elefantes em migração. Fascinada por estas criaturas especiais, os elefantes tornaram-se o seu animal emblema, despertando décadas de apoio dedicado à sobrevivência de elefantes, rinocerontes e fauna africana. Além do seu foco ambiental, Annabella encontra uma imensa alegria a trabalhar com jovens, acreditando firmemente que o futuro pertence à sua exuberância. Está apaixonadamente comprometida em proporcionar à juventude a educação formal e prática de que necessita para navegar com confiança no mundo que os espera.",
               "image": {
                 "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-105-1.webp",
-                "alt": "Annabella Francescon, Presidente"
+                "alt": "Annabella Francescon, presidente",
+                "focus": "50% 25%"
               }
             },
             {
@@ -202,7 +207,8 @@
               "bio": "Nascido e criado em Loitokitok nas pitorescas encostas do Monte Kilimanjaro, Peter passou toda a sua vida ao lado da espetacular fauna do Parque Nacional Amboseli e do Tsavo Oeste. A sua jornada começou como membro ativo dos Clubes de Vida Selvagem do Quénia, o que abriu caminho para uma carreira gratificante na indústria do turismo. Ao longo dos anos, trabalhar com renomados conservacionistas como Annabella, Pat Awori, Cynthia Moss e Jonathan Scott aprofundou o seu apreço pelos habitats insubstituíveis do nosso planeta. Tendo estado na linha da frente contra as crises de caça furtiva dos anos noventa e dois mil, Peter acredita que a ação coletiva pode superar qualquer ameaça. Hoje, alarmado com a destruição das florestas locais, canaliza a sua urgência em agressivas iniciativas de plantação de árvores, ajudando a fundação a restaurar os ecossistemas pouco a pouco, ou como dizem em suaíli: 'Kidogo Kidogo Hujaza Kibaba'.",
               "image": {
                 "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Group-293.webp",
-                "alt": "Peter Mwangi Karanja, Secretário"
+                "alt": "Peter Mwangi Karanja, secretário",
+                "focus": "50% 95%"
               }
             },
             {
@@ -211,7 +217,8 @@
               "bio": "Há anos, Jose Manuel viajou para o Quénia pela primeira vez com Annabella como guia. Essa viagem transformadora apresentou-lhe um mundo natural pristino que prosperava em estreita proximidade com a fauna que sempre sonhou experimentar. Desde esse exato momento, percebeu a urgente responsabilidade global de preservar estas paisagens selvagens para as gerações futuras. Tendo regressado a África inúmeras vezes desde então, esse sentimento inicial apenas cresceu, impulsionando o seu inabalável compromisso de alavancar as suas competências de supervisão financeira para apoiar e conservar o nosso planeta natural.",
               "image": {
                 "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-106-1-2.webp",
-                "alt": "Jose Manuel Lapena Casamayor, Tesoureiro"
+                "alt": "Jose Manuel Lapena Casamayor, tesoureiro",
+                "focus": "50% 35%"
               }
             },
             {
@@ -220,7 +227,8 @@
               "bio": "O caminho de Daniel para a conservação chegou através de uma consciência gradual e poderosa de como as ações humanas podem inadvertidamente prejudicar o nosso planeta. Enquanto estudante do ensino primário, adorava a responsabilidade prática de plantar árvores e relva para curar encostas erodidas e nuas. Assombrado por histórias de infância sobre criaturas extintas como os dinossauros, questionava-se frequentemente o que aconteceria se a humanidade transformasse o mundo num deserto árido. Esta curiosidade precoce evoluiu para uma missão profissional quando entrou na indústria do turismo, percebendo que o seu sustento, e o sustento da sua comunidade, depende inteiramente de manter a paisagem natural e a fauna do Quénia seguras, vibrantes e acessíveis.",
               "image": {
                 "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/11/DG.webp",
-                "alt": "Daniel Muturi Gatumbo, Coordenador de Operações"
+                "alt": "Daniel Muturi Gatumbo, coordenador de operações",
+                "focus": "50% 35%"
               }
             },
             {
@@ -229,7 +237,8 @@
               "bio": "Criado nas exuberantes encostas verdes do Monte Quénia, Chuma assistiu com o coração pesado como a desflorestação doméstica e comercial despojou mais de cinquenta por cento da paisagem da sua infância. Recusando-se a permanecer como espetador, juntou-se a clubes ambientais ao longo dos seus anos escolares e universitários para restaurar a beleza natural que recordava. A sua profunda paixão pelas árvores indígenas levou-o a mobilizar comunidades locais e autoridades para plantar mais árvores do que as que se perdiam. Hoje, Chuma usa a sua experiência contabilística para garantir que os recursos da fundação estejam perfeitamente equilibrados para combater as ameaças reais do aquecimento global e da degradação ambiental.",
               "image": {
                 "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/11/chuma.webp",
-                "alt": "Justin Chuma Kenya, Contabilista"
+                "alt": "Justin Chuma Kenya, contador",
+                "focus": "50% 25%"
               }
             }
           ]
@@ -237,91 +246,125 @@
         {
           "id": "about-cta",
           "type": "cta",
-          "title": "Junta-te à Nossa Jornada",
-          "subtitle": "Faz parte de um legado duradouro.",
-          "content": "A mudança significativa só é possível quando as pessoas se unem em torno de um propósito partilhado. Juntos, podemos criar um futuro onde as comunidades prosperem, os ecossistemas se recuperem e a fauna continue a circular livremente para as gerações vindouras.",
-          "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp",
-            "alt": "Apoia a Luigi Footprints Foundation"
-          },
-          "cta": {
-            "label": "Participe",
-            "link": "/get-involved"
-          },
+          "title": "Ajude a levar o trabalho adiante",
+          "content": "A mudança real acontece quando as pessoas se unem em torno de um propósito comum. Juntos podemos construir um futuro em que as comunidades prosperem, os ecossistemas se recuperem e a vida selvagem continue a percorrer livremente seu território.",
           "images": [
             {
-              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp",
-              "alt": "Apoia a Luigi Footprints Foundation"
+              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/36-2.webp",
+              "alt": "Voluntários com sacos de coleta durante uma limpeza no Parque Nacional do Lago Nakuru"
             },
             {
               "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
-              "alt": "Membros da comunidade plantando árvores"
+              "alt": "Mudas nativas sendo descarregadas para um dia de plantio comunitário"
             }
-          ]
+          ],
+          "cta": {
+            "label": "Participe",
+            "link": "/get-involved"
+          }
         }
       ]
     },
     {
       "slug": "/our-work",
-      "title": "O Nosso Trabalho",
+      "title": "Nosso trabalho",
       "seo": {
-        "title": "O Nosso Trabalho | Programas e Iniciativas de Conservação",
-        "description": "Explore os programas principais da LFF: Educação e Capacitação Juvenil, o Olchani Project de Restauração da Paisagem, Empresas Comunitárias e Coexistência Humano-Fauna."
+        "title": "Nosso trabalho | Educação, restauração, empreendedorismo e convivência",
+        "description": "Quatro programas no Quênia: bolsas de estudo e o Coro OYC de Amboseli, os viveiros de Olchani, o Dignity Tailors e o empreendedorismo de miçangas maasai, e ferramentas de convivência, incluindo as moradias Dignity Housing para guardas-florestais."
       },
       "blocks": [
         {
           "id": "work-hero",
           "type": "hero",
-          "title": "Os Nossos Programas",
-          "subtitle": "Soluções práticas e lideradas pela comunidade no terreno.",
-          "content": "Trabalhamos cara a cara com os intervenientes locais para conceber programas que respondam aos desafios reais e quotidianos de viver ao lado da fauna, garantindo que os esforços de conservação proporcionem valor social e económico tangível.",
+          "title": "Nosso trabalho",
+          "subtitle": "Programas práticos, liderados pela comunidade, no ecossistema de Amboseli, no Parque Nacional de Nairóbi e na Reserva Nacional de Samburu.",
+          "content": "Trabalhamos lado a lado com as pessoas que convivem com a vida selvagem, desenhando programas que respondem aos desafios reais e cotidianos dessa convivência e garantindo que a conservação traga valor social e econômico concreto.",
+          "image": {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/36-2.webp",
+            "alt": "Voluntários com sacos de coleta durante uma limpeza no Parque Nacional do Lago Nakuru"
+          }
+        },
+        {
+          "id": "education",
+          "type": "content",
+          "title": "Educação e juventude",
+          "subtitle": "Formar a próxima geração de líderes da conservação.",
+          "content": "O futuro da conservação depende dos jovens que vão herdá-la. Em todo o ecossistema de Amboseli, financiamos bolsas para o ensino médio e realizamos oficinas de conservação, mentoria e programas de conscientização ambiental que ajudam os jovens a entender seu papel na proteção do mundo ao seu redor. Até agora, nossos programas alcançaram milhares de estudantes.\n\nO Coro OYC de Amboseli é um dos mais inspiradores. Os jovens usam música, dança e poesia para levar mensagens de conservação, cultura e convivência às suas próprias comunidades.",
+          "image": {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-1.webp",
+            "alt": "Estudantes fazendo uma prova em uma sala de aula no Quênia",
+            "aspect": "4/3"
+          },
+          "projects": [
+            "sponsoring-exams",
+            "walk-for-elephants-with-jim-nyamu"
+          ]
+        },
+        {
+          "id": "restoration",
+          "type": "content",
+          "title": "Restauração da paisagem",
+          "subtitle": "O Projeto Olchani: restaurar paisagens, uma árvore de cada vez.",
+          "content": "Ecossistemas saudáveis sustentam comunidades saudáveis. Por meio do Projeto Olchani, restauramos terras degradadas, fortalecemos corredores de fauna e ajudamos as comunidades a se tornarem guardiãs do próprio ambiente.\n\nPlantar árvores não é simplesmente colocar mudas na terra. É reconstruir ecossistemas, melhorar a resiliência climática e gerar meios de vida. Com as comunidades locais, criamos quatro viveiros gerenciados pela comunidade, com capacidade para 42.000 mudas nativas, gerando trabalho e qualificação para mulheres e jovens.",
           "image": {
             "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
-            "alt": "Visão geral do trabalho de campo e dos programas comunitários da LFF"
-          }
+            "alt": "Mudas nativas sendo descarregadas para um dia de plantio comunitário",
+            "aspect": "4/3"
+          },
+          "projects": [
+            "tree-planting-at-the-nairobi-national-park",
+            "planting-trees-in-samburu"
+          ]
         },
         {
-          "id": "education-program",
+          "id": "enterprise",
           "type": "content",
-          "title": "Educação e Capacitação Juvenil",
-          "subtitle": "Formando a próxima geração de líderes em conservação.",
-          "content": "O futuro da conservação depende dos jovens que a herdam. Em todo o ecossistema Amboseli, investimos em educação, desenvolvimento da liderança e consciência ambiental para ajudar os jovens a descobrir o seu potencial. Através de bolsas de estudo para o ensino secundário, workshops de conservação e mentoria, construímos uma consciência ambiental de base. Uma das nossas iniciativas mais poderosas é o Coro OYC de Amboseli, onde os jovens usam música, dança e poesia tradicionais para partilhar mensagens de cultura, conservação e coexistência diretamente com as suas próprias comunidades.",
+          "title": "Empreendedorismo comunitário",
+          "subtitle": "Criar oportunidades para as pessoas que convivem com a vida selvagem.",
+          "content": "A conservação dá certo quando as famílias veem seus benefícios no dia a dia. O programa Dignity Tailors oferece às mulheres capacitação, ofício e um caminho para o empreendedorismo. A loja Inkaramatak Ildepen Maasai Ushanga permite que mulheres maasai vendam seus trabalhos em miçangas diretamente aos viajantes e fiquem com o valor do seu trabalho. Parcerias com o turismo convidam visitantes a participar de atividades de conservação enquanto apoiam os meios de vida locais.\n\nRendas familiares mais sólidas tornam as comunidades parceiras ativas na proteção da vida selvagem e da terra de que ela depende.",
           "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/12/Group-239-1.webp",
-            "alt": "Jovens a participar em programas educativos e culturais da LFF"
-          }
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-118.webp",
+            "alt": "Um agricultor colhendo repolhos durante o projeto de meios de vida na COVID-19",
+            "aspect": "4/3"
+          },
+          "projects": [
+            "sustaining-community-livelihoods-during-covid-19"
+          ]
         },
         {
-          "id": "environmental-program",
+          "id": "coexistence",
           "type": "content",
-          "title": "Restauração Ambiental: O Olchani Project",
-          "subtitle": "Restaurando paisagens, uma árvore de cada vez.",
-          "content": "Ecossistemas saudáveis sustentam comunidades saudáveis. Através do Olchani Project, restauramos ativamente paisagens degradadas, fortalecemos os corredores históricos de migração da fauna e promovemos a gestão sustentável de terras a longo prazo. Isto é mais do que simplesmente colocar mudas no solo; trata-se de construir resiliência climática. Estabelecemos quatro viveiros de árvores geridos pela comunidade que capacitam as mulheres e os jovens locais com competências e meios de vida, mantendo uma capacidade para cultivar e fornecer mais de 42.000 mudas indígenas.",
+          "title": "Convivência e guardas-florestais",
+          "subtitle": "Ajudar pessoas e animais a compartilhar a mesma terra, e apoiar os guardas que a protegem.",
+          "content": "Para as comunidades próximas a áreas protegidas, encontros com predadores e elefantes podem ameaçar o gado, as lavouras e vidas. Em vez de escolher entre as pessoas e a vida selvagem, trabalhamos em soluções que servem a ambas: iluminação que afasta predadores e protege as casas, e apicultura que gera renda enquanto desestimula a entrada de elefantes nos povoados.\n\nPor trás de cada paisagem protegida há guardas que passam longos períodos longe de casa, em condições remotas. Por meio do projeto Dignity Housing, estamos substituindo barracas por moradias seguras e autossuficientes para os guardas de rinocerontes do Parque Nacional de Nairóbi. Até agora, quatro dos 25 acampamentos do parque receberam moradias.",
           "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Peter_Karanja.webp",
-            "alt": "Um florescente viveiro de árvores indígenas no âmbito do Olchani Project"
-          }
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing.jpg",
+            "alt": "A curadora Annabella Francescon dentro de uma Dignity House concluída para guardas-florestais",
+            "aspect": "4/3"
+          },
+          "projects": [
+            "dignity-housing-for-wildife-rangers",
+            "gifting-boots-to-game-rangers"
+          ]
         },
         {
-          "id": "community-program",
-          "type": "content",
-          "title": "Capacitação Económica Comunitária",
-          "subtitle": "Garantindo que as comunidades locais beneficiem da conservação ativa.",
-          "content": "A conservação prospera quando as famílias veem os seus benefícios nas suas vidas quotidianas. O nosso Programa de Costureiras da Dignidade proporciona às mulheres locais formação profissional e oportunidades de empreendedorismo artesanal. Simultaneamente, apoiamos iniciativas de empresa comunitária como a Loja Ushanga Maasai Inkaramatak Ildepen. Aqui, as mulheres locais vendem artesanato autêntico Maasai diretamente a viajantes internacionais, permitindo-lhes reter o máximo valor de mercado, garantir rendimentos familiares diversificados e preservar com orgulho o seu rico património cultural.",
-          "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/12/Group-240.webp",
-            "alt": "Mulheres Maasai a criar artesanato tradicional em missangas para empresas comunitárias"
-          }
+          "id": "work-summary",
+          "type": "statement",
+          "subtitle": "Em resumo",
+          "content": "Quatro programas, uma mesma abordagem. As bolsas de estudo e o Coro OYC de Amboseli mantêm os jovens na escola e lhes dão voz. O Projeto Olchani coloca a restauração nas mãos locais, com quatro viveiros comunitários para 42.000 mudas nativas. A Dignity Tailors e a loja Maasai Ushanga transformam o artesanato em renda que fica em casa, e a iluminação, a apicultura e as casas Dignity Housing tornam mais seguro viver ao lado da fauna. Nada disso é feito para as comunidades. Tudo é feito com elas."
         },
         {
-          "id": "coexistence-program",
-          "type": "content",
-          "title": "Coexistência Humano-Fauna e Vigilância",
-          "subtitle": "Criando harmonia e segurança em terras partilhadas.",
-          "content": "Viver ao lado de fauna de topo acarreta ameaças reais ao gado e às famílias. Implementamos ferramentas de mitigação testadas no terreno, como sistemas de iluminação dissuasora de predadores para proteção de habitações, e projetos comunitários de apicultura que geram rendimentos alternativos enquanto servem de barreiras naturais para os elefantes. Além disso, reconhecemos que a proteção da fauna depende de heróis da linha da frente. Através do nosso Projeto de Habitação Digna, construímos unidades habitacionais seguras, autónomas e de alta qualidade para os dedicados rangers de rinocerontes no Parque Nacional de Nairobi, garantindo a sua segurança, conforto e tranquilidade.",
-          "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/11/DG.webp",
-            "alt": "Instalação habitacional para rangers construída pela LFF no Parque Nacional de Nairobi"
+          "id": "work-cta",
+          "type": "cta",
+          "title": "Veja o que o trabalho soma",
+          "content": "Números dos programas, e o trabalho de emergência que assumimos quando a seca ou espécies invasoras ameaçam a terra.",
+          "cta": {
+            "label": "Nosso impacto",
+            "link": "/impact"
+          },
+          "secondary": {
+            "label": "Participe",
+            "link": "/get-involved"
           }
         }
       ]
@@ -330,105 +373,122 @@
       "slug": "/impact",
       "title": "Impacto",
       "seo": {
-        "title": "O Nosso Impacto | Resultados de Conservação e Histórias",
-        "description": "Veja como as pegadas que deixamos se transformam em mudanças duradouras para estudantes, famílias, ecossistemas e rangers de fauna em todo o Quénia."
+        "title": "Impacto | Estudantes, árvores, viveiros e guardas-florestais",
+        "description": "O que o trabalho da Luigi Footprints Foundation alcançou até agora no Quênia: estudantes atendidos, árvores plantadas, viveiros em funcionamento, moradias para guardas construídas e resposta de emergência durante a seca."
       },
       "blocks": [
         {
           "id": "impact-hero",
           "type": "hero",
-          "title": "A Nossa Filosofia de Impacto",
-          "subtitle": "Quando as comunidades prosperam, a fauna prospera.",
-          "content": "Cada marco que atingimos é um sucesso colaborativo. Ao centrar os nossos esforços na dignidade humana e na gestão ambiental, assistimos a como as estatísticas de longo prazo se convertem em progresso humano e ecológico real.",
+          "title": "Nosso impacto",
+          "subtitle": "Quando as comunidades prosperam, a vida selvagem prospera.",
+          "content": "Cada projeto que assumimos parte de uma ideia simples: a conservação duradoura acontece quando as comunidades têm condições de liderá-la. O impacto vai além dos números. É um estudante que continua na escola, uma família com renda estável, um guarda que volta para uma casa segura e uma paisagem que começa a se recuperar.",
           "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Group-293.webp",
-            "alt": "Ecossistema próspero com fauna e cobertura vegetal em Amboseli"
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/9.webp",
+            "alt": "Caminhões-pipa levando água de emergência à vida selvagem sobre o solo seco e rachado"
           }
         },
         {
           "id": "impact-stats",
           "type": "impact",
-          "title": "Em Números",
-          "subtitle": "Realizações rastreáveis construídas sobre execução local transparente.",
-          "content": "Os nossos dados refletem a nossa responsabilidade quotidiana perante os nossos doadores, fundadores e as comunidades com quem nos associamos.",
-          "image": null,
+          "title": "Em números",
+          "subtitle": "Números dos programas até o momento.",
           "items": [
             {
-              "title": "2.553+",
-              "description": "Jovens ativamente formados através do currículo de educação em conservação."
+              "title": "2,553+",
+              "description": "Estudantes alcançados por meio da educação em conservação e do programa Embaixadores dos Elefantes."
             },
             {
-              "title": "3.500+",
-              "description": "Árvores indígenas com sucesso enraizadas em zonas tampão críticas e parques nacionais."
+              "title": "3,500+",
+              "description": "Árvores nativas plantadas no ecossistema de Amboseli, no Parque Nacional de Nairóbi e na Reserva Nacional de Samburu."
             },
             {
               "title": "4",
-              "description": "Viveiros de árvores ativos geridos pela comunidade que proporcionam empregos verdes locais."
+              "description": "Viveiros gerenciados pela comunidade, cada um conduzido por mulheres e jovens locais."
             },
             {
-              "title": "42.000+",
-              "description": "Capacidade de mudas indígenas atingida para apoiar a reflorestação generalizada."
-            }
-          ]
-        },
-        {
-          "id": "impact-testimonials",
-          "type": "testimonials",
-          "items": [
-            {
-              "quote": "A LFF mudou como os meus filhos veem o futuro.",
-              "attribution": "Mãe da comunidade, Amboseli"
+              "title": "42,000",
+              "description": "Capacidade de mudas nesses viveiros."
             },
             {
-              "quote": "O viveiro de árvores deu-nos rendimento e orgulho.",
-              "attribution": "Membro do grupo jovem, Olchani"
-            },
-            {
-              "quote": "Agora sabemos como viver pacificamente com os elefantes.",
-              "attribution": "Guardião comunitário, Amboseli"
-            },
-            {
-              "quote": "As nossas filhas podem ir à escola por causa desta fundação.",
-              "attribution": "Ancião local, Kajiado"
-            },
-            {
-              "quote": "Planto árvores sabendo que os meus netos se sentarão à sua sombra.",
-              "attribution": "Ancião comunitário, Amboseli"
+              "title": "4 de 25",
+              "description": "Acampamentos de guardas no Parque Nacional de Nairóbi que já receberam moradias pelo Dignity Housing."
             }
           ]
         },
         {
           "id": "crisis-response",
           "type": "content",
-          "title": "A Responder Quando a Natureza Mais Precisa de Nós",
-          "subtitle": "Mitigação de crises e intervenções de emergência para a fauna.",
-          "content": "Os programas de longo prazo requerem uma âncora fundamental, mas as crises climáticas exigem trabalho de campo imediato. Durante intensas emergências históricas de seca, as nossas equipas trabalharam ao lado das autoridades locais de fauna para organizar o transporte de emergência de água e a distribuição de feno para a fauna que lutava para sobreviver. Mantemos também grupos de trabalho comunitários ativos focados na remoção manual das espécies invasoras agressivas que sufocam as fontes de alimento naturais nos frágeis ecossistemas partilhados.",
+          "title": "Quando a natureza mais precisa de nós",
+          "subtitle": "Resposta de emergência a secas e espécies invasoras.",
+          "content": "A conservação exige compromisso de longo prazo, mas também exige ação em uma crise. Durante secas severas, trabalhamos com as autoridades de fauna para transportar água de emergência e distribuir feno a animais que lutavam para sobreviver.\n\nApoiamos a remoção da erva invasora Parthenium, que sufoca as pastagens, e trabalhamos com as comunidades para restaurar habitats degradados.",
           "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/11/chuma.webp",
-            "alt": "Pessoal da LFF a gerir operações de conservação de emergência no terreno"
-          }
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-117.webp",
+            "alt": "Voluntários arrancando a erva invasora Parthenium em campo aberto",
+            "aspect": "4/3"
+          },
+          "projects": [
+            "providing-water-to-wildlife",
+            "eradicating-the-ivasive-parthenium-weed",
+            "cleaning-lake-nakuru-national-park"
+          ]
         },
         {
-          "id": "impact-summary",
+          "id": "impact-meaning",
           "type": "cards",
-          "title": "O Significado por Detrás das Métricas",
-          "subtitle": "Como o teu apoio transforma vidas no terreno.",
-          "content": "A transformação de base da nossa arquitetura centrada na comunidade vai mais fundo do que as matrizes em papel:",
-          "image": null,
+          "title": "O que os números significam",
           "items": [
             {
-              "title": "Dignidade Académica",
-              "description": "Proporcionando bolsas de estudo completas para o ensino secundário a estudantes brilhantes e merecedores que de outra forma perderiam uma educação segura."
+              "title": "Um estudante continua na escola",
+              "description": "Bolsas integrais de ensino médio para estudantes talentosos que, de outra forma, ficariam de fora.",
+              "image": {
+                "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-1.webp",
+                "alt": "Estudantes fazendo uma prova em uma sala de aula no Quênia"
+              },
+              "link": "/our-work#education"
             },
             {
-              "title": "Resiliência Económica",
-              "description": "Proporcionando linhas de rendimento sustentáveis e independentes diretamente a coletivos de mulheres e jovens, reduzindo a dependência financeira da exploração florestal."
+              "title": "Uma família tem renda estável",
+              "description": "Renda própria para grupos de mulheres e coletivos de jovens, reduzindo a pressão para explorar as florestas.",
+              "image": {
+                "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-118.webp",
+                "alt": "Um agricultor colhendo repolhos durante o projeto de meios de vida na COVID-19"
+              },
+              "link": "/our-work#enterprise"
             },
             {
-              "title": "Proteção na Linha da Frente",
-              "description": "Garantindo que os nossos guardiões da fauna regressem de patrulhas intensas a casas seguras, sólidas e confortáveis que honram a sua bravura."
+              "title": "Um guarda volta para uma casa de verdade",
+              "description": "Moradias autossuficientes substituindo as barracas dos guardas que protegem os rinocerontes do Parque Nacional de Nairóbi.",
+              "image": {
+                "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing.jpg",
+                "alt": "A curadora Annabella Francescon dentro de uma Dignity House concluída para guardas-florestais"
+              },
+              "link": "/our-work#coexistence"
+            },
+            {
+              "title": "Uma paisagem começa a se recuperar",
+              "description": "Árvores nativas em terras degradadas e ao longo dos corredores que a vida selvagem sempre usou.",
+              "image": {
+                "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
+                "alt": "Mudas nativas sendo descarregadas para um dia de plantio comunitário"
+              },
+              "link": "/our-work#restoration"
             }
           ]
+        },
+        {
+          "id": "impact-cta",
+          "type": "cta",
+          "title": "Ajude-nos a ir mais longe",
+          "content": "Cada programa desta página é financiado por pessoas que decidiram que este trabalho importava. Uma doação de qualquer valor vai diretamente para ele.",
+          "cta": {
+            "label": "Doar",
+            "link": "/donate"
+          },
+          "secondary": {
+            "label": "Outras formas de ajudar",
+            "link": "/get-involved"
+          }
         }
       ]
     },
@@ -436,122 +496,164 @@
       "slug": "/get-involved",
       "title": "Participe",
       "seo": {
-        "title": "Participe | Associar-se, Doar, Patrocinar",
-        "description": "Junta-te à nossa jornada. Fica a saber como podes associar-te, ser voluntário, doar ou patrocinar um projeto para deixar pegadas significativas para as gerações vindouras."
+        "title": "Participe | Doe, patrocine, seja parceiro ou voluntário",
+        "description": "Formas de apoiar a Luigi Footprints Foundation: doe, patrocine uma Dignity House para guardas, seja parceiro como operadora de turismo ou organização, ou participe como voluntário em dias de plantio e limpeza no Quênia."
       },
       "blocks": [
         {
           "id": "get-involved-hero",
           "type": "hero",
-          "title": "Junta-te à Nossa Jornada",
-          "subtitle": "A mudança requer um esforço coletivo e global.",
-          "content": "A conservação significativa não acontece de forma isolada. Quer sejas um viajante intencional que procura criar um legado positivo, uma organização que procura projetos transparentes de responsabilidade social corporativa, ou um indivíduo apaixonado pela fauna, tens um lugar aqui.",
+          "title": "Participe",
+          "subtitle": "A mudança real só é possível quando as pessoas se unem.",
+          "content": "Seja doando, sendo parceiro, voluntário, patrocinando um projeto ou simplesmente ajudando a divulgar, você passa a fazer parte de uma comunidade crescente que trabalha para proteger a vida selvagem do Quênia e apoiar as pessoas que convivem com ela.",
           "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp",
-            "alt": "Pessoas a participar em iniciativas de conservação comunitária"
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/08/119977734_2844637772305067_8365419354622314358_n.jpg",
+            "alt": "Botas novas dispostas para entrega aos guardas-florestais"
           }
         },
         {
-          "id": "ways-to-engage",
+          "id": "ways-to-help",
           "type": "cards",
-          "title": "Como Podes Ajudar",
-          "subtitle": "Caminhos personalizados para maximizar o teu impacto pessoal.",
-          "content": "",
-          "image": null,
+          "title": "Formas de ajudar",
           "items": [
             {
-              "title": "Patrocina um Estudante",
-              "description": "Financia bolsas de estudo para o ensino secundário e formação em liderança para apoiar jovens Embaixadores do Elefante que liderarão a conservação do amanhã."
+              "title": "Doar",
+              "description": "Financie bolsas, mudas, ferramentas de convivência ou moradias para guardas. As doações são aceitas em dólares americanos.",
+              "link": "/donate",
+              "image": {
+                "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-105-1.webp",
+                "alt": "A curadora Annabella Francescon com um elefante jovem"
+              }
             },
             {
-              "title": "Apoia um Viveiro de Árvores",
-              "description": "Fornece materiais, ferramentas e financiamento de meios de vida para expandir os nossos viveiros comunitários de árvores e alargar o alcance do Olchani Project."
+              "title": "Patrocine um projeto",
+              "description": "Assuma uma parte específica do trabalho. Uma Dignity House totalmente equipada para um acampamento de guardas custa US$ 14.000, e a unidade financiada recebe uma placa com o seu nome ou o da sua organização.",
+              "link": "/contact",
+              "image": {
+                "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing.jpg",
+                "alt": "A curadora Annabella Francescon dentro de uma Dignity House concluída para guardas-florestais"
+              }
             },
             {
-              "title": "Financia Ferramentas de Coexistência",
-              "description": "Financia diretamente sistemas de iluminação dissuasora de predadores e barreiras comunitárias de colmeias para reduzir os conflitos humano-fauna."
+              "title": "Seja nosso parceiro",
+              "description": "Operadoras de turismo e organizações podem incluir atividades de conservação em seus roteiros ou em programas de responsabilidade corporativa.",
+              "link": "/contact",
+              "image": {
+                "url": "/get-involved/13-scaled.webp",
+                "alt": "Membros e apoiadores da Fundação ao lado de um veículo da Walk for Elephants"
+              }
+            },
+            {
+              "title": "Seja voluntário",
+              "description": "Participe de dias de plantio de árvores, limpezas de parques e eventos comunitários no Quênia.",
+              "link": "/contact",
+              "image": {
+                "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/36-2.webp",
+                "alt": "Voluntários com sacos de coleta durante uma limpeza no Parque Nacional do Lago Nakuru"
+              }
             }
           ]
         },
         {
-          "id": "tourism-partnerships",
+          "id": "tourism",
           "type": "content",
-          "title": "Conservação Através do Turismo",
-          "subtitle": "Conectando viajantes do mundo com as realidades locais da conservação.",
-          "content": "Acreditamos que o turismo responsável deve servir ativamente os seus destinos. Colaboramos estreitamente com visitantes do ecossistema e operadores turísticos éticos para integrar experiências de conservação imersivas nos itinerários. Através das nossas iniciativas interativas de cultivo de árvores lideradas pela comunidade, os hóspedes podem plantar mudas indígenas diretamente ao lado de famílias locais. Esta ação prática fomenta profundas conexões humanas, expande a consciência ambiental e garante que as receitas turísticas fluam diretamente para as economias de conservação lideradas pela comunidade.",
+          "title": "Conservação por meio do turismo",
+          "subtitle": "Viajantes plantam árvores ao lado das famílias que vão cuidar delas.",
+          "content": "O turismo responsável deve servir aos lugares que visita. Trabalhamos com visitantes e operadoras de turismo éticas para incluir experiências de conservação nos roteiros. Nos dias de plantio liderados pela comunidade, os visitantes plantam mudas nativas com as famílias locais, e a receita do turismo vai diretamente para a conservação comunitária.",
           "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
-            "alt": "Visitantes internacionais a plantar árvores indígenas com guias locais"
-          }
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-108-1.webp",
+            "alt": "Visitantes e membros da comunidade plantando mudas de árvores no Parque Nacional de Nairóbi",
+            "aspect": "4/3"
+          },
+          "projects": [
+            "tree-planting-at-the-nairobi-national-park"
+          ]
         },
         {
-          "id": "donation-cta-block",
+          "id": "donate-cta",
           "type": "cta",
-          "title": "Pronto para Deixar uma Pegada Duradoura?",
-          "subtitle": "Cada pequena contribuição constrói um futuro seguro e partilhado.",
-          "content": "Como nos recorda o eterno provérbio suaíli: 'Kidogo kidogo hujaza kibaba' — pouco a pouco enche-se o recipiente. O teu apoio contínuo garante que os ecossistemas se curem, as famílias assegurem meios de vida sustentáveis e a fauna lendária possa circular livremente para as gerações vindouras.",
-          "image": {
-            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp",
-            "alt": "Capacita comunidades e protege a fauna com a tua doação"
-          },
-          "cta": {
-            "label": "Doar e Apoiar-nos",
-            "link": "/donate"
-          },
+          "title": "Pouco a pouco se enche o recipiente",
+          "subtitle": "Kidogo kidogo hujaza kibaba, como diz o provérbio suaíli.",
+          "content": "Cada doação, seja qual for o valor, ajuda os ecossistemas a se recuperar, as famílias a ganhar a vida e a vida selvagem a percorrer livremente seu território pelas gerações futuras.",
           "images": [
             {
-              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp",
-              "alt": "Capacitar comunidades e proteger a vida selvagem"
+              "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/12/Group-239-1.webp",
+              "alt": "A curadora Annabella Francescon com um elefante jovem"
             },
             {
-              "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
-              "alt": "Membros da comunidade plantando árvores"
+              "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2.jpg",
+              "alt": "Beliches dentro de uma Dignity House concluída"
             }
-          ]
+          ],
+          "cta": {
+            "label": "Doar",
+            "link": "/donate"
+          }
         }
       ]
     },
     {
       "slug": "/contact",
-      "title": "Contacto",
+      "title": "Contact",
       "seo": {
-        "title": "Contacto | The Luigi Footprints Foundation",
-        "description": "Entre em contacto com a Luigi Footprints Foundation. Gostaríamos de ouvir de si sobre o nosso trabalho em conservação da fauna e desenvolvimento comunitário."
+        "title": "Contact",
+        "description": "Entre em contato com a Luigi Footprints Foundation sobre parcerias, patrocínio de um projeto, voluntariado ou o trabalho no Quênia."
       },
       "blocks": [
         {
           "id": "contact-hero",
           "type": "contact",
-          "title": "Gostaríamos de\nouvir de si.",
-          "subtitle": "Entre em contacto",
-          "content": null,
-          "image": null
+          "title": "Adoraríamos ouvir você.",
+          "subtitle": "Fale conosco",
+          "content": "Dúvidas sobre o trabalho, uma ideia de parceria ou um projeto que você gostaria de patrocinar: escreva para nós e responderemos.",
+          "image": {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-106-1-2.webp",
+            "alt": "O curador José Manuel Lapeña Casamayor com um elefante jovem",
+            "aspect": "3/4"
+          }
         }
       ]
     },
     {
       "slug": "/projects",
-      "title": "Projetos e Programas",
+      "title": "Projetos",
       "seo": {
-        "title": "Projetos e Programas | The Luigi Footprints Foundation",
-        "description": "Um registo de programas de conservação, comunidade e fauna realizados pela Luigi Footprints Foundation em todo o Quénia."
+        "title": "Projetos",
+        "description": "Notas de campo dos projetos de conservação, comunidade e vida selvagem da Luigi Footprints Foundation em todo o Quênia."
       },
       "blocks": [
         {
           "id": "projects-hero",
           "type": "projects-hero",
-          "subtitle": "Trabalho de Campo",
-          "title": "Projetos e Programas",
-          "content": "Um registo de iniciativas de conservação, comunidade e vida selvagem realizadas no Quénia desde o início da Fundação.",
-          "image": null
-        },
+          "title": "Projetos",
+          "subtitle": "Do campo",
+          "content": "Um registro das iniciativas de conservação, comunitárias e de vida selvagem realizadas em todo o Quênia desde o início da fundação.",
+          "image": {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/15.webp",
+            "alt": "Jovens voluntários plantando mudas de mangue no litoral do Quênia"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "/donate",
+      "title": "Doar",
+      "seo": {
+        "title": "Doar",
+        "description": "Apoie a Luigi Footprints Foundation. As doações financiam bolsas de estudo, viveiros de árvores nativas, empreendedorismo feminino, ferramentas de convivência e moradias para guardas-florestais no Quênia."
+      },
+      "blocks": [
         {
-          "id": "projects-commitment",
-          "type": "commitment",
-          "subtitle": "O Nosso Compromisso",
-          "title": "The Luigi Footprints Foundation · Nairobi, Kenya",
-          "content": "Cada projeto que a Fundação empreende começa com uma pergunta: como isto deixa a terra — e as pessoas — melhor do que as encontrámos?",
-          "image": null
+          "id": "donate-hero",
+          "type": "hero",
+          "title": "Cada doação deixa uma pegada.",
+          "subtitle": "Apoie o trabalho",
+          "content": "Sua doação financia bolsas de estudo, mudas nativas, ferramentas de convivência e moradias seguras para os guardas que protegem a vida selvagem do Quênia.",
+          "image": {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-105-1.webp",
+            "alt": "A curadora Annabella Francescon com um elefante jovem",
+            "aspect": "3/4"
+          }
         }
       ]
     }
@@ -567,7 +669,7 @@
       "date": "2022-02-23T09:45:04",
       "modified": "2022-02-23T12:27:47",
       "featuredImage": {
-        "altText": "",
+        "altText": "Membros e apoiadores da Fundação ao lado de um veículo da Walk for Elephants",
         "caption": null,
         "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-scaled.webp",
         "srcSet": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-300x225.webp 300w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-1024x768.webp 1024w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-768x576.webp 768w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-1536x1152.webp 1536w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-2048x1536.webp 2048w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-1568x1176.webp 1568w",
@@ -575,19 +677,23 @@
         "id": "cG9zdDo1ODE="
       },
       "typesOfProjects": [],
-      "tags": []
+      "tags": [],
+      "thumbnail": {
+        "url": "/projects/13-scaled.webp",
+        "alt": "Membros e apoiadores da Fundação ao lado de um veículo da Walk for Elephants"
+      }
     },
     {
       "id": "cG9zdDo1Nzk=",
       "databaseId": 579,
-      "title": "Patrocinando exames",
+      "title": "Patrocínio de provas escolares",
       "slug": "sponsoring-exams",
       "excerpt": "",
       "content": null,
       "date": "2022-02-23T09:44:06",
       "modified": "2022-02-23T12:40:35",
       "featuredImage": {
-        "altText": "",
+        "altText": "Estudantes fazendo uma prova em uma sala de aula no Quênia",
         "caption": null,
         "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-1.webp",
         "srcSet": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-1-300x225.webp 300w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-1-1024x768.webp 1024w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-1-768x576.webp 768w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-1.webp 1040w",
@@ -600,14 +706,14 @@
     {
       "id": "cG9zdDo1Nzg=",
       "databaseId": 578,
-      "title": "Fornecendo Água à Fauna: Os Esforços da Luigi Footprints Foundation nos Parques Nacionais do Quénia",
+      "title": "Água para a vida selvagem nos parques nacionais do Quênia",
       "slug": "providing-water-to-wildlife",
       "excerpt": "",
       "content": null,
       "date": "2022-02-23T09:41:37",
       "modified": "2023-04-20T06:57:55",
       "featuredImage": {
-        "altText": "",
+        "altText": "Caminhões-pipa levando água de emergência sobre o solo seco e rachado durante a seca",
         "caption": null,
         "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/9.webp",
         "srcSet": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/9-300x200.webp 300w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/9-1024x682.webp 1024w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/9-768x512.webp 768w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/9.webp 1280w",
@@ -620,14 +726,14 @@
     {
       "id": "cG9zdDo1Nzc=",
       "databaseId": 577,
-      "title": "Plantação de mangais na costa",
+      "title": "Plantio de mangues no litoral",
       "slug": "planting-trees-in-samburu",
       "excerpt": "",
       "content": null,
       "date": "2022-02-23T09:41:10",
       "modified": "2022-02-23T12:43:29",
       "featuredImage": {
-        "altText": "",
+        "altText": "Jovens voluntários plantando mudas de mangue na lama da maré no litoral do Quênia",
         "caption": null,
         "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/15.webp",
         "srcSet": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/15-300x225.webp 300w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/15-1024x768.webp 1024w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/15-768x576.webp 768w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/15.webp 1280w",
@@ -640,14 +746,14 @@
     {
       "id": "cG9zdDo1NzY=",
       "databaseId": 576,
-      "title": "Oferta de botas aos guardas florestais",
+      "title": "Entrega de botas aos guardas-florestais",
       "slug": "gifting-boots-to-game-rangers",
       "excerpt": "",
       "content": null,
       "date": "2022-02-23T09:40:34",
       "modified": "2022-02-23T12:46:57",
       "featuredImage": {
-        "altText": "",
+        "altText": "Pares de botas novas para guardas dispostos sobre uma mesa para a entrega",
         "caption": null,
         "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2021/08/119977734_2844637772305067_8365419354622314358_n.jpg",
         "srcSet": "https://api.theluigifootprints.org/wp-content/uploads/2021/08/119977734_2844637772305067_8365419354622314358_n-300x225.jpg 300w, https://api.theluigifootprints.org/wp-content/uploads/2021/08/119977734_2844637772305067_8365419354622314358_n-768x576.jpg 768w, https://api.theluigifootprints.org/wp-content/uploads/2021/08/119977734_2844637772305067_8365419354622314358_n.jpg 960w",
@@ -667,7 +773,7 @@
       "date": "2022-02-23T09:40:08",
       "modified": "2022-02-23T12:48:39",
       "featuredImage": {
-        "altText": "",
+        "altText": "Voluntários com sacos de coleta durante uma limpeza no Parque Nacional do Lago Nakuru",
         "caption": null,
         "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/36-2.webp",
         "srcSet": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/36-2-300x200.webp 300w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/36-2-1024x682.webp 1024w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/36-2-768x512.webp 768w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/36-2.webp 1280w",
@@ -680,14 +786,14 @@
     {
       "id": "cG9zdDo1NjA=",
       "databaseId": 560,
-      "title": "Sustentando os meios de vida comunitários durante o covid-19",
+      "title": "Sustentar os meios de vida da comunidade durante a COVID-19",
       "slug": "sustaining-community-livelihoods-during-covid-19",
       "excerpt": "",
       "content": null,
       "date": "2022-02-21T13:59:29",
       "modified": "2022-02-22T12:56:58",
       "featuredImage": {
-        "altText": "",
+        "altText": "Um agricultor colhendo repolhos durante o projeto de meios de vida na COVID-19",
         "caption": null,
         "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-118.webp",
         "srcSet": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-118-300x278.webp 300w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-118.webp 687w",
@@ -707,14 +813,14 @@
     {
       "id": "cG9zdDo1NTk=",
       "databaseId": 559,
-      "title": "Erradicando a erva invasora parthenium",
+      "title": "Erradicação da erva invasora Parthenium",
       "slug": "eradicating-the-ivasive-parthenium-weed",
       "excerpt": "",
       "content": null,
       "date": "2022-02-21T13:59:10",
       "modified": "2022-02-22T12:56:43",
       "featuredImage": {
-        "altText": "",
+        "altText": "Voluntários de camisa vermelha arrancando a erva Parthenium em campo aberto",
         "caption": null,
         "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-117.webp",
         "srcSet": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-117-300x197.webp 300w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-117.webp 687w",
@@ -734,14 +840,14 @@
     {
       "id": "cG9zdDo1NTg=",
       "databaseId": 558,
-      "title": "Plantação de árvores no Parque Nacional de Nairobi",
+      "title": "Plantio de árvores no Parque Nacional de Nairóbi",
       "slug": "tree-planting-at-the-nairobi-national-park",
       "excerpt": "",
       "content": null,
       "date": "2022-02-21T13:58:37",
       "modified": "2022-02-22T12:56:25",
       "featuredImage": {
-        "altText": "",
+        "altText": "Visitantes e membros da comunidade plantando mudas de árvores no Parque Nacional de Nairóbi",
         "caption": null,
         "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-108-1.webp",
         "srcSet": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-108-1-300x280.webp 300w, https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-108-1.webp 687w",
@@ -761,14 +867,14 @@
     {
       "id": "cG9zdDo4Mg==",
       "databaseId": 82,
-      "title": "Habitação digna para rangers de fauna",
+      "title": "Dignity Housing para guardas-florestais",
       "slug": "dignity-housing-for-wildife-rangers",
-      "excerpt": "<p>A Luigi Footprints Foundation desenvolveu um projeto chamado Habitação Digna, através do qual estamos a preparar casas de contentor autónomas para estes muito merecedores rangers que arriscam as suas vidas na natureza para salvar e cuidar da nossa fauna. Cada casa terá 3 camas, uma pequena kitchenette, um chuveiro e sanita com autoclismo, energia solar para iluminação e água quente, e grandes reservatórios de água para satisfazer todas as suas necessidades.</p>\n",
-      "content": "\n<p class=\"wp-block-paragraph\"><div class=\"bg-white py-20 px-6 md:px-0\">\n<div class=\"md:flex xl:w-1/2 mx-auto\">\n<div class=\"w-full md:w-3/5\">\n<p>Dentro do Parque Nacional de Nairobi, existem 25 acampamentos onde os rangers vivem para garantir a segurança de todas as áreas do parque e controlar o bem-estar, em particular, dos 125 rinocerontes e, de facto, de toda a fauna do interior. Estes rangers têm vivido em tendas básicas</p>\n</div>\n<div class=\"relative w-full md:w-2/3 md:ml-4 mt-20 md:mt-0\">\n<div class=\"absolute\">\n<figure class=\"w-full\"><img decoding=\"async\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-74.jpg\" alt=\"\" class=\"z-10 w-full md:w-auto\"/></figure>\n</div>\n</div>\n</div>\n</div></p>\n\n\n\n<div class=\"wp-block-group z-20 px-6 pt-20 md:pt-0 md:px-0\"><div class=\"wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow\">\n\n\n<figure class=\"flex justify-center\"><img decoding=\"async\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-73-1.jpg\" alt=\"\" class=\"z-20\"/></figure>\n</div></div>\n\n\n\n<div class=\"xl:w-1/2 mx-auto px-6 md:px-0\">\n<p class=\"py-20 wp-block-paragraph\">A Luigi Footprints Foundation desenvolveu um projeto chamado <strong>Habitação Digna</strong> através do qual estamos a preparar casas de contentor autónomas para estes muito merecedores rangers que arriscam as suas vidas na natureza para salvar e cuidar da nossa fauna. Cada casa terá 3 camas, uma pequena kitchenette, um chuveiro e sanita com autoclismo, energia solar para iluminação e água quente, e grandes reservatórios de água para satisfazer todas as suas necessidades.\n</p>\n\n\n\n<figure class=\"mb-8\"><img decoding=\"async\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-75-1.jpg\" alt=\"\" class=\"w-full\"/></figure>\n\n\n\n<div class=\"wp-block-columns md:flex justify-between md:space-x-8 is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column flex-1 mb-8 md:mb-8 is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"370\" height=\"420\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2.jpg\" alt=\"\" class=\"wp-image-106 w-full\" srcset=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2.jpg 370w, https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2-264x300.jpg 264w\" sizes=\"auto, (max-width: 370px) 100vw, 370px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column flex-1 is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"370\" height=\"420\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2.jpg\" alt=\"\" class=\"wp-image-107 w-full\" srcset=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2.jpg 370w, https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2-264x300.jpg 264w\" sizes=\"auto, (max-width: 370px) 100vw, 370px\" /></figure>\n</div>\n</div>\n\n\n\n<p class=\"mt-20 wp-block-paragraph\">Até agora, construímos 4 destas casas, com outros 21 acampamentos dentro do Parque Nacional de Nairobi para os quais levar as Casas Dignas, para que todos estes rangers especiais estejam bem alojados. Cada uma destas casas completamente equipadas custa USD 14.000,00.</p>\n\n\n\n<p class=\"mt-5 wp-block-paragraph\">Precisamos da tua ajuda para ter todas as 25 unidades da nossa Habitação Digna no lugar. Qualquer pequena doação será muito apreciada. Se uma unidade inteira for financiada, colocaremos uma placa na casa com o teu nome ou o nome da tua organização</p>\n",
+      "excerpt": "A Luigi Footprints Foundation desenvolveu um projeto chamado Dignity Housing, no qual preparamos moradias autossuficientes em contêineres para esses guardas tão merecedores, que arriscam a vida na natureza para salvar e cuidar da nossa fauna. Cada casa terá 3 camas, uma pequena cozinha, chuveiro e vaso sanitário com descarga, energia solar para iluminação e água quente, e grandes tanques de água para atender a todas as suas necessidades.",
+      "content": "\n<p class=\"wp-block-paragraph\"><div class=\"bg-white py-20 px-6 md:px-0\">\n<div class=\"md:flex xl:w-1/2 mx-auto\">\n<div class=\"w-full md:w-3/5\">\n<p>Dentro do Parque Nacional de Nairóbi há 25 acampamentos onde os guardas vivem para vigiar todas as áreas do parque e zelar pelo bem-estar, em particular, dos 125 rinocerontes e, de fato, de toda a fauna que ele abriga. Esses guardas têm vivido em barracas básicas.</p>\n</div>\n<div class=\"relative w-full md:w-2/3 md:ml-4 mt-20 md:mt-0\">\n<div class=\"absolute\">\n<figure class=\"w-full\"><img decoding=\"async\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-74.jpg\" alt=\"\" class=\"z-10 w-full md:w-auto\"/></figure>\n</div>\n</div>\n</div>\n</div></p>\n\n\n\n<div class=\"wp-block-group z-20 px-6 pt-20 md:pt-0 md:px-0\"><div class=\"wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow\">\n\n\n<figure class=\"flex justify-center\"><img decoding=\"async\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-73-1.jpg\" alt=\"\" class=\"z-20\"/></figure>\n</div></div>\n\n\n\n<div class=\"xl:w-1/2 mx-auto px-6 md:px-0\">\n<p class=\"py-20 wp-block-paragraph\">A Luigi Footprints Foundation desenvolveu um projeto chamado <strong>Dignity Housing</strong>, no qual preparamos moradias autossuficientes em contêineres para esses guardas tão merecedores, que arriscam a vida na natureza para salvar e cuidar da nossa fauna. Cada casa terá 3 camas, uma pequena cozinha, chuveiro e vaso sanitário com descarga, energia solar para iluminação e água quente, e grandes tanques de água para atender a todas as suas necessidades.\n</p>\n\n\n\n<figure class=\"mb-8\"><img decoding=\"async\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-75-1.jpg\" alt=\"\" class=\"w-full\"/></figure>\n\n\n\n<div class=\"wp-block-columns md:flex justify-between md:space-x-8 is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column flex-1 mb-8 md:mb-8 is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"370\" height=\"420\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2.jpg\" alt=\"\" class=\"wp-image-106 w-full\" srcset=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2.jpg 370w, https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2-264x300.jpg 264w\" sizes=\"auto, (max-width: 370px) 100vw, 370px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column flex-1 is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"370\" height=\"420\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2.jpg\" alt=\"\" class=\"wp-image-107 w-full\" srcset=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2.jpg 370w, https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2-264x300.jpg 264w\" sizes=\"auto, (max-width: 370px) 100vw, 370px\" /></figure>\n</div>\n</div>\n\n\n\n<p class=\"mt-20 wp-block-paragraph\">Até agora construímos 4 dessas casas, e restam outros 21 acampamentos dentro do Parque Nacional de Nairóbi para receber as Dignity Houses, para que todos esses guardas tão especiais estejam bem alojados. Cada uma dessas casas totalmente equipadas custa US$ 14.000.</p>\n\n\n\n<p class=\"mt-5 wp-block-paragraph\">Precisamos da sua ajuda para colocar de pé todas as 25 unidades do Dignity Housing. Qualquer pequena doação será muito bem-vinda. Se uma unidade inteira for financiada, colocaremos na casa uma placa com o seu nome ou o da sua organização.</p>\n",
       "date": "2021-10-14T14:18:41",
       "modified": "2021-11-04T11:43:28",
       "featuredImage": {
-        "altText": "",
+        "altText": "A curadora Annabella Francescon dentro de uma Dignity House concluída, com um mural de animais na parede",
         "caption": null,
         "sourceUrl": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing.jpg",
         "srcSet": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing-300x151.jpg 300w, https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing-1024x516.jpg 1024w, https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing-768x387.jpg 768w, https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing.jpg 1151w",
@@ -791,5 +897,444 @@
       ],
       "tags": []
     }
-  ]
+  ],
+  "donate": {
+    "rates": {
+      "USD": 1
+    },
+    "presetsUSD": [
+      25,
+      50,
+      100,
+      250
+    ],
+    "causes": [
+      {
+        "id": "dignity-housing",
+        "slug": "dignity-housing",
+        "title": "Dignity Housing para guardas-florestais",
+        "summary": "Moradias autossuficientes substituindo as barracas dos guardas que protegem os rinocerontes do Parque Nacional de Nairóbi.",
+        "image": {
+          "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing.jpg",
+          "alt": "A curadora Annabella Francescon dentro de uma Dignity House concluída para guardas-florestais"
+        },
+        "itemsImage": {
+          "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-75-1.jpg",
+          "alt": "Uma Dignity House concluída, um contêiner convertido com painéis solares no teto e uma placa ao lado da porta"
+        },
+        "gallery": [
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-73-1.jpg",
+            "alt": "Um guarda ao lado da tenda de lona que era sua casa antes do Dignity Housing"
+          },
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-74.jpg",
+            "alt": "Um velho abrigo de metal usado pelos guardas antes do Dignity Housing"
+          },
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-75-1.jpg",
+            "alt": "Uma Dignity House concluída, um contêiner convertido com painéis solares no teto e uma placa ao lado da porta"
+          },
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2.jpg",
+            "alt": "A cozinha compacta equipada dentro de uma Dignity House"
+          },
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2.jpg",
+            "alt": "Beliches dentro de uma Dignity House concluída"
+          }
+        ],
+        "link": "/projects/dignity-housing-for-wildife-rangers",
+        "progress": {
+          "done": 4,
+          "total": 25,
+          "unit": "casas construídas"
+        },
+        "items": [
+          {
+            "id": "window",
+            "title": "Uma janela",
+            "description": "Luz e ar para a casa de um guarda; cada casa tem várias.",
+            "amountUSD": 80,
+            "estimate": true
+          },
+          {
+            "id": "door",
+            "title": "Uma porta",
+            "description": "Uma porta segura para uma casa que fica sozinha no parque.",
+            "amountUSD": 120,
+            "estimate": true
+          },
+          {
+            "id": "bed",
+            "title": "Uma cama com colchão",
+            "description": "Cada Dignity House acomoda três guardas.",
+            "amountUSD": 140,
+            "estimate": true
+          },
+          {
+            "id": "flooring",
+            "title": "Piso",
+            "description": "Um piso acabado sobre o aço do contêiner.",
+            "amountUSD": 200,
+            "estimate": true
+          },
+          {
+            "id": "toilet",
+            "title": "Um chuveiro e um vaso sanitário com descarga",
+            "description": "Água encanada e saneamento no lugar do mato.",
+            "amountUSD": 250,
+            "estimate": true
+          },
+          {
+            "id": "solar-lighting",
+            "title": "Iluminação solar",
+            "description": "Painéis e luzes para as noites, fora da rede elétrica.",
+            "amountUSD": 350,
+            "estimate": true
+          },
+          {
+            "id": "water",
+            "title": "Tanques de água e encanamento",
+            "description": "Tanques grandes e tubulação para que a casa tenha água o ano todo.",
+            "amountUSD": 400,
+            "estimate": true
+          },
+          {
+            "id": "kitchenette",
+            "title": "Uma cozinha compacta equipada",
+            "description": "Um lugar para cozinhar e guardar alimentos dentro da casa.",
+            "amountUSD": 500,
+            "estimate": true
+          },
+          {
+            "id": "solar-heater",
+            "title": "Um aquecedor solar de água",
+            "description": "Água quente do sol, sem combustível para buscar.",
+            "amountUSD": 650,
+            "estimate": true
+          },
+          {
+            "id": "house",
+            "title": "Uma Dignity House completa",
+            "description": "A casa inteira, equipada e entregue em um acampamento de guardas. Uma casa financiada recebe uma placa com o seu nome ou o da sua organização.",
+            "amountUSD": 14000,
+            "estimate": false,
+            "plaque": true
+          }
+        ]
+      },
+      {
+        "id": "education",
+        "slug": "education-and-youth",
+        "title": "Educação e juventude",
+        "summary": "Bolsas para o ensino médio, oficinas de conservação e mentoria para jovens de todo o ecossistema de Amboseli, e o Coro OYC de Amboseli, que leva mensagens de conservação por meio da música, da dança e da poesia.",
+        "image": {
+          "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-1.webp",
+          "alt": "Estudantes fazendo uma prova em uma sala de aula no Quênia"
+        },
+        "gallery": [
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-1.webp",
+            "alt": "Estudantes fazendo uma prova em uma sala de aula no Quênia"
+          },
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/13-scaled.webp",
+            "alt": "Membros e apoiadores da Fundação ao lado de um veículo da Walk for Elephants"
+          }
+        ],
+        "link": "/our-work#education",
+        "items": [
+          {
+            "id": "exam",
+            "title": "Taxas de exame para um estudante",
+            "description": "As taxas de inscrição que decidem se um estudante faz os exames nacionais.",
+            "amountUSD": 25,
+            "estimate": true
+          },
+          {
+            "id": "books",
+            "title": "Um ano de livros didáticos",
+            "description": "Os livros obrigatórios de um estudante do ensino médio.",
+            "amountUSD": 40,
+            "estimate": true
+          },
+          {
+            "id": "uniform",
+            "title": "Uniforme e sapatos escolares",
+            "description": "Para que um bolsista chegue vestido como os demais.",
+            "amountUSD": 45,
+            "estimate": true
+          },
+          {
+            "id": "choir",
+            "title": "O Coro OYC de Amboseli",
+            "description": "Para figurinos, viagens e ensaios de uma apresentação.",
+            "amountUSD": 60,
+            "estimate": true
+          },
+          {
+            "id": "term",
+            "title": "As mensalidades de um trimestre",
+            "description": "Um trimestre do ensino médio para um estudante que de outra forma ficaria de fora.",
+            "amountUSD": 150,
+            "estimate": true
+          },
+          {
+            "id": "workshop",
+            "title": "Uma oficina de conservação",
+            "description": "Uma oficina de um dia para uma turma, no ecossistema de Amboseli.",
+            "amountUSD": 200,
+            "estimate": true
+          },
+          {
+            "id": "year",
+            "title": "Uma bolsa de um ano",
+            "description": "Um ano completo de mensalidades do ensino médio para um estudante.",
+            "amountUSD": 450,
+            "estimate": true
+          }
+        ]
+      },
+      {
+        "id": "restoration",
+        "slug": "landscape-restoration",
+        "title": "Restauração da paisagem",
+        "summary": "O Projeto Olchani: quatro viveiros gerenciados pela comunidade, conduzidos por mulheres e jovens locais, com capacidade para 42.000 mudas nativas, restaurando terras degradadas e corredores de fauna.",
+        "image": {
+          "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
+          "alt": "Mudas nativas sendo descarregadas para um dia de plantio comunitário"
+        },
+        "gallery": [
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
+            "alt": "Mudas nativas sendo descarregadas para um dia de plantio comunitário"
+          },
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-108-1.webp",
+            "alt": "Visitantes e membros da comunidade plantando árvores no Parque Nacional de Nairóbi"
+          },
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/15.webp",
+            "alt": "Jovens voluntários plantando mudas de mangue no litoral do Quênia"
+          }
+        ],
+        "link": "/our-work#restoration",
+        "items": [
+          {
+            "id": "seedlings-10",
+            "title": "Dez mudas nativas",
+            "description": "Cultivadas em um viveiro comunitário e plantadas em terras degradadas.",
+            "amountUSD": 20,
+            "estimate": true
+          },
+          {
+            "id": "tools",
+            "title": "Ferramentas para um viveiro",
+            "description": "Regadores, enxadas e sacos de plantio para um viveiro.",
+            "amountUSD": 60,
+            "estimate": true
+          },
+          {
+            "id": "shade",
+            "title": "Tela de sombreamento para um viveiro",
+            "description": "Proteção para as mudas durante os meses secos.",
+            "amountUSD": 90,
+            "estimate": true
+          },
+          {
+            "id": "water",
+            "title": "Um mês de água para um viveiro",
+            "description": "Água transportada ou bombeada para manter vivas as mudas de um viveiro.",
+            "amountUSD": 120,
+            "estimate": true
+          },
+          {
+            "id": "seedlings-100",
+            "title": "Cem mudas nativas",
+            "description": "Suficientes para plantar um trecho de corredor de fauna.",
+            "amountUSD": 150,
+            "estimate": true
+          },
+          {
+            "id": "planting-day",
+            "title": "Um dia de plantio comunitário",
+            "description": "Mudas, transporte e uma refeição para um grupo escolar ou comunitário.",
+            "amountUSD": 250,
+            "estimate": true
+          }
+        ]
+      },
+      {
+        "id": "enterprise",
+        "slug": "community-enterprise",
+        "title": "Empreendedorismo comunitário",
+        "summary": "O programa Dignity Tailors e a loja Inkaramatak Ildepen Maasai Ushanga, onde mulheres maasai vendem seus trabalhos em miçangas diretamente aos viajantes e ficam com todo o valor do seu artesanato.",
+        "image": {
+          "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-118.webp",
+          "alt": "Um agricultor colhendo repolhos durante o projeto de meios de vida na COVID-19"
+        },
+        "gallery": [
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-118.webp",
+            "alt": "Um agricultor colhendo repolhos durante o projeto de meios de vida na COVID-19"
+          }
+        ],
+        "link": "/our-work#enterprise",
+        "items": [
+          {
+            "id": "beads",
+            "title": "Miçangas e arame para uma artesã",
+            "description": "Os materiais de um mês para os artesanatos de miçangas vendidos na loja Ushanga.",
+            "amountUSD": 35,
+            "estimate": true
+          },
+          {
+            "id": "fabric",
+            "title": "Um mês de tecido e linha",
+            "description": "Materiais para as encomendas de uma costureira.",
+            "amountUSD": 60,
+            "estimate": true
+          },
+          {
+            "id": "plot",
+            "title": "Sementes e ferramentas para uma horta familiar",
+            "description": "Como no projeto de meios de vida durante a COVID-19, o início de uma temporada para uma família.",
+            "amountUSD": 70,
+            "estimate": true
+          },
+          {
+            "id": "machine",
+            "title": "Uma máquina de costura",
+            "description": "Para uma mulher que entra na Dignity Tailors.",
+            "amountUSD": 220,
+            "estimate": true
+          },
+          {
+            "id": "training",
+            "title": "Uma vaga de formação em costura",
+            "description": "Formação para uma mulher, do primeiro ponto à primeira venda.",
+            "amountUSD": 300,
+            "estimate": true
+          }
+        ]
+      },
+      {
+        "id": "coexistence",
+        "slug": "coexistence-and-guarding",
+        "title": "Convivência e guardas-florestais",
+        "summary": "Iluminação que afasta predadores das casas, apicultura que mantém os elefantes longe dos povoados e as moradias Dignity Housing para os guardas de rinocerontes do Parque Nacional de Nairóbi.",
+        "image": {
+          "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/08/119977734_2844637772305067_8365419354622314358_n.jpg",
+          "alt": "Botas novas dispostas para entrega aos guardas-florestais"
+        },
+        "gallery": [
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/08/119977734_2844637772305067_8365419354622314358_n.jpg",
+            "alt": "Botas novas dispostas para entrega aos guardas-florestais"
+          },
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing.jpg",
+            "alt": "A curadora Annabella Francescon dentro de uma Dignity House concluída para guardas-florestais"
+          }
+        ],
+        "link": "/our-work#coexistence",
+        "items": [
+          {
+            "id": "boots",
+            "title": "Um par de botas de guarda",
+            "description": "Como na nossa entrega de botas, calçado para um guarda em patrulha.",
+            "amountUSD": 45,
+            "estimate": true
+          },
+          {
+            "id": "hive",
+            "title": "Uma colmeia",
+            "description": "As abelhas ao longo de uma cerca afastam os elefantes e dão mel à família para vender.",
+            "amountUSD": 55,
+            "estimate": true
+          },
+          {
+            "id": "suit",
+            "title": "Um traje de apicultor e um fumigador",
+            "description": "Equipamento de proteção para um apicultor.",
+            "amountUSD": 70,
+            "estimate": true
+          },
+          {
+            "id": "light",
+            "title": "Uma luz que afasta predadores",
+            "description": "Luzes intermitentes que mantêm leões e hienas longe do gado de uma família à noite.",
+            "amountUSD": 110,
+            "estimate": true
+          }
+        ]
+      },
+      {
+        "id": "emergency",
+        "slug": "emergency-response",
+        "title": "Quando a natureza mais precisa de nós",
+        "summary": "Resposta de emergência a secas e espécies invasoras.",
+        "image": {
+          "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/9.webp",
+          "alt": "Caminhões-pipa levando água de emergência à vida selvagem sobre o solo seco e rachado"
+        },
+        "gallery": [
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/9.webp",
+            "alt": "Caminhões-pipa levando água de emergência à vida selvagem sobre o solo seco e rachado"
+          },
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/Rectangle-117.webp",
+            "alt": "Voluntários arrancando a erva invasora Parthenium em campo aberto"
+          },
+          {
+            "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/02/36-2.webp",
+            "alt": "Voluntários com sacos de coleta durante uma limpeza no Parque Nacional do Lago Nakuru"
+          }
+        ],
+        "link": "/impact#crisis-response",
+        "items": [
+          {
+            "id": "cleanup",
+            "title": "Um kit de limpeza",
+            "description": "Luvas e sacos para dez voluntários em uma limpeza de parque.",
+            "amountUSD": 40,
+            "estimate": true
+          },
+          {
+            "id": "weeding",
+            "title": "Um dia de remoção de ervas daninhas",
+            "description": "Ferramentas, transporte e almoço para uma equipe de dez pessoas que arranca Parthenium.",
+            "amountUSD": 150,
+            "estimate": true
+          },
+          {
+            "id": "water",
+            "title": "Uma entrega de água",
+            "description": "Um caminhão-pipa de água levado à fauna na seca.",
+            "amountUSD": 280,
+            "estimate": true
+          },
+          {
+            "id": "hay",
+            "title": "Um caminhão de feno",
+            "description": "Alimento para a fauna quando o pasto acabou.",
+            "amountUSD": 350,
+            "estimate": true
+          }
+        ]
+      },
+      {
+        "id": "general",
+        "title": "Onde é mais necessário",
+        "summary": "Uma doação que a fundação pode destinar onde a necessidade for maior nesta temporada.",
+        "image": {
+          "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp",
+          "alt": "Mulheres maasai reunidas com membros da Fundação"
+        },
+        "items": []
+      }
+    ]
+  }
 }

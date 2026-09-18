@@ -1,0 +1,182 @@
+{
+  "project": "lff",
+  "generatedAt": "2026-09-18T11:58:59.844Z",
+  "exportScale": 2,
+  "outputs": [
+    {
+      "slot": "give",
+      "group": "give",
+      "slotId": "ee1e54cd",
+      "groupId": "316a7219",
+      "viewport": "desktop",
+      "file": "index/give.webp",
+      "css": [
+        1440,
+        900
+      ],
+      "pixels": [
+        2560,
+        1600
+      ],
+      "asset": "assets/e8e4a998.webp",
+      "crop": [
+        0,
+        71,
+        2560,
+        1600
+      ],
+      "page": "/",
+      "viewportSize": [
+        1440,
+        900
+      ],
+      "position": [
+        0,
+        0
+      ],
+      "kind": "img",
+      "selector": "div:nth-of-type(2) > main > section:nth-of-type(1) > div:nth-of-type(1) > img",
+      "sourcePath": "/wp-content/uploads/2022/01/Give.webp",
+      "format": "webp",
+      "hints": {
+        "alt": "Maasai women gathered with members of the Foundation",
+        "id": "main",
+        "classes": [
+          "object-cover"
+        ],
+        "heading": "Protectingwildlifebyempoweringcommunities"
+      }
+    },
+    {
+      "slot": "13-scaled",
+      "group": "13-scaled",
+      "slotId": "5e5691e7",
+      "groupId": "bee092d4",
+      "viewport": "desktop",
+      "file": "about/13-scaled.webp",
+      "css": [
+        1440,
+        738
+      ],
+      "pixels": [
+        2389,
+        1224
+      ],
+      "asset": "assets/d07c8d50.png",
+      "crop": [
+        84,
+        532,
+        2389,
+        1224
+      ],
+      "page": "/about",
+      "viewportSize": [
+        1440,
+        900
+      ],
+      "position": [
+        0,
+        0
+      ],
+      "kind": "img",
+      "selector": "div:nth-of-type(2) > main > section:nth-of-type(1) > div:nth-of-type(1) > img",
+      "sourcePath": "/wp-content/uploads/2022/02/13-scaled.webp",
+      "format": "webp",
+      "hints": {
+        "alt": "Foundation members and supporters gathered beside a Walk for Elephants vehicle",
+        "id": "main",
+        "classes": [
+          "object-cover"
+        ],
+        "heading": "Ourstory"
+      }
+    },
+    {
+      "slot": "13-scaled",
+      "group": "13-scaled",
+      "slotId": "a56dff41",
+      "groupId": "74b99030",
+      "viewport": "desktop",
+      "file": "get-involved/13-scaled.webp",
+      "css": [
+        168,
+        168
+      ],
+      "pixels": [
+        336,
+        336
+      ],
+      "asset": "assets/3571ed7e.png",
+      "crop": [
+        217,
+        0,
+        1920,
+        1920
+      ],
+      "page": "/get-involved",
+      "viewportSize": [
+        1440,
+        900
+      ],
+      "position": [
+        136,
+        1967
+      ],
+      "kind": "img",
+      "selector": "div:nth-of-type(2) > main > section:nth-of-type(3) > div > ol > li:nth-of-type(3) > div > a > div > div > img",
+      "sourcePath": "/wp-content/uploads/2022/02/13-scaled.webp",
+      "format": "webp",
+      "hints": {
+        "alt": "Foundation members and supporters gathered beside a Walk for Elephants vehicle",
+        "id": "ways-to-help",
+        "classes": [
+          "object-cover"
+        ]
+      }
+    },
+    {
+      "slot": "13-scaled",
+      "group": "13-scaled",
+      "slotId": "c307853f",
+      "groupId": "70e17e64",
+      "viewport": "desktop",
+      "file": "projects/13-scaled.webp",
+      "css": [
+        368,
+        276
+      ],
+      "pixels": [
+        736,
+        552
+      ],
+      "asset": "assets/3571ed7e.png",
+      "crop": [
+        0,
+        0,
+        2560,
+        1920
+      ],
+      "page": "/projects",
+      "viewportSize": [
+        1440,
+        900
+      ],
+      "position": [
+        136,
+        3238
+      ],
+      "kind": "img",
+      "selector": "div:nth-of-type(2) > main > section:nth-of-type(4) > div > ol > li:nth-of-type(1) > div > a > div > div > img",
+      "sourcePath": "/wp-content/uploads/2022/02/13-scaled.webp",
+      "format": "webp",
+      "hints": {
+        "alt": "Foundation members and supporters gathered beside a Walk for Elephants vehicle",
+        "id": "archive",
+        "classes": [
+          "object-cover"
+        ],
+        "heading": "Walk for Elephants with Jim Nyamu"
+      }
+    }
+  ]
+}
