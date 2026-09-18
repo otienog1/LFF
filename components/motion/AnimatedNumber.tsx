@@ -3,28 +3,31 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { cn } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-/** Renders the stat string (e.g. "2,553+"); counts up the numeric part. */
-export function AnimatedNumber({ value, className }: { value: string; className?: string; }) {
+/**
+ * A statistic (e.g. "2,553+") that rises out of a mask when it scrolls into
+ * view, the same treatment as the hero headline. `delay` staggers a row.
+ */
+export function AnimatedNumber({ value, className, delay = 0 }: { value: string; className?: string; delay?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const match = value.match(/[\d,]+/);
-  const target = match ? parseInt(match[0].replace(/,/g, ""), 10) : 0;
-  const prefix = match ? value.slice(0, match.index) : "";
-  const suffix = match ? value.slice((match.index ?? 0) + match[0].length) : value;
 
   useGSAP(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { el.textContent = value; return; }
-    const obj = { n: 0 };
-    gsap.to(obj, {
-      n: target, duration: 1.6, ease: "power1.out",
-      scrollTrigger: { trigger: el, start: "top 85%" },
-      onUpdate: () => { el.textContent = `${prefix}${Math.round(obj.n).toLocaleString()}${suffix}`; },
+    const mm = gsap.matchMedia();
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      gsap.fromTo(
+        "[data-figure]",
+        { yPercent: 110 },
+        { yPercent: 0, duration: 1.1, delay, ease: "power4.out", scrollTrigger: { trigger: ref.current, start: "top 85%", once: true } },
+      );
     });
   }, { scope: ref });
 
-  return <span ref={ref} className={className}>{value}</span>;
+  return (
+    <span ref={ref} className={cn("inline-block overflow-hidden align-top pb-[0.12em] -mb-[0.12em]", className)}>
+      <span data-figure className="inline-block will-change-transform">{value}</span>
+    </span>
+  );
 }

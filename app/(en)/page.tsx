@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { getPage } from "@/lib/content";
-import { HeroBlock } from "@/components/blocks/HeroBlock";
-import { ContentBlock } from "@/components/blocks/ContentBlock";
-import { CardsBlock } from "@/components/blocks/CardsBlock";
-import { ImpactBlock } from "@/components/blocks/ImpactBlock";
+import { pageMetadata } from "@/lib/site";
+import { HomeHero } from "@/components/home/HomeHero";
+import { Belief } from "@/components/home/Belief";
+import { ProgrammeIndex } from "@/components/home/ProgrammeIndex";
+import { NumbersPanel } from "@/components/home/NumbersPanel";
 import { CtaBlock } from "@/components/blocks/CtaBlock";
 import { EditorialStatement } from "@/components/home/EditorialStatement";
 import type {
@@ -16,8 +17,7 @@ import type {
 } from "@/types/content";
 
 export function generateMetadata(): Metadata {
-  const page = getPage("/");
-  return { title: page?.seo.title, description: page?.seo.description };
+  return pageMetadata(getPage("/"), "/", "en");
 }
 
 export default function HomePage() {
@@ -33,10 +33,10 @@ export default function HomePage() {
   ];
   return (
     <>
-      <HeroBlock block={hero} variant="home" />
-      <ContentBlock block={philosophy} index={0} />
-      <CardsBlock block={focusAreas} />
-      <ImpactBlock block={impactHighlight} variant="deep" />
+      <HomeHero block={hero} />
+      <Belief block={philosophy} />
+      <ProgrammeIndex block={focusAreas} />
+      <NumbersPanel block={impactHighlight} />
       <EditorialStatement block={belief} />
       <CtaBlock block={cta} />
     </>

@@ -1,29 +1,38 @@
-import type { Metadata } from 'next'
-import Script from 'next/script'
+import type { Metadata, Viewport } from 'next'
 import { Fraunces, Inter } from 'next/font/google'
 import Layout from '@/components/layout/Layout'
+import { SITE_NAME, SITE_URL, DEFAULT_OG_IMAGE } from '@/lib/site'
 import '../styles/globals.css'
 
 const fraunces = Fraunces({
   subsets: ['latin', 'latin-ext'],
   weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
   variable: '--font-fraunces',
   display: 'swap',
 })
 
 const inter = Inter({
   subsets: ['latin', 'latin-ext'],
-  weight: ['300', '400', '500', '600'],
+  weight: ['400', '500', '600'],
   variable: '--font-inter',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    template: '%s | Luigi Footprints Foundation',
-    default: 'Luigi Footprints Foundation',
+    template: `%s | ${SITE_NAME}`,
+    default: SITE_NAME,
   },
-  description: 'We are a Non-Governmental Organization involved in wildlife conservation and community development',
+  description:
+    'A Kenyan foundation protecting wildlife by empowering the communities who live alongside it, in the Amboseli ecosystem, Nairobi National Park and the Samburu National Reserve.',
+  openGraph: {
+    siteName: SITE_NAME,
+    type: 'website',
+    images: [{ url: DEFAULT_OG_IMAGE }],
+  },
+  twitter: { card: 'summary_large_image' },
   icons: {
     apple: '/favicon/apple-touch-icon.png',
     icon: [
@@ -31,23 +40,30 @@ export const metadata: Metadata = {
       { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
     ],
     shortcut: '/favicon/favicon.ico',
-    other: [{ rel: 'mask-icon', url: '/favicon/safari-pinned-tab.svg', color: '#000000' }],
   },
   manifest: '/favicon/site.webmanifest',
 }
 
+export const viewport: Viewport = {
+  themeColor: '#FAF8F4',
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-        <meta name="msapplication-TileColor" content="#FAF8F4" />
-        <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-        <meta name="theme-color" content="#FAF8F4" />
+        {/* The export is one HTML shell per page: set the document language from the URL before first paint,
+            and lower the curtain so the first frame is the transition overlay, not the unanimated page. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "var s=location.pathname.split('/')[1];document.documentElement.lang=(s==='es'||s==='pt')?s:'en';document.documentElement.setAttribute('data-transition','covered');",
+          }}
+        />
       </head>
       <body suppressHydrationWarning>
         <Layout>{children}</Layout>
-        <Script src="/js/imagesloaded.min.js" strategy="beforeInteractive" />
       </body>
     </html>
   )

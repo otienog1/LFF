@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { getPage } from "@/lib/content";
-import { HeroBlock } from "@/components/blocks/HeroBlock";
-import { ContentBlock } from "@/components/blocks/ContentBlock";
-import { CardsBlock } from "@/components/blocks/CardsBlock";
-import { TeamBlock } from "@/components/blocks/TeamBlock";
+import { pageMetadata } from "@/lib/site";
+import { InteriorHero } from "@/components/shared/InteriorHero";
+import { Lede } from "@/components/home/Lede";
+import { Legacy } from "@/components/about/Legacy";
+import { Words } from "@/components/about/Words";
+import { Principles } from "@/components/about/Principles";
+import { Trustees } from "@/components/about/Trustees";
 import { CtaBlock } from "@/components/blocks/CtaBlock";
-import { LuigiPanel } from "@/components/about/LuigiPanel";
 import type {
   HeroBlock as HeroBlockType,
   ContentBlock as ContentBlockType,
@@ -16,8 +18,7 @@ import type {
 } from "@/types/content";
 
 export function generateMetadata(): Metadata {
-  const page = getPage("/about");
-  return { title: page?.seo.title, description: page?.seo.description };
+  return pageMetadata(getPage("/about"), "/about", "en");
 }
 
 export default function AboutPage() {
@@ -33,11 +34,12 @@ export default function AboutPage() {
   ];
   return (
     <>
-      <HeroBlock block={hero} variant="interior-split" />
-      <ContentBlock block={legacy} index={0} />
-      <LuigiPanel block={luigiPanel} />
-      <CardsBlock block={guides} />
-      <TeamBlock block={team} />
+      <InteriorHero block={hero} />
+      {hero.content && <Lede number="01" text={hero.content} />}
+      <Legacy block={legacy} />
+      <Words block={luigiPanel} />
+      <Principles block={guides} />
+      <Trustees block={team} />
       <CtaBlock block={cta} />
     </>
   );

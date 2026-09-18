@@ -19,7 +19,7 @@ export function ContentBlock({ block, index = 0, variant = "light", id, aspectRa
         <Reveal className={imageRight ? "md:order-1" : "md:order-2"}>
           {block.title && <Eyebrow>{block.title}</Eyebrow>}
           {block.subtitle && <h2 className="display-2 mt-3 max-w-[20ch]">{block.subtitle}</h2>}
-          {block.content && <p className="body-lg mt-5 text-ink-soft max-w-[58ch]">{block.content}</p>}
+          {block.content && <p className="body-lg mt-5 text-ink-soft max-w-[58ch] whitespace-pre-line">{block.content}</p>}
         </Reveal>
         {block.image && (
           <div className={`relative ${imgAspect} ${imageRight ? "md:order-2" : "md:order-1"}`}>

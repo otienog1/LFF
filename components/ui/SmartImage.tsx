@@ -5,6 +5,6 @@ import type { ImageRef } from "@/types/content";
 export function SmartImage({ image, className, sizes, priority }: { image: ImageRef; className?: string; sizes?: string; priority?: boolean; }) {
   return (
     <Image src={image.url} alt={image.alt} fill sizes={sizes ?? "100vw"} priority={priority}
-      className={cn("object-cover", className)} />
+      className={cn("object-cover", className)} style={image.focus ? { objectPosition: image.focus } : undefined} />
   );
 }

@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { getPage } from "@/lib/content";
+import { pageMetadata } from "@/lib/site";
 import type { Locale } from "@/i18n/config";
-import { HeroBlock } from "@/components/blocks/HeroBlock";
-import { ContentBlock } from "@/components/blocks/ContentBlock";
-import { CardsBlock } from "@/components/blocks/CardsBlock";
-import { TeamBlock } from "@/components/blocks/TeamBlock";
+import { InteriorHero } from "@/components/shared/InteriorHero";
+import { Lede } from "@/components/home/Lede";
+import { Legacy } from "@/components/about/Legacy";
+import { Words } from "@/components/about/Words";
+import { Principles } from "@/components/about/Principles";
+import { Trustees } from "@/components/about/Trustees";
 import { CtaBlock } from "@/components/blocks/CtaBlock";
-import { LuigiPanel } from "@/components/about/LuigiPanel";
 import type {
   HeroBlock as HeroBlockType,
   ContentBlock as ContentBlockType,
@@ -28,8 +30,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const loc = locale as Locale;
-  const page = getPage("/about", loc);
-  return { title: page?.seo.title, description: page?.seo.description };
+  return pageMetadata(getPage("/about", loc), "/about", loc);
 }
 
 export default async function AboutPage({
@@ -53,11 +54,12 @@ export default async function AboutPage({
   ];
   return (
     <>
-      <HeroBlock block={hero} variant="interior-split" />
-      <ContentBlock block={legacy} index={0} />
-      <LuigiPanel block={luigiPanel} />
-      <CardsBlock block={guides} />
-      <TeamBlock block={team} />
+      <InteriorHero block={hero} />
+      {hero.content && <Lede number="01" text={hero.content} />}
+      <Legacy block={legacy} />
+      <Words block={luigiPanel} />
+      <Principles block={guides} />
+      <Trustees block={team} />
       <CtaBlock block={cta} />
     </>
   );

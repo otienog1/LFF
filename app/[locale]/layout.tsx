@@ -1,25 +1,14 @@
-import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale, getMessages } from 'next-intl/server';
 import HtmlLang from '@/components/ui/HtmlLang';
+import { locales, type Locale } from '@/i18n/config';
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  await params;
-  const base = 'https://theluigifootprints.org';
-  return {
-    alternates: {
-      languages: {
-        'en': base,
-        'es': `${base}/es`,
-        'pt': `${base}/pt`,
-        'x-default': base,
-      },
-    },
-  };
-}
+/** Only the locales listed below are built; anything else is a 404, not a copy of the English home. */
+export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [{ locale: 'es' }, { locale: 'pt' }];
+  return locales.filter((l) => l !== 'en').map((locale) => ({ locale }));
 }
 
 export default async function LocaleLayout({
@@ -30,6 +19,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  if (!locales.includes(locale as Locale) || locale === 'en') notFound();
   setRequestLocale(locale);
   const messages = await getMessages();
   return (

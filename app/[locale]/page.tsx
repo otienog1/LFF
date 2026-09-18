@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { getPage } from "@/lib/content";
+import { pageMetadata } from "@/lib/site";
 import type { Locale } from "@/i18n/config";
-import { HeroBlock } from "@/components/blocks/HeroBlock";
-import { ContentBlock } from "@/components/blocks/ContentBlock";
-import { CardsBlock } from "@/components/blocks/CardsBlock";
-import { ImpactBlock } from "@/components/blocks/ImpactBlock";
+import { HomeHero } from "@/components/home/HomeHero";
+import { Belief } from "@/components/home/Belief";
+import { ProgrammeIndex } from "@/components/home/ProgrammeIndex";
+import { NumbersPanel } from "@/components/home/NumbersPanel";
 import { CtaBlock } from "@/components/blocks/CtaBlock";
 import { EditorialStatement } from "@/components/home/EditorialStatement";
 import type {
@@ -16,6 +17,9 @@ import type {
   EditorialBlock as EditorialBlockType,
   CtaBlock as CtaBlockType,
 } from "@/types/content";
+
+/** Only the params listed below are built; anything else is the exported 404 page. (The dev server still answers such URLs with its own export-mode error.) */
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return [{ locale: "es" }, { locale: "pt" }];
@@ -28,8 +32,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const loc = locale as Locale;
-  const page = getPage("/", loc);
-  return { title: page?.seo.title, description: page?.seo.description };
+  return pageMetadata(getPage("/", loc), "/", loc);
 }
 
 export default async function HomePage({
@@ -53,10 +56,10 @@ export default async function HomePage({
   ];
   return (
     <>
-      <HeroBlock block={hero} variant="home" />
-      <ContentBlock block={philosophy} index={0} />
-      <CardsBlock block={focusAreas} />
-      <ImpactBlock block={impactHighlight} variant="deep" />
+      <HomeHero block={hero} />
+      <Belief block={philosophy} />
+      <ProgrammeIndex block={focusAreas} />
+      <NumbersPanel block={impactHighlight} />
       <EditorialStatement block={belief} />
       <CtaBlock block={cta} />
     </>

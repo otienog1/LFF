@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getPage } from "@/lib/content";
+import { getProjectsBySlugs } from "@/lib/projects";
+import { pageMetadata } from "@/lib/site";
 import type { Locale } from "@/i18n/config";
-import { HeroBlock } from "@/components/blocks/HeroBlock";
-import { CardsBlock } from "@/components/blocks/CardsBlock";
-import { ContentBlock } from "@/components/blocks/ContentBlock";
+import { InteriorHero } from "@/components/shared/InteriorHero";
+import { Lede } from "@/components/home/Lede";
+import { WaysIndex } from "@/components/get-involved/WaysIndex";
+import { StorySpread } from "@/components/shared/StorySpread";
 import { CtaBlock } from "@/components/blocks/CtaBlock";
-import { DonationTiers } from "@/components/get-involved/DonationTiers";
-import { PartnerStrip } from "@/components/get-involved/PartnerStrip";
 import type {
   HeroBlock as HeroBlockType,
   CardsBlock as CardsBlockType,
@@ -26,8 +27,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const loc = locale as Locale;
-  const page = getPage("/get-involved", loc);
-  return { title: page?.seo.title, description: page?.seo.description };
+  return pageMetadata(getPage("/get-involved", loc), "/get-involved", loc);
 }
 
 export default async function GetInvolvedPage({
@@ -41,19 +41,23 @@ export default async function GetInvolvedPage({
 
   const page = getPage("/get-involved", loc);
   if (!page) return null;
-  const [hero, ways, tourism, cta] = page.blocks as [
-    HeroBlockType,
-    CardsBlockType,
-    ContentBlockType,
-    CtaBlockType,
-  ];
+  const tNav = await getTranslations("nav");
+  const tCommon = await getTranslations("common");
+  const [hero, ways, tourism, cta] = page.blocks as [HeroBlockType, CardsBlockType, ContentBlockType, CtaBlockType];
   return (
     <>
-      <HeroBlock block={hero} variant="interior-dropcap" />
-      <CardsBlock block={ways} />
-      <DonationTiers />
-      <ContentBlock block={tourism} index={0} variant="deep" />
-      <PartnerStrip />
+      <InteriorHero block={hero} />
+      {hero.content && <Lede number="01" text={hero.content} />}
+      <WaysIndex block={ways} number="02" locale={loc} actions={{ "/donate": tNav("donate"), "/contact": tCommon("writeToUs") }} />
+      <StorySpread
+        block={tourism}
+        number="03"
+        side="left"
+        tone="deep"
+        projects={getProjectsBySlugs(tourism.projects ?? [], loc)}
+        locale={loc}
+        fieldLabel={tCommon("fromTheField")}
+      />
       <CtaBlock block={cta} />
     </>
   );

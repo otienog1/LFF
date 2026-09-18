@@ -56,7 +56,20 @@ export default function Navbar() {
           : "bg-transparent"
       )}
     >
-      <nav className="container flex items-center justify-between py-2.5">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-10 focus:bg-green focus:px-4 focus:py-2 focus:text-[11px] focus:font-medium focus:uppercase focus:tracking-[0.12em] focus:text-paper"
+      >
+        {t("skip")}
+      </a>
+      {/* On xl the row leaves the container and sits on the hero frame's grid: 32px in from the
+          viewport edges, in a 96px band so the frame's top line is 32px below it. It eases to 80px once solid. */}
+      <nav
+        className={cn(
+          "container flex items-center justify-between py-2.5 xl:max-w-none xl:px-8 xl:py-0 transition-[height] duration-300 ease-(--ease-out)",
+          solid ? "xl:h-20" : "xl:h-24",
+        )}
+      >
         {/* Logo */}
         <Link href={prefix || "/"} className={cn("font-display text-xl transition-colors duration-300", solid ? "text-ink" : "text-paper")}>
           The Luigi Footprints Foundation
@@ -68,12 +81,23 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className={cn("transition-colors duration-300", solid ? "text-ink-soft hover:text-ink" : "text-paper/80 hover:text-paper")}
+              className={cn("link-draw py-1 transition-colors duration-300", solid ? "text-ink-soft hover:text-ink" : "text-paper/80 hover:text-paper")}
             >
               {l.label}
             </Link>
           ))}
-          <Link href={prefix + "/donate"} className={buttonVariants()}>{t("donate")}</Link>
+          <Link
+            href={prefix + "/donate"}
+            className={cn(
+              buttonVariants({ variant: "ghost" }),
+              "h-8 px-5 text-[11px] duration-300",
+              solid
+                ? "border-ink text-ink [--wipe:var(--color-ink)] hover:text-paper focus-visible:text-paper"
+                : "border-paper/70 text-paper [--wipe:var(--color-paper)] hover:text-ink focus-visible:text-ink",
+            )}
+          >
+            {t("donate")}
+          </Link>
           <LocaleSwitcher solid={solid} />
         </div>
 
@@ -109,7 +133,7 @@ export default function Navbar() {
                 <div className="flex flex-col gap-6">
                   <Link
                     href={prefix + "/donate"}
-                    className={cn(buttonVariants({ variant: 'ghost' }), 'self-start border-paper text-paper hover:bg-paper hover:text-ink')}
+                    className={cn(buttonVariants({ variant: 'ghost' }), 'self-start border-paper text-paper [--wipe:var(--color-paper)] hover:text-ink focus-visible:text-ink')}
                   >
                     {t("donate")}
                   </Link>

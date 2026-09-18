@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { setRequestLocale } from "next-intl/server";
-import { getProjects } from "@/lib/projects";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getProjects, FLAGSHIP_SLUG } from "@/lib/projects";
+import { parseWpContent, stripHtml } from "@/lib/wp";
 import { getPage } from "@/lib/content";
+import { pageMetadata } from "@/lib/site";
+import { InteriorHero } from "@/components/shared/InteriorHero";
+import { Lede } from "@/components/home/Lede";
+import { FlagshipProject } from "@/components/projects/FlagshipProject";
+import { ArchiveGrid } from "@/components/projects/ArchiveGrid";
+import type { ProjectsHeroBlock, ImpactBlock } from "@/types/content";
 import type { Locale } from "@/i18n/config";
-import type { ProjectsHeroBlock } from "@/types/content";
 
 export function generateStaticParams() {
   return [{ locale: "es" }, { locale: "pt" }];
@@ -18,15 +22,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const loc = locale as Locale;
-  const page = getPage("/projects", loc);
-  return { title: page?.seo.title, description: page?.seo.description };
-}
-
-function formatDate(iso: string, locale: string) {
-  return new Date(iso).toLocaleDateString(locale, {
-    year: "numeric",
-    month: "long",
-  });
+  return pageMetadata(getPage("/projects", loc), "/projects", loc);
 }
 
 export default async function ProjectsPage({
@@ -37,58 +33,45 @@ export default async function ProjectsPage({
   const { locale } = await params;
   const loc = locale as Locale;
   setRequestLocale(loc);
+  const t = await getTranslations("projects");
+  const tCommon = await getTranslations("common");
 
   const projects = getProjects(loc);
+  const flagship = projects.find((p) => p.slug === FLAGSHIP_SLUG);
+  const others = projects.filter((p) => p.slug !== FLAGSHIP_SLUG);
   const page = getPage("/projects", loc);
   const [hero] = (page?.blocks ?? []) as [ProjectsHeroBlock];
+  // The housed-camps figure lives with the other figures on the Impact page, so it is written once.
+  const stats = getPage("/impact", loc)?.blocks.find((b) => b.type === "impact") as ImpactBlock | undefined;
+  const figure = stats?.items.find((i) => i.title.includes("25")) ?? null;
 
+  const nodes = flagship ? parseWpContent(flagship.content) : [];
+  const paragraphs = nodes
+    .filter((n): n is Extract<typeof n, { kind: "p" }> => n.kind === "p")
+    .map((n) => stripHtml(n.html))
+    .filter(Boolean)
+    .slice(0, 2);
+  const photos = nodes
+    .filter((n): n is Extract<typeof n, { kind: "img" }> => n.kind === "img")
+    .map((n) => ({ url: n.src, alt: n.alt || flagship?.title || "" }));
+
+  const sponsor = { title: t("sponsorTitle"), body: t("sponsorBody"), cta: t("sponsorCta"), contact: t("sponsorContact") };
   return (
     <>
-      {/* Hero */}
-      <section className="bg-ink text-paper border-b border-paper/10 pt-32 pb-20 md:pt-40 md:pb-28">
-        <div className="container">
-          <p className="eyebrow text-paper/50 mb-4">{hero?.subtitle ?? "Field Work"}</p>
-          <h1 className="display-1 max-w-[16ch]">{hero?.title ?? "Projects & Programmes"}</h1>
-          <p className="mt-5 text-paper/60 text-base md:text-lg max-w-[48ch] leading-relaxed">
-            {hero?.content ?? "A record of conservation, community, and wildlife initiatives carried out across Kenya since the Foundation began."}
-          </p>
-        </div>
-      </section>
-
-      {/* Grid */}
-      <section className="bg-paper border-b border-line py-20 md:py-28">
-        <div className="container">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
-            {projects.map((project, i) => (
-              <Link href={`/${loc}/projects/${project.slug}`} key={project.id}>
-                <article className="group flex flex-col">
-                  {project.featuredImage && (
-                    <div className="relative aspect-4/3 overflow-hidden mb-5">
-                      <Image
-                        src={project.featuredImage.sourceUrl}
-                        alt={project.featuredImage.altText || project.title}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        priority={i < 3}
-                      />
-                    </div>
-                  )}
-                  <p className="eyebrow text-ink/40 mb-2">{formatDate(project.date, loc)}</p>
-                  <h2 className="font-display font-medium text-lg leading-[1.3] text-ink capitalize group-hover:text-green transition-colors">
-                    {project.title}
-                  </h2>
-                  {project.excerpt && (
-                    <p className="mt-2 text-ink-soft text-sm leading-relaxed line-clamp-2">
-                      {project.excerpt}
-                    </p>
-                  )}
-                </article>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <InteriorHero block={{ title: hero?.title ?? "Projects", subtitle: hero?.subtitle, image: hero?.image }} />
+      {hero?.content && <Lede number="01" text={hero.content} />}
+      {flagship && (
+        <FlagshipProject
+          project={flagship}
+          paragraphs={paragraphs}
+          photos={photos}
+          figure={figure}
+          locale={loc}
+          number="02"
+          labels={{ flagship: t("flagship"), readWriteup: tCommon("readWriteup"), sponsor }}
+        />
+      )}
+      <ArchiveGrid projects={others} locale={loc} number={flagship ? "03" : "02"} label={t("allProjects")} />
     </>
   );
 }

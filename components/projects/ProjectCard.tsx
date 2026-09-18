@@ -1,0 +1,38 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import type { Project } from "@/lib/projects";
+import { projectThumbnail } from "@/lib/projects";
+import type { Locale } from "@/i18n/config";
+import { localePath } from "@/lib/site";
+import { Photo } from "@/components/home/Photo";
+
+export function formatMonth(iso: string, locale: Locale) {
+  return new Intl.DateTimeFormat(locale === "en" ? "en-GB" : locale, { month: "long", year: "numeric" }).format(new Date(iso));
+}
+
+export function formatDay(iso: string, locale: Locale) {
+  return new Intl.DateTimeFormat(locale === "en" ? "en-GB" : locale, { day: "numeric", month: "long", year: "numeric" }).format(new Date(iso));
+}
+
+/**
+ * An archive entry: the photograph, the month, the title. The card is the
+ * link; on hover and keyboard focus the title turns green and an arrow slides
+ * in at the end of the date rule.
+ */
+export function ProjectCard({ project, locale }: { project: Project; locale: Locale }) {
+  const image = projectThumbnail(project);
+  return (
+    <Link href={localePath(locale, `/projects/${project.slug}`)} className="group block focus-visible:outline-offset-4">
+      {image && <Photo image={image} sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw" className="aspect-4/3" drift={3} scale={1.08} />}
+      <span className="mt-5 flex items-center gap-4">
+        <span className="text-[11px] uppercase tracking-[0.2em] text-ink-soft">{formatMonth(project.date, locale)}</span>
+        <span aria-hidden="true" className="h-px flex-1 bg-ink/15" />
+        <ArrowUpRight
+          aria-hidden="true"
+          className="size-4 shrink-0 text-green opacity-0 -translate-x-1 translate-y-1 transition-[opacity,transform] duration-200 ease-out group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:translate-y-0 motion-reduce:transition-none"
+        />
+      </span>
+      <h3 className="display-3 mt-3 transition-colors duration-200 group-hover:text-green">{project.title}</h3>
+    </Link>
+  );
+}
