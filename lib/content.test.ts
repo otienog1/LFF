@@ -38,22 +38,56 @@ describe("content layer", () => {
 });
 
 describe("projects", () => {
+  // Ten entries came from the WordPress export; six were written from the 2022 to 2026 field record.
+  const LEGACY = 10;
+  const FIELD = ["ubuntu-hay", "ubuntu-smiles", "outdoor-classroom-series", "nanare-art-challenge", "living-safely-with-wildlife", "mazingira-day-nairobi-national-park"];
+
   it("are sorted newest first and all carry alt text", () => {
     const ps = getProjects();
-    expect(ps.length).toBe(10);
+    expect(ps.length).toBe(LEGACY + FIELD.length);
     for (let i = 1; i < ps.length; i++) expect(ps[i - 1].date >= ps[i].date).toBe(true);
     for (const p of ps) expect(p.featuredImage?.altText?.length ?? 0).toBeGreaterThan(3);
   });
-  it("only Dignity Housing has a write-up", () => {
-    expect(getProjects().filter(hasWriteup).map((p) => p.slug)).toEqual(["dignity-housing-for-wildife-rangers"]);
+  it("legacy entries keep their WordPress identity; field entries use the slug as id", () => {
+    for (const p of getProjects()) {
+      expect(p.id).toBeTruthy();
+      if (FIELD.includes(p.slug)) {
+        expect(p.id).toBe(p.slug);
+        expect(p.databaseId).toBeUndefined();
+      } else {
+        expect(typeof p.databaseId).toBe("number");
+      }
+    }
+    expect(new Set(getProjects().map((p) => p.id)).size).toBe(LEGACY + FIELD.length);
   });
-  it("parses WordPress HTML into paragraphs and images in order", () => {
-    const nodes = parseWpContent(getProjects().find(hasWriteup)!.content);
+  it("Dignity Housing and the field entries have write-ups; the other legacy entries do not", () => {
+    expect(getProjects().filter(hasWriteup).map((p) => p.slug).sort()).toEqual(["dignity-housing-for-wildife-rangers", ...FIELD].sort());
+  });
+  it("field entries carry a marked placeholder until the foundation supplies a photograph", () => {
+    for (const slug of FIELD) {
+      const p = getProjects().find((x) => x.slug === slug)!;
+      expect(p.featuredImage?.sourceUrl).toBe("/projects/placeholder.svg");
+      expect(p.featuredImage?.altText).toMatch(/^Photograph to come/);
+    }
+  });
+  it("parses the Dignity Housing write-up into paragraphs and images in order", () => {
+    const nodes = parseWpContent(getProjects().find((p) => p.slug === "dignity-housing-for-wildife-rangers")!.content);
     const kinds = nodes.map((n) => n.kind);
-    expect(kinds.filter((k) => k === "p").length).toBe(4);
+    // Six paragraphs: the tents, the programme, Nairobi, the Samburu build, the Samburu opening, the cost.
+    expect(kinds.filter((k) => k === "p").length).toBe(6);
     expect(kinds.filter((k) => k === "img").length).toBe(5);
     expect(nodes[0].kind).toBe("p");
-    expect((nodes.find((n) => n.kind === "p") as { html: string }).html).toContain("25 camps");
+    expect((nodes.find((n) => n.kind === "p") as { html: string }).html).toContain("Nairobi National Park");
     expect(nodes.some((n) => n.kind === "p" && n.html.includes("<strong>Dignity Housing</strong>"))).toBe(true);
+    expect(nodes.some((n) => n.kind === "p" && n.html.includes("Samburu"))).toBe(true);
+  });
+  it("the housing figure is written once, on the Impact page, and the donate cause agrees with it", async () => {
+    const dataEn = (await import("@/data/data.json")).default as { donate: { causes: { id: string; progress?: { done: number; total: number } }[] } };
+    for (const locale of ["en", "es", "pt"] as const) {
+      const stats = getPage("/impact", locale)?.blocks.find((b) => b.type === "impact") as { items: { title: string }[] } | undefined;
+      expect(stats?.items.find((i) => i.title.includes("25"))?.title).toBe(locale === "en" ? "6 of 25" : "6 de 25");
+    }
+    const cause = dataEn.donate.causes.find((c) => c.id === "dignity-housing")!;
+    expect(cause.progress).toMatchObject({ done: 6, total: 25 });
   });
 });

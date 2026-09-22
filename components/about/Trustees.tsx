@@ -5,7 +5,7 @@ import { Photo } from "@/components/home/Photo";
 import { Reveal } from "@/components/motion/Reveal";
 
 /**
- * Chapter 05, the board. One row per trustee: the portrait on the left four
+ * Chapter 06, the board. One row per trustee: the portrait on the left four
  * columns and the name, role and full biography on the right seven. On large
  * screens the portrait is the grid cell itself, so it is exactly as tall as
  * its own row's text, whatever that row's biography runs to; on small screens
@@ -16,7 +16,7 @@ import { Reveal } from "@/components/motion/Reveal";
 export function Trustees({ block }: { block: TeamBlockType }) {
   return (
     <Chapter tone="light" id="trustees">
-      {block.title && <ChapterMark number="05" label={block.title} />}
+      {block.title && <ChapterMark number="06" label={block.title} />}
       {block.subtitle && <SplitHeading text={block.subtitle} className="display-2 mt-6 max-w-[22ch]" />}
       {block.content && <p className="body-lg mt-6 max-w-[58ch] text-ink-soft">{block.content}</p>}
       <ol className="m-0 mt-14 list-none border-t border-line p-0 md:mt-20">
