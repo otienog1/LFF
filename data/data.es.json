@@ -48,7 +48,7 @@
             },
             {
               "title": "Restauración del paisaje",
-              "description": "El Proyecto Olchani: cuatro viveros gestionados por la comunidad, a cargo de mujeres y jóvenes locales, con capacidad para 42.000 plántulas autóctonas, que restauran tierras degradadas y corredores de fauna.",
+              "description": "El Proyecto Olchani, con ifaw: cuatro viveros gestionados por la comunidad, a cargo de mujeres y jóvenes locales, entre ellos Osoit, Ildepen y Tembo, con capacidad para 42.000 plántulas autóctonas, que restauran tierras degradadas y corredores de fauna.",
               "link": "/our-work#restoration"
             },
             {
@@ -58,7 +58,7 @@
             },
             {
               "title": "Convivencia y guardaparques",
-              "description": "Iluminación disuasoria de depredadores para los hogares, apicultura que mantiene a los elefantes lejos de los asentamientos y viviendas Dignity Housing para los guardaparques de rinocerontes del Parque Nacional de Nairobi.",
+              "description": "Iluminación disuasoria de depredadores para los hogares, apicultura que mantiene a los elefantes lejos de los asentamientos y viviendas Dignity Housing para los guardaparques de Amboseli, el Parque Nacional de Nairobi y Samburu.",
               "link": "/our-work#coexistence"
             }
           ]
@@ -164,6 +164,18 @@
           "image": {
             "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Luigi.webp",
             "alt": "Retrato de Luigi Francescon"
+          }
+        },
+        {
+          "id": "about-namesake",
+          "type": "content",
+          "title": "El elefante que lleva el nombre",
+          "subtitle": "Un nombre dado a un hombre, que un elefante lleva adelante.",
+          "content": "En las llanuras de Amboseli hay un joven elefante macho llamado Luigi. Recibió su nombre de Luigi Francescon y ha crecido junto a la fundación que lleva ese mismo nombre: nacido en la familia LD, criado por su madre Lemlepo y velado por las comunidades y los guardaparques con los que trabajamos.\n\nLuigi cumplió nueve años en mayo de 2026 y crece bien. Lemlepo ha criado una familia grande y próspera, de unos cuarenta elefantes, y se ha convertido en abuela. Como todos los machos jóvenes, Luigi pasa los días midiéndose con otros machos, aprendiendo lo que necesitará antes de emprender su propio camino. En todo el ecosistema de Amboseli no se ha registrado ningún caso de caza furtiva desde hace varios años.\n\nNo es una mascota. Es una medida. Mientras un elefante llamado Luigi pueda recorrer estas llanuras con seguridad, el trabajo está cumpliendo aquello para lo que fue creado.",
+          "image": {
+            "url": "/index/give.webp",
+            "alt": "Una manada de elefantes caminando entre acacias, con garcillas bueyeras a sus pies",
+            "aspect": "4/3"
           }
         },
         {
@@ -296,6 +308,7 @@
             "aspect": "4/3"
           },
           "projects": [
+            "nanare-art-challenge",
             "sponsoring-exams",
             "walk-for-elephants-with-jim-nyamu"
           ]
@@ -305,13 +318,15 @@
           "type": "content",
           "title": "Restauración del paisaje",
           "subtitle": "El Proyecto Olchani: restaurar paisajes, árbol a árbol.",
-          "content": "Los ecosistemas sanos sostienen comunidades sanas. A través del Proyecto Olchani restauramos tierras degradadas, reforzamos los corredores de fauna y ayudamos a las comunidades a convertirse en guardianas de su propio entorno.\n\nPlantar árboles no es simplemente poner plántulas en la tierra. Reconstruye ecosistemas, mejora la resiliencia climática y genera medios de vida. Junto con las comunidades locales hemos creado cuatro viveros gestionados por la comunidad, con capacidad para 42.000 plántulas autóctonas, que generan empleo y capacitación para mujeres y jóvenes.",
+          "content": "Los ecosistemas sanos sostienen comunidades sanas. A través del Proyecto Olchani, financiado y desarrollado en colaboración con ifaw, restauramos tierras degradadas, reforzamos los corredores de fauna y ayudamos a las comunidades a convertirse en guardianas de su propio entorno. Olchani significa árbol en lengua maa.\n\nPlantar árboles no es simplemente poner plántulas en la tierra. Reconstruye ecosistemas, mejora la resiliencia climática y crea medios de vida. Trabajando con las comunidades locales, hemos establecido cuatro viveros gestionados por la comunidad con capacidad para 42.000 plántulas autóctonas, entre ellos Osoit, Ildepen y Tembo, creando trabajo y capacidades para mujeres y jóvenes. Sus plántulas van a lugares de restauración como el Cercado de Orregie, dentro del Parque Nacional de Amboseli, concebido como un bosque de entre 5.000 y 7.000 árboles autóctonos.",
           "image": {
             "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
             "alt": "Descarga de plántulas autóctonas para una jornada comunitaria de plantación",
             "aspect": "4/3"
           },
           "projects": [
+            "ubuntu-hay",
+            "outdoor-classroom-series",
             "tree-planting-at-the-nairobi-national-park",
             "planting-trees-in-samburu"
           ]
@@ -328,6 +343,7 @@
             "aspect": "4/3"
           },
           "projects": [
+            "ubuntu-smiles",
             "sustaining-community-livelihoods-during-covid-19"
           ]
         },
@@ -336,7 +352,7 @@
           "type": "content",
           "title": "Convivencia y guardaparques",
           "subtitle": "Ayudar a personas y fauna a compartir la misma tierra, y apoyar a los guardaparques que la protegen.",
-          "content": "Para las comunidades cercanas a las áreas protegidas, los encuentros con depredadores y elefantes pueden poner en peligro el ganado, los cultivos y las vidas. En lugar de elegir entre las personas y la fauna, trabajamos en soluciones que sirven a ambas: iluminación disuasoria de depredadores que protege los hogares, y apicultura que genera ingresos y a la vez disuade a los elefantes de entrar en los asentamientos.\n\nDetrás de cada paisaje protegido hay guardaparques que pasan largos periodos lejos de casa en condiciones remotas. A través del proyecto Dignity Housing estamos sustituyendo las tiendas de campaña por viviendas seguras y autónomas para los guardaparques de rinocerontes del Parque Nacional de Nairobi. Hasta ahora, cuatro de los 25 campamentos del parque cuentan con vivienda.",
+          "content": "Para las comunidades cercanas a las áreas protegidas, los encuentros con depredadores y elefantes pueden poner en peligro el ganado, los cultivos y las vidas. En lugar de elegir entre las personas y la fauna, trabajamos en soluciones que sirven a ambas: iluminación disuasoria de depredadores que protege los hogares, apicultura que genera ingresos mientras disuade a los elefantes de entrar en los asentamientos, y formación en convivencia para los líderes comunitarios que lo sostienen todo.\n\nDetrás de cada paisaje protegido hay guardaparques que pasan largas temporadas lejos de casa, en condiciones remotas. A través del proyecto Dignity Housing estamos sustituyendo las tiendas de campaña por viviendas seguras y autónomas para los guardaparques de Amboseli, el Parque Nacional de Nairobi y la Reserva Nacional de Samburu. Seis de los 25 campamentos de guardaparques de Nairobi ya cuentan con vivienda, y a principios de 2026 se inauguró en Samburu una base de ocho unidades.",
           "image": {
             "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing.jpg",
             "alt": "La patrona Annabella Francescon en el interior de una Dignity House terminada para guardaparques",
@@ -344,6 +360,7 @@
           },
           "projects": [
             "dignity-housing-for-wildife-rangers",
+            "living-safely-with-wildlife",
             "gifting-boots-to-game-rangers"
           ]
         },
@@ -411,8 +428,8 @@
               "description": "Capacidad de plántulas en esos viveros."
             },
             {
-              "title": "4 de 25",
-              "description": "Campamentos de guardaparques del Parque Nacional de Nairobi con vivienda hasta ahora gracias a Dignity Housing."
+              "title": "6 de 25",
+              "description": "Campamentos de guardaparques del Parque Nacional de Nairobi alojados hasta ahora gracias a Dignity Housing, además de una base de ocho unidades en Samburu."
             }
           ]
         },
@@ -428,6 +445,7 @@
             "aspect": "4/3"
           },
           "projects": [
+            "mazingira-day-nairobi-national-park",
             "providing-water-to-wildlife",
             "eradicating-the-ivasive-parthenium-weed",
             "cleaning-lake-nakuru-national-park"
@@ -458,7 +476,7 @@
             },
             {
               "title": "Un guardaparques vuelve a una casa de verdad",
-              "description": "Viviendas autónomas que sustituyen las tiendas de campaña de los guardaparques que protegen a los rinocerontes del Parque Nacional de Nairobi.",
+              "description": "Viviendas autónomas que sustituyen las tiendas de campaña de los guardaparques del Parque Nacional de Nairobi, la Reserva Nacional de Samburu y Amboseli.",
               "image": {
                 "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing.jpg",
                 "alt": "La patrona Annabella Francescon en el interior de una Dignity House terminada para guardaparques"
@@ -659,6 +677,114 @@
     }
   ],
   "projects": [
+    {
+      "id": "ubuntu-hay",
+      "title": "Ubuntu Hay",
+      "slug": "ubuntu-hay",
+      "excerpt": "Un banco de heno comunitario en Lemongo, cerca de Amboseli, que almacena forraje en las buenas temporadas para que el ganado, los medios de vida y los pastizales resistan la sequía.",
+      "content": "<p>La sequía es la estación más dura para las familias que crían ganado junto a la fauna. Ubuntu Hay, la segunda fase del Proyecto Olchani, le responde con previsión: los miembros de la comunidad siegan la hierba, la embalan y llenan un granero de heno comunitario construido con ellos y para ellos, de modo que haya alimento almacenado cuando las lluvias se retrasen o fallen.</p>\n<p>El forraje almacenado permite mantener al ganado durante la estación seca sin esquilmar los pastizales de los que depende la fauna, y da a las familias un colchón que protege a sus animales y sus ingresos. Mujeres, hombres y jóvenes gestionan el banco de heno por sí mismos, con ifaw como socio, y su presidente, John, dirige el trabajo sobre el terreno.</p>\n<p>Ubuntu Hay se puso en marcha a mediados de 2025, y la comunidad realizó su primera siega y embalado en septiembre de ese año. La fundación lo describe como resiliencia climática almacenada para mañana y empoderamiento económico creado hoy.</p>\n",
+      "date": "2025-08-05T00:00:00",
+      "featuredImage": {
+        "altText": "Fotografía pendiente: la comunidad embalando heno en el banco de heno de Lemongo, de la publicación de la fundación Ubuntu Hay in Action de septiembre de 2025.",
+        "caption": null,
+        "sourceUrl": "/projects/placeholder.svg",
+        "srcSet": "",
+        "sizes": "",
+        "id": "placeholder"
+      },
+      "typesOfProjects": [],
+      "tags": []
+    },
+    {
+      "id": "ubuntu-smiles",
+      "title": "Ubuntu Smiles",
+      "slug": "ubuntu-smiles",
+      "excerpt": "Empoderamiento económico de las mujeres en el ecosistema de Amboseli: ingresos dignos gracias a los abalorios, la artesanía y los viveros comunitarios, y con ellos una cierta independencia.",
+      "content": "<p>Ubuntu Smiles es el trabajo de empoderamiento económico de las mujeres que la fundación desarrolla en el ecosistema de Amboseli. Ayuda a las mujeres a ganarse la vida con sus habilidades, mediante los abalorios y la artesanía y a través de los viveros comunitarios que gestionan, y conecta esos ingresos con un sentido más amplio de dignidad y posibilidad.</p>\n<p>Se desarrolla junto al trabajo de restauración de Olchani, con ifaw como socio. Las mujeres que han participado lo describen con sus propias palabras: la líder comunitaria Anna Touwa ha hablado del empoderamiento económico que trajo a su vida y a la de otras mujeres de su comunidad.</p>\n<p>El trabajo de artesanía e ingresos recorre toda la historia de la fundación, desde las primeras sesiones de valor añadido con mujeres de Amboseli, pasando por los abalorios, hasta el programa Ubuntu Smiles, presentado con ese nombre en 2025. Cuando las mujeres obtienen ingresos, las familias se vuelven más resilientes y las comunidades, aliadas más fuertes de la fauna.</p>\n",
+      "date": "2025-11-01T00:00:00",
+      "featuredImage": {
+        "altText": "Fotografía pendiente: Anna Touwa hablando de Ubuntu Smiles, de la publicación de la fundación Gratitude, Dignity, and the Power of Ubuntu de noviembre de 2025.",
+        "caption": null,
+        "sourceUrl": "/projects/placeholder.svg",
+        "srcSet": "",
+        "sizes": "",
+        "id": "placeholder"
+      },
+      "typesOfProjects": [],
+      "tags": []
+    },
+    {
+      "id": "outdoor-classroom-series",
+      "title": "Serie Aula al Aire Libre",
+      "slug": "outdoor-classroom-series",
+      "excerpt": "Lecciones de conservación para escolares de primaria en los viveros comunitarios de Amboseli, impartidas por los líderes comunitarios que viven este trabajo cada día.",
+      "content": "<p>La Serie Aula al Aire Libre saca la educación en conservación del aula y la lleva a los viveros y a la tierra. Los niños de las escuelas primarias cercanas acuden a los viveros comunitarios de la fundación para sesiones prácticas sobre árboles autóctonos, restauración y convivencia con la fauna.</p>\n<p>Las lecciones no las imparten solo los maestros, sino también los líderes comunitarios de convivencia: Anna Touwa en el vivero de Ildepen, en una sesión que la fundación llamó Aprender más allá del aula, y Nickson Seleon en el vivero de Osoit, en Aprender viviéndolo. Ambas tuvieron lugar a principios de 2026.</p>\n<p>La serie forma parte del Proyecto Olchani, con ifaw y Stand Up Shout Out como socios. El objetivo es una generación que haya vivido la conservación en lugar de solo oír hablar de ella. En palabras de la fundación, la educación no es solo algo que se enseña, es algo que se experimenta.</p>\n",
+      "date": "2026-02-17T00:00:00",
+      "featuredImage": {
+        "altText": "Fotografía pendiente: niños en una sesión de conservación en el vivero de Osoit, de la publicación de la fundación Outdoor Classroom Series del 17 de febrero de 2026.",
+        "caption": null,
+        "sourceUrl": "/projects/placeholder.svg",
+        "srcSet": "",
+        "sizes": "",
+        "id": "placeholder"
+      },
+      "typesOfProjects": [],
+      "tags": []
+    },
+    {
+      "id": "nanare-art-challenge",
+      "title": "Nanare Art Challenge",
+      "slug": "nanare-art-challenge",
+      "excerpt": "Una experiencia inmersiva de liderazgo construida en torno al arte para treinta adolescentes de Kakamega, organizada con Stand Up Shout Out en el SUSO Mabingwa Youth Centre.",
+      "content": "<p>A veces el empoderamiento tiene forma de pincel. El Nanare Art Challenge puso pintura, tela y posibilidades ante treinta jóvenes de Kakamega, muchos de los cuales nunca habían dibujado, y les invitó a crear.</p>\n<p>Organizado en colaboración con Stand Up Shout Out en el SUSO Mabingwa Youth Centre de Nairobi, y dirigido por el fundador de SUSO, Peter Fredrick Moll, con el personal y los jóvenes líderes de SUSO como facilitadores, a lo largo de varios días se convirtió en mucho más que un concurso de arte: un camino de liderazgo, colaboración y descubrimiento personal.</p>\n<p>Al final, según cuenta la fundación, los treinta participantes dijeron sentirse más seguros, más abiertos a nuevas posibilidades y más agentes de cambio. La experiencia se apoyó en jornadas de arte anteriores que la fundación ha organizado con artistas invitados, entre ellas una con jóvenes de Kibera.</p>\n",
+      "date": "2026-09-01T00:00:00",
+      "featuredImage": {
+        "altText": "Fotografía pendiente: adolescentes pintando en el SUSO Mabingwa Youth Centre, de la publicación de la fundación Something beautiful began de septiembre de 2026.",
+        "caption": null,
+        "sourceUrl": "/projects/placeholder.svg",
+        "srcSet": "",
+        "sizes": "",
+        "id": "placeholder"
+      },
+      "typesOfProjects": [],
+      "tags": []
+    },
+    {
+      "id": "living-safely-with-wildlife",
+      "title": "Vivir con seguridad junto a la fauna",
+      "slug": "living-safely-with-wildlife",
+      "excerpt": "Formación en convivencia que da a los embajadores comunitarios, incluidas las mujeres líderes, los conocimientos y las herramientas para vivir con seguridad junto a la fauna y reducir los conflictos.",
+      "content": "<p>Para las comunidades que viven junto a la fauna cada día, la convivencia es una habilidad práctica. La fundación apoya formaciones de caja de herramientas que dan a los embajadores comunitarios los conocimientos y los medios para vivir con seguridad junto a la fauna y reducir los conflictos antes de que cuesten vidas, ganado o cosechas.</p>\n<p>En 2025 la fundación copatrocinó una formación de caja de herramientas sobre convivencia entre personas y fauna dirigida por Save the Elephants, que reunió a representantes comunitarios de las zonas de Amboseli y del Parque Nacional de Nairobi con jóvenes de Stand Up Shout Out. En 2026, en su formación Vivir con seguridad junto a la fauna en Samburu, las mujeres líderes de las aldeas de convivencia de SUSO dieron un paso al frente para hacer preguntas, compartir su experiencia y aprender nuevos enfoques y tecnologías.</p>\n<p>El relato de la fundación sobre la formación de Samburu es directo: no solo formas a una mujer, fortaleces a una líder, que lleva ese conocimiento a su familia, a su aldea y a la siguiente generación.</p>\n",
+      "date": "2025-05-18T00:00:00",
+      "featuredImage": {
+        "altText": "Fotografía pendiente: mujeres líderes poniéndose en pie para hablar en la formación de Samburu, de la publicación de la fundación When Women Stand Up de 2026.",
+        "caption": null,
+        "sourceUrl": "/projects/placeholder.svg",
+        "srcSet": "",
+        "sizes": "",
+        "id": "placeholder"
+      },
+      "typesOfProjects": [],
+      "tags": []
+    },
+    {
+      "id": "mazingira-day-nairobi-national-park",
+      "title": "Día Mazingira en el Parque Nacional de Nairobi",
+      "slug": "mazingira-day-nairobi-national-park",
+      "excerpt": "Más de cien jóvenes voluntarios arrancando la maleza invasora Parthenium de los pastizales del Parque Nacional de Nairobi en el Día Mazingira de 2025, con Stand Up Shout Out y el Kenya Wildlife Service.",
+      "content": "<p>El Parthenium es una maleza invasora que ahoga los pastizales donde pasta la fauna. En el Día Mazingira de octubre de 2025, más de cien jóvenes voluntarios se unieron a la fundación, a Stand Up Shout Out y al Kenya Wildlife Service en el Parque Nacional de Nairobi para arrancarla a mano.</p>\n<p>La jornada forma parte de un compromiso más largo con los jóvenes en la conservación, en el que los jóvenes agentes de cambio restauran parques, plantan y cuidan árboles y transmiten lo que aprenden a los niños que vienen detrás, con el apoyo de las herramientas y los refrigerios que el trabajo requiere.</p>\n<p>Continúa un trabajo que la fundación empezó años antes: una limpieza anterior de Parthenium en el parque es una de las entradas más antiguas de este archivo. La conservación perdura cuando los jóvenes la hacen suya.</p>\n",
+      "date": "2025-10-11T00:00:00",
+      "featuredImage": {
+        "altText": "Fotografía pendiente: jóvenes voluntarios con chalecos arrancando Parthenium en el Parque Nacional de Nairobi, de la publicación de la fundación Mazingira Day del 11 de octubre de 2025.",
+        "caption": null,
+        "sourceUrl": "/projects/placeholder.svg",
+        "srcSet": "",
+        "sizes": "",
+        "id": "placeholder"
+      },
+      "typesOfProjects": [],
+      "tags": []
+    },
     {
       "id": "cG9zdDo1ODA=",
       "databaseId": 580,
@@ -869,8 +995,8 @@
       "databaseId": 82,
       "title": "Dignity Housing para guardaparques",
       "slug": "dignity-housing-for-wildife-rangers",
-      "excerpt": "La Luigi Footprints Foundation ha desarrollado un proyecto llamado Dignity Housing, con el que preparamos viviendas autónomas en contenedores para estos guardaparques tan merecedores, que arriesgan su vida en la naturaleza para salvar y cuidar a nuestra fauna. Cada vivienda tendrá 3 camas, una pequeña cocina, ducha y retrete con cisterna, energía solar para la iluminación y el agua caliente, y grandes depósitos de agua para cubrir todas sus necesidades.",
-      "content": "\n<p class=\"wp-block-paragraph\"><div class=\"bg-white py-20 px-6 md:px-0\">\n<div class=\"md:flex xl:w-1/2 mx-auto\">\n<div class=\"w-full md:w-3/5\">\n<p>Dentro del Parque Nacional de Nairobi hay 25 campamentos donde viven los guardaparques para vigilar todas las zonas del parque y velar por el bienestar, en particular, de los 125 rinocerontes y, de hecho, de toda la fauna que alberga. Estos guardaparques han vivido hasta ahora en tiendas de campaña básicas.</p>\n</div>\n<div class=\"relative w-full md:w-2/3 md:ml-4 mt-20 md:mt-0\">\n<div class=\"absolute\">\n<figure class=\"w-full\"><img decoding=\"async\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-74.jpg\" alt=\"\" class=\"z-10 w-full md:w-auto\"/></figure>\n</div>\n</div>\n</div>\n</div></p>\n\n\n\n<div class=\"wp-block-group z-20 px-6 pt-20 md:pt-0 md:px-0\"><div class=\"wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow\">\n\n\n<figure class=\"flex justify-center\"><img decoding=\"async\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-73-1.jpg\" alt=\"\" class=\"z-20\"/></figure>\n</div></div>\n\n\n\n<div class=\"xl:w-1/2 mx-auto px-6 md:px-0\">\n<p class=\"py-20 wp-block-paragraph\">La Luigi Footprints Foundation ha desarrollado un proyecto llamado <strong>Dignity Housing</strong>, con el que preparamos viviendas autónomas en contenedores para estos guardaparques tan merecedores, que arriesgan su vida en la naturaleza para salvar y cuidar a nuestra fauna. Cada vivienda tendrá 3 camas, una pequeña cocina, ducha y retrete con cisterna, energía solar para la iluminación y el agua caliente, y grandes depósitos de agua para cubrir todas sus necesidades.\n</p>\n\n\n\n<figure class=\"mb-8\"><img decoding=\"async\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-75-1.jpg\" alt=\"\" class=\"w-full\"/></figure>\n\n\n\n<div class=\"wp-block-columns md:flex justify-between md:space-x-8 is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column flex-1 mb-8 md:mb-8 is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"370\" height=\"420\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2.jpg\" alt=\"\" class=\"wp-image-106 w-full\" srcset=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2.jpg 370w, https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2-264x300.jpg 264w\" sizes=\"auto, (max-width: 370px) 100vw, 370px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column flex-1 is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"370\" height=\"420\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2.jpg\" alt=\"\" class=\"wp-image-107 w-full\" srcset=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2.jpg 370w, https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2-264x300.jpg 264w\" sizes=\"auto, (max-width: 370px) 100vw, 370px\" /></figure>\n</div>\n</div>\n\n\n\n<p class=\"mt-20 wp-block-paragraph\">Hasta ahora hemos construido 4 de estas viviendas, y quedan otros 21 campamentos dentro del Parque Nacional de Nairobi a los que llevar las Dignity Houses, para que todos estos guardaparques tan especiales estén bien alojados. Cada una de estas viviendas totalmente equipadas cuesta 14.000 dólares.</p>\n\n\n\n<p class=\"mt-5 wp-block-paragraph\">Necesitamos tu ayuda para tener en pie las 25 unidades de Dignity Housing. Cualquier pequeña donación será muy bien recibida. Si se financia una unidad completa, colocaremos en la vivienda una placa con tu nombre o el de tu organización.</p>\n",
+      "excerpt": "Los guardaparques pasan semanas enteras viviendo donde vive la fauna que protegen, y durante años muchos lo hicieron en tiendas de campaña y refugios deteriorados. Dignity Housing les construye casas de verdad: unidades autónomas con camas, una pequeña cocina, ducha y retrete con cisterna, energía solar y depósitos de agua, en Amboseli, el Parque Nacional de Nairobi y la Reserva Nacional de Samburu.",
+      "content": "<p>Los guardaparques pasan semanas enteras viviendo donde vive la fauna que protegen. Durante años, muchos de ellos lo hicieron en tiendas de campaña básicas y refugios deteriorados, en el santuario de rinocerontes del Parque Nacional de Nairobi y más allá.</p>\n<figure><img src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-74.jpg\" alt=\"Un viejo refugio metálico usado por los guardaparques antes de Dignity Housing\"/></figure>\n<figure><img src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-73-1.jpg\" alt=\"Un guardaparques junto a la tienda de lona que era su casa antes de Dignity Housing\"/></figure>\n<p>La Luigi Footprints Foundation desarrolló <strong>Dignity Housing</strong> para dar a estos guardaparques viviendas autónomas en contenedores. Cada vivienda tiene tres camas, una pequeña cocina, ducha y retrete con cisterna, energía solar para la iluminación y el agua caliente, y grandes depósitos de agua. La fundación ha construido ya estas viviendas en tres paisajes: Amboseli, el Parque Nacional de Nairobi y la Reserva Nacional de Samburu. Alrededor de las casas, la fundación y los guardaparques plantan árboles juntos.</p>\n<figure><img src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-75-1.jpg\" alt=\"Una Dignity House terminada, un contenedor reconvertido con paneles solares en el techo y una placa junto a la puerta\"/></figure>\n<p>Las primeras viviendas fueron para los guardaparques de rinocerontes del Parque Nacional de Nairobi. La quinta casa se inauguró allí en julio de 2025, cuando el Kenya Wildlife Service leyó un mensaje de agradecimiento por la colaboración entre KWS, Maniago Safaris, la fundación y Stand Up Shout Out, y la sexta se entregó a los guardaparques de rinocerontes en octubre de 2025.</p>\n<figure><img src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2.jpg\" alt=\"La pequeña cocina equipada dentro de una Dignity House\"/></figure>\n<figure><img src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2.jpg\" alt=\"Literas en el interior de una Dignity House terminada\"/></figure>\n<p>En octubre de 2025 el trabajo cruzó a la Reserva Nacional de Samburu. Tras una reunión junto al río Ewaso Nyiro entre Peter Karanja, de la fundación, la guardiana honoraria Annabella Francescon y el director de la reserva, Tom Lesarge, se puso la primera piedra en noviembre con Tom Lesarge y el contratista Benson Omolo, y la construcción avanzó durante diciembre. Las unidades fueron donadas por la patrona Annabella Francescon.</p>\n<p>A principios de 2026 el gobernador del condado de Samburu, el Excmo. Jonathan Lati Lelelit, inauguró oficialmente las viviendas Dignity Housing de Samburu: ocho unidades, una cocina y aseos en un cruce de puente que nunca había tenido una base permanente de guardaparques. El puesto de seguridad ya puede estar dotado de personal, y los guardaparques pueden responder más rápido. En el Día Mundial del Guardaparques de 2026 la fundación volvió para plantar árboles alrededor de las casas.</p>\n<p>Dignity Housing comenzó con el primer trabajo de la fundación con guardaparques en Amboseli y el Parque Nacional de Nairobi. Cada vivienda totalmente equipada cuesta 14.000 dólares. Si se financia una unidad completa, la casa lleva una placa con tu nombre o el de tu organización.</p>\n",
       "date": "2021-10-14T14:18:41",
       "modified": "2021-11-04T11:43:28",
       "featuredImage": {
@@ -913,7 +1039,7 @@
         "id": "dignity-housing",
         "slug": "dignity-housing",
         "title": "Dignity Housing para guardaparques",
-        "summary": "Viviendas autónomas que sustituyen las tiendas de campaña de los guardaparques que protegen a los rinocerontes del Parque Nacional de Nairobi.",
+        "summary": "Viviendas autónomas que sustituyen las tiendas de campaña de los guardaparques del Parque Nacional de Nairobi, la Reserva Nacional de Samburu y Amboseli.",
         "image": {
           "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing.jpg",
           "alt": "La patrona Annabella Francescon en el interior de una Dignity House terminada para guardaparques"
@@ -946,9 +1072,9 @@
         ],
         "link": "/projects/dignity-housing-for-wildife-rangers",
         "progress": {
-          "done": 4,
+          "done": 6,
           "total": 25,
-          "unit": "casas construidas"
+          "unit": "campamentos alojados en el Parque Nacional de Nairobi"
         },
         "items": [
           {
@@ -1100,7 +1226,7 @@
         "id": "restoration",
         "slug": "landscape-restoration",
         "title": "Restauración del paisaje",
-        "summary": "El Proyecto Olchani: cuatro viveros gestionados por la comunidad, a cargo de mujeres y jóvenes locales, con capacidad para 42.000 plántulas autóctonas, que restauran tierras degradadas y corredores de fauna.",
+        "summary": "El Proyecto Olchani, con ifaw: cuatro viveros gestionados por la comunidad, a cargo de mujeres y jóvenes locales, entre ellos Osoit, Ildepen y Tembo, con capacidad para 42.000 plántulas autóctonas, que restauran tierras degradadas y corredores de fauna.",
         "image": {
           "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
           "alt": "Descarga de plántulas autóctonas para una jornada comunitaria de plantación"
@@ -1223,7 +1349,7 @@
         "id": "coexistence",
         "slug": "coexistence-and-guarding",
         "title": "Convivencia y guardaparques",
-        "summary": "Iluminación disuasoria de depredadores para los hogares, apicultura que mantiene a los elefantes lejos de los asentamientos y viviendas Dignity Housing para los guardaparques de rinocerontes del Parque Nacional de Nairobi.",
+        "summary": "Iluminación disuasoria de depredadores para los hogares, apicultura que mantiene a los elefantes lejos de los asentamientos y viviendas Dignity Housing para los guardaparques de Amboseli, el Parque Nacional de Nairobi y Samburu.",
         "image": {
           "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/08/119977734_2844637772305067_8365419354622314358_n.jpg",
           "alt": "Botas nuevas dispuestas para su entrega a los guardaparques"

@@ -48,7 +48,7 @@
             },
             {
               "title": "Landscape restoration",
-              "description": "The Olchani Project: four community-managed tree nurseries run by local women and youth, with capacity for 42,000 indigenous seedlings, restoring degraded land and wildlife corridors.",
+              "description": "The Olchani Project, with ifaw: four community-managed tree nurseries run by local women and youth, among them Osoit, Ildepen and Tembo, with capacity for 42,000 indigenous seedlings, restoring degraded land and wildlife corridors.",
               "link": "/our-work#restoration"
             },
             {
@@ -58,7 +58,7 @@
             },
             {
               "title": "Coexistence and guarding",
-              "description": "Predator-deterrent lighting for homesteads, beekeeping that keeps elephants away from settlements, and Dignity Housing for the rhino rangers of Nairobi National Park.",
+              "description": "Predator-deterrent lighting for homesteads, beekeeping that keeps elephants away from settlements, and Dignity Housing for the rangers of Amboseli, Nairobi National Park and Samburu.",
               "link": "/our-work#coexistence"
             }
           ]
@@ -164,6 +164,18 @@
           "image": {
             "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Luigi.webp",
             "alt": "Portrait of Luigi Francescon"
+          }
+        },
+        {
+          "id": "about-namesake",
+          "type": "content",
+          "title": "The elephant who carries the name",
+          "subtitle": "A name given to a man, carried on by an elephant.",
+          "content": "In the Amboseli plains there is a young bull elephant called Luigi. He was named after Luigi Francescon, and he has been growing up alongside the foundation that carries the same name: born into the LD family, raised by his mother Lemlepo, and watched over by the communities and rangers we work with.\n\nLuigi turned nine in May 2026 and is growing up well. Lemlepo has raised a large and successful family of around forty elephants and has become a grandmother herself. Like all young bulls, Luigi spends his days sparring with other males, learning what he will need before he strikes out on his own. Across the Amboseli ecosystem, no poaching incident has been reported for several years.\n\nHe is not a mascot. He is a measure. As long as an elephant called Luigi can roam these plains safely, the work is doing what it was created to do.",
+          "image": {
+            "url": "/index/give.webp",
+            "alt": "A herd of elephants walking among acacia trees, cattle egrets at their feet",
+            "aspect": "4/3"
           }
         },
         {
@@ -296,6 +308,7 @@
             "aspect": "4/3"
           },
           "projects": [
+            "nanare-art-challenge",
             "sponsoring-exams",
             "walk-for-elephants-with-jim-nyamu"
           ]
@@ -305,13 +318,15 @@
           "type": "content",
           "title": "Landscape restoration",
           "subtitle": "The Olchani Project: restoring landscapes, one tree at a time.",
-          "content": "Healthy ecosystems support healthy communities. Through the Olchani Project we restore degraded land, strengthen wildlife corridors and help communities become stewards of their own environment.\n\nTree planting is not simply putting seedlings in the ground. It rebuilds ecosystems, improves climate resilience and creates livelihoods. Working with local communities, we have established four community-managed nurseries with capacity for 42,000 indigenous seedlings, creating work and skills for women and young people.",
+          "content": "Healthy ecosystems support healthy communities. Through the Olchani Project, funded and run in partnership with ifaw, we restore degraded land, strengthen wildlife corridors and help communities become stewards of their own environment. Olchani means tree in the Maa language.\n\nTree planting is not simply putting seedlings in the ground. It rebuilds ecosystems, improves climate resilience and creates livelihoods. Working with local communities, we have established four community-managed nurseries with capacity for 42,000 indigenous seedlings, among them Osoit, Ildepen and Tembo, creating work and skills for women and young people. Their seedlings go to restoration sites such as the Orregie Enclosure inside Amboseli National Park, planned as a forest of 5,000 to 7,000 indigenous trees.",
           "image": {
             "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
             "alt": "Indigenous seedlings being unloaded for a community planting day",
             "aspect": "4/3"
           },
           "projects": [
+            "ubuntu-hay",
+            "outdoor-classroom-series",
             "tree-planting-at-the-nairobi-national-park",
             "planting-trees-in-samburu"
           ]
@@ -328,6 +343,7 @@
             "aspect": "4/3"
           },
           "projects": [
+            "ubuntu-smiles",
             "sustaining-community-livelihoods-during-covid-19"
           ]
         },
@@ -336,7 +352,7 @@
           "type": "content",
           "title": "Coexistence and guarding",
           "subtitle": "Helping people and wildlife share the same land, and supporting the rangers who protect it.",
-          "content": "For communities near protected areas, encounters with predators and elephants can threaten livestock, crops and lives. Rather than choose between people and wildlife, we work on solutions that serve both: predator-deterrent lighting that protects homesteads, and beekeeping that earns an income while discouraging elephants from entering settlements.\n\nBehind every protected landscape are rangers who spend long periods away from home in remote conditions. Through the Dignity Housing project we are replacing tents with safe, self-contained homes for the rhino rangers of Nairobi National Park. Four of the park's 25 ranger camps have been housed so far.",
+          "content": "For communities near protected areas, encounters with predators and elephants can threaten livestock, crops and lives. Rather than choose between people and wildlife, we work on solutions that serve both: predator-deterrent lighting that protects homesteads, beekeeping that earns an income while discouraging elephants from entering settlements, and coexistence training for the community leaders who hold it all together.\n\nBehind every protected landscape are rangers who spend long periods away from home in remote conditions. Through the Dignity Housing project we are replacing tents with safe, self-contained homes for rangers in Amboseli, Nairobi National Park and Samburu National Reserve. Six of Nairobi's 25 ranger camps have been housed so far, and an eight-unit base opened at Samburu in early 2026.",
           "image": {
             "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing.jpg",
             "alt": "Trustee Annabella Francescon inside a completed Dignity House for rangers",
@@ -344,6 +360,7 @@
           },
           "projects": [
             "dignity-housing-for-wildife-rangers",
+            "living-safely-with-wildlife",
             "gifting-boots-to-game-rangers"
           ]
         },
@@ -411,8 +428,8 @@
               "description": "Seedling capacity across those nurseries."
             },
             {
-              "title": "4 of 25",
-              "description": "Ranger camps in Nairobi National Park housed so far through Dignity Housing."
+              "title": "6 of 25",
+              "description": "Ranger camps in Nairobi National Park housed so far through Dignity Housing, with an eight-unit base added at Samburu."
             }
           ]
         },
@@ -428,6 +445,7 @@
             "aspect": "4/3"
           },
           "projects": [
+            "mazingira-day-nairobi-national-park",
             "providing-water-to-wildlife",
             "eradicating-the-ivasive-parthenium-weed",
             "cleaning-lake-nakuru-national-park"
@@ -458,7 +476,7 @@
             },
             {
               "title": "A ranger comes home to a real house",
-              "description": "Self-contained homes replacing tents for the rangers who protect Nairobi National Park's rhinos.",
+              "description": "Self-contained homes replacing tents for the rangers of Nairobi National Park, Samburu National Reserve and Amboseli.",
               "image": {
                 "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing.jpg",
                 "alt": "Trustee Annabella Francescon inside a completed Dignity House for rangers"
@@ -659,6 +677,114 @@
     }
   ],
   "projects": [
+    {
+      "id": "ubuntu-hay",
+      "title": "Ubuntu Hay",
+      "slug": "ubuntu-hay",
+      "excerpt": "A community-owned hay bank at Lemongo, near Amboseli, that stores fodder in the good seasons so that livestock, livelihoods and grasslands come through drought.",
+      "content": "<p>Drought is the hardest season for families who keep livestock alongside wildlife. Ubuntu Hay, the second phase of the Olchani Project, answers it with foresight: community members harvest grass, bale it and fill a community hay barn built with them and for them, so there is feed in store when the rains are late or fail.</p>\n<p>Stored fodder means livestock can be kept through a dry season without stripping the grasslands that wildlife depends on, and it gives families a buffer that protects their animals and their income. Women, men and young people run the hay bank themselves, with ifaw as partner, and its chairman, John, leads the work on the ground.</p>\n<p>Ubuntu Hay launched in mid-2025, and the community carried out its first harvest and baling in September that year. The foundation describes it as climate resilience stored for tomorrow and economic empowerment created today.</p>\n",
+      "date": "2025-08-05T00:00:00",
+      "featuredImage": {
+        "altText": "Photograph to come: the community baling hay at the Lemongo hay bank, from the foundation's Ubuntu Hay in Action post of September 2025.",
+        "caption": null,
+        "sourceUrl": "/projects/placeholder.svg",
+        "srcSet": "",
+        "sizes": "",
+        "id": "placeholder"
+      },
+      "typesOfProjects": [],
+      "tags": []
+    },
+    {
+      "id": "ubuntu-smiles",
+      "title": "Ubuntu Smiles",
+      "slug": "ubuntu-smiles",
+      "excerpt": "Women's economic empowerment in the Amboseli ecosystem: dignified incomes from beadwork, crafts and the community tree nurseries, and with them a measure of independence.",
+      "content": "<p>Ubuntu Smiles is the foundation's women's economic empowerment work in the Amboseli ecosystem. It supports women to earn from their skills, through beadwork and crafts and through the community nurseries they run, and connects that income to a wider sense of dignity and possibility.</p>\n<p>It runs alongside the Olchani restoration work, with ifaw as partner. The women who have taken part describe it in their own words: community leader Anna Touwa has spoken about the economic empowerment it brought to her life and to other women in her community.</p>\n<p>The craft and income work runs through the foundation's story, from early value-addition sessions with Amboseli women, to beadwork, to the named Ubuntu Smiles programme profiled in 2025. When women earn, families become more resilient and communities become stronger partners for wildlife.</p>\n",
+      "date": "2025-11-01T00:00:00",
+      "featuredImage": {
+        "altText": "Photograph to come: Anna Touwa speaking about Ubuntu Smiles, from the foundation's Gratitude, Dignity, and the Power of Ubuntu post of November 2025.",
+        "caption": null,
+        "sourceUrl": "/projects/placeholder.svg",
+        "srcSet": "",
+        "sizes": "",
+        "id": "placeholder"
+      },
+      "typesOfProjects": [],
+      "tags": []
+    },
+    {
+      "id": "outdoor-classroom-series",
+      "title": "Outdoor Classroom Series",
+      "slug": "outdoor-classroom-series",
+      "excerpt": "Conservation lessons for primary school children at the community tree nurseries in Amboseli, led by the community leaders who live the work every day.",
+      "content": "<p>The Outdoor Classroom Series takes conservation education out of the classroom and into the nurseries and the soil. Children from nearby primary schools come to the foundation's community-led tree nurseries for hands-on sessions on indigenous trees, restoration and living alongside wildlife.</p>\n<p>The lessons are led not only by teachers but by community coexistence leaders: Anna Touwa at the Ildepen nursery, in a session the foundation called Learning Beyond the Classroom, and Nickson Seleon at the Osoit nursery, in Learning by Living It. Both ran in early 2026.</p>\n<p>The series sits within the Olchani Project, with ifaw and Stand Up Shout Out as partners. The aim is a generation that has experienced conservation rather than only been told about it. In the foundation's words, education is not just something you are taught, it is something you experience.</p>\n",
+      "date": "2026-02-17T00:00:00",
+      "featuredImage": {
+        "altText": "Photograph to come: children at a conservation session in the Osoit nursery, from the foundation's Outdoor Classroom Series post of 17 February 2026.",
+        "caption": null,
+        "sourceUrl": "/projects/placeholder.svg",
+        "srcSet": "",
+        "sizes": "",
+        "id": "placeholder"
+      },
+      "typesOfProjects": [],
+      "tags": []
+    },
+    {
+      "id": "nanare-art-challenge",
+      "title": "Nanare Art Challenge",
+      "slug": "nanare-art-challenge",
+      "excerpt": "An immersive leadership experience built around art for thirty teenagers from Kakamega, run with Stand Up Shout Out at the SUSO Mabingwa Youth Centre.",
+      "content": "<p>Sometimes empowerment looks like a paintbrush. The Nanare Art Challenge placed paint, fabric and possibility in front of thirty young people from Kakamega, many of whom had never drawn before, and invited them to create.</p>\n<p>Run in partnership with Stand Up Shout Out at the SUSO Mabingwa Youth Centre in Nairobi, and led by SUSO's founder Peter Fredrick Moll with SUSO staff and youth leaders as facilitators, it grew over several days into far more than an art competition: a journey of leadership, collaboration and self-discovery.</p>\n<p>By the end, the foundation reports, all thirty participants said they felt more confident, more exposed to new possibility and more like changemakers. It built on earlier art days the foundation has hosted with visiting artists, including one with young people in Kibera.</p>\n",
+      "date": "2026-09-01T00:00:00",
+      "featuredImage": {
+        "altText": "Photograph to come: teenagers painting at the SUSO Mabingwa Youth Centre, from the foundation's Something beautiful began post of September 2026.",
+        "caption": null,
+        "sourceUrl": "/projects/placeholder.svg",
+        "srcSet": "",
+        "sizes": "",
+        "id": "placeholder"
+      },
+      "typesOfProjects": [],
+      "tags": []
+    },
+    {
+      "id": "living-safely-with-wildlife",
+      "title": "Living Safely With Wildlife",
+      "slug": "living-safely-with-wildlife",
+      "excerpt": "Coexistence training that equips community ambassadors, including women leaders, with the knowledge and tools to live safely alongside wildlife and reduce conflict.",
+      "content": "<p>For communities who live beside wildlife every day, coexistence is a practical skill. The foundation supports toolbox trainings that give community ambassadors the knowledge and tools to live safely alongside wildlife and to reduce conflict before it costs lives, livestock or crops.</p>\n<p>In 2025 the foundation co-sponsored a human-wildlife coexistence toolbox training led by Save the Elephants, bringing together community representatives from the Amboseli and Nairobi National Park areas with youth from Stand Up Shout Out. In 2026, at its Living Safely With Wildlife training in Samburu, women leaders from the SUSO coexistence villages stepped forward to ask questions, share lived experience and learn new approaches and technologies.</p>\n<p>The foundation's account of the Samburu training is direct: you don't just train a woman, you strengthen a leader, one who carries that knowledge home to her family, her village and the next generation.</p>\n",
+      "date": "2025-05-18T00:00:00",
+      "featuredImage": {
+        "altText": "Photograph to come: women leaders standing to speak at the Samburu training, from the foundation's When Women Stand Up post of 2026.",
+        "caption": null,
+        "sourceUrl": "/projects/placeholder.svg",
+        "srcSet": "",
+        "sizes": "",
+        "id": "placeholder"
+      },
+      "typesOfProjects": [],
+      "tags": []
+    },
+    {
+      "id": "mazingira-day-nairobi-national-park",
+      "title": "Mazingira Day at Nairobi National Park",
+      "slug": "mazingira-day-nairobi-national-park",
+      "excerpt": "More than a hundred young volunteers clearing invasive Parthenium weed from the grasslands of Nairobi National Park on Mazingira Day 2025, with Stand Up Shout Out and the Kenya Wildlife Service.",
+      "content": "<p>Parthenium is an invasive weed that chokes the grasslands wildlife grazes. On Mazingira Day in October 2025, more than a hundred young volunteers joined the foundation, Stand Up Shout Out and the Kenya Wildlife Service in Nairobi National Park to clear it by hand.</p>\n<p>The day is part of a longer commitment to youth in conservation, in which young changemakers restore parks, plant and tend trees, and pass what they learn on to the children coming up behind them, supported with the tools and refreshments the work needs.</p>\n<p>It continues work the foundation began years earlier: an earlier Parthenium clearance at the park is one of the oldest entries in this archive. Conservation lasts when young people own it.</p>\n",
+      "date": "2025-10-11T00:00:00",
+      "featuredImage": {
+        "altText": "Photograph to come: young volunteers in vests clearing Parthenium in Nairobi National Park, from the foundation's Mazingira Day post of 11 October 2025.",
+        "caption": null,
+        "sourceUrl": "/projects/placeholder.svg",
+        "srcSet": "",
+        "sizes": "",
+        "id": "placeholder"
+      },
+      "typesOfProjects": [],
+      "tags": []
+    },
     {
       "id": "cG9zdDo1ODA=",
       "databaseId": 580,
@@ -869,8 +995,8 @@
       "databaseId": 82,
       "title": "Dignity Housing for wildlife rangers",
       "slug": "dignity-housing-for-wildife-rangers",
-      "excerpt": "The Luigi Footprints Foundation has developed a project called Dignity Housing whereby we are preparing self-contained container homes for these very deserving rangers who put their lives out in the wild to save and care for our wildlife. Each home will have 3 beds, a small kitchenette, a shower and flush toilet, solar power for lighting and for hot water, and large water tanks to cater to all their needs.",
-      "content": "\n<p class=\"wp-block-paragraph\"><div class=\"bg-white py-20 px-6 md:px-0\">\n<div class=\"md:flex xl:w-1/2 mx-auto\">\n<div class=\"w-full md:w-3/5\">\n<p>Inside the Nairobi National Park, there are 25 camps where rangers live in order to secure all the areas of the park to control the wellbeing, in particular, of the 125 rhinos and, indeed, all the wildlife within. These rangers have been living in basic tents.</p>\n</div>\n<div class=\"relative w-full md:w-2/3 md:ml-4 mt-20 md:mt-0\">\n<div class=\"absolute\">\n<figure class=\"w-full\"><img decoding=\"async\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-74.jpg\" alt=\"\" class=\"z-10 w-full md:w-auto\"/></figure>\n</div>\n</div>\n</div>\n</div></p>\n\n\n\n<div class=\"wp-block-group z-20 px-6 pt-20 md:pt-0 md:px-0\"><div class=\"wp-block-group__inner-container is-layout-flow wp-block-group-is-layout-flow\">\n\n\n<figure class=\"flex justify-center\"><img decoding=\"async\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-73-1.jpg\" alt=\"\" class=\"z-20\"/></figure>\n</div></div>\n\n\n\n<div class=\"xl:w-1/2 mx-auto px-6 md:px-0\">\n<p class=\"py-20 wp-block-paragraph\">The Luigi Footprints Foundation has developed a project called <strong>Dignity Housing</strong> whereby we are preparing self-contained container homes for these very deserving rangers who put their lives out in the wild to save and care for our wildlife. Each home will have 3 beds, a small kitchenette, a shower and flush toilet, solar power for lighting and for hot water, and large water tanks to cater to all their needs.\n</p>\n\n\n\n<figure class=\"mb-8\"><img decoding=\"async\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-75-1.jpg\" alt=\"\" class=\"w-full\"/></figure>\n\n\n\n<div class=\"wp-block-columns md:flex justify-between md:space-x-8 is-layout-flex wp-container-core-columns-is-layout-8f761849 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column flex-1 mb-8 md:mb-8 is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"370\" height=\"420\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2.jpg\" alt=\"\" class=\"wp-image-106 w-full\" srcset=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2.jpg 370w, https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2-264x300.jpg 264w\" sizes=\"auto, (max-width: 370px) 100vw, 370px\" /></figure>\n</div>\n\n\n\n<div class=\"wp-block-column flex-1 is-layout-flow wp-block-column-is-layout-flow\">\n<figure class=\"wp-block-image size-full\"><img loading=\"lazy\" decoding=\"async\" width=\"370\" height=\"420\" src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2.jpg\" alt=\"\" class=\"wp-image-107 w-full\" srcset=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2.jpg 370w, https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2-264x300.jpg 264w\" sizes=\"auto, (max-width: 370px) 100vw, 370px\" /></figure>\n</div>\n</div>\n\n\n\n<p class=\"mt-20 wp-block-paragraph\">We have, so far, built 4 of these homes, with another 21 more camps inside the Nairobi National Park to bring the Dignity Houses to, in order to have all these special rangers well housed. Each one of these fully fitted homes costs US$ 14,000.00.</p>\n\n\n\n<p class=\"mt-5 wp-block-paragraph\">We need your help to have all 25 units of our Dignity Housing in place. Any small donation will be much appreciated. If a whole unit is funded we will have a plaque put onto the home with your name or the name of your organization on it.</p>\n",
+      "excerpt": "Rangers spend weeks at a time living where the wildlife they protect lives, and for years many did so in tents and worn-out shelters. Dignity Housing builds them proper homes: self-contained units with beds, a kitchenette, a shower and flush toilet, solar power and water tanks, in Amboseli, Nairobi National Park and Samburu National Reserve.",
+      "content": "<p>Rangers spend weeks at a time living where the wildlife they protect lives. For years, many of them did so in basic tents and worn-out shelters, in the rhino sanctuary of Nairobi National Park and beyond.</p>\n<figure><img src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-74.jpg\" alt=\"An old metal shelter used by rangers before Dignity Housing\"/></figure>\n<figure><img src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-73-1.jpg\" alt=\"A ranger beside the canvas tent that was his home before Dignity Housing\"/></figure>\n<p>The Luigi Footprints Foundation developed <strong>Dignity Housing</strong> to give these rangers self-contained container homes. Each home has three beds, a small kitchenette, a shower and flush toilet, solar power for lighting and hot water, and large water tanks. The foundation has now built these homes across three landscapes: Amboseli, Nairobi National Park and Samburu National Reserve. Around the homes, the foundation and the rangers plant trees together.</p>\n<figure><img src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-75-1.jpg\" alt=\"A completed Dignity House, a converted container with solar panels on the roof and a plaque by the door\"/></figure>\n<p>The first homes went to the Rhino Rangers of Nairobi National Park. The fifth house was launched there in July 2025, when the Kenya Wildlife Service read a message of appreciation for the partnership between KWS, Maniago Safaris, the foundation and Stand Up Shout Out, and the sixth was handed over to the Rhino Rangers in October 2025.</p>\n<figure><img src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-76-2.jpg\" alt=\"The fitted kitchenette inside a Dignity House\"/></figure>\n<figure><img src=\"https://api.theluigifootprints.org/wp-content/uploads/2021/10/Rectangle-77-2.jpg\" alt=\"Bunk beds inside a completed Dignity House\"/></figure>\n<p>In October 2025 the work crossed to Samburu National Reserve. After a meeting by the Ewaso Nyiro River between the foundation's Peter Karanja, Honorary Warden Annabella Francescon and Reserve Director Tom Lesarge, ground was broken in November with Tom Lesarge and contractor Benson Omolo, and construction ran through December. The units were donated by trustee Annabella Francescon.</p>\n<p>In early 2026 the Governor of Samburu County, H.E. Jonathan Lati Lelelit, officially opened the Samburu Dignity Housing: eight units, a kitchen and washrooms at a bridge crossing that had never had a permanent ranger base. The security point can now be manned, and rangers can respond faster. On World Ranger Day 2026 the foundation returned to plant trees around the homes.</p>\n<p>Dignity Housing began with the foundation's earliest ranger work in Amboseli and Nairobi National Park. Each fully fitted home costs US$14,000. If a whole unit is funded, a plaque with your name or the name of your organisation goes onto the home.</p>\n",
       "date": "2021-10-14T14:18:41",
       "modified": "2021-11-04T11:43:28",
       "featuredImage": {
@@ -913,7 +1039,7 @@
         "id": "dignity-housing",
         "slug": "dignity-housing",
         "title": "Dignity Housing for wildlife rangers",
-        "summary": "Self-contained homes replacing tents for the rangers who protect Nairobi National Park's rhinos.",
+        "summary": "Self-contained homes replacing tents for the rangers of Nairobi National Park, Samburu National Reserve and Amboseli.",
         "image": {
           "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/10/dignity_housing.jpg",
           "alt": "Trustee Annabella Francescon inside a completed Dignity House for rangers"
@@ -946,9 +1072,9 @@
         ],
         "link": "/projects/dignity-housing-for-wildife-rangers",
         "progress": {
-          "done": 4,
+          "done": 6,
           "total": 25,
-          "unit": "homes built"
+          "unit": "camps housed at Nairobi National Park"
         },
         "items": [
           {
@@ -1100,7 +1226,7 @@
         "id": "restoration",
         "slug": "landscape-restoration",
         "title": "Landscape restoration",
-        "summary": "The Olchani Project: four community-managed tree nurseries run by local women and youth, with capacity for 42,000 indigenous seedlings, restoring degraded land and wildlife corridors.",
+        "summary": "The Olchani Project, with ifaw: four community-managed tree nurseries run by local women and youth, among them Osoit, Ildepen and Tembo, with capacity for 42,000 indigenous seedlings, restoring degraded land and wildlife corridors.",
         "image": {
           "url": "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Tree-Planting.webp",
           "alt": "Indigenous seedlings being unloaded for a community planting day"
@@ -1223,7 +1349,7 @@
         "id": "coexistence",
         "slug": "coexistence-and-guarding",
         "title": "Coexistence and guarding",
-        "summary": "Predator-deterrent lighting for homesteads, beekeeping that keeps elephants away from settlements, and Dignity Housing for the rhino rangers of Nairobi National Park.",
+        "summary": "Predator-deterrent lighting for homesteads, beekeeping that keeps elephants away from settlements, and Dignity Housing for the rangers of Amboseli, Nairobi National Park and Samburu.",
         "image": {
           "url": "https://api.theluigifootprints.org/wp-content/uploads/2021/08/119977734_2844637772305067_8365419354622314358_n.jpg",
           "alt": "New boots laid out for handover to game rangers"

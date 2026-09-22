@@ -4,13 +4,13 @@ import { SplitHeading } from "@/components/home/SplitHeading";
 import { Reveal } from "@/components/motion/Reveal";
 
 /**
- * Chapter 04, what guides us. Mission, vision and philosophy as three
+ * Chapter 05, what guides us. Mission, vision and philosophy as three
  * statements in the display face, each under its numeral and label.
  */
 export function Principles({ block }: { block: CardsBlockType }) {
   return (
     <Chapter tone="deep">
-      {block.title && <ChapterMark number="04" label={block.title} />}
+      {block.title && <ChapterMark number="05" label={block.title} />}
       {block.subtitle && <SplitHeading text={block.subtitle} className="display-2 mt-6 max-w-[22ch]" />}
       <ol className="m-0 mt-14 grid list-none gap-x-8 gap-y-12 p-0 md:grid-cols-3">
         {block.items.map((item, i) => (

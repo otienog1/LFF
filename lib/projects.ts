@@ -15,9 +15,17 @@ export interface ProjectCategory {
   slug: string;
 }
 
+/**
+ * The archive mixes two origins. Entries exported from the old WordPress site
+ * carry its identity (`databaseId`, a base64 post `id`, `typesOfProjects`
+ * terms). Entries written from the foundation's field record since 2022 never
+ * had a WordPress post: their `id` is the slug, they have no `databaseId`, and
+ * `typesOfProjects` is empty. Nothing on the site reads the WordPress fields;
+ * they are kept so the legacy entries stay as exported.
+ */
 export interface Project {
   id: string;
-  databaseId: number;
+  databaseId?: number;
   title: string;
   slug: string;
   excerpt: string;
