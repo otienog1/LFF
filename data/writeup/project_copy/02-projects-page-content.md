@@ -288,10 +288,10 @@ Not every story is a project. The Foundation also uses its page to champion wild
 
 **Facts used (all from the Foundation's own posts, plus the website's About page):**
 - Luigi Francescon, 1948–2016; grew up near Nairobi National Park; Foundation founded in his memory *(website)*
-- Luigi the elephant: Amboseli bull, "our namesake elephant," turning nine in May 2026 *(Facebook; the capture log dates the "turns 9 this May" post to early May 2026 — corrected from 2025 on 22 Sep 2026)*
+- Luigi the elephant: Amboseli bull, "our namesake elephant," turning nine in May 2025, ten in 2026 *(Facebook; confirmed by the owner on 23 Sep 2026 — the capture log's 2026 dating of the post is the error)*
 - Mother **Lemlepo**, then 33; became a grandmother when her daughter **Laminar** calved *(Facebook)*
 - The **LD family**, around 40 elephants *(Facebook)*
 - Young bulls spar and leave the family at around 13 *(Facebook)*
 - No poaching incidents reported across the ecosystem for several years *(Facebook)*
 
-**Please confirm before publishing:** Luigi the elephant's birth year (the capture log dates the "turns 9 this May" post to May 2026, implying ~2017; an earlier draft of this note read the post as May 2025, which would have implied 2016, the year Luigi Francescon died — that connection does not hold on the corrected dating and is not asserted anywhere on the site).
+**Confirmed by the owner (23 Sep 2026):** Luigi the elephant turned nine in May 2025 and is ten in 2026, which implies he was born in 2016, the year Luigi Francescon died. The posts never state that connection and the site does not draw it; whether to is the foundation's call.

@@ -52,7 +52,7 @@ On World Ocean Day (June 2025), LFF adopted a sea-turtle nest at Diani via Diani
 
 ## Companion themes (not stand-alone "projects," but recurring page content worth a website home)
 
-**Luigi the elephant (the namesake)** — Updates on Luigi, an Amboseli bull elephant (turning 9 in May 2026, per the capture log's dating of the post), his mother **Lemlepo** and the ~40-strong **LD family**. The Foundation also speaks of *"keeping Luigi's memory/legacy alive"* — see Needs Verification for the person-vs-elephant question.
+**Luigi the elephant (the namesake)** — Updates on Luigi, an Amboseli bull elephant (turned 9 in May 2025 and is 10 in 2026, confirmed by the owner), his mother **Lemlepo** and the ~40-strong **LD family**. The Foundation also speaks of *"keeping Luigi's memory/legacy alive"* — see Needs Verification for the person-vs-elephant question.
 
 **Wildlife championed & partners supported** — Tributes and awareness (e.g. **Tusker "Oltome" Craig**, reticulated giraffes, Nairobi NP lion-coexistence advocacy), and support for partner initiatives: **Sheldrick Wildlife Trust** (elephant orphans, Ithumba/Umani Springs), **Jim Nyamu's** "Ivory Belongs to Elephants" walks, **Suswa** bat conservation, **Lumo Conservancy** (Tsavo/Taita), and **Chundukwa** animal rescue.
 

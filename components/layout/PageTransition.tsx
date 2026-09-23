@@ -2,10 +2,11 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { resolveTransitionTarget } from '@/lib/navigation';
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 /** Minimum time the curtain stays closed, so fast routes don't flicker. */
 const HOLD_MS = 320;
@@ -98,13 +99,19 @@ export function PageTransition({ children }: { children: ReactNode }) {
     gsap.set(mark, { opacity: 0 });
     gsap.set(rule, { scaleX: 0, transformOrigin: 'left center' });
 
+    // The page's height changes with every route while the footer and its scroll trigger persist
+    // in the layout, and ScrollTrigger only re-measures on resize. Without a refresh once the new
+    // page is in place, a trigger measured on a long page can sit below the end of a short one and
+    // never fire, which is how the footer arrived blank.
+    const remeasure = () => ScrollTrigger.refresh();
+
     const enterPage = contextSafe((delay = 0) => {
       gsap.killTweensOf(main);
-      if (reducedMotion()) { gsap.set(main, { clearProps: 'opacity,transform' }); return; }
+      if (reducedMotion()) { gsap.set(main, { clearProps: 'opacity,transform' }); remeasure(); return; }
       gsap.fromTo(
         main,
         { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.9, delay, ease: 'power3.out', clearProps: 'opacity,transform' },
+        { y: 0, opacity: 1, duration: 0.9, delay, ease: 'power3.out', clearProps: 'opacity,transform', onComplete: remeasure },
       );
     });
 
@@ -115,6 +122,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
       gsap.set([green, ink], { yPercent: 100 });
       gsap.set(mark, { opacity: 0 });
       gsap.set(rule, { scaleX: 0 });
+      remeasure();
     });
 
     const reveal = contextSafe(() => {
