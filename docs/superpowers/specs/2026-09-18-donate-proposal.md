@@ -49,6 +49,25 @@ On the page the amounts are labelled "Suggested" and the chapter closes with: "S
 6. Currency: items are priced and charged in US dollars. Should the account ever charge another currency, add it to `NEXT_PUBLIC_PAYSTACK_CURRENCIES` and its rate per dollar to `donate.rates`.
 7. Paystack account details, listed under Payments.
 
+## 23 September 2026: the causes retold as the archive's projects
+
+The projects archive was rewritten from the foundation's field record (19 projects; see `docs/superpowers/specs/2026-09-22-luigi-story-and-project-refresh.md` and `data/writeup/project_copy/`). The owner asked for the donate page to match it, so the six programme causes became ten project causes plus the general fund. Cause ids and slugs were kept so the Paystack line naming and the URLs do not move; titles, summaries and links now point at the project pages. The summaries reuse the projects' excerpts, which are already translated.
+
+| Cause | Was | Now |
+| --- | --- | --- |
+| `dignity-housing` | unchanged | unchanged |
+| `restoration` | Landscape restoration | The Olchani Project, linking to `/projects/olchani-project` |
+| `enterprise` | Community enterprise | Ubuntu Smiles, linking to `/projects/ubuntu-smiles`; the tailoring and beadwork items stay |
+| `education` | Education and youth | Scholarships, linking to `/projects/scholarships`; the items stay |
+| `coexistence` | Coexistence and guarding | Living Safely With Wildlife, linking to the project; one item added |
+| `emergency` | When nature needs us most | Drought relief and park clean-ups; items unchanged |
+| `ubuntu-hay` | new | a bale of hay in store (6), a day of harvesting and baling (120), a season's upkeep of the hay barn (250) |
+| `elephant-den` | new | a place at the summit (60), tools for the Embu nursery (90), seed capital for a youth enterprise (250) |
+| `outdoor-classroom` | new | a field kit for one child (15), a class visit to a nursery (120) |
+| `nanare` | new | art materials for one participant (30), a day of the challenge (400) |
+
+**Every new amount is an estimate**, `estimate: true` in the data, set on the same basis as the originals: plausible for Kenya and consistent with the existing list, not from any budget of the foundation's. The added coexistence item, a place on a toolbox training, is 75 on the same basis. The four new causes carry the projects' placeholder image until the foundation supplies photographs. Not given a cause: the Walk for Elephants, the Nairobi tree planting, the mangroves, the Lake Nakuru clean-up, the boots handover and the COVID-19 work, which are told as history in the archive rather than as open needs; the emergency cause covers water, hay and clean-ups for the relief projects. Add these ten new amounts to item 1 of the list above for the foundation to confirm or replace.
+
 ## The data model
 
 In `data/data.json`, under `donate`:

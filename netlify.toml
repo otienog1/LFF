@@ -7,3 +7,35 @@
   from = "/api/contact"
   to = "/.netlify/functions/contact"
   status = 200
+
+# Two project slugs were renamed on 23 September 2026 (a typo fixed, and a title that had been wrong since the
+# WordPress export). The site is a static export, so next.config redirects cannot do this; Netlify does.
+[[redirects]]
+  from = "/projects/eradicating-the-ivasive-parthenium-weed"
+  to = "/projects/eradicating-the-invasive-parthenium-weed"
+  status = 301
+
+[[redirects]]
+  from = "/es/projects/eradicating-the-ivasive-parthenium-weed"
+  to = "/es/projects/eradicating-the-invasive-parthenium-weed"
+  status = 301
+
+[[redirects]]
+  from = "/pt/projects/eradicating-the-ivasive-parthenium-weed"
+  to = "/pt/projects/eradicating-the-invasive-parthenium-weed"
+  status = 301
+
+[[redirects]]
+  from = "/projects/planting-trees-in-samburu"
+  to = "/projects/planting-mangroves-at-the-coast"
+  status = 301
+
+[[redirects]]
+  from = "/es/projects/planting-trees-in-samburu"
+  to = "/es/projects/planting-mangroves-at-the-coast"
+  status = 301
+
+[[redirects]]
+  from = "/pt/projects/planting-trees-in-samburu"
+  to = "/pt/projects/planting-mangroves-at-the-coast"
+  status = 301
