@@ -38,9 +38,9 @@ describe("content layer", () => {
 });
 
 describe("projects", () => {
-  // Ten entries came from the WordPress export; six were written from the 2022 to 2026 field record.
+  // Ten entries came from the WordPress export; nine were written from the 2021 to 2026 field record.
   const LEGACY = 10;
-  const FIELD = ["ubuntu-hay", "ubuntu-smiles", "outdoor-classroom-series", "nanare-art-challenge", "living-safely-with-wildlife", "mazingira-day-nairobi-national-park"];
+  const FIELD = ["olchani-project", "ubuntu-hay", "ubuntu-smiles", "outdoor-classroom-series", "nanare-art-challenge", "living-safely-with-wildlife", "mazingira-day-nairobi-national-park", "the-elephant-den", "scholarships"];
 
   it("are sorted newest first and all carry alt text", () => {
     const ps = getProjects();
@@ -60,8 +60,8 @@ describe("projects", () => {
     }
     expect(new Set(getProjects().map((p) => p.id)).size).toBe(LEGACY + FIELD.length);
   });
-  it("Dignity Housing and the field entries have write-ups; the other legacy entries do not", () => {
-    expect(getProjects().filter(hasWriteup).map((p) => p.slug).sort()).toEqual(["dignity-housing-for-wildife-rangers", ...FIELD].sort());
+  it("every entry has a write-up; none is left empty", () => {
+    expect(getProjects().every(hasWriteup)).toBe(true);
   });
   it("field entries carry a marked placeholder until the foundation supplies a photograph", () => {
     for (const slug of FIELD) {
@@ -73,8 +73,9 @@ describe("projects", () => {
   it("parses the Dignity Housing write-up into paragraphs and images in order", () => {
     const nodes = parseWpContent(getProjects().find((p) => p.slug === "dignity-housing-for-wildife-rangers")!.content);
     const kinds = nodes.map((n) => n.kind);
-    // Six paragraphs: the tents, the programme, Nairobi, the Samburu build, the Samburu opening, the cost.
-    expect(kinds.filter((k) => k === "p").length).toBe(6);
+    // Eight paragraphs: the tents, the programme, the 2021 start under Senior Warden Dadacha, the first homes at Nairobi,
+    // the 2025 handovers, the Samburu build, the Samburu opening, the cost.
+    expect(kinds.filter((k) => k === "p").length).toBe(8);
     expect(kinds.filter((k) => k === "img").length).toBe(5);
     expect(nodes[0].kind).toBe("p");
     expect((nodes.find((n) => n.kind === "p") as { html: string }).html).toContain("Nairobi National Park");
