@@ -25,7 +25,9 @@ export function ErrorChapter({
   // The chapter fills the viewport (its padding is 10, 14 and 18rem across the breakpoints), so on a short page
   // no paper shows between it and the footer; main starts under the fixed nav and is at least one viewport tall.
   return (
-    <Chapter tone="inverse" className="flex min-h-[calc(100svh-10rem)] flex-col justify-center md:min-h-[calc(100svh-14rem)] lg:min-h-[calc(100svh-18rem)]">
+    // The page opens on this chapter under the transparent header, so its column rules start below the header's band
+    // (64px, 96px from xl) instead of running up through the wordmark.
+    <Chapter tone="inverse" rulesFrom="top-16 xl:top-24" className="flex min-h-[calc(100svh-10rem)] flex-col justify-center md:min-h-[calc(100svh-14rem)] lg:min-h-[calc(100svh-18rem)]">
       <ChapterMark number={code} label={label} tone="inverse" />
       <div className="mt-8 lg:grid lg:grid-cols-12 lg:gap-x-8">
         <div className="lg:col-span-7">

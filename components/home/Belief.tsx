@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react';
 import type { ContentBlock } from '@/types/content';
 import { Chapter, ChapterMark } from '@/components/home/Chapter';
 import { Photo } from '@/components/home/Photo';
+import { typeset } from '@/lib/typeset';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -16,7 +17,8 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
  */
 export function Belief({ block }: { block: ContentBlock }) {
   const root = useRef<HTMLDivElement>(null);
-  const words = (block.subtitle ?? '').split(/\s+/);
+  const statement = typeset(block.subtitle ?? '');
+  const words = statement.split(/\s+/);
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
@@ -30,11 +32,11 @@ export function Belief({ block }: { block: ContentBlock }) {
 
   return (
     <Chapter tone="light">
-      <div ref={root} className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:items-center">
+      <div ref={root} className="lg:grid lg:grid-cols-12 lg:gap-x-8">
         <div className="lg:col-span-6">
           {block.title && <ChapterMark number="02" label={block.title} />}
           {block.subtitle && (
-            <h2 data-statement aria-label={block.subtitle} className="display-2 mt-6 max-w-[18ch]">
+            <h2 data-statement aria-label={statement} className="display-2 mt-6 max-w-[18ch]">
               {words.map((word, i) => (
                 <span key={i} data-word aria-hidden="true" className="inline-block mr-[0.24em]">{word}</span>
               ))}
@@ -46,7 +48,8 @@ export function Belief({ block }: { block: ContentBlock }) {
         </div>
         {block.image && (
           <div className="mt-12 lg:col-span-5 lg:col-start-8 lg:mt-0 bleed-right">
-            <Photo image={block.image} sizes="(max-width:1024px) 100vw, 50vw" className="aspect-4/3 lg:aspect-4/5" />
+            {/* On large screens the frame is the grid row's height, so the photograph stands exactly as tall as the text. */}
+            <Photo image={block.image} sizes="(max-width:1024px) 100vw, 50vw" className="aspect-4/3 lg:aspect-auto lg:h-full" />
           </div>
         )}
       </div>

@@ -5,6 +5,8 @@ import type { Page } from "@/types/content";
 
 export const SITE_URL = "https://theluigifootprints.org";
 export const SITE_NAME = "Luigi Footprints Foundation";
+/** The name as the site sets it: header, footer, the transition curtain and the home page's sign-off. */
+export const WORDMARK = "The Luigi Footprints Foundation";
 export const CONTACT_EMAIL = "info@theluigifootprints.org";
 export const DEFAULT_OG_IMAGE = "https://api.theluigifootprints.org/wp-content/uploads/2022/01/Give.webp";
 

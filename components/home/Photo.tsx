@@ -5,7 +5,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import type { ImageRef } from '@/types/content';
 import { SmartImage } from '@/components/ui/SmartImage';
+import { PendingPhoto, isPending } from '@/components/shared/PendingPhoto';
 import { cn } from '@/lib/utils';
+import { appear, START, unmask } from '@/components/motion/presets';
+import { onArrival } from '@/components/motion/arrive';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -15,6 +18,9 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
  * frames whose height must read as fixed from the first moment), then drifts
  * slowly inside its frame while the section passes. The caller sets the aspect
  * ratio, or lets the frame take its size from a grid, through `className`.
+ * A photograph the foundation has yet to supply arrives as a plate
+ * (PendingPhoto) with the same reveal and no drift; `pendingText` is the line
+ * of the entry's own text the plate carries.
  */
 export function Photo({
   image,
@@ -23,6 +29,7 @@ export function Photo({
   drift = 5,
   scale = 1.12,
   reveal = 'clip',
+  pendingText,
 }: {
   image: ImageRef;
   sizes?: string;
@@ -32,35 +39,42 @@ export function Photo({
   /** Overscan so the drift never shows an edge. */
   scale?: number;
   reveal?: 'clip' | 'fade';
+  pendingText?: string;
 }) {
   const root = useRef<HTMLDivElement>(null);
+  const pending = isPending(image);
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
+    mm.add('(prefers-reduced-motion: no-preference)', (context) => {
+      const el = root.current;
+      if (!el) return;
       if (reveal === 'clip') {
-        gsap.fromTo(root.current, { clipPath: 'inset(0 0 100% 0)' }, {
-          clipPath: 'inset(0 0 0% 0)', duration: 1.3, ease: 'power3.out',
-          scrollTrigger: { trigger: root.current, start: 'top 82%', once: true },
-        });
+        gsap.set(el, { clipPath: 'inset(0 0 100% 0)' });
+        onArrival(el, START.block, (d) => context.add(() => {
+          gsap.to(el, unmask({ clipPath: 'inset(0 0 0% 0)', delay: d }));
+        }));
       } else {
-        gsap.fromTo(root.current, { opacity: 0 }, {
-          opacity: 1, duration: 0.9, ease: 'power2.out',
-          scrollTrigger: { trigger: root.current, start: 'top 90%', once: true },
-        });
+        gsap.set(el, { opacity: 0 });
+        onArrival(el, START.block, (d) => context.add(() => { gsap.to(el, appear({ delay: d })); }));
       }
+      if (pending) return;
       gsap.fromTo('[data-photo-img]', { yPercent: -drift, scale }, {
         yPercent: drift, scale, ease: 'none',
-        scrollTrigger: { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: true },
+        scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
       });
     });
   }, { scope: root });
 
   return (
     <div ref={root} className={cn('relative overflow-hidden', className)}>
-      <div data-photo-img className="absolute inset-0 will-change-transform">
-        <SmartImage image={image} sizes={sizes} />
-      </div>
+      {pending ? (
+        <PendingPhoto image={image} text={pendingText} className="absolute inset-0" />
+      ) : (
+        <div data-photo-img className="absolute inset-0 will-change-transform">
+          <SmartImage image={image} sizes={sizes} />
+        </div>
+      )}
     </div>
   );
 }

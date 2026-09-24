@@ -43,7 +43,7 @@ export function Meanings({ block, number, locale }: { block: CardsBlock; number:
           );
           return (
             <li key={item.title}>
-              <Reveal delay={i * 0.08}>
+              <Reveal>
                 {item.link ? (
                   <Link href={localePath(locale, item.link)} className="group block focus-visible:outline-offset-4">
                     {body}

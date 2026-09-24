@@ -55,10 +55,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         {/* The export is one HTML shell per page: set the document language from the URL before first paint,
-            and lower the curtain so the first frame is the transition overlay, not the unanimated page. */}
+            and lower the curtain so the first frame is the transition overlay, not the unanimated page. Scroll
+            restoration is the page transition's (it places reloads and returns under the curtain), so the browser's
+            own is switched off before it can move the page. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: "var s=location.pathname.split('/')[1];document.documentElement.lang=(s==='es'||s==='pt')?s:'en';document.documentElement.setAttribute('data-transition','covered');",
+            __html: "try{history.scrollRestoration='manual'}catch(e){}var s=location.pathname.split('/')[1];document.documentElement.lang=(s==='es'||s==='pt')?s:'en';document.documentElement.setAttribute('data-transition','covered');",
           }}
         />
       </head>

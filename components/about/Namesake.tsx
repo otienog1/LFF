@@ -13,7 +13,7 @@ import { Photo } from "@/components/home/Photo";
 export function Namesake({ block }: { block: ContentBlock }) {
   return (
     <Chapter tone="light" id="namesake">
-      <div className="flex flex-col lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-8">
+      <div className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-x-8">
         <div className="lg:col-span-6">
           {block.title && <ChapterMark number="04" label={block.title} />}
           {block.subtitle && <SplitHeading text={block.subtitle} className="display-2 mt-6 max-w-[18ch]" />}
@@ -23,7 +23,7 @@ export function Namesake({ block }: { block: ContentBlock }) {
         </div>
         {block.image && (
           <div className="mt-12 lg:col-span-5 lg:col-start-8 lg:mt-0 bleed-right">
-            <Photo image={block.image} sizes="(max-width:1024px) 100vw, 45vw" className="aspect-4/3 lg:aspect-square" />
+            <Photo image={block.image} sizes="(max-width:1024px) 100vw, 45vw" className="aspect-4/3 lg:aspect-auto lg:h-full" />
           </div>
         )}
       </div>

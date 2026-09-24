@@ -54,6 +54,17 @@ function dedupe(nodes: WpNode[]): WpNode[] {
   });
 }
 
+/**
+ * A paragraph's HTML reduced to emphasis alone: <strong>, <em>, <b> and <i>, stripped of any attributes, and
+ * nothing else (links included). What survives is safe to set as inner HTML; the copy's italics carry meaning
+ * (species names, titles of campaigns), so plain text would lose it.
+ */
+export function inlineHtml(html: string | null | undefined): string {
+  return (html ?? "")
+    .replace(/<(\/?)(strong|em|b|i)\b[^>]*>/gi, "<$1$2>")
+    .replace(/<(?!\/?(strong|em|b|i)>)[^>]+>/gi, "");
+}
+
 export function stripHtml(html: string | null | undefined): string {
   return (html ?? "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 }

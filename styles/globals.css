@@ -181,11 +181,13 @@
   ::-webkit-scrollbar-thumb:hover { background: var(--color-green); }
 }
 
-@utility display-1 { font-family: var(--font-display), serif; font-weight: 500; line-height: 1.05; letter-spacing: -0.01em; font-size: clamp(2.5rem, 5vw, 4.5rem); }
-@utility display-2 { font-family: var(--font-display), serif; font-weight: 500; line-height: 1.08; letter-spacing: -0.015em; font-size: clamp(2rem, 3.8vw, 3.25rem); }
-@utility display-3 { font-family: var(--font-display), serif; font-weight: 500; line-height: 1.15; font-size: clamp(1.3125rem, 2vw, 1.75rem); }
+/* Display sizes balance their lines, so a heading never ends on one orphaned word ("it.", "wildlife.");
+   body copy wraps "pretty" for the same reason at paragraph scale. */
+@utility display-1 { font-family: var(--font-display), serif; font-weight: 500; line-height: 1.05; letter-spacing: -0.01em; font-size: clamp(2.5rem, 5vw, 4.5rem); text-wrap: balance; }
+@utility display-2 { font-family: var(--font-display), serif; font-weight: 500; line-height: 1.08; letter-spacing: -0.015em; font-size: clamp(2rem, 3.8vw, 3.25rem); text-wrap: balance; }
+@utility display-3 { font-family: var(--font-display), serif; font-weight: 500; line-height: 1.15; font-size: clamp(1.3125rem, 2vw, 1.75rem); text-wrap: balance; }
 @utility eyebrow { font-family: var(--font-body), sans-serif; font-weight: 600; font-size: 0.6875rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-green); }
-@utility body-lg { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.6; }
+@utility body-lg { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.6; text-wrap: pretty; }
 
 /* Curtain on a hard load. The root layout's head script marks the document covered before first
    paint, so the transition overlay is visible from the first frame and nothing flashes before the
@@ -197,6 +199,29 @@ html[data-transition="covered"] [data-curtain] {
 }
 @keyframes curtain-safety {
   to { visibility: hidden; pointer-events: none; }
+}
+
+/* Under the curtain the next page is placed at its top, which turns the header from solid back to transparent. That
+   change is hidden, so it lands at once: the curtain lifts on the header's final state, never on a fade in progress. */
+html[data-transition="covered"] header,
+html[data-transition="covered"] header * {
+  transition: none !important;
+}
+
+/* A photograph still loading when its frame first shows fades in as it arrives instead of popping in. SmartImage
+   sets the mark only on an image that is not yet complete, so one from the cache shows at once, with no fade. */
+.smart-img {
+  transition: opacity 600ms var(--ease-out);
+}
+.smart-img[data-loading] {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .smart-img { transition-duration: 200ms; }
+}
+/* One that arrives while the curtain is down is simply there when it lifts. */
+html[data-transition="covered"] .smart-img {
+  transition: none;
 }
 
 /* Underline that draws in from the left on hover or focus; used by text links in the chrome. */
@@ -241,6 +266,8 @@ html[data-transition="covered"] [data-curtain] {
     &:hover::after { transform: scaleX(1); }
   }
   &:focus-visible::after { transform: scaleX(1); }
+  /* The current page keeps its rule drawn, so the nav says where the reader is. */
+  &[aria-current="page"]::after { transform: scaleX(1); }
   @media (prefers-reduced-motion: reduce) {
     &::after { transition: none; }
   }

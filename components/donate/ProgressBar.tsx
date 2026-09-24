@@ -4,6 +4,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { cn } from '@/lib/utils';
+import { draw, START } from '@/components/motion/presets';
+import { onArrival } from '@/components/motion/arrive';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -18,11 +20,12 @@ export function ProgressBar({ done, total, label, dark = false, className }: { d
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.fromTo('[data-fill]', { scaleX: 0 }, {
-        scaleX: ratio, transformOrigin: 'left center', duration: 1.2, ease: 'power3.out',
-        scrollTrigger: { trigger: root.current, start: 'top 90%', once: true },
-      });
+    mm.add('(prefers-reduced-motion: no-preference)', (context) => {
+      const el = root.current;
+      const fill = el?.querySelector('[data-fill]');
+      if (!el || !fill) return;
+      gsap.set(fill, { scaleX: 0, transformOrigin: 'left center' });
+      onArrival(el, START.detail, (d) => context.add(() => { gsap.to(fill, draw({ scaleX: ratio, delay: d })); }));
     });
   }, { scope: root, dependencies: [ratio] });
 
@@ -38,7 +41,9 @@ export function ProgressBar({ done, total, label, dark = false, className }: { d
       >
         <div data-fill className={cn('h-full w-full origin-left', dark ? 'bg-green-light' : 'bg-green')} style={{ transform: `scaleX(${ratio})` }} />
       </div>
-      <p className={cn('m-0 mt-3 text-[11px] uppercase tracking-[0.2em]', dark ? 'text-paper/70' : 'text-ink-soft')}>{label}</p>
+      {/* A sentence, set as one: tracked capitals wrapped this label ("6 of 25 camps housed at Nairobi National Park")
+          onto a second line with a one-word orphan. */}
+      <p className={cn('m-0 mt-3 text-[13px] leading-snug text-pretty', dark ? 'text-paper/70' : 'text-ink-soft')}>{label}</p>
     </div>
   );
 }

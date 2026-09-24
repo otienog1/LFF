@@ -7,6 +7,9 @@ import { useTranslations } from 'next-intl';
 import type { LuigiPanelBlock } from '@/types/content';
 import { Chapter, ChapterMark } from '@/components/home/Chapter';
 import { SmartImage } from '@/components/ui/SmartImage';
+import { cn } from '@/lib/utils';
+import { draw, fade, fadeFrom, rise, riseFrom, settle, START, STAGGER, unmask } from '@/components/motion/presets';
+import { onArrival } from '@/components/motion/arrive';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -35,19 +38,23 @@ export function Words({ block }: { block: LuigiPanelBlock }) {
   useGSAP(() => {
     const q = gsap.utils.selector(root);
     const mm = gsap.matchMedia();
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.set(q('[data-line]'), { yPercent: 105 });
-      gsap.set(q('[data-fade]'), { opacity: 0, y: 12 });
+    mm.add('(prefers-reduced-motion: no-preference)', (context) => {
+      const el = root.current;
+      if (!el) return;
+      gsap.set(q('[data-line]'), riseFrom());
+      gsap.set(q('[data-fade]'), fadeFrom());
       gsap.set(q('[data-rule]'), { scaleX: 0, transformOrigin: 'left center' });
       gsap.set(portrait.current, { clipPath: 'inset(0 0 0 100%)' });
       gsap.set(portraitImg.current, { scale: 1.1 });
-      gsap.timeline({ scrollTrigger: { trigger: root.current, start: 'top 75%', once: true } })
-        .to(q('[data-fade="mark"]'), { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 0)
-        .to(portrait.current, { clipPath: 'inset(0 0 0 0%)', duration: 1.4, ease: 'power3.inOut' }, 0)
-        .to(portraitImg.current, { scale: 1.04, duration: 2.2, ease: 'power2.out' }, 0)
-        .to(q('[data-line]'), { yPercent: 0, duration: 1.2, stagger: 0.14, ease: 'power4.out' }, 0.5)
-        .to(q('[data-rule]'), { scaleX: 1, duration: 0.8, ease: 'power2.inOut' }, 1.2)
-        .to(q('[data-fade="cite"]'), { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 1.35);
+      onArrival(el, START.chapter, (d) => context.add(() => {
+        gsap.timeline({ delay: d })
+          .to(q('[data-fade="mark"]'), fade(), 0)
+          .to(portrait.current, unmask({ clipPath: 'inset(0 0 0 0%)' }), 0)
+          .to(portraitImg.current, settle({ scale: 1.04 }), 0)
+          .to(q('[data-line]'), rise({ stagger: STAGGER.lines }), 0.5)
+          .to(q('[data-rule]'), draw({ scaleX: 1 }), 1.2)
+          .to(q('[data-fade="cite"]'), fade(), 1.35);
+      }));
       // A slow drift inside the frame while the chapter passes.
       gsap.fromTo(portraitImg.current, { yPercent: -4 }, {
         yPercent: 4, ease: 'none',
@@ -78,13 +85,15 @@ export function Words({ block }: { block: LuigiPanelBlock }) {
           {/* The quote, over the panel. */}
           <div className="relative z-10 -mt-20 sm:-mt-28 lg:mt-14 lg:flex lg:min-h-[30rem] lg:w-3/4 lg:flex-col lg:justify-center">
             <blockquote className="m-0 max-w-[30ch] font-display leading-[1.1] tracking-[-0.02em] text-[clamp(2rem,3.9vw,3.75rem)]">
+              {/* The opening quotation mark hangs in the margin, so the first word lines up with the lines below it.
+                  The mask is widened into the margin by the same amount, or it would clip the hanging mark. */}
               {lead && (
-                <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
-                  <span data-line className="block font-light text-paper/80">{'“'}{lead}</span>
+                <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em] -ml-[0.42em] pl-[0.42em]">
+                  <span data-line className="block font-light text-paper/80 -indent-[0.42em] text-balance">{'“'}{lead}</span>
                 </span>
               )}
-              <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
-                <span data-line className="block font-medium text-paper">{lead ? '' : '“'}{last}{'”'}</span>
+              <span className={cn('block overflow-hidden pb-[0.12em] -mb-[0.12em]', !lead && '-ml-[0.42em] pl-[0.42em]')}>
+                <span data-line className={cn('block font-medium text-paper text-balance', !lead && '-indent-[0.42em]')}>{lead ? '' : '“'}{last}{'”'}</span>
               </span>
             </blockquote>
             <p className="m-0 mt-10 flex items-center gap-5">

@@ -6,6 +6,8 @@ import { useGSAP } from '@gsap/react';
 import type { ImageRef } from '@/types/content';
 import { SmartImage } from '@/components/ui/SmartImage';
 import { useLenis } from '@/components/layout/Layout';
+import { fade, fadeFrom, START, STAGGER, unmask } from '@/components/motion/presets';
+import { onArrival } from '@/components/motion/arrive';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -63,20 +65,20 @@ export function ProgrammeStack({
     const mm = gsap.matchMedia();
 
     // Text entrances, at every size.
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
+    mm.add('(prefers-reduced-motion: no-preference)', (context) => {
       const articles = gsap.utils.toArray<HTMLElement>('[data-block]', text.current);
       articles.forEach((article) => {
         const parts = article.querySelectorAll('[data-mark], [data-body]');
         if (!parts.length) return;
-        gsap.from(parts, {
-          opacity: 0, y: 16, duration: 0.8, stagger: 0.12, ease: 'power3.out',
-          scrollTrigger: { trigger: article, start: 'top 80%', once: true },
-        });
+        gsap.set(parts, fadeFrom());
+        onArrival(article, START.block, (d) => context.add(() => {
+          gsap.to(parts, fade({ stagger: STAGGER.blocks, delay: d }));
+        }));
       });
     });
 
     // The pinned column, the rail and their choreography, large screens only.
-    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
+    mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', (context) => {
       const pinEl = pin.current;
       const railEl = rail.current;
       const textEl = text.current;
@@ -103,12 +105,13 @@ export function ProgrammeStack({
       // The frame wipes in from the bottom once as the section arrives, the same wipe the later
       // programmes get, and the first photograph settles from a slight zoom in step with it.
       const firstZoom = slides[0].querySelector<HTMLElement>('[data-zoom]');
-      gsap.timeline({
-        defaults: { duration: 1.3, ease: 'power3.out' },
-        scrollTrigger: { trigger: pinEl, start: 'top 82%', once: true },
-      })
-        .fromTo(frame, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)' }, 0)
-        .fromTo(firstZoom, { scale: 1.15 }, { scale: 1.04 }, 0);
+      gsap.set(frame, { clipPath: 'inset(100% 0% 0% 0%)' });
+      if (firstZoom) gsap.set(firstZoom, { scale: 1.15 });
+      onArrival(pinEl, START.block, (d) => context.add(() => {
+        gsap.timeline({ delay: d })
+          .to(frame, unmask({ clipPath: 'inset(0% 0% 0% 0%)' }), 0)
+          .to(firstZoom, unmask({ scale: 1.04 }), 0);
+      }));
 
       // The column holds below the header while the text column scrolls past.
       const start = () => `top top+=${holdOffset(pinEl)}`;

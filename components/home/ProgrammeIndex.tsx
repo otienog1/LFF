@@ -56,7 +56,7 @@ export function ProgrammeIndex({ block }: { block: CardsBlockType }) {
       <ol className="m-0 mt-14 list-none border-t border-line p-0 md:mt-20">
         {block.items.map((item, i) => (
           <li key={item.title} className="border-b border-line">
-            <Reveal delay={i * 0.06}>
+            <Reveal>
               <Row item={item} index={i} />
             </Reveal>
           </li>

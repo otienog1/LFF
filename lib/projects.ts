@@ -31,6 +31,8 @@ export interface Project {
   excerpt: string;
   content: string | null;
   date: string;
+  /** How precisely the record dates the work. Month when absent; "year" for work known only to a year. */
+  datePrecision?: "day" | "month" | "year";
   featuredImage: {
     altText: string;
     sourceUrl: string;

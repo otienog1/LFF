@@ -15,6 +15,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import LocaleSwitcher from "@/components/ui/LocaleSwitcher";
+import { WORDMARK } from "@/lib/site";
 
 export default function Navbar() {
   const t = useTranslations("nav");
@@ -27,11 +28,12 @@ export default function Navbar() {
     { href: prefix + "/projects", label: t("projects") },
     { href: prefix + "/impact", label: t("impact") },
     { href: prefix + "/get-involved", label: t("getInvolved") },
+    { href: prefix + "/contact", label: t("contact") },
   ], [prefix, t]);
 
   const pathname = usePathname();
-  // Pages with a light background at the top need the navbar always solid
-  const alwaysSolid = /\/(donate|contact)$/.test(pathname);
+  /** The section the page belongs to: the link itself, or any page beneath it (a project under Projects). */
+  const isCurrent = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,8 +45,16 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const solid = alwaysSolid || scrolled;
+  // Every page opens on a photograph or an ink chapter, so the bar starts transparent everywhere and turns solid on scroll.
+  const solid = scrolled;
 
+  // The menu closes the moment a page transition starts, under the rising curtain, so the next page never opens with
+  // it still sliding away (and its scroll lock is released before that page is placed and measured).
+  useEffect(() => {
+    const close = () => setMenuOpen(false);
+    window.addEventListener("page-transition-cover", close);
+    return () => window.removeEventListener("page-transition-cover", close);
+  }, []);
   useEffect(() => { setMenuOpen(false); }, [pathname]);
 
   return (
@@ -66,31 +76,37 @@ export default function Navbar() {
           viewport edges, in a 96px band so the frame's top line is 32px below it. It eases to 80px once solid. */}
       <nav
         className={cn(
-          "container flex items-center justify-between py-2.5 xl:max-w-none xl:px-8 xl:py-0 transition-[height] duration-300 ease-(--ease-out)",
+          "container flex items-center justify-between py-2.5 xl:max-w-none xl:px-8 xl:py-0 transition-[height] duration-300 ease-(--ease-out) motion-reduce:transition-none",
           solid ? "xl:h-20" : "xl:h-24",
         )}
       >
         {/* Logo */}
-        <Link href={prefix || "/"} className={cn("font-display text-xl transition-colors duration-300", solid ? "text-ink" : "text-paper")}>
-          The Luigi Footprints Foundation
+        <Link href={prefix || "/"} className={cn("py-2 font-display text-xl transition-colors duration-300 xl:py-0", solid ? "text-ink" : "text-paper")}>
+          {WORDMARK}
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-7 text-[12px] tracking-[0.1em] uppercase">
+        {/* Desktop nav: from xl, where the wordmark, five links, the button and the locale fit on one line in every
+            language; below that the menu button takes over rather than letting labels wrap. */}
+        <div className="hidden xl:flex items-center gap-7 text-[12px] tracking-[0.1em] uppercase">
           {LINKS.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className={cn("link-draw py-1 transition-colors duration-300", solid ? "text-ink-soft hover:text-ink" : "text-paper/80 hover:text-paper")}
+              aria-current={isCurrent(l.href) ? "page" : undefined}
+              className={cn(
+                "link-draw whitespace-nowrap py-1 transition-colors duration-300",
+                solid ? "text-ink-soft hover:text-ink aria-[current=page]:text-ink" : "text-paper/80 hover:text-paper aria-[current=page]:text-paper",
+              )}
             >
               {l.label}
             </Link>
           ))}
           <Link
             href={prefix + "/donate"}
+            aria-current={isCurrent(prefix + "/donate") ? "page" : undefined}
             className={cn(
               buttonVariants({ variant: "ghost" }),
-              "h-8 px-5 text-[11px] duration-300",
+              "h-8 whitespace-nowrap px-5 text-[11px] duration-300",
               solid
                 ? "border-ink text-ink [--wipe:var(--color-ink)] hover:text-paper focus-visible:text-paper"
                 : "border-paper/70 text-paper [--wipe:var(--color-paper)] hover:text-ink focus-visible:text-ink",
@@ -102,9 +118,10 @@ export default function Navbar() {
         </div>
 
         {/* Mobile hamburger + Sheet */}
-        <div className={cn("md:hidden transition-colors duration-300", solid ? "text-ink" : "text-paper")}>
+        <div className={cn("xl:hidden transition-colors duration-300", solid ? "text-ink" : "text-paper")}>
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-            <SheetTrigger aria-label={t("openMenu")}>
+            {/* 44px target, pulled into the gutter so the glyph still sits on the container's edge. */}
+            <SheetTrigger aria-label={t("openMenu")} className="-mr-2.5 grid size-11 place-items-center">
               <Menu aria-hidden="true" />
             </SheetTrigger>
             <SheetContent side="right" showCloseButton={false} className="bg-ink w-full! max-w-none! border-none">
@@ -122,7 +139,8 @@ export default function Navbar() {
                     <Link
                       key={l.href}
                       href={l.href}
-                      className="font-display text-3xl text-paper/60 hover:text-paper transition-colors duration-200 py-2 border-b border-paper/8"
+                      aria-current={isCurrent(l.href) ? "page" : undefined}
+                      className="font-display text-3xl text-paper/60 hover:text-paper aria-[current=page]:text-paper transition-colors duration-200 py-2 border-b border-paper/8"
                     >
                       {l.label}
                     </Link>

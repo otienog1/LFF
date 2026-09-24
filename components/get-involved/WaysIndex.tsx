@@ -81,7 +81,7 @@ export function WaysIndex({
       <ol className="m-0 mt-12 list-none border-t border-line p-0 md:mt-16">
         {block.items.map((item, i) => (
           <li key={item.title} className="border-b border-line">
-            <Reveal delay={i * 0.06}>
+            <Reveal>
               <Row item={item} index={i} action={item.link ? actions[item.link] ?? "" : ""} locale={locale} />
             </Reveal>
           </li>

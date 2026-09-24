@@ -9,6 +9,7 @@ import { SplitHeading } from "@/components/home/SplitHeading";
 import { Photo } from "@/components/home/Photo";
 import { AnimatedNumber } from "@/components/motion/AnimatedNumber";
 import { Reveal } from "@/components/motion/Reveal";
+import { START } from "@/components/motion/presets";
 import { buttonVariants } from "@/components/ui/button";
 import { PhotoGrid } from "@/components/projects/PhotoGrid";
 import { SponsorPanel, type SponsorLabels } from "@/components/projects/SponsorPanel";
@@ -55,7 +56,7 @@ export function FlagshipProject({
           <SplitHeading text={project.title} className="display-2 max-w-[18ch] text-paper" />
           <p className="m-0 mt-4 text-[11px] uppercase tracking-[0.2em] text-paper/70">{formatMonth(project.date, locale)}</p>
           {paragraphs.map((paragraph, i) => (
-            <Reveal key={i} delay={i * 0.08}>
+            <Reveal key={i}>
               <p className="body-lg m-0 mt-6 max-w-[58ch] text-paper/70">{paragraph}</p>
             </Reveal>
           ))}
@@ -73,7 +74,7 @@ export function FlagshipProject({
           {figure && (
             <div className="border-t border-paper/20 pt-6">
               <AnimatedNumber value={figure.title} className="display-1 block text-green-light" />
-              <Reveal delay={0.2} start="top 95%">
+              <Reveal delay={0.2} start={START.follow}>
                 <p className="m-0 mt-3 max-w-[30ch] text-sm leading-relaxed text-paper/70">{figure.description}</p>
               </Reveal>
             </div>
