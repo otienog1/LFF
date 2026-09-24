@@ -5,6 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import type { EditorialBlock } from '@/types/content';
 import { Chapter, ChapterMark } from '@/components/home/Chapter';
+import { WORDMARK } from '@/lib/site';
+import { draw, fade, fadeFrom, rise, riseFrom, START, STAGGER } from '@/components/motion/presets';
+import { onArrival } from '@/components/motion/arrive';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -18,15 +21,19 @@ export function EditorialStatement({ block }: { block: EditorialBlock }) {
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.set('[data-line]', { yPercent: 105 });
-      gsap.set('[data-fade]', { opacity: 0, y: 12 });
+    mm.add('(prefers-reduced-motion: no-preference)', (context) => {
+      const el = root.current;
+      if (!el) return;
+      gsap.set('[data-line]', riseFrom());
+      gsap.set('[data-fade]', fadeFrom());
       gsap.set('[data-rule]', { scaleX: 0, transformOrigin: 'left center' });
-      gsap.timeline({ scrollTrigger: { trigger: root.current, start: 'top 70%', once: true } })
-        .to('[data-fade="mark"]', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 0)
-        .to('[data-line]', { yPercent: 0, duration: 1.2, stagger: 0.14, ease: 'power4.out' }, 0.05)
-        .to('[data-rule]', { scaleX: 1, duration: 0.8, ease: 'power2.inOut' }, 0.7)
-        .to('[data-fade="meta"]', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 0.85);
+      onArrival(el, START.chapter, (d) => context.add(() => {
+        gsap.timeline({ delay: d })
+          .to('[data-fade="mark"]', fade(), 0)
+          .to('[data-line]', rise({ stagger: STAGGER.lines }), 0.05)
+          .to('[data-rule]', draw({ scaleX: 1 }), 0.7)
+          .to('[data-fade="meta"]', fade(), 0.85);
+      }));
     });
   }, { scope: root });
 
@@ -47,7 +54,7 @@ export function EditorialStatement({ block }: { block: EditorialBlock }) {
         <div className="mt-10 flex items-center gap-5">
           <div data-rule className="h-px w-8 bg-paper/40" />
           <p data-fade="meta" className="m-0 text-[11px] uppercase tracking-[0.2em] text-paper/70">
-            Luigi Footprints Foundation &nbsp;&middot;&nbsp; Nairobi, Kenya
+            {WORDMARK} &nbsp;&middot;&nbsp; Nairobi, Kenya
           </p>
         </div>
       </div>

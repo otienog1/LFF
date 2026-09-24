@@ -5,6 +5,7 @@ import { SplitHeading } from "@/components/home/SplitHeading";
 import { Photo } from "@/components/home/Photo";
 import { AnimatedNumber } from "@/components/motion/AnimatedNumber";
 import { Reveal } from "@/components/motion/Reveal";
+import { START } from "@/components/motion/presets";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -24,8 +25,8 @@ export function NumbersPanel({ block }: { block: ImpactBlockType }) {
           <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
             {block.items.map((item, i) => (
               <div key={item.title} className="border-t border-ink/15 pt-6">
-                <AnimatedNumber value={item.title} delay={i * 0.08} className="display-1 block text-green" />
-                <Reveal delay={i * 0.08 + 0.2} start="top 95%">
+                <AnimatedNumber value={item.title} className="display-1 block text-green" />
+                <Reveal delay={0.2} start={START.follow}>
                   <p className="m-0 mt-3 max-w-[30ch] text-sm leading-relaxed text-ink-soft">{item.description}</p>
                 </Reveal>
               </div>
@@ -40,8 +41,9 @@ export function NumbersPanel({ block }: { block: ImpactBlockType }) {
         </div>
 
         {block.image && (
-          <div className="mt-14 lg:col-span-4 lg:col-start-9 lg:mt-0">
-            <Photo image={block.image} sizes="(max-width:1024px) 100vw, 33vw" className="aspect-4/3 lg:aspect-3/4" />
+          // On large screens the photograph takes the grid row's height, standing as tall as the figures beside it.
+          <div className="mt-14 lg:col-span-5 lg:col-start-8 lg:mt-0">
+            <Photo image={block.image} sizes="(max-width:1024px) 100vw, 40vw" className="aspect-4/3 lg:aspect-auto lg:h-full" />
           </div>
         )}
       </div>

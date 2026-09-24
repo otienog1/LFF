@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -11,7 +11,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import { BackToTop } from '@/components/ui/BackToTop'
 import { PageTransition } from './PageTransition'
-import { whenRevealed } from '@/components/motion/transitionGate'
+import { LenisContext } from './LenisContext'
 import en from '@/messages/en.json'
 import es from '@/messages/es.json'
 import pt from '@/messages/pt.json'
@@ -20,8 +20,7 @@ const ALL_MESSAGES = { en, es, pt } as const
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
-export const LenisContext = createContext<Lenis | null>(null)
-export const useLenis = () => useContext(LenisContext)
+export { LenisContext, useLenis } from './LenisContext'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -62,31 +61,8 @@ export default function Layout({ children }: LayoutProps) {
     }
   }, [])
 
-  // Reset scroll to top on every client-side navigation. A route with a hash lands on that
-  // element instead, once the page entrance has finished: the browser's own scroll happens
-  // while <main> is still translated by the transition, and would sit 40px off.
-  useEffect(() => {
-    const hash = window.location.hash
-    if (!hash) {
-      if (lenis) lenis.scrollTo(0, { immediate: true })
-      else window.scrollTo(0, 0)
-      return
-    }
-    let cancelled = false
-    let timer = 0
-    whenRevealed().then(() => {
-      timer = window.setTimeout(() => {
-        if (cancelled) return
-        const el = document.getElementById(decodeURIComponent(hash.slice(1)))
-        if (!el) return
-        const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0
-        const y = el.getBoundingClientRect().top + window.scrollY - margin
-        if (lenis) lenis.scrollTo(y, { immediate: true })
-        else window.scrollTo(0, y)
-      }, 1000)
-    })
-    return () => { cancelled = true; window.clearTimeout(timer) }
-  }, [pathname, lenis])
+  // Scroll on navigation (top, anchor, or the kept position on back/forward and reload) belongs to PageTransition,
+  // which places each page before it measures and before its first frame is shown.
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages} timeZone="Africa/Nairobi">

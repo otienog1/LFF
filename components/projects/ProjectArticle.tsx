@@ -2,16 +2,17 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Project } from "@/lib/projects";
 import { FLAGSHIP_SLUG, projectImage } from "@/lib/projects";
-import { parseWpContent, stripHtml } from "@/lib/wp";
+import { inlineHtml, parseWpContent, stripHtml } from "@/lib/wp";
 import type { Locale } from "@/i18n/config";
 import { localePath } from "@/lib/site";
 import { InteriorHero } from "@/components/shared/InteriorHero";
 import { Lede } from "@/components/home/Lede";
 import { Chapter, ChapterMark } from "@/components/home/Chapter";
 import { Reveal } from "@/components/motion/Reveal";
+import { START } from "@/components/motion/presets";
 import { AnimatedNumber } from "@/components/motion/AnimatedNumber";
 import { PhotoGrid } from "@/components/projects/PhotoGrid";
-import { ProjectCard, formatDay } from "@/components/projects/ProjectCard";
+import { ProjectCard, formatProjectDate } from "@/components/projects/ProjectCard";
 import { SponsorPanel, type SponsorLabels } from "@/components/projects/SponsorPanel";
 
 export interface ArticleLabels {
@@ -48,10 +49,11 @@ export function ProjectArticle({
   const image = projectImage(project);
   const excerpt = project.excerpt ? stripHtml(project.excerpt) : "";
   const nodes = parseWpContent(project.content);
+  // Each paragraph keeps its emphasis (inlineHtml); the plain text is only used to drop a paragraph that repeats the excerpt.
   const paragraphs = nodes
     .filter((n): n is Extract<typeof n, { kind: "p" }> => n.kind === "p")
-    .map((n) => stripHtml(n.html))
-    .filter((t) => t && t !== excerpt);
+    .map((n) => ({ text: stripHtml(n.html), html: inlineHtml(n.html) }))
+    .filter((p) => p.text && p.text !== excerpt);
   const photos = nodes
     .filter((n): n is Extract<typeof n, { kind: "img" }> => n.kind === "img")
     .map((n) => ({ url: n.src, alt: n.alt || project.title }));
@@ -68,7 +70,7 @@ export function ProjectArticle({
   return (
     <>
       <InteriorHero
-        block={{ title: project.title, subtitle: formatDay(project.date, locale), image }}
+        block={{ title: project.title, subtitle: formatProjectDate(project, locale), image }}
         lead={
           <Link
             href={localePath(locale, "/projects")}
@@ -90,8 +92,8 @@ export function ProjectArticle({
             </div>
             <div className="mt-8 space-y-6 lg:col-span-8 lg:col-start-4 lg:mt-0">
               {paragraphs.map((paragraph, i) => (
-                <Reveal key={i} delay={i * 0.06}>
-                  <p className="body-lg m-0 max-w-[62ch] text-ink-soft">{paragraph}</p>
+                <Reveal key={i}>
+                  <p className="body-lg m-0 max-w-[62ch] text-ink-soft [&_b]:font-medium [&_b]:text-ink [&_strong]:font-medium [&_strong]:text-ink" dangerouslySetInnerHTML={{ __html: paragraph.html }} />
                 </Reveal>
               ))}
             </div>
@@ -108,7 +110,7 @@ export function ProjectArticle({
               {figure && (
                 <div className="mt-10">
                   <AnimatedNumber value={figure.title} className="display-1 block text-green-light" />
-                  <Reveal delay={0.2} start="top 95%">
+                  <Reveal delay={0.2} start={START.follow}>
                     <p className="m-0 mt-3 max-w-[30ch] text-sm leading-relaxed text-paper/70">{figure.description}</p>
                   </Reveal>
                 </div>
@@ -128,7 +130,7 @@ export function ProjectArticle({
         <ol className="m-0 mt-12 grid list-none gap-x-8 gap-y-14 p-0 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
           {more.map((p, i) => (
             <li key={p.id}>
-              <Reveal delay={i * 0.08}>
+              <Reveal>
                 <ProjectCard project={p} locale={locale} />
               </Reveal>
             </li>

@@ -14,6 +14,7 @@ import { Ticker } from '@/components/home/Ticker';
 import { Lede } from '@/components/home/Lede';
 import { usePointerDrift } from '@/components/motion/usePointerDrift';
 import { whenRevealed } from '@/components/motion/transitionGate';
+import { appear, fade, fadeFrom, rise, riseFrom, settle, STAGGER } from '@/components/motion/presets';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -42,29 +43,37 @@ export function HomeHero({ block }: { block: HeroBlock }) {
         // Arriving under the curtain, the frame opens less and faster so it does not compete with the lift.
         const gatedNow = document.documentElement.dataset.transition === 'covered';
 
-        gsap.set('[data-word]', { yPercent: 110 });
-        gsap.set('[data-aside]', { opacity: 0, y: 16 });
+        gsap.set('[data-word]', riseFrom());
+        gsap.set('[data-aside]', fadeFrom());
         gsap.set('[data-frame], [data-cue]', { opacity: 0 });
         gsap.set('[data-media]', { scale: 1.14, clipPath: gatedNow ? 'inset(10% 6%)' : 'inset(18% 12%)' });
 
         let cancelled = false;
+        // Photograph first (the frame opens and settles), then the headline, then the subtitle and button, then the
+        // corner notes and the cue.
         whenRevealed().then(contextSafe((gated: boolean) => {
           if (cancelled) return;
           const open = gated ? 1.1 : 1.5;
-          gsap.timeline({ delay: gated ? 0.25 : 0.15, defaults: { ease: 'power4.out' } })
+          gsap.timeline({ delay: gated ? 0.25 : 0.15 })
             .to('[data-media]', { clipPath: 'inset(0% 0%)', duration: open, ease: 'power3.inOut' }, 0)
-            .to('[data-media]', { scale: REST_SCALE, duration: 2.4, ease: 'power2.out' }, 0)
-            .to('[data-word]', { yPercent: 0, duration: 1.2, stagger: 0.07 }, open * 0.4)
-            .to('[data-aside]', { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' }, open * 0.75)
-            .to('[data-frame], [data-cue]', { opacity: 1, duration: 0.9, ease: 'power2.out' }, open * 0.85);
+            .to('[data-media]', settle({ scale: REST_SCALE }), 0)
+            .to('[data-word]', rise({ stagger: STAGGER.words }), open * 0.4)
+            .to('[data-aside]', fade(), open * 0.75)
+            .to('[data-frame], [data-cue]', appear(), open * 0.85);
         }));
 
         const scroll = { trigger: section, start: 'top top', end: 'bottom top', scrub: true };
         gsap.to('[data-media]', { yPercent: 18, ease: 'none', scrollTrigger: scroll });
         gsap.to('[data-shade]', { opacity: 0.6, ease: 'none', scrollTrigger: scroll });
         gsap.to('[data-cue-wrap]', { opacity: 0, ease: 'none', scrollTrigger: { trigger: section, start: 'top top', end: '25% top', scrub: true } });
-        // The scroll cue's line travels down its track, slowly, on repeat.
-        gsap.fromTo('[data-cue-line]', { yPercent: -100 }, { yPercent: 100, duration: 2.2, ease: 'power1.inOut', repeat: -1, repeatDelay: 0.6 });
+        // The scroll cue's line travels down its track, slowly, on repeat. The loop stops once the cue has faded out (a
+        // quarter of the hero scrolled past) and starts again when the reader comes back up.
+        const cue = gsap.fromTo('[data-cue-line]', { yPercent: -100 }, { yPercent: 100, duration: 2.2, ease: 'power1.inOut', repeat: -1, repeatDelay: 0.6 });
+        ScrollTrigger.create({
+          trigger: section, start: 'top top', end: '25% top',
+          onLeave: () => cue.pause(),
+          onEnterBack: () => cue.play(),
+        });
 
         return () => { cancelled = true; };
     });
@@ -96,7 +105,7 @@ export function HomeHero({ block }: { block: HeroBlock }) {
           >
             {words.map((word, i) => (
               <span key={i} aria-hidden="true" className="inline-block overflow-hidden align-top pb-[0.14em] -mb-[0.14em] mr-[0.22em]">
-                <span data-word className="inline-block will-change-transform">{word}</span>
+                <span data-word className="inline-block">{word}</span>
               </span>
             ))}
           </h1>

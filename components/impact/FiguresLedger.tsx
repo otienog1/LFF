@@ -8,6 +8,8 @@ import { Chapter, ChapterMark } from '@/components/home/Chapter';
 import { SplitHeading } from '@/components/home/SplitHeading';
 import { AnimatedNumber } from '@/components/motion/AnimatedNumber';
 import { Reveal } from '@/components/motion/Reveal';
+import { draw, START } from '@/components/motion/presets';
+import { onArrival } from '@/components/motion/arrive';
 
 /**
  * The figures as a ledger on ink: one row per figure, the numeral large on
@@ -20,12 +22,10 @@ export function FiguresLedger({ block, number }: { block: ImpactBlock; number: s
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
+    mm.add('(prefers-reduced-motion: no-preference)', (context) => {
       gsap.utils.toArray<HTMLElement>('[data-rule]', root.current).forEach((rule) => {
-        gsap.from(rule, {
-          scaleX: 0, transformOrigin: 'left center', duration: 1.1, ease: 'power3.out',
-          scrollTrigger: { trigger: rule, start: 'top 88%', once: true },
-        });
+        gsap.set(rule, { scaleX: 0, transformOrigin: 'left center' });
+        onArrival(rule, START.detail, (d) => context.add(() => { gsap.to(rule, draw({ scaleX: 1, delay: d })); }));
       });
     });
   }, { scope: root });
@@ -43,10 +43,10 @@ export function FiguresLedger({ block, number }: { block: ImpactBlock; number: s
               <span data-rule aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-paper/20" />
               <AnimatedNumber
                 value={item.title}
-                delay={0.05}
                 className="block font-display font-medium leading-none tracking-[-0.02em] text-green-light tabular-nums text-[clamp(3rem,7vw,6rem)] lg:col-span-5"
               />
-              <Reveal delay={0.2 + i * 0.02} className="mt-4 lg:col-span-6 lg:col-start-7 lg:mt-0">
+              {/* The description follows its figure by a fixed beat; rows arriving together cascade on their own. */}
+              <Reveal delay={0.2} className="mt-4 lg:col-span-6 lg:col-start-7 lg:mt-0">
                 <p className="body-lg m-0 max-w-[40ch] text-paper/70">{item.description}</p>
               </Reveal>
             </li>

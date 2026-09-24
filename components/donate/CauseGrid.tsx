@@ -41,15 +41,17 @@ export function CauseGrid({
       <ol className="m-0 mt-14 grid list-none gap-x-8 gap-y-14 p-0 sm:grid-cols-2 md:mt-20 lg:grid-cols-3">
         {causes.map((cause, i) => (
           <li key={cause.id}>
-            <Reveal delay={(i % 3) * 0.08}>
-              <Link href={localePath(locale, `/donate/${cause.slug}`)} className="group block h-full focus-visible:outline-offset-4">
+            {/* Each card is the full height of its row and the way in sits at its foot, so the links in a row line up
+                whatever the summaries run to. */}
+            <Reveal className="h-full">
+              <Link href={localePath(locale, `/donate/${cause.slug}`)} className="group flex h-full flex-col focus-visible:outline-offset-4">
                 <Photo image={cause.image} sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw" className="aspect-4/3" drift={3} scale={1.08} />
                 <h3 className="display-3 mt-6 transition-colors duration-200 group-hover:text-green">{cause.title}</h3>
                 <p className="m-0 mt-3 text-[15px] leading-relaxed text-ink-soft">{cause.summary}</p>
                 {cause.progress && (
                   <ProgressBar done={cause.progress.done} total={cause.progress.total} label={progressLabel(cause.progress)} className="mt-6" />
                 )}
-                <span className="mt-6 inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.2em] text-green">
+                <span className="mt-auto inline-flex items-center gap-2 self-start pt-6 text-[11px] font-medium uppercase tracking-[0.2em] text-green">
                   {cta}
                   <ArrowRight aria-hidden="true" className="size-4 transition-transform duration-200 ease-out group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none" />
                 </span>

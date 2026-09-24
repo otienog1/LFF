@@ -3,11 +3,14 @@
  *
  * Returns the in-app path (path + search + hash) to push, or null when the
  * browser should handle the link itself: other origins, mailto/tel, in-page
- * anchors, or a link to the page already on screen.
+ * anchors, or a link to the page already on screen. While a transition is
+ * already running the page "on screen" is on its way out, so a link back to it
+ * is a real destination: pass `samePath: true` to accept it.
  */
 export function resolveTransitionTarget(
   href: string | null | undefined,
   current: { origin: string; pathname: string },
+  options: { samePath?: boolean } = {},
 ): string | null {
   if (!href) return null;
   if (href.startsWith("#")) return null;
@@ -20,11 +23,12 @@ export function resolveTransitionTarget(
   }
   if (url.origin !== current.origin) return null;
 
-  if (trimSlash(url.pathname) === trimSlash(current.pathname)) return null;
+  if (!options.samePath && trimSlash(url.pathname) === trimSlash(current.pathname)) return null;
 
   return url.pathname + url.search + url.hash;
 }
 
-function trimSlash(path: string): string {
+/** A path without its trailing slash ("/" stays "/"), so "/about/" and "/about" compare equal. */
+export function trimSlash(path: string): string {
   return path.length > 1 ? path.replace(/\/+$/, "") : path;
 }

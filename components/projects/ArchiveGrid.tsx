@@ -22,7 +22,7 @@ export function ArchiveGrid({
       <ol className="m-0 mt-12 grid list-none gap-x-8 gap-y-14 p-0 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
         {projects.map((project, i) => (
           <li key={project.id}>
-            <Reveal delay={(i % 3) * 0.08}>
+            <Reveal>
               <ProjectCard project={project} locale={locale} />
             </Reveal>
           </li>

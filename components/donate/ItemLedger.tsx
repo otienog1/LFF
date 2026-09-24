@@ -9,7 +9,10 @@ import { useLenis } from '@/components/layout/Layout';
 import { Chapter, ChapterMark } from '@/components/home/Chapter';
 import { SplitHeading } from '@/components/home/SplitHeading';
 import { Reveal } from '@/components/motion/Reveal';
+import { START } from '@/components/motion/presets';
 import { SmartImage } from '@/components/ui/SmartImage';
+import { PendingPhoto, isPending } from '@/components/shared/PendingPhoto';
+import { typeset } from '@/lib/typeset';
 import { cn } from '@/lib/utils';
 
 const COLS = 'md:grid-cols-[3rem_1fr_9rem_auto] md:gap-x-6';
@@ -38,7 +41,7 @@ function Row({ cause, item, index, rates }: { cause: Cause; item: GiftItem; inde
       </span>
       <div className="min-w-0">
         <h3 className={cn('m-0 font-display leading-[1.1] text-ink transition-colors duration-200 group-hover:text-green group-focus-within:text-green', item.plaque ? 'text-3xl' : 'text-2xl')}>
-          {item.title}
+          {typeset(item.title)}
         </h3>
         <p className="m-0 mt-2 max-w-[46ch] text-[15px] leading-relaxed text-ink-soft">{item.description}</p>
         <p className={cn('m-0 mt-3 font-display text-xl tabular-nums md:hidden', selected ? 'text-green' : 'text-ink')}>{price}</p>
@@ -110,12 +113,16 @@ export function ItemLedger({ cause, rates, number }: { cause: Cause; rates: Reco
 
       <div className="mt-12 lg:mt-16 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-8">
         <div className="lg:sticky lg:top-24 lg:col-span-5">
-          <figure className="m-0">
-            <div className="relative aspect-4/3 overflow-hidden bg-ink/5 lg:aspect-4/5">
-              <SmartImage image={photo} sizes="(max-width: 1024px) 100vw, 40vw" />
-            </div>
-            <figcaption className="mt-3 text-[11px] uppercase tracking-[0.2em] text-ink-soft">{photo.alt}</figcaption>
-          </figure>
+          {isPending(photo) ? (
+            <PendingPhoto image={photo} text={cause.summary} size="panel" className="aspect-4/3 lg:aspect-4/5" />
+          ) : (
+            <figure className="m-0">
+              <div className="relative aspect-4/3 overflow-hidden bg-ink/5 lg:aspect-4/5">
+                <SmartImage image={photo} sizes="(max-width: 1024px) 100vw, 40vw" />
+              </div>
+              <figcaption className="mt-3 text-[11px] uppercase tracking-[0.2em] text-ink-soft">{photo.alt}</figcaption>
+            </figure>
+          )}
         </div>
 
         <div className="mt-10 lg:col-span-7 lg:col-start-6 lg:mt-0">
@@ -128,7 +135,7 @@ export function ItemLedger({ cause, rates, number }: { cause: Cause; rates: Reco
           <ol className="m-0 list-none p-0">
             {cause.items.map((item, i) => (
               <li key={item.id}>
-                <Reveal delay={Math.min(i, 5) * 0.05} start="top 92%">
+                <Reveal start={START.detail}>
                   <Row cause={cause} item={item} index={i} rates={rates} />
                 </Reveal>
               </li>

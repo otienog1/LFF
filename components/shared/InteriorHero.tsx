@@ -5,10 +5,17 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import type { ImageRef } from '@/types/content';
 import { SmartImage } from '@/components/ui/SmartImage';
+import { isPending } from '@/components/shared/PendingPhoto';
 import { usePointerDrift } from '@/components/motion/usePointerDrift';
 import { whenRevealed } from '@/components/motion/transitionGate';
+import { fade, fadeFrom, rise, riseFrom, settle, STAGGER } from '@/components/motion/presets';
+import { typeset } from '@/lib/typeset';
+import { cn } from '@/lib/utils';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
+
+/** Distance from the viewport edge to the container edge, as in Chapter: where the page grid's column rules sit. */
+const EDGE = 'calc((100% - min(var(--container-w), 100%)) / 2)';
 
 /**
  * Interior page hero. A full-bleed photograph at interior height, without the
@@ -27,29 +34,33 @@ export function InteriorHero({
   lead?: React.ReactNode;
 }) {
   const root = useRef<HTMLElement>(null);
-  const title = block.title ?? '';
+  const title = typeset(block.title ?? '');
   const words = title.split(/\s+/).filter(Boolean);
+  // A photograph the foundation has yet to supply is not shown at hero scale: the hero opens on ink instead.
+  const image = block.image && !isPending(block.image) ? block.image : null;
 
   usePointerDrift(root, '[data-media]');
 
   useGSAP((_, contextSafe) => {
     const mm = gsap.matchMedia();
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.set('[data-word]', { yPercent: 110 });
-      gsap.set('[data-aside]', { opacity: 0, y: 16 });
-      gsap.set('[data-media]', { scale: 1.08 });
+      const hasMedia = Boolean(root.current?.querySelector('[data-media]'));
+      gsap.set('[data-word]', riseFrom());
+      gsap.set('[data-aside]', fadeFrom());
+      if (hasMedia) gsap.set('[data-media]', { scale: 1.08 });
 
       let cancelled = false;
+      // Photograph first (settling from the zoom), then the title, then the line above it and the subtitle.
       whenRevealed().then(contextSafe((gated: boolean) => {
         if (cancelled) return;
-        gsap.timeline({ delay: gated ? 0.2 : 0.1, defaults: { ease: 'power4.out' } })
-          .to('[data-media]', { scale: 1.03, duration: 2.2, ease: 'power2.out' }, 0)
-          .to('[data-word]', { yPercent: 0, duration: 1.1, stagger: 0.07 }, 0.1)
-          .to('[data-aside]', { opacity: 1, y: 0, duration: 0.9, ease: 'power2.out' }, 0.6);
+        const tl = gsap.timeline({ delay: gated ? 0.2 : 0.1 });
+        if (hasMedia) tl.to('[data-media]', settle({ scale: 1.03 }), 0);
+        tl.to('[data-word]', rise({ stagger: STAGGER.words }), 0.1)
+          .to('[data-aside]', fade(), 0.6);
       }));
 
       const scroll = { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true };
-      gsap.to('[data-media]', { yPercent: 16, ease: 'none', scrollTrigger: scroll });
+      if (hasMedia) gsap.to('[data-media]', { yPercent: 16, ease: 'none', scrollTrigger: scroll });
       gsap.to('[data-shade]', { opacity: 0.5, ease: 'none', scrollTrigger: scroll });
 
       return () => { cancelled = true; };
@@ -57,12 +68,23 @@ export function InteriorHero({
   }, { scope: root });
 
   return (
-    <section ref={root} className="relative flex min-h-[82svh] items-end overflow-hidden bg-ink">
-      {block.image && (
-        <div data-media className="absolute inset-0 will-change-transform">
-          <SmartImage image={block.image} priority sizes="100vw" />
-          <div className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/30 to-ink/10" />
-        </div>
+    <section ref={root} className={cn('relative flex items-end overflow-hidden bg-ink', image ? 'min-h-[82svh]' : 'min-h-[64svh]')}>
+      {image ? (
+        <>
+          <div data-media className="absolute inset-0 will-change-transform">
+            <SmartImage image={image} priority sizes="100vw" />
+            <div className="absolute inset-0 bg-linear-to-t from-ink/80 via-ink/30 to-ink/10" />
+          </div>
+          {/* The header is transparent over this hero: a shade from the top keeps its links legible on any photograph. */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-linear-to-b from-ink/55 to-transparent md:h-48" />
+        </>
+      ) : (
+        <>
+          {/* No photograph: the chapter grid's column rules carry up into the hero, so it reads as the first chapter. */}
+          {/* They start below the header's band (64px, 96px from xl) so they never cross the wordmark. */}
+          <span aria-hidden="true" className="absolute top-16 bottom-0 hidden w-px bg-paper/10 lg:block xl:top-24" style={{ left: EDGE }} />
+          <span aria-hidden="true" className="absolute top-16 bottom-0 hidden w-px bg-paper/10 lg:block xl:top-24" style={{ right: EDGE }} />
+        </>
       )}
       <div data-shade className="absolute inset-0 bg-ink opacity-0 pointer-events-none" />
 
@@ -70,12 +92,12 @@ export function InteriorHero({
         {lead && <div data-aside className="mb-6">{lead}</div>}
         <h1
           aria-label={title}
-          className="font-display font-medium leading-[1.02] tracking-[-0.015em] max-w-[16ch]"
+          className="font-display font-medium leading-[1.02] tracking-[-0.015em] max-w-[16ch] text-balance"
           style={{ fontSize: 'clamp(2.75rem, 6vw, 5.5rem)' }}
         >
           {words.map((word, i) => (
             <span key={i} aria-hidden="true" className="inline-block overflow-hidden align-top pb-[0.14em] -mb-[0.14em] mr-[0.22em]">
-              <span data-word className="inline-block will-change-transform">{word}</span>
+              <span data-word className="inline-block">{word}</span>
             </span>
           ))}
         </h1>

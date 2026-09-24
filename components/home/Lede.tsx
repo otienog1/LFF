@@ -5,6 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { Chapter, ChapterMark, type ChapterTone } from '@/components/home/Chapter';
 import { cn } from '@/lib/utils';
+import { fade, fadeFrom, rise, riseFrom, START, STAGGER } from '@/components/motion/presets';
+import { onArrival } from '@/components/motion/arrive';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -38,19 +40,28 @@ export function Lede({
   const paragraphs = text.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
   const firstChar = paragraphs[0]?.[0] ?? '';
   const rest = paragraphs[0]?.slice(1) ?? '';
+  // A narrow initial (I, J, 1) carries wide side-bearings at 8.5rem; the usual gutter would set it a word's width
+  // away from the rest of its word ("I   n the heart"), so it sits closer.
+  const narrowCap = /^[IJlij1]$/.test(firstChar);
   const withAside = Boolean(aside) && !number;
   const placement = cn('mt-8 space-y-6 lg:mt-0 lg:row-start-1', withAside ? 'lg:col-span-7 lg:col-start-6' : 'lg:col-span-8 lg:col-start-4');
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.set('[data-intro]', { opacity: 0, y: 20 });
-      const tl = gsap.timeline({ scrollTrigger: { trigger: root.current, start: 'top 78%', once: true } });
-      if (dropCap) {
-        gsap.set('[data-cap]', { yPercent: 110 });
-        tl.to('[data-cap]', { yPercent: 0, duration: 1.1, ease: 'power4.out' }, 0);
-      }
-      tl.to('[data-intro]', { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, ease: 'power3.out' }, dropCap ? 0.15 : 0);
+    mm.add('(prefers-reduced-motion: no-preference)', (context) => {
+      const el = root.current;
+      if (!el) return;
+      const intro = gsap.utils.toArray<HTMLElement>('[data-intro]', el);
+      const cap = dropCap ? el.querySelector('[data-cap]') : null;
+      gsap.set(intro, fadeFrom());
+      if (cap) gsap.set(cap, riseFrom());
+      // The block line, not the chapter one: an opening that shows at the foot of the first screen arrives with the
+      // page (after the hero) instead of waiting, blank, for the reader to scroll.
+      onArrival(el, START.block, (d) => context.add(() => {
+        const tl = gsap.timeline({ delay: d });
+        if (cap) tl.to(cap, rise(), 0);
+        tl.to(intro, fade({ stagger: STAGGER.blocks }), cap ? 0.15 : 0);
+      }));
     });
   }, { scope: root });
 
@@ -68,7 +79,7 @@ export function Lede({
             dropCap && i === 0 ? (
               <p key={i} className={TYPE}>
                 <span className="sr-only">{paragraph}</span>
-                <span aria-hidden="true" className="float-left mr-5 mt-3">
+                <span aria-hidden="true" className={cn('float-left mt-3', narrowCap ? 'mr-1.5 md:mr-2' : 'mr-5')}>
                   <span className="block overflow-hidden pt-[0.25em] -mt-[0.25em]">
                     <span data-cap className="block font-display font-medium text-[6.5rem] md:text-[8.5rem] leading-[0.8] text-green">
                       {firstChar}

@@ -15,7 +15,7 @@ export function Principles({ block }: { block: CardsBlockType }) {
       <ol className="m-0 mt-14 grid list-none gap-x-8 gap-y-12 p-0 md:grid-cols-3">
         {block.items.map((item, i) => (
           <li key={item.title} className="border-t border-ink/15 pt-6">
-            <Reveal delay={i * 0.08}>
+            <Reveal>
               <p className="m-0 flex items-baseline gap-4">
                 <span className="font-display text-lg leading-none tabular-nums text-green">{String(i + 1).padStart(2, "0")}</span>
                 <span className="eyebrow">{item.title}</span>

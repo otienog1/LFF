@@ -50,7 +50,7 @@ export function HeroBlock({ block, variant = "home" }: {
       {/* ── Option A: Editorial column split ── */}
       {block.content && (showSplit || showPreview) && (
         <section className="bg-paper py-24 md:py-36 border-b border-line">
-          {showPreview && <p className="container eyebrow mb-8 text-ink/40">Option A — Column split</p>}
+          {showPreview && <p className="container eyebrow mb-8 text-ink/40">Option A: Column split</p>}
           <div className="container">
             <div className="grid md:grid-cols-[200px_1fr] lg:grid-cols-[260px_1fr]">
               <div className="flex flex-col gap-5 pb-10 md:pb-0 md:pr-12 lg:pr-20">
@@ -70,7 +70,7 @@ export function HeroBlock({ block, variant = "home" }: {
       {/* ── Option B: Pull quote extract ── */}
       {block.content && (showPullQuote || showPreview) && (
         <section className="bg-white py-24 md:py-36 border-b border-line">
-          {showPreview && <p className="container eyebrow mb-8 text-ink/40">Option B — Pull quote</p>}
+          {showPreview && <p className="container eyebrow mb-8 text-ink/40">Option B: Pull quote</p>}
           <div className="container">
             <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
               <div>
@@ -91,7 +91,7 @@ export function HeroBlock({ block, variant = "home" }: {
       {/* ── Option C: Drop cap ── */}
       {block.content && (showDropCap || showPreview) && (
         <section className="bg-paper py-24 md:py-36 border-b border-line">
-          {showPreview && <p className="container eyebrow mb-8 text-ink/40">Option C — Drop cap</p>}
+          {showPreview && <p className="container eyebrow mb-8 text-ink/40">Option C: Drop cap</p>}
           <div className="container">
             <div className="max-w-3xl">
               <p className="text-ink text-xl md:text-2xl leading-[1.7] font-light">

@@ -6,7 +6,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useTranslations, useLocale } from "next-intl";
-import { SITE_NAME, CONTACT_EMAIL, SOCIAL_LINKS } from "@/lib/site";
+import { WORDMARK, CONTACT_EMAIL, SOCIAL_LINKS } from "@/lib/site";
+import { fade, fadeFrom, START, STAGGER } from "@/components/motion/presets";
+import { onArrival } from "@/components/motion/arrive";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -23,7 +25,8 @@ const PAGES = [
 
 const label = "text-[11px] font-medium uppercase tracking-[0.2em] text-paper/50";
 const focus = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-light";
-const link = `link-draw inline-block py-1 text-[15px] leading-snug text-paper/70 hover:text-paper transition-colors duration-200 ${focus}`;
+// 44px tall on touch screens (py-3 around a 20px line), the tighter printed list from lg.
+const link = `link-draw inline-block py-3 lg:py-1 text-[15px] leading-snug text-paper/70 hover:text-paper transition-colors duration-200 motion-reduce:transition-none ${focus}`;
 
 /**
  * Site footer. Its three columns rise once as it arrives; links draw an
@@ -38,11 +41,14 @@ export default function Footer() {
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
-    mm.add("(prefers-reduced-motion: no-preference)", () => {
-      gsap.from("[data-col]", {
-        opacity: 0, y: 16, duration: 0.8, stagger: 0.08, ease: "power3.out",
-        scrollTrigger: { trigger: root.current, start: "top 88%", once: true },
-      });
+    mm.add("(prefers-reduced-motion: no-preference)", (context) => {
+      const el = root.current;
+      if (!el) return;
+      const cols = gsap.utils.toArray<HTMLElement>("[data-col]", el);
+      gsap.set(cols, fadeFrom());
+      onArrival(el, START.detail, (d) => context.add(() => {
+        gsap.to(cols, fade({ stagger: STAGGER.blocks, delay: d }));
+      }));
     });
   }, { scope: root });
 
@@ -53,7 +59,7 @@ export default function Footer() {
 
           {/* Wordmark and tagline */}
           <div data-col className="md:col-span-12 md:row-start-1 lg:col-span-5">
-            <p className="font-display font-medium text-2xl md:text-[1.75rem] leading-tight">{SITE_NAME}</p>
+            <p className="font-display font-medium text-2xl md:text-[1.75rem] leading-tight">{WORDMARK}</p>
             <p className="mt-4 max-w-[36ch] text-sm leading-relaxed text-paper/60">{t("tagline")}</p>
           </div>
 
@@ -62,7 +68,7 @@ export default function Footer() {
             <p className={label}>{t("getInTouch")}</p>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className={`mt-4 inline-block py-1 font-display text-lg md:text-xl leading-snug text-paper hover:text-green-light transition-colors duration-200 break-all ${focus}`}
+              className={`mt-2 inline-block py-2.5 lg:mt-4 lg:py-1 font-display text-lg md:text-xl leading-snug text-paper hover:text-green-light transition-colors duration-200 break-all ${focus}`}
             >
               {CONTACT_EMAIL}
             </a>

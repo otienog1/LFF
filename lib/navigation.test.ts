@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { resolveTransitionTarget } from "./navigation";
+import { resolveTransitionTarget, trimSlash } from "./navigation";
 
 const at = (path: string) => ({ origin: "https://theluigifootprints.org", pathname: path });
 
@@ -31,5 +31,18 @@ describe("resolveTransitionTarget", () => {
   });
   it("keeps a hash when navigating to a different page", () => {
     expect(resolveTransitionTarget("/our-work#education", at("/"))).toBe("/our-work#education");
+  });
+  it("accepts the page on screen as a destination while a transition is running", () => {
+    expect(resolveTransitionTarget("/about", at("/about"), { samePath: true })).toBe("/about");
+    expect(resolveTransitionTarget("/about#team", at("/about"), { samePath: true })).toBe("/about#team");
+    expect(resolveTransitionTarget("#team", at("/about"), { samePath: true })).toBeNull();
+  });
+});
+
+describe("trimSlash", () => {
+  it("drops trailing slashes but keeps the root", () => {
+    expect(trimSlash("/about/")).toBe("/about");
+    expect(trimSlash("/es/projects//")).toBe("/es/projects");
+    expect(trimSlash("/")).toBe("/");
   });
 });

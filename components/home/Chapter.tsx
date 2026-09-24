@@ -28,17 +28,20 @@ export function Chapter({
   tone = "light",
   id,
   className,
+  rulesFrom = "top-0",
   children,
 }: {
   tone?: ChapterTone;
   id?: string;
   className?: string;
+  /** Where the column rules start. A chapter that opens a page under the transparent header starts them below it. */
+  rulesFrom?: string;
   children: React.ReactNode;
 }) {
   return (
     <section id={id} className={cn(surface[tone], "relative scroll-mt-24 py-20 md:py-28 lg:py-36")}>
-      <span aria-hidden="true" className={cn("hidden lg:block absolute inset-y-0 w-px", rule[tone])} style={{ left: EDGE }} />
-      <span aria-hidden="true" className={cn("hidden lg:block absolute inset-y-0 w-px", rule[tone])} style={{ right: EDGE }} />
+      <span aria-hidden="true" className={cn("hidden lg:block absolute bottom-0 w-px", rulesFrom, rule[tone])} style={{ left: EDGE }} />
+      <span aria-hidden="true" className={cn("hidden lg:block absolute bottom-0 w-px", rulesFrom, rule[tone])} style={{ right: EDGE }} />
       <div className={cn("container relative", className)}>{children}</div>
     </section>
   );

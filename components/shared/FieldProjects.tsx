@@ -6,11 +6,10 @@ import type { Locale } from "@/i18n/config";
 import { localePath } from "@/lib/site";
 import { Reveal } from "@/components/motion/Reveal";
 import { SmartImage } from "@/components/ui/SmartImage";
+import { PendingPhoto, isPending } from "@/components/shared/PendingPhoto";
+import { formatProjectDate } from "@/components/projects/ProjectCard";
 import { cn } from "@/lib/utils";
 
-function formatDate(iso: string, locale: Locale) {
-  return new Intl.DateTimeFormat(locale === "en" ? "en-GB" : locale, { month: "long", year: "numeric" }).format(new Date(iso));
-}
 
 /**
  * Field projects related to a section: dated rows with their own photographs,
@@ -43,7 +42,11 @@ export function FieldProjects({
             >
               {projectThumbnail(project) && (
                 <span className="relative block aspect-3/2 w-24 shrink-0 overflow-hidden sm:w-28">
-                  <SmartImage image={projectThumbnail(project)!} sizes="112px" />
+                  {isPending(projectThumbnail(project)) ? (
+                    <PendingPhoto image={projectThumbnail(project)!} size="row" className="absolute inset-0" />
+                  ) : (
+                    <SmartImage image={projectThumbnail(project)!} sizes="112px" />
+                  )}
                 </span>
               )}
               <span className="min-w-0 flex-1">
@@ -51,7 +54,7 @@ export function FieldProjects({
                   {project.title}
                 </span>
                 <span className="mt-1 block text-[11px] uppercase tracking-[0.2em] text-ink-soft">
-                  {formatDate(project.date, locale)}
+                  {formatProjectDate(project, locale)}
                 </span>
               </span>
               <ArrowUpRight
