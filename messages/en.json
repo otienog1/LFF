@@ -119,7 +119,7 @@
     "firstName": "First name",
     "lastName": "Last name",
     "email": "Email",
-    "payWithPaystack": "Pay {amount} by card",
+    "payWithPaystack": "Pay {amount}",
     "paystackNote": "Payments are processed by Paystack. The foundation's record of your payment names the project and items you chose.",
     "paystackCancelled": "The payment was not completed. Your gift is still here whenever you are ready.",
     "paystackError": "The payment could not be started. Please try again in a moment.",

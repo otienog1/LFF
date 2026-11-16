@@ -119,7 +119,7 @@
     "firstName": "Nombre",
     "lastName": "Apellidos",
     "email": "Correo electrónico",
-    "payWithPaystack": "Pagar {amount} con tarjeta",
+    "payWithPaystack": "Pagar {amount}",
     "paystackNote": "Los pagos los procesa Paystack. El registro de tu pago en la fundación indica el proyecto y los elementos que elegiste.",
     "paystackCancelled": "El pago no se completó. Tu donativo sigue aquí para cuando quieras.",
     "paystackError": "No se pudo iniciar el pago. Inténtalo de nuevo en un momento.",

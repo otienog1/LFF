@@ -1112,7 +1112,8 @@
   ],
   "donate": {
     "rates": {
-      "USD": 1
+      "USD": 1,
+      "KES": 130
     },
     "presetsUSD": [
       25,
