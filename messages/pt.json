@@ -119,7 +119,7 @@
     "firstName": "Nome",
     "lastName": "Sobrenome",
     "email": "E-mail",
-    "payWithPaystack": "Pagar {amount} com cartão",
+    "payWithPaystack": "Pagar {amount}",
     "paystackNote": "Os pagamentos são processados pelo Paystack. O registro do seu pagamento na fundação indica o projeto e os itens que você escolheu.",
     "paystackCancelled": "O pagamento não foi concluído. Sua doação continua aqui para quando quiser.",
     "paystackError": "Não foi possível iniciar o pagamento. Tente novamente em instantes.",
